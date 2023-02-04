@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hexo博客初入踩坑篇 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo博客搭建https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F; 软件安装1.安装git  搜索官网下载。   安装时可以取消安装git gui，同时选择git自带bash，也可以选择共用电脑cmd。若想取消桌面右键的快捷方式:win+r输入regedit，删除其中的文件即可。   配置git账号和邮箱git config --global user.name &quot;yuorname&amp;">
+  <meta name="description" content="hexo博客搭建https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F; 软件安装 安装git  搜索官网下载。   安装时可以取消安装git gui，同时选择git自带bash，也可以选择共用电脑cmd。若想取消桌面右键的快捷方式:win+r输入regedit，删除其中的文件即可。   配置git账号和邮箱git config --global user.name &quot;yuorname&amp;q">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo博客初入踩坑篇">
 <meta property="og:url" content="http://yoursite.com/2020/01/27/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="hexo博客搭建https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F; 软件安装1.安装git  搜索官网下载。   安装时可以取消安装git gui，同时选择git自带bash，也可以选择共用电脑cmd。若想取消桌面右键的快捷方式:win+r输入regedit，删除其中的文件即可。   配置git账号和邮箱git config --global user.name &quot;yuorname&amp;">
+<meta property="og:description" content="hexo博客搭建https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F; 软件安装 安装git  搜索官网下载。   安装时可以取消安装git gui，同时选择git自带bash，也可以选择共用电脑cmd。若想取消桌面右键的快捷方式:win+r输入regedit，删除其中的文件即可。   配置git账号和邮箱git config --global user.name &quot;yuorname&amp;q">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-27T09:08:46.000Z">
-<meta property="article:modified_time" content="2022-08-14T04:45:39.380Z">
+<meta property="article:modified_time" content="2023-02-04T09:11:38.221Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -66,7 +66,7 @@
             总文章数 56
         </nav>
 		<nav>
-            总字数 <span class="post-count">56.8k</span>
+            总字数 <span class="post-count">57k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,13 +179,14 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：665字 | 预计阅读时长：2分钟
+          字数：877字 | 预计阅读时长：3分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a>hexo博客搭建</h1><p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p>
-<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><p>1.安装git</p>
+<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><ol>
+<li><p>安装git</p>
 <blockquote>
 <p>搜索官网下载。  </p>
 <p>安装时可以取消安装git gui，同时选择git自带bash，也可以选择共用电脑cmd。若想取消桌面右键的快捷方式:win+r输入regedit，删除其中的文件即可。  </p>
@@ -194,23 +195,32 @@
 <p>配置公钥ssh<br><code>ssh-keygen -t rsa -C &quot;email&quot;</code>//一路回车<br>文件下应该会有两个文件，会存储密码，将其复制到git上就可以不用再输入密码上传。<br><code>cat ~/.ssh/id_rsa.pub</code>//查看公钥<br><code>ssh -T git@github.com</code>//检查配置是否成功  </p>
 </blockquote>
 <a id="more"></a>  
-
-<p>2.安装nodejs</p>
-<p>3.用git bash选择淘宝镜像</p>
+</li>
+<li><p>安装nodejs</p>
 <blockquote>
-<figure class="highlight plain"><figcaption><span>config set registry</span><a href="https://registry.npm.taobao.org```" target="_blank" rel="noopener">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;为了提高速度  </span><br><span class="line">&gt;或者安装cnpm &#96;npm intall -g cnpm  --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org&#96;</span><br><span class="line"></span><br><span class="line">4.安装hexo</span><br><span class="line">&#96;&#96;&#96;npm install -g hexo-cli </span><br></pre></td></tr></table></figure>
+<p>注意版号问题,如果出现非指明性的报错,可以尝试降低版本</p>
+</blockquote>
+</li>
+<li><p>用git bash选择淘宝镜像</p>
+<blockquote>
+<figure class="highlight plain"><figcaption><span>config set registry</span><a href="https://registry.npm.taobao.org```" target="_blank" rel="noopener">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt;为了提高速度  </span><br><span class="line">&gt;或者安装cnpm &#96;npm intall -g cnpm  --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org&#96;</span><br><span class="line"></span><br><span class="line">1. 安装hexo</span><br><span class="line">&#96;&#96;&#96;npm install -g hexo-cli </span><br></pre></td></tr></table></figure>
 
 <p>检查安装是否成功（检查版本）:可以输入hexo -v，node -v，npm -v<br>可用cnpm </p>
 </blockquote>
-<p>5.安装vscode（其他打开md格式软也可）右上角有md预览功能</p>
-<h2 id="hexo初始化"><a href="#hexo初始化" class="headerlink" title="hexo初始化"></a>hexo初始化</h2><p>1.初始hexo</p>
+</li>
+<li><p>安装vscode（其他打开md格式软也可）右上角有md预览功能</p>
+</li>
+</ol>
+<h2 id="hexo初始化"><a href="#hexo初始化" class="headerlink" title="hexo初始化"></a>hexo初始化</h2><ol>
+<li><p>初始hexo</p>
 <blockquote>
 <p><code>hexo init</code>  </p>
 <p>记得初始好文件夹，如果操作不满可以删掉此文件夹从新来做。</p>
 <p>其中下载可能需要时间，如果网速过慢可以换手机热点，可能会提升速度。  </p>
 <p>初始时文件夹必须为空</p>
 </blockquote>
-<p>2.hexo基本操作</p>
+</li>
+<li><p>hexo基本操作</p>
 <blockquote>
 <p>其实hexo初始化时以及自带生成一个博文，里面有基本操作：  </p>
 <p>hexo new 文章名 //生成markdown格式文件，可下载vscode打开。   </p>
@@ -219,10 +229,28 @@
 <p>hexo server //提供端口可以在浏览器打开页面，通常在写文章时提供预览。 </p>
 <p>hexo deploy//推到远端</p>
 </blockquote>
-<h2 id="部署到git"><a href="#部署到git" class="headerlink" title="部署到git"></a>部署到git</h2><p>1.修改_config.yml文件  </p>
-<blockquote>
-<p>deploy:<br>  type: （中间有个空格，以下相同）git<br>  repo: <a href="https://github.com/YourgithubName/YourgithubName.github.io.git" target="_blank" rel="noopener">https://github.com/YourgithubName/YourgithubName.github.io.git</a><br>  branch: master<br>  建议用vim 指令打开，会有错误警告  </p>
+</li>
+</ol>
+<h2 id="部署到git"><a href="#部署到git" class="headerlink" title="部署到git"></a>部署到git</h2><ol>
+<li>修改_config.yml文件  <blockquote>
+<p>deploy:<br>type: （中间有个空格，以下相同）git<br>repo: <a href="https://github.com/YourgithubName/YourgithubName.github.io.git" target="_blank" rel="noopener">https://github.com/YourgithubName/YourgithubName.github.io.git</a><br>branch: master<br>建议用vim 指令打开，会有错误警告  </p>
 </blockquote>
+</li>
+<li>hexo d时,一定要确保当前仓库的修改全部提交,否则可能无法部署到页面</li>
+</ol>
+<h2 id="新设备同步hexo"><a href="#新设备同步hexo" class="headerlink" title="新设备同步hexo"></a>新设备同步hexo</h2><ul>
+<li>同步流程<ol>
+<li>将本地博客文件上传到私有仓库</li>
+<li>在新设备新建一个文件夹并初始化hexo</li>
+<li>将hexo初始化后的文件夹内文件全部清空,为了克隆原有的博客仓库</li>
+<li>将博客仓库克隆下来,并用hexo指令操作</li>
+</ol>
+</li>
+<li>新设备环境问题<ol>
+<li>注意博客是否采用了第三方的插件或者主题,如果采用了确保nodejs版本和原来一模一样,否则可能报出奇奇怪怪的错误,比如原来的插件或者主题不能完全显示,hexo s和d指令报错误</li>
+</ol>
+</li>
+</ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
 <li>hexo主题有官网，可以搜索  </li>
 <li>配置文件中的post_asset_folder改成true：可以实现new文章时同意创建一个相应的图片文件夹，具体可查看官方文档 <a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/asset-folders.html</a>  </li>
@@ -354,11 +382,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/28/Linux%E5%91%BD%E4%BB%A4/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/01/28/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E7%BB%83%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Linux命令
+          java网络编程练习
         
       </div>
     </a>
@@ -392,7 +420,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo博客搭建"><span class="toc-number">1.</span> <span class="toc-text">hexo博客搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#软件安装"><span class="toc-number">1.1.</span> <span class="toc-text">软件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo初始化"><span class="toc-number">1.2.</span> <span class="toc-text">hexo初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署到git"><span class="toc-number">1.3.</span> <span class="toc-text">部署到git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">1.4.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo博客搭建"><span class="toc-number">1.</span> <span class="toc-text">hexo博客搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#软件安装"><span class="toc-number">1.1.</span> <span class="toc-text">软件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo初始化"><span class="toc-number">1.2.</span> <span class="toc-text">hexo初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#部署到git"><span class="toc-number">1.3.</span> <span class="toc-text">部署到git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新设备同步hexo"><span class="toc-number">1.4.</span> <span class="toc-text">新设备同步hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">1.5.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -508,15 +536,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,15 +572,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,15 +600,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,11 +620,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,11 +644,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">

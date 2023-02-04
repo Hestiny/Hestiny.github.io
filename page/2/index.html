@@ -423,85 +423,6 @@
 
 
   
-    <article id="post-VMware安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/VMware%E5%AE%89%E8%A3%85/">VMware安装</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/28/VMware%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：176字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="VMware虚拟机黑屏问题"><a href="#VMware虚拟机黑屏问题" class="headerlink" title="VMware虚拟机黑屏问题"></a>VMware虚拟机黑屏问题</h2><p><strong>可能是版本低的原因不兼容，提升到15.5.1就可以解决黑屏</strong>  </p>
-<h2 id="如果不升级又不嫌麻烦"><a href="#如果不升级又不嫌麻烦" class="headerlink" title="如果不升级又不嫌麻烦"></a>如果不升级又不嫌麻烦</h2><p>查看任务管理器，结束其中的VMware进程，如果无法结束。需要打开msconfig来禁用其中的VMware服务，此时就需要重新启动，并且开机后再打开服务便可以再次运行。这个方法弊端特别大就是你打开一次虚拟机最好就别关了，因为第二次打开的时候又会黑屏了。  </p>
-<h2 id="安装注意事项"><a href="#安装注意事项" class="headerlink" title="安装注意事项"></a>安装注意事项</h2><p>安装时记得选中稍后安装Linux，然后在编辑虚拟机中选中镜像文件。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VMware</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/VMware%E5%AE%89%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-WPF更新程序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -613,31 +534,33 @@
 
 
   
-    <article id="post-pdfium入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-VMware安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">pdfium入门</a>
+      <a class="article-title" href="/2021/11/28/VMware%E5%AE%89%E8%A3%85/">VMware安装</a>
     </h1>
   
 
         
-        <a href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/" class="archive-article-date">
+        <a href="/2021/11/28/VMware%E5%AE%89%E8%A3%85/" class="archive-article-date">
   	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：601字 | 预计阅读时长：2分钟
+          字数：176字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="pdfium编译"><a href="#pdfium编译" class="headerlink" title="pdfium编译"></a>pdfium编译</h2><p>具体的顺序按照下面的博客操作：[bolg]<a href="https://www.cnblogs.com/purehol/p/11734015.html" target="_blank" rel="noopener">https://www.cnblogs.com/purehol/p/11734015.html</a><br>记下几个可能出的问题：<br>    1. depot工具的安装：将depot的下载路径放在系统变量中；在depot的路径下执行<code>gclient</code>命令；注：如果提示python是外部指令，那么应该就是没有执行该命令。如果你自己安装python3在编译时会需要python2，安装完2发现前面又出问题了，关于何时调用哪个python最简单的就是将环境变量移动到前面去。<br>    2.depot安装完了之后基本上就万事大吉了，原博客中<code>ninja -C out\Release32 pdfium</code>release32应该改成64。<br>    3.要在cmd下执行命令，就是打开cmd窗口然后输入<code>cmd</code>指令（具体我也不懂为什么）<br>    4.复制args.gn文件时注意复制过去的字符不能是中文</p>
-        
+        <h2 id="VMware虚拟机黑屏问题"><a href="#VMware虚拟机黑屏问题" class="headerlink" title="VMware虚拟机黑屏问题"></a>VMware虚拟机黑屏问题</h2><p><strong>可能是版本低的原因不兼容，提升到15.5.1就可以解决黑屏</strong>  </p>
+<h2 id="如果不升级又不嫌麻烦"><a href="#如果不升级又不嫌麻烦" class="headerlink" title="如果不升级又不嫌麻烦"></a>如果不升级又不嫌麻烦</h2><p>查看任务管理器，结束其中的VMware进程，如果无法结束。需要打开msconfig来禁用其中的VMware服务，此时就需要重新启动，并且开机后再打开服务便可以再次运行。这个方法弊端特别大就是你打开一次虚拟机最好就别关了，因为第二次打开的时候又会黑屏了。  </p>
+<h2 id="安装注意事项"><a href="#安装注意事项" class="headerlink" title="安装注意事项"></a>安装注意事项</h2><p>安装时记得选中稍后安装Linux，然后在编辑虚拟机中选中镜像文件。</p>
+
       
 
       
@@ -650,7 +573,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pdfium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VMware</a>
         		</li>
       		
 		</ul>
@@ -660,86 +583,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vscode简单配置c,c++" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">vscode简单配置c/c++思路</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/" class="archive-article-date">
-  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：128字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于vscode"><a href="#关于vscode" class="headerlink" title="关于vscode"></a>关于vscode</h2><pre><code>vscode是一个文本编辑器，所以想要执行代码，需要安装相关代码的环境。  
-
-如果只是当文本编辑器，还是有其他的更轻巧。别用自带记事本就是了。  </code></pre>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/28/VMware%E5%AE%89%E8%A3%85/">展开全文 >></a>
         </p>
       
 
@@ -825,6 +669,83 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/28/more%20Effective%20c++/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-pdfium入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">pdfium入门</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：601字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="pdfium编译"><a href="#pdfium编译" class="headerlink" title="pdfium编译"></a>pdfium编译</h2><p>具体的顺序按照下面的博客操作：[bolg]<a href="https://www.cnblogs.com/purehol/p/11734015.html" target="_blank" rel="noopener">https://www.cnblogs.com/purehol/p/11734015.html</a><br>记下几个可能出的问题：<br>    1. depot工具的安装：将depot的下载路径放在系统变量中；在depot的路径下执行<code>gclient</code>命令；注：如果提示python是外部指令，那么应该就是没有执行该命令。如果你自己安装python3在编译时会需要python2，安装完2发现前面又出问题了，关于何时调用哪个python最简单的就是将环境变量移动到前面去。<br>    2.depot安装完了之后基本上就万事大吉了，原博客中<code>ninja -C out\Release32 pdfium</code>release32应该改成64。<br>    3.要在cmd下执行命令，就是打开cmd窗口然后输入<code>cmd</code>指令（具体我也不懂为什么）<br>    4.复制args.gn文件时注意复制过去的字符不能是中文</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pdfium</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">展开全文 >></a>
         </p>
       
 
@@ -949,31 +870,33 @@
 
 
   
-    <article id="post-vs警告" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vscode简单配置c,c++" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/vs%E8%AD%A6%E5%91%8A/">vs警告</a>
+      <a class="article-title" href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">vscode简单配置c/c++思路</a>
     </h1>
   
 
         
-        <a href="/2021/11/28/vs%E8%AD%A6%E5%91%8A/" class="archive-article-date">
+        <a href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/" class="archive-article-date">
   	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：56字 | 预计阅读时长：1分钟
+          字数：128字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="MSB8028警告"><a href="#MSB8028警告" class="headerlink" title="MSB8028警告"></a>MSB8028警告</h2><p>解释为关联了其他文件。<br>解决：删除子项目下的debug文件，重新编译。不是项目目录下的debug。如果删除了debug发现警告依旧在就是删错了。</p>
+        <h2 id="关于vscode"><a href="#关于vscode" class="headerlink" title="关于vscode"></a>关于vscode</h2><pre><code>vscode是一个文本编辑器，所以想要执行代码，需要安装相关代码的环境。  
 
+如果只是当文本编辑器，还是有其他的更轻巧。别用自带记事本就是了。  </code></pre>
+        
       
 
       
@@ -986,11 +909,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vs</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
         		</li>
       		
 		</ul>
@@ -1000,7 +919,90 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/vs%E8%AD%A6%E5%91%8A/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-vscode运行java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/">vscode运行java</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/" class="archive-article-date">
+  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：345字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="新建一个Java代码文件夹"><a href="#新建一个Java代码文件夹" class="headerlink" title="新建一个Java代码文件夹"></a>新建一个Java代码文件夹</h2><pre><code>1. 在此文件下新建一个文件以Java为拓展名  
+2. 打开此文件，根据下方提升安装插件  
+3. 在调试状态栏新建launch文件在Java文件夹下    </code></pre>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/">展开全文 >></a>
         </p>
       
 
@@ -1131,15 +1133,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1163,15 +1165,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1187,7 +1193,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1195,15 +1201,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1211,11 +1213,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1223,7 +1229,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1235,15 +1241,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">

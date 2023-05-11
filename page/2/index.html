@@ -243,6 +243,91 @@
 
 
   
+    <article id="post-UWP阴影" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">UWP阴影</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/" class="archive-article-date">
+  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：267字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h1><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
+<h2 id="利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><a href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel" class="headerlink" title="利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel"></a>利用<code>Microsoft.Toolkit.Uwp.UI.Controls</code>中的<code>DropShadowPanel</code></h2><h3 id="DropShadowPanel必须有内部控件"><a href="#DropShadowPanel必须有内部控件" class="headerlink" title="DropShadowPanel必须有内部控件"></a>DropShadowPanel必须有内部控件</h3><p>DropShadowPanel跟border并不一样,border可以设置大小,但是DropShadowPanel是严格依靠内部控件的,毕竟没有实物哪来的影子,</p>
+<h3 id="DropShadowPanel的内部控件颜色不能为空"><a href="#DropShadowPanel的内部控件颜色不能为空" class="headerlink" title="DropShadowPanel的内部控件颜色不能为空"></a>DropShadowPanel的内部控件颜色不能为空</h3><p>控件不能透明,哪怕在DropShadowPanel中设置颜色也不行.</p>
+<h3 id="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><a href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch" class="headerlink" title="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"></a><code>DropShadowPanel</code>的<code>HorizontalContentAlignment</code>属性设置为<code>Stretch</code></h3><p>只有填充阴影才有效果</p>
+<h3 id="DropShadowPanel控件层级应低于内部控件"><a href="#DropShadowPanel控件层级应低于内部控件" class="headerlink" title="DropShadowPanel控件层级应低于内部控件"></a>DropShadowPanel控件层级应低于内部控件</h3><p>DropShadowPanel应单独组成阴影边框,内部由主要控件覆盖  </p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DropShadowPanel</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-UWP绘制下划线,删除线,波浪线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -306,91 +391,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UWP阴影" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">UWP阴影</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：267字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h1><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
-<h2 id="利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><a href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel" class="headerlink" title="利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel"></a>利用<code>Microsoft.Toolkit.Uwp.UI.Controls</code>中的<code>DropShadowPanel</code></h2><h3 id="DropShadowPanel必须有内部控件"><a href="#DropShadowPanel必须有内部控件" class="headerlink" title="DropShadowPanel必须有内部控件"></a>DropShadowPanel必须有内部控件</h3><p>DropShadowPanel跟border并不一样,border可以设置大小,但是DropShadowPanel是严格依靠内部控件的,毕竟没有实物哪来的影子,</p>
-<h3 id="DropShadowPanel的内部控件颜色不能为空"><a href="#DropShadowPanel的内部控件颜色不能为空" class="headerlink" title="DropShadowPanel的内部控件颜色不能为空"></a>DropShadowPanel的内部控件颜色不能为空</h3><p>控件不能透明,哪怕在DropShadowPanel中设置颜色也不行.</p>
-<h3 id="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><a href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch" class="headerlink" title="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"></a><code>DropShadowPanel</code>的<code>HorizontalContentAlignment</code>属性设置为<code>Stretch</code></h3><p>只有填充阴影才有效果</p>
-<h3 id="DropShadowPanel控件层级应低于内部控件"><a href="#DropShadowPanel控件层级应低于内部控件" class="headerlink" title="DropShadowPanel控件层级应低于内部控件"></a>DropShadowPanel控件层级应低于内部控件</h3><p>DropShadowPanel应单独组成阴影边框,内部由主要控件覆盖  </p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DropShadowPanel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">展开全文 >></a>
         </p>
       
 
@@ -696,31 +696,49 @@
 
 
   
-    <article id="post-pdfium入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-pr剪辑手机视频" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">pdfium入门</a>
+      <a class="article-title" href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/">pr剪辑手机视频</a>
     </h1>
   
 
         
-        <a href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/" class="archive-article-date">
+        <a href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/" class="archive-article-date">
   	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：601字 | 预计阅读时长：2分钟
+          字数：189字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="pdfium编译"><a href="#pdfium编译" class="headerlink" title="pdfium编译"></a>pdfium编译</h2><p>具体的顺序按照下面的博客操作：[bolg]<a href="https://www.cnblogs.com/purehol/p/11734015.html" target="_blank" rel="noopener">https://www.cnblogs.com/purehol/p/11734015.html</a><br>记下几个可能出的问题：<br>    1. depot工具的安装：将depot的下载路径放在系统变量中；在depot的路径下执行<code>gclient</code>命令；注：如果提示python是外部指令，那么应该就是没有执行该命令。如果你自己安装python3在编译时会需要python2，安装完2发现前面又出问题了，关于何时调用哪个python最简单的就是将环境变量移动到前面去。<br>    2.depot安装完了之后基本上就万事大吉了，原博客中<code>ninja -C out\Release32 pdfium</code>release32应该改成64。<br>    3.要在cmd下执行命令，就是打开cmd窗口然后输入<code>cmd</code>指令（具体我也不懂为什么）<br>    4.复制args.gn文件时注意复制过去的字符不能是中文</p>
-        
+        <h1 id="如何将视频用pr剪辑成手机视频"><a href="#如何将视频用pr剪辑成手机视频" class="headerlink" title="如何将视频用pr剪辑成手机视频"></a>如何将视频用pr剪辑成手机视频</h1><h2 id="序列设置"><a href="#序列设置" class="headerlink" title="序列设置"></a>序列设置</h2><blockquote>
+<ol>
+<li><p>在媒体库右下角，快捷创建出序列  </p>
+</li>
+<li><p>点击设置，选中自定义。更改帧大小（改成想要的大小）1080 X 2160 18：9  </p>
+</li>
+<li><p>保存，并点击保持现有设定  </p>
+</li>
+</ol>
+</blockquote>
+<h2 id="视频剪辑"><a href="#视频剪辑" class="headerlink" title="视频剪辑"></a>视频剪辑</h2><blockquote>
+<ol>
+<li>将素材拖到序列，点击出运动窗口  </li>
+<li>点击一下需要运动的视频  </li>
+<li>点击位置关键帧，调节自己需要的镜头位置  </li>
+<li>尽量减少关键帧的使用，特别是在原视频有移动的情况下，否则会让视频看起来非常抖动。    </li>
+</ol>
+</blockquote>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>最好直接使用视频默认的序列，这样会同步上该视频的帧率以及一些其他的设置。  </p>
+
       
 
       
@@ -733,7 +751,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pdfium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pr</a>
         		</li>
       		
 		</ul>
@@ -743,7 +761,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/">展开全文 >></a>
         </p>
       
 
@@ -858,49 +876,31 @@
 
 
   
-    <article id="post-pr剪辑手机视频" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-pdfium入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/">pr剪辑手机视频</a>
+      <a class="article-title" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">pdfium入门</a>
     </h1>
   
 
         
-        <a href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/" class="archive-article-date">
+        <a href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/" class="archive-article-date">
   	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：189字 | 预计阅读时长：1分钟
+          字数：601字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="如何将视频用pr剪辑成手机视频"><a href="#如何将视频用pr剪辑成手机视频" class="headerlink" title="如何将视频用pr剪辑成手机视频"></a>如何将视频用pr剪辑成手机视频</h1><h2 id="序列设置"><a href="#序列设置" class="headerlink" title="序列设置"></a>序列设置</h2><blockquote>
-<ol>
-<li><p>在媒体库右下角，快捷创建出序列  </p>
-</li>
-<li><p>点击设置，选中自定义。更改帧大小（改成想要的大小）1080 X 2160 18：9  </p>
-</li>
-<li><p>保存，并点击保持现有设定  </p>
-</li>
-</ol>
-</blockquote>
-<h2 id="视频剪辑"><a href="#视频剪辑" class="headerlink" title="视频剪辑"></a>视频剪辑</h2><blockquote>
-<ol>
-<li>将素材拖到序列，点击出运动窗口  </li>
-<li>点击一下需要运动的视频  </li>
-<li>点击位置关键帧，调节自己需要的镜头位置  </li>
-<li>尽量减少关键帧的使用，特别是在原视频有移动的情况下，否则会让视频看起来非常抖动。    </li>
-</ol>
-</blockquote>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>最好直接使用视频默认的序列，这样会同步上该视频的帧率以及一些其他的设置。  </p>
-
+        <h2 id="pdfium编译"><a href="#pdfium编译" class="headerlink" title="pdfium编译"></a>pdfium编译</h2><p>具体的顺序按照下面的博客操作：[bolg]<a href="https://www.cnblogs.com/purehol/p/11734015.html" target="_blank" rel="noopener">https://www.cnblogs.com/purehol/p/11734015.html</a><br>记下几个可能出的问题：<br>    1. depot工具的安装：将depot的下载路径放在系统变量中；在depot的路径下执行<code>gclient</code>命令；注：如果提示python是外部指令，那么应该就是没有执行该命令。如果你自己安装python3在编译时会需要python2，安装完2发现前面又出问题了，关于何时调用哪个python最简单的就是将环境变量移动到前面去。<br>    2.depot安装完了之后基本上就万事大吉了，原博客中<code>ninja -C out\Release32 pdfium</code>release32应该改成64。<br>    3.要在cmd下执行命令，就是打开cmd窗口然后输入<code>cmd</code>指令（具体我也不懂为什么）<br>    4.复制args.gn文件时注意复制过去的字符不能是中文</p>
+        
       
 
       
@@ -913,7 +913,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pr</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pdfium</a>
         		</li>
       		
 		</ul>
@@ -923,7 +923,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">展开全文 >></a>
         </p>
       
 
@@ -953,32 +953,32 @@
 
 
   
-    <article id="post-vscode简单配置c,c++" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-vscode运行java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">vscode简单配置c/c++思路</a>
+      <a class="article-title" href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/">vscode运行java</a>
     </h1>
   
 
         
-        <a href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/" class="archive-article-date">
+        <a href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/" class="archive-article-date">
   	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：128字 | 预计阅读时长：1分钟
+          字数：345字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关于vscode"><a href="#关于vscode" class="headerlink" title="关于vscode"></a>关于vscode</h2><pre><code>vscode是一个文本编辑器，所以想要执行代码，需要安装相关代码的环境。  
-
-如果只是当文本编辑器，还是有其他的更轻巧。别用自带记事本就是了。  </code></pre>
+        <h2 id="新建一个Java代码文件夹"><a href="#新建一个Java代码文件夹" class="headerlink" title="新建一个Java代码文件夹"></a>新建一个Java代码文件夹</h2><pre><code>1. 在此文件下新建一个文件以Java为拓展名  
+2. 打开此文件，根据下方提升安装插件  
+3. 在调试状态栏新建launch文件在Java文件夹下    </code></pre>
         
       
 
@@ -992,6 +992,10 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
         		</li>
       		
@@ -1002,7 +1006,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/">展开全文 >></a>
         </p>
       
 
@@ -1141,11 +1145,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1153,7 +1161,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1162,10 +1170,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,6 +1189,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -1193,11 +1201,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,7 +1209,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1218,10 +1222,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1238,6 +1238,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 57
+            总文章数 61
         </nav>
 		<nav>
-            总字数 <span class="post-count">57.8k</span>
+            总字数 <span class="post-count">59.9k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,451 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity音频学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/26/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">Unity音频学习</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/26/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：110字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h2><p>简单的实现赛车的引擎声，打滑声和物体碰撞声</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><ol>
+<li>确定资源放置的物体<br> 这三个声音都可以放在赛车上，如果一些背景声音可以利用audioListen来拾取</li>
+<li>增加声音的生动性<br> 可以跟随速度来调整声音的pitch，来模拟高速和低速的一些情况</li>
+<li>创建混合器来输出声音</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/26/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-unity性能优化点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/26/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/">unity性能优化点</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/26/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：607字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="unity优化的零碎点"><a href="#unity优化的零碎点" class="headerlink" title="unity优化的零碎点"></a>unity优化的零碎点</h1><h2 id="字符串处理相关"><a href="#字符串处理相关" class="headerlink" title="字符串处理相关"></a>字符串处理相关</h2><ul>
+<li>字符串的拼接：不用采用replace，而是format, replace的性能消耗高,关于$的用法</li>
+</ul>
+<h2 id="UI相关"><a href="#UI相关" class="headerlink" title="UI相关"></a>UI相关</h2><ul>
+<li>获取属性名应使用id而非字符串参数,因为会多一次哈希计算</li>
+<li>sprite 和image的区别:sprite会有更多的顶点运算,但在使用时性能会比image更好,并在不同分辨率下image的效果可能达不到预期</li>
+<li>layout:自动排序损耗性能过重,少数控件可代码自行写</li>
+<li>Text文本长度预判<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextGenerator mTextGenerator &#x3D; talkText.cachedTextGeneratorForLayout;</span><br><span class="line">TextGenerationSettings mTgSettings &#x3D; talkText.GetGenerationSettings(Vector2.zero);</span><br><span class="line">float textWidth &#x3D; mTextGenerator.GetPreferredWidth(LanguageCtrl.Instance.GetById(textid), mTgSettings) &#x2F; talkText.pixelsPerUnit ;</span><br></pre></td></tr></table></figure>
+<h2 id="debug相关"><a href="#debug相关" class="headerlink" title="debug相关"></a>debug相关</h2></li>
+<li>debug不要调用自带的 而是Foundation.logUtility.LogInfo();即主要可以用预编译关掉的日志</li>
+<li>避免空事件 最好用预处理指令对debug等事件,可以在playsetting中进行统一关闭</li>
+</ul>
+<h2 id="脚本相关"><a href="#脚本相关" class="headerlink" title="脚本相关"></a>脚本相关</h2><ul>
+<li>start和awake的区别,留言初始化的时机,以及awake与start在不同激活状态下调用的情况.awake一般用来初始化本地数据,start一定是在awake之后调用</li>
+<li>lambda表达式可以用局部方法来实现，action也可以实现，action是不带参数的，继承自委托，如果需要本地的参数局部表达式同样可以解决。</li>
+<li>foreach会产生cg，只有两个情况可能不会有cg</li>
+</ul>
+<h2 id="引擎相关"><a href="#引擎相关" class="headerlink" title="引擎相关"></a>引擎相关</h2><ul>
+<li>gameobject只有在激活的状态下才能修改其属性</li>
+<li>获取子孩子应将其保持在局部，避免重复获取</li>
+<li>在频繁的调用方法中,应该格外注意数据格式的开销<ul>
+<li>泛型数据是类型安全的,并且不需要强转为object</li>
+</ul>
+</li>
+<li>避免运行时添加组件</li>
+<li>销毁getcomponent对象时可能造成卡顿:Destroy(go.GetComponent&lt;&gt;);可以提前获取对象,或者失活处理即可</li>
+<li>移动模型上的boxcollide,在场景生成时,可能并没有跟随到模型的位置,需要重启来更新位置,或者调整参数也可以实现相同效果</li>
+<li>计时器的开启如果不忽略Update更新模式，则会在游戏开始就计数，从而产生一些奇怪的bug</li>
+</ul>
+<h2 id="C"><a href="#C" class="headerlink" title="C#"></a>C#</h2><ul>
+<li>条件编译 Conditiona来替换#if#endif</li>
+<li>用is as来转换类型</li>
+<li>常用readonly 来替换const除非该值一成不变</li>
+<li>确保none的存在,作为没有状态选中</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/26/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-简易事件系统实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/26/%E7%AE%80%E6%98%93%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/">简易事件系统实现</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/26/%E7%AE%80%E6%98%93%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
+  	<time datetime="2022-01-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：201字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>游戏中利用观察者模式来解耦各个模块的功能是十分常用的,其中事件系统就是十分典型的.之前在项目中事件主要通过采用字符串当作id来存储不同事件,然后通过action来传递参数.参数是用类来传递的,并且都是利用obj来传递,那么这里面就需要一层装箱和拆箱,并且需要存在判空的操作.自己写项目的时候便考虑直接用结构体替换.</p>
+<h2 id="设计思路-主要是观察者模式"><a href="#设计思路-主要是观察者模式" class="headerlink" title="设计思路(主要是观察者模式)"></a>设计思路(主要是观察者模式)</h2><h3 id="所需结构"><a href="#所需结构" class="headerlink" title="所需结构"></a>所需结构</h3><ul>
+<li>事件的参数结构体定义</li>
+<li>事件的路由字典定义(用于订阅和通知)<h3 id="主功能方法"><a href="#主功能方法" class="headerlink" title="主功能方法"></a>主功能方法</h3></li>
+<li>订阅,移除订阅</li>
+<li>通知<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/26/%E7%AE%80%E6%98%93%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-UWP绘制下划线,删除线,波浪线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">UWP绘制下划线,删除线,波浪线</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/" class="archive-article-date">
+  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：744字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><a href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开" class="headerlink" title="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"></a>实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同<br>TextBlock的TextDecorations属性可以增加下划线和删除线<br>RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock）</p>
+<h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><ol>
+<li><strong>TextBlock的前景色会修改文字以及下划线</strong>：所以必须将两者分开，即绘制下划线用另一个TextBlock实现。并且绘制下划线的textblock需要用空白来填充。  </li>
+<li><strong>绘制下划线TextBlock的text属性无法显示空白</strong>：利用<code>&lt;Run&gt;</code>可以显示空白，空白字符为<code>&amp;#160；</code>，但是如果绑定Run的Text则不能直接将<code>&amp;#160；</code>进行赋值，而是<code>(char)160</code>  </li>
+<li><strong>绘制下划线TextBlock空白个数计算</strong>：因为每个字体的宽度并不一样，所以不能单纯用字符个数来计算。TextBlock中有ActualWidth属性可以获取当前渲染的长度。于是用不换行的文字渲染长度除以当个空白的渲染长度就可以得到空白字符需要的个数</li>
+<li><strong>处理文字的TextBlock和下划线textblock换行不同步</strong>：在textblock中<code>\r\n</code>、<code>\r</code>、<code>\n</code>都可以换行，解析字符利用split将每一行字符分离处理，分别计算每一行下划线textblock空白所需要的长度并在结尾加入相应的换行</li>
+<li><strong>文字textblock和下划线的textblock换行长度不匹配</strong>：因为textblock的换行默认采用空格换行，所以遇到单词会直接整个换行从而留下空白。<strong>解决办法</strong>：处理文字，在每个文字直接加入零宽字符<code>\u200B</code>，这样就会与下划线换行大致匹配。<em>此步骤应在4步之前，注意<code>\r\n</code>之间不要插入空白字符否则会变成两次换行</em></li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TextBlock</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RichEditBox</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-UWP主题切换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/30/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/">UWP主题切换</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/30/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/" class="archive-article-date">
+  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：513字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="uwp切换主题"><a href="#uwp切换主题" class="headerlink" title="uwp切换主题"></a>uwp切换主题</h1><h2 id="切换接口和方法"><a href="#切换接口和方法" class="headerlink" title="切换接口和方法"></a>切换接口和方法</h2><p><code>Application</code> 应用程序的主题色.枚举为三种默认,亮,暗.但是无法在运行时修改程序的颜色.只能重启应用的时候应用.在应用程序中只能在app.xaml中调用.<br><code>ElementTheme</code> 单个页面的主题色变换.可以修改当前的控件色,修改当前页以及子项的主题.可以在最外层的页面设置RequestedTheme.就可以实现主题的转换<br><code>Window.Current.Content</code> 可以实现当前软件的控件主题更改,该属性在app.cs中需要在初始化之后才能获取.并且无法修改对话框的主题.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/30/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-UWP修改textbox颜色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -299,98 +744,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UWP绘制下划线,删除线,波浪线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">UWP绘制下划线,删除线,波浪线</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：744字 | 预计阅读时长：3分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><a href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开" class="headerlink" title="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"></a>实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同<br>TextBlock的TextDecorations属性可以增加下划线和删除线<br>RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock）</p>
-<h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><ol>
-<li><strong>TextBlock的前景色会修改文字以及下划线</strong>：所以必须将两者分开，即绘制下划线用另一个TextBlock实现。并且绘制下划线的textblock需要用空白来填充。  </li>
-<li><strong>绘制下划线TextBlock的text属性无法显示空白</strong>：利用<code>&lt;Run&gt;</code>可以显示空白，空白字符为<code>&amp;#160；</code>，但是如果绑定Run的Text则不能直接将<code>&amp;#160；</code>进行赋值，而是<code>(char)160</code>  </li>
-<li><strong>绘制下划线TextBlock空白个数计算</strong>：因为每个字体的宽度并不一样，所以不能单纯用字符个数来计算。TextBlock中有ActualWidth属性可以获取当前渲染的长度。于是用不换行的文字渲染长度除以当个空白的渲染长度就可以得到空白字符需要的个数</li>
-<li><strong>处理文字的TextBlock和下划线textblock换行不同步</strong>：在textblock中<code>\r\n</code>、<code>\r</code>、<code>\n</code>都可以换行，解析字符利用split将每一行字符分离处理，分别计算每一行下划线textblock空白所需要的长度并在结尾加入相应的换行</li>
-<li><strong>文字textblock和下划线的textblock换行长度不匹配</strong>：因为textblock的换行默认采用空格换行，所以遇到单词会直接整个换行从而留下空白。<strong>解决办法</strong>：处理文字，在每个文字直接加入零宽字符<code>\u200B</code>，这样就会与下划线换行大致匹配。<em>此步骤应在4步之前，注意<code>\r\n</code>之间不要插入空白字符否则会变成两次换行</em></li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TextBlock</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RichEditBox</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">展开全文 >></a>
         </p>
       
 
@@ -696,349 +1049,9 @@
 
 
   
-    <article id="post-pr剪辑手机视频" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/">pr剪辑手机视频</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/" class="archive-article-date">
-  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：189字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="如何将视频用pr剪辑成手机视频"><a href="#如何将视频用pr剪辑成手机视频" class="headerlink" title="如何将视频用pr剪辑成手机视频"></a>如何将视频用pr剪辑成手机视频</h1><h2 id="序列设置"><a href="#序列设置" class="headerlink" title="序列设置"></a>序列设置</h2><blockquote>
-<ol>
-<li><p>在媒体库右下角，快捷创建出序列  </p>
-</li>
-<li><p>点击设置，选中自定义。更改帧大小（改成想要的大小）1080 X 2160 18：9  </p>
-</li>
-<li><p>保存，并点击保持现有设定  </p>
-</li>
-</ol>
-</blockquote>
-<h2 id="视频剪辑"><a href="#视频剪辑" class="headerlink" title="视频剪辑"></a>视频剪辑</h2><blockquote>
-<ol>
-<li>将素材拖到序列，点击出运动窗口  </li>
-<li>点击一下需要运动的视频  </li>
-<li>点击位置关键帧，调节自己需要的镜头位置  </li>
-<li>尽量减少关键帧的使用，特别是在原视频有移动的情况下，否则会让视频看起来非常抖动。    </li>
-</ol>
-</blockquote>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>最好直接使用视频默认的序列，这样会同步上该视频的帧率以及一些其他的设置。  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">pr</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/pr%E5%89%AA%E8%BE%91%E6%89%8B%E6%9C%BA%E8%A7%86%E9%A2%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-more Effective c++" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/more%20Effective%20c++/">more Effective c++</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/28/more%20Effective%20c++/" class="archive-article-date">
-  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：8.6k字 | 预计阅读时长：30分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="3-1-Item-M1：指针与引用的区别"><a href="#3-1-Item-M1：指针与引用的区别" class="headerlink" title="3.1 Item M1：指针与引用的区别"></a>3.1 Item M1：指针与引用的区别</h2><hr>
-<ul>
-<li>要认识到在任何情况下都不能使用指向空值的引用  </li>
-<li>不存在指向空值的引用这个事实意味着使用引用的代码效率比使用指针的要高。因为在使用引用之前不需要测试它的合法性。</li>
-</ul>
-<h2 id="3-2-Item-M2：尽量使用C-风格的类型转换"><a href="#3-2-Item-M2：尽量使用C-风格的类型转换" class="headerlink" title="3.2 Item M2：尽量使用C++风格的类型转换"></a>3.2 Item M2：尽量使用C++风格的类型转换</h2><hr>
-<blockquote>
-<p>C++通过引进四个新的类型转换操作符克服了C风格类型转换的缺点，这四个操作符是, <code>static_cast</code>, <code>const_cast</code>, <code>dynamic_cast</code>, 和<code>reinterpret_cast</code>。在大多数情况下，对于这些操作符你只需要知道原来你习惯于这样写<code>(type) expression</code> 而现在你总应该这样写： <code>static_cast&lt;type&gt;(expression)</code>  </p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">More Effective C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/more%20Effective%20c++/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pdfium入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">pdfium入门</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：601字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="pdfium编译"><a href="#pdfium编译" class="headerlink" title="pdfium编译"></a>pdfium编译</h2><p>具体的顺序按照下面的博客操作：[bolg]<a href="https://www.cnblogs.com/purehol/p/11734015.html" target="_blank" rel="noopener">https://www.cnblogs.com/purehol/p/11734015.html</a><br>记下几个可能出的问题：<br>    1. depot工具的安装：将depot的下载路径放在系统变量中；在depot的路径下执行<code>gclient</code>命令；注：如果提示python是外部指令，那么应该就是没有执行该命令。如果你自己安装python3在编译时会需要python2，安装完2发现前面又出问题了，关于何时调用哪个python最简单的就是将环境变量移动到前面去。<br>    2.depot安装完了之后基本上就万事大吉了，原博客中<code>ninja -C out\Release32 pdfium</code>release32应该改成64。<br>    3.要在cmd下执行命令，就是打开cmd窗口然后输入<code>cmd</code>指令（具体我也不懂为什么）<br>    4.复制args.gn文件时注意复制过去的字符不能是中文</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pdfium</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/pdfium%E5%85%A5%E9%97%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vscode运行java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/">vscode运行java</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/" class="archive-article-date">
-  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：345字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="新建一个Java代码文件夹"><a href="#新建一个Java代码文件夹" class="headerlink" title="新建一个Java代码文件夹"></a>新建一个Java代码文件夹</h2><pre><code>1. 在此文件下新建一个文件以Java为拓展名  
-2. 打开此文件，根据下方提升安装插件  
-3. 在调试状态栏新建launch文件在Java文件夹下    </code></pre>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/vscode%E8%BF%90%E8%A1%8Cjava/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1137,7 +1150,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1145,7 +1158,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1153,15 +1166,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1170,6 +1175,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1182,6 +1195,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,7 +1218,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1209,7 +1226,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1222,6 +1243,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1241,15 +1266,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">

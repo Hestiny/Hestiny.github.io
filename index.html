@@ -178,13 +178,13 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：307字 | 预计阅读时长：1分钟
+          字数：308字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="deltaTime的官方定义"><a href="#deltaTime的官方定义" class="headerlink" title="deltaTime的官方定义"></a>deltaTime的官方定义</h1><p>The interval in seconds from the last frame to the current one (Read Only).<br>翻译过来就是两帧之间的秒间隔</p>
-<h1 id="牛角尖的地方"><a href="#牛角尖的地方" class="headerlink" title="牛角尖的地方"></a>牛角尖的地方</h1><p>其实结合上update来看 解释就已经很清楚了,比如60帧 一秒就会调用60次update 那么deltatime就是1/60 这里其实都好理解,但是speed<em>Time.deltaTime脑子就转不过来了,速度为啥要乘上这个,乘上之后变成了啥,现在梳理的时候都觉得这么清楚为什么会不理解,但是每次过段时间都会忘记.最简单的方法其实是将值log出来,这样最直观.<br>*</em>简单来说最主要的就是speed的单位是以秒为单位的(或者其他自定义的现实单位),但是update方法中并不是以秒为单位的而是帧,所以在update中需要转换单位,而deltaTime就相当于转换单位,这下就十分简单明晰了**<br>之所以钻牛角尖其实是 自己也不知道到底自己哪不懂,看别人介绍 都是为了适应不同设备的帧率啊 巴拉巴拉,这一听就懂,但是就是觉得哪里不对劲</p>
+<h1 id="牛角尖的地方"><a href="#牛角尖的地方" class="headerlink" title="牛角尖的地方"></a>牛角尖的地方</h1><p>其实结合上update来看 解释就已经很清楚了,比如60帧 一秒就会调用60次update 那么deltatime就是1/60 这里其实都好理解,但是speed*Time.deltaTime脑子就转不过来了,速度为啥要乘上这个,乘上之后变成了啥,现在梳理的时候都觉得这么清楚为什么会不理解,但是每次过段时间都会忘记.最简单的方法其实是将值log出来,这样最直观.<br><strong>简单来说最主要的就是speed的单位是以秒为单位的(或者其他自定义的现实单位),但是update方法中并不是以秒为单位的而是帧,所以在update中需要转换单位,而deltaTime就相当于转换单位,这下就十分简单明晰了</strong><br>之所以钻牛角尖其实是 自己也不知道到底自己哪不懂,看别人介绍 都是为了适应不同设备的帧率啊 巴拉巴拉,这一听就懂,但是就是觉得哪里不对劲</p>
 
       
 
@@ -539,11 +539,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
         		</li>
       		
 		</ul>
@@ -829,6 +829,86 @@
 
 
   
+    <article id="post-Unity中Camera学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/26/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">Unity中Camera学习</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/26/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：136字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Unity中关于Camera有两个调整方法"><a href="#Unity中关于Camera有两个调整方法" class="headerlink" title="Unity中关于Camera有两个调整方法"></a>Unity中关于Camera有两个调整方法</h2><ul>
+<li>下载官方的Cinemachine包，并创建虚拟camera</li>
+<li>创建camera组件，并用代码调整<h3 id="Cinemachine"><a href="#Cinemachine" class="headerlink" title="Cinemachine"></a>Cinemachine</h3>不需要多余的代码调整，可以直接调整相关的参数，可以实现跟随的摄像效果，需要注意镜头抖动的问题，可以在主摄像头中调整刷新的方式来寻求解决。<h3 id="创建camera"><a href="#创建camera" class="headerlink" title="创建camera"></a>创建camera</h3>实现逻辑代码，来完成自己需要的功能，相比官方的包，自己需要实现的功能比较多。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/26/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-UnityUI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -896,86 +976,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/26/UnityUI/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity中Camera学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">Unity中Camera学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：136字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Unity中关于Camera有两个调整方法"><a href="#Unity中关于Camera有两个调整方法" class="headerlink" title="Unity中关于Camera有两个调整方法"></a>Unity中关于Camera有两个调整方法</h2><ul>
-<li>下载官方的Cinemachine包，并创建虚拟camera</li>
-<li>创建camera组件，并用代码调整<h3 id="Cinemachine"><a href="#Cinemachine" class="headerlink" title="Cinemachine"></a>Cinemachine</h3>不需要多余的代码调整，可以直接调整相关的参数，可以实现跟随的摄像效果，需要注意镜头抖动的问题，可以在主摄像头中调整刷新的方式来寻求解决。<h3 id="创建camera"><a href="#创建camera" class="headerlink" title="创建camera"></a>创建camera</h3>实现逻辑代码，来完成自己需要的功能，相比官方的包，自己需要实现的功能比较多。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
         </p>
       
 
@@ -1102,6 +1102,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
@@ -1110,15 +1114,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1126,11 +1122,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1142,11 +1134,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1154,11 +1150,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,19 +1174,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,6 +1199,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1218,19 +1222,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">

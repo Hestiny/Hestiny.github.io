@@ -594,34 +594,37 @@
 
 
   
-    <article id="post-UWP阴影" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-UWP绘制下划线,删除线,波浪线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">UWP阴影</a>
+      <a class="article-title" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">UWP绘制下划线,删除线,波浪线</a>
     </h1>
   
 
         
-        <a href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/" class="archive-article-date">
+        <a href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/" class="archive-article-date">
   	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：267字 | 预计阅读时长：1分钟
+          字数：744字 | 预计阅读时长：3分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h1><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
-<h2 id="利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><a href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel" class="headerlink" title="利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel"></a>利用<code>Microsoft.Toolkit.Uwp.UI.Controls</code>中的<code>DropShadowPanel</code></h2><h3 id="DropShadowPanel必须有内部控件"><a href="#DropShadowPanel必须有内部控件" class="headerlink" title="DropShadowPanel必须有内部控件"></a>DropShadowPanel必须有内部控件</h3><p>DropShadowPanel跟border并不一样,border可以设置大小,但是DropShadowPanel是严格依靠内部控件的,毕竟没有实物哪来的影子,</p>
-<h3 id="DropShadowPanel的内部控件颜色不能为空"><a href="#DropShadowPanel的内部控件颜色不能为空" class="headerlink" title="DropShadowPanel的内部控件颜色不能为空"></a>DropShadowPanel的内部控件颜色不能为空</h3><p>控件不能透明,哪怕在DropShadowPanel中设置颜色也不行.</p>
-<h3 id="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><a href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch" class="headerlink" title="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"></a><code>DropShadowPanel</code>的<code>HorizontalContentAlignment</code>属性设置为<code>Stretch</code></h3><p>只有填充阴影才有效果</p>
-<h3 id="DropShadowPanel控件层级应低于内部控件"><a href="#DropShadowPanel控件层级应低于内部控件" class="headerlink" title="DropShadowPanel控件层级应低于内部控件"></a>DropShadowPanel控件层级应低于内部控件</h3><p>DropShadowPanel应单独组成阴影边框,内部由主要控件覆盖  </p>
+        <h1 id="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><a href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开" class="headerlink" title="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"></a>实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同<br>TextBlock的TextDecorations属性可以增加下划线和删除线<br>RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock）</p>
+<h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><ol>
+<li><strong>TextBlock的前景色会修改文字以及下划线</strong>：所以必须将两者分开，即绘制下划线用另一个TextBlock实现。并且绘制下划线的textblock需要用空白来填充。  </li>
+<li><strong>绘制下划线TextBlock的text属性无法显示空白</strong>：利用<code>&lt;Run&gt;</code>可以显示空白，空白字符为<code>&amp;#160；</code>，但是如果绑定Run的Text则不能直接将<code>&amp;#160；</code>进行赋值，而是<code>(char)160</code>  </li>
+<li><strong>绘制下划线TextBlock空白个数计算</strong>：因为每个字体的宽度并不一样，所以不能单纯用字符个数来计算。TextBlock中有ActualWidth属性可以获取当前渲染的长度。于是用不换行的文字渲染长度除以当个空白的渲染长度就可以得到空白字符需要的个数</li>
+<li><strong>处理文字的TextBlock和下划线textblock换行不同步</strong>：在textblock中<code>\r\n</code>、<code>\r</code>、<code>\n</code>都可以换行，解析字符利用split将每一行字符分离处理，分别计算每一行下划线textblock空白所需要的长度并在结尾加入相应的换行</li>
+<li><strong>文字textblock和下划线的textblock换行长度不匹配</strong>：因为textblock的换行默认采用空格换行，所以遇到单词会直接整个换行从而留下空白。<strong>解决办法</strong>：处理文字，在每个文字直接加入零宽字符<code>\u200B</code>，这样就会与下划线换行大致匹配。<em>此步骤应在4步之前，注意<code>\r\n</code>之间不要插入空白字符否则会变成两次换行</em></li>
+</ol>
         
       
 
@@ -639,7 +642,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DropShadowPanel</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TextBlock</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RichEditBox</a>
         		</li>
       		
 		</ul>
@@ -649,7 +656,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">展开全文 >></a>
         </p>
       
 
@@ -762,37 +769,34 @@
 
 
   
-    <article id="post-UWP绘制下划线,删除线,波浪线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-UWP阴影" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">UWP绘制下划线,删除线,波浪线</a>
+      <a class="article-title" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">UWP阴影</a>
     </h1>
   
 
         
-        <a href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/" class="archive-article-date">
+        <a href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/" class="archive-article-date">
   	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：744字 | 预计阅读时长：3分钟
+          字数：267字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><a href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开" class="headerlink" title="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"></a>实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同<br>TextBlock的TextDecorations属性可以增加下划线和删除线<br>RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock）</p>
-<h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><ol>
-<li><strong>TextBlock的前景色会修改文字以及下划线</strong>：所以必须将两者分开，即绘制下划线用另一个TextBlock实现。并且绘制下划线的textblock需要用空白来填充。  </li>
-<li><strong>绘制下划线TextBlock的text属性无法显示空白</strong>：利用<code>&lt;Run&gt;</code>可以显示空白，空白字符为<code>&amp;#160；</code>，但是如果绑定Run的Text则不能直接将<code>&amp;#160；</code>进行赋值，而是<code>(char)160</code>  </li>
-<li><strong>绘制下划线TextBlock空白个数计算</strong>：因为每个字体的宽度并不一样，所以不能单纯用字符个数来计算。TextBlock中有ActualWidth属性可以获取当前渲染的长度。于是用不换行的文字渲染长度除以当个空白的渲染长度就可以得到空白字符需要的个数</li>
-<li><strong>处理文字的TextBlock和下划线textblock换行不同步</strong>：在textblock中<code>\r\n</code>、<code>\r</code>、<code>\n</code>都可以换行，解析字符利用split将每一行字符分离处理，分别计算每一行下划线textblock空白所需要的长度并在结尾加入相应的换行</li>
-<li><strong>文字textblock和下划线的textblock换行长度不匹配</strong>：因为textblock的换行默认采用空格换行，所以遇到单词会直接整个换行从而留下空白。<strong>解决办法</strong>：处理文字，在每个文字直接加入零宽字符<code>\u200B</code>，这样就会与下划线换行大致匹配。<em>此步骤应在4步之前，注意<code>\r\n</code>之间不要插入空白字符否则会变成两次换行</em></li>
-</ol>
+        <h1 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h1><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
+<h2 id="利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><a href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel" class="headerlink" title="利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel"></a>利用<code>Microsoft.Toolkit.Uwp.UI.Controls</code>中的<code>DropShadowPanel</code></h2><h3 id="DropShadowPanel必须有内部控件"><a href="#DropShadowPanel必须有内部控件" class="headerlink" title="DropShadowPanel必须有内部控件"></a>DropShadowPanel必须有内部控件</h3><p>DropShadowPanel跟border并不一样,border可以设置大小,但是DropShadowPanel是严格依靠内部控件的,毕竟没有实物哪来的影子,</p>
+<h3 id="DropShadowPanel的内部控件颜色不能为空"><a href="#DropShadowPanel的内部控件颜色不能为空" class="headerlink" title="DropShadowPanel的内部控件颜色不能为空"></a>DropShadowPanel的内部控件颜色不能为空</h3><p>控件不能透明,哪怕在DropShadowPanel中设置颜色也不行.</p>
+<h3 id="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><a href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch" class="headerlink" title="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"></a><code>DropShadowPanel</code>的<code>HorizontalContentAlignment</code>属性设置为<code>Stretch</code></h3><p>只有填充阴影才有效果</p>
+<h3 id="DropShadowPanel控件层级应低于内部控件"><a href="#DropShadowPanel控件层级应低于内部控件" class="headerlink" title="DropShadowPanel控件层级应低于内部控件"></a>DropShadowPanel控件层级应低于内部控件</h3><p>DropShadowPanel应单独组成阴影边框,内部由主要控件覆盖  </p>
         
       
 
@@ -810,11 +814,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TextBlock</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RichEditBox</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DropShadowPanel</a>
         		</li>
       		
 		</ul>
@@ -824,7 +824,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/30/UWP%E9%98%B4%E5%BD%B1/">展开全文 >></a>
         </p>
       
 
@@ -1116,6 +1116,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
@@ -1124,15 +1128,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1140,11 +1136,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1156,11 +1148,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1168,11 +1164,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1188,19 +1188,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1213,6 +1213,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1232,19 +1236,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">

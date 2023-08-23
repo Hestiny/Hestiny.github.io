@@ -16,7 +16,7 @@
 <meta property="og:description" content="uwp切换主题切换接口和方法Application 应用程序的主题色.枚举为三种默认,亮,暗.但是无法在运行时修改程序的颜色.只能重启应用的时候应用.在应用程序中只能在app.xaml中调用.ElementTheme 单个页面的主题色变换.可以修改当前的控件色,修改当前页以及子项的主题.可以在最外层的页面设置RequestedTheme.就可以实现主题的转换Window.Current.Conte">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-30T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:07:23.577Z">
+<meta property="article:modified_time" content="2023-08-23T13:43:58.753Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="UWP">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,20 +179,23 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：513字 | 预计阅读时长：2分钟
+          字数：472字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="uwp切换主题"><a href="#uwp切换主题" class="headerlink" title="uwp切换主题"></a>uwp切换主题</h1><h2 id="切换接口和方法"><a href="#切换接口和方法" class="headerlink" title="切换接口和方法"></a>切换接口和方法</h2><p><code>Application</code> 应用程序的主题色.枚举为三种默认,亮,暗.但是无法在运行时修改程序的颜色.只能重启应用的时候应用.在应用程序中只能在app.xaml中调用.<br><code>ElementTheme</code> 单个页面的主题色变换.可以修改当前的控件色,修改当前页以及子项的主题.可以在最外层的页面设置RequestedTheme.就可以实现主题的转换<br><code>Window.Current.Content</code> 可以实现当前软件的控件主题更改,该属性在app.cs中需要在初始化之后才能获取.并且无法修改对话框的主题.</p>
+        <h2 id="uwp切换主题"><a href="#uwp切换主题" class="headerlink" title="uwp切换主题"></a>uwp切换主题</h2><h2 id="切换接口和方法"><a href="#切换接口和方法" class="headerlink" title="切换接口和方法"></a>切换接口和方法</h2><p><code>Application</code> 应用程序的主题色.枚举为三种默认,亮,暗.但是无法在运行时修改程序的颜色.只能重启应用的时候应用.在应用程序中只能在app.xaml中调用.<br><code>ElementTheme</code> 单个页面的主题色变换.可以修改当前的控件色,修改当前页以及子项的主题.可以在最外层的页面设置RequestedTheme.就可以实现主题的转换<br><code>Window.Current.Content</code> 可以实现当前软件的控件主题更改,该属性在app.cs中需要在初始化之后才能获取.并且无法修改对话框的主题.</p>
 <a id="more"></a>
 
 <h2 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h2><h3 id="xaml部分"><a href="#xaml部分" class="headerlink" title="xaml部分"></a>xaml部分</h3><p>分别创建出LightThemeDictionary.axml文件和DarkThemeDictionary.xaml文件,并在需要的界面引用资源字典</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;ResourceDictionary.ThemeDictionaries&gt;</span><br><span class="line">    &lt;ResourceDictionary x:Key&#x3D;&quot;Light&quot; Source&#x3D;&quot;Themes&#x2F;LightThemeDictionary.xaml&quot;&#x2F;&gt;</span><br><span class="line">    &lt;ResourceDictionary x:Key&#x3D;&quot;Dark&quot; Source&#x3D;&quot;Themes&#x2F;DarkThemeDictionary.xaml&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;ResourceDictionary.ThemeDictionaries&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ResourceDictionary.ThemeDictionaries</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ResourceDictionary</span> <span class="attr">x:Key</span>=<span class="string">"Light"</span> <span class="attr">Source</span>=<span class="string">"Themes/LightThemeDictionary.xaml"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ResourceDictionary</span> <span class="attr">x:Key</span>=<span class="string">"Dark"</span> <span class="attr">Source</span>=<span class="string">"Themes/DarkThemeDictionary.xaml"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ResourceDictionary.ThemeDictionaries</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>建议创建一个基资源字典,每一页只需要引用基资源字典,就不需要每个页面都添加资源字典.例如将主题字典加入到ViewerSkin中,则其他页面只需要下面的引用即可.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ResourceDictionary.MergedDictionaries&gt;</span><br><span class="line">    &lt;ResourceDictionary Source&#x3D;&quot;ms-appx:&#x2F;&#x2F;&#x2F;Skins&#x2F;ViewerSkin.xaml&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;ResourceDictionary.MergedDictionaries&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ResourceDictionary.MergedDictionaries</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ResourceDictionary</span> <span class="attr">Source</span>=<span class="string">"ms-appx:///Skins/ViewerSkin.xaml"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ResourceDictionary.MergedDictionaries</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="c-部分"><a href="#c-部分" class="headerlink" title="c#部分"></a>c#部分</h3><p>RootTheme为当前的主题,修改值则会换主题色<br>Initialize方法初始时使用.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public static ElementTheme RootTheme</span><br><span class="line">&#123;</span><br><span class="line">    get</span><br><span class="line">    &#123;</span><br><span class="line">        if (Window.Current.Content is FrameworkElement rootElement)</span><br><span class="line">        &#123;</span><br><span class="line">            return rootElement.RequestedTheme;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return ElementTheme.Default;</span><br><span class="line">    &#125;</span><br><span class="line">    set</span><br><span class="line">    &#123;</span><br><span class="line">        if (Window.Current.Content is FrameworkElement rootElement)</span><br><span class="line">        &#123;</span><br><span class="line">            rootElement.RequestedTheme &#x3D; value;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;如果不是暗黑色则为亮色;dark&#x3D;2,light&#x3D;1,default&#x3D;0;</span><br><span class="line">        ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] &#x3D; (int)value&#x3D;&#x3D;2?2:1;</span><br><span class="line">        App.Locator.UpdateTitileBar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void Initialize()</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; Save reference as this might be null when the user is in another app</span><br><span class="line">    CurrentApplicationWindow &#x3D; Window.Current;</span><br><span class="line">    object savedTheme &#x3D; ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey];</span><br><span class="line">    if (savedTheme !&#x3D; null)</span><br><span class="line">    &#123;</span><br><span class="line">        RootTheme &#x3D; (ElementTheme)(int)savedTheme;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> ElementTheme RootTheme</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Window.Current.Content <span class="keyword">is</span> FrameworkElement rootElement)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> rootElement.RequestedTheme;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ElementTheme.Default;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (Window.Current.Content <span class="keyword">is</span> FrameworkElement rootElement)</span><br><span class="line">        &#123;</span><br><span class="line">            rootElement.RequestedTheme = <span class="keyword">value</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果不是暗黑色则为亮色;dark=2,light=1,default=0;</span></span><br><span class="line">        ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey] = (<span class="keyword">int</span>)<span class="keyword">value</span>==<span class="number">2</span>?<span class="number">2</span>:<span class="number">1</span>;</span><br><span class="line">        App.Locator.UpdateTitileBar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Initialize</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Save reference as this might be null when the user is in another app</span></span><br><span class="line">    CurrentApplicationWindow = Window.Current;</span><br><span class="line">    <span class="keyword">object</span> savedTheme = ApplicationData.Current.LocalSettings.Values[SelectedAppThemeKey];</span><br><span class="line">    <span class="keyword">if</span> (savedTheme != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        RootTheme = (ElementTheme)(<span class="keyword">int</span>)savedTheme;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>至于其他的细节,官方文档应该都是有的.</p>
 
       
@@ -336,7 +339,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#uwp切换主题"><span class="toc-number">1.</span> <span class="toc-text">uwp切换主题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#切换接口和方法"><span class="toc-number">1.1.</span> <span class="toc-text">切换接口和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体代码"><span class="toc-number">1.2.</span> <span class="toc-text">具体代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xaml部分"><span class="toc-number">1.2.1.</span> <span class="toc-text">xaml部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-部分"><span class="toc-number">1.2.2.</span> <span class="toc-text">c#部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">1.3.</span> <span class="toc-text">其他</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#uwp切换主题"><span class="toc-number">1.</span> <span class="toc-text">uwp切换主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切换接口和方法"><span class="toc-number">2.</span> <span class="toc-text">切换接口和方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体代码"><span class="toc-number">3.</span> <span class="toc-text">具体代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xaml部分"><span class="toc-number">3.1.</span> <span class="toc-text">xaml部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-部分"><span class="toc-number">3.2.</span> <span class="toc-text">c#部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">4.</span> <span class="toc-text">其他</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -452,7 +455,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,22 +476,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,7 +495,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,11 +559,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

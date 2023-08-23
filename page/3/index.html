@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-c++/vscode简单配置c,c++" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/28/c++/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">vscode简单配置c/c++思路</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/28/c++/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/" class="archive-article-date">
+  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：128字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于vscode"><a href="#关于vscode" class="headerlink" title="关于vscode"></a>关于vscode</h2><pre><code>vscode是一个文本编辑器，所以想要执行代码，需要安装相关代码的环境。  
+
+如果只是当文本编辑器，还是有其他的更轻巧。别用自带记事本就是了。  </code></pre>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/28/c++/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-java/vscode运行java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,7 +257,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：345字 | 预计阅读时长：1分钟
+          字数：341字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -268,11 +347,13 @@
       
         <h2 id="关于UWP中-自定义加载项目的范围"><a href="#关于UWP中-自定义加载项目的范围" class="headerlink" title="关于UWP中,自定义加载项目的范围"></a>关于UWP中,自定义加载项目的范围</h2><ul>
 <li><a href="https://docs.microsoft.com/zh-cn/windows/uwp/debug-test-perf/listview-and-gridview-data-optimization" target="_blank" rel="noopener">官方文档</a>  </li>
-<li><a href="https://git.computools.org/Herutskyi/uwp-win-samples/-/tree/f2eeceb6aee256e304ce1c415b61103de8688f41/Samples/XamlDataVirtualization" target="_blank" rel="noopener">C#代码</a><h2 id="主要接口"><a href="#主要接口" class="headerlink" title="主要接口"></a>主要接口</h2></li>
-<li>IList</li>
-<li>IItemsRangeInfo<h2 id="应用思路"><a href="#应用思路" class="headerlink" title="应用思路"></a>应用思路</h2></li>
+<li><a href="https://git.computools.org/Herutskyi/uwp-win-samples/-/tree/f2eeceb6aee256e304ce1c415b61103de8688f41/Samples/XamlDataVirtualization" target="_blank" rel="noopener">C#代码</a></li>
 </ul>
-<ol>
+<h2 id="主要接口"><a href="#主要接口" class="headerlink" title="主要接口"></a>主要接口</h2><ul>
+<li>IList</li>
+<li>IItemsRangeInfo</li>
+</ul>
+<h2 id="应用思路"><a href="#应用思路" class="headerlink" title="应用思路"></a>应用思路</h2><ol>
 <li>数据源类需要继承IList类,或者继承ObservableCollection类也可以实现.这么做的目的是为了将IItemsRangeInfo也封装进来,否则直接采用列表就可以绑定.</li>
 <li>实现IItemsRangeInfo中的<code>RangesChanged</code>接口,这个接口不需要调用,会在刷新girdvie时候被系统自动调用.可以返回当前窗口的显示项目个数范围.如此就可以将资源加到想要加载的项目中了.</li>
 </ol>
@@ -347,7 +428,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：779字 | 预计阅读时长：2分钟
+          字数：747字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -360,14 +441,21 @@
 <li>设置更新的相关参数</li>
 <li>发布成功后,打开setup.exe或者MyApp.application文件即可启动安装程序</li>
 </ol>
-<h3 id="Autoupdater-NET-Official-NuGet包"><a href="#Autoupdater-NET-Official-NuGet包" class="headerlink" title="Autoupdater.NET.Official NuGet包"></a>Autoupdater.NET.Official NuGet包</h3><p>第三方的更新包,上手十分简单.有一个b站视频很详细[链接]<a href="https://www.bilibili.com/video/av244584350/" target="_blank" rel="noopener">https://www.bilibili.com/video/av244584350/</a>,包的项目地址[URL]<a href="https://github.com/ravibpatel/AutoUpdater.NET" target="_blank" rel="noopener">https://github.com/ravibpatel/AutoUpdater.NET</a>   </p>
+<h3 id="Autoupdater-NET-Official-NuGet包"><a href="#Autoupdater-NET-Official-NuGet包" class="headerlink" title="Autoupdater.NET.Official NuGet包"></a>Autoupdater.NET.Official NuGet包</h3><p>第三方的更新包,上手十分简单.有一个b站视频很详细<a href="https://www.bilibili.com/video/av244584350/" target="_blank" rel="noopener">链接</a>,包的项目地址<a href="https://github.com/ravibpatel/AutoUpdater.NET" target="_blank" rel="noopener">URL</a></p>
 <ol>
-<li>安装Nuget包</li>
-<li>准备好更新的debug文件,并压缩为zip格式,(注意要程序名要一样,如果是别的程序名则不能打开)</li>
-<li>准备xml文件,具体的参数意义和如何修改,查看项目介绍,里面讲的很详细(相当于最新版本的信息介绍,以此来决定更新版本的相关操作) <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;item&gt;</span><br><span class="line">    &lt;version&gt;2.0.0.0&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;url&gt;http:&#x2F;&#x2F;rbsoft.org&#x2F;downloads&#x2F;AutoUpdaterTest.zip&lt;&#x2F;url&gt;</span><br><span class="line">    &lt;changelog&gt;https:&#x2F;&#x2F;github.com&#x2F;ravibpatel&#x2F;AutoUpdater.NET&#x2F;releases&lt;&#x2F;changelog&gt;</span><br><span class="line">    &lt;mandatory&gt;false&lt;&#x2F;mandatory&gt;</span><br><span class="line">&lt;&#x2F;item&gt;</span><br></pre></td></tr></table></figure></li>
-<li>将2.3步骤的文件放到本地的iis网站中</li>
-<li>在项目中需要检查更新的逻辑代码中加入<code>AutoUpdater.Start(&quot;http://rbsoft.org/updates/AutoUpdaterTest.xml&quot;);</code>即获取步骤3的xml文件.到此就已经大功告成了</li>
-<li>需要注意的是,如果没有更新程序显示或者新版本的应用程序没有打开,那么url肯定有问题,如果新版程序没有打开也有可能两个程序名不一样.仔细检查一下.</li>
+<li><p>安装Nuget包</p>
+</li>
+<li><p>准备好更新的debug文件,并压缩为zip格式,(注意要程序名要一样,如果是别的程序名则不能打开)</p>
+</li>
+<li><p>准备xml文件,具体的参数意义和如何修改,查看项目介绍,里面讲的很详细(相当于最新版本的信息介绍,以此来决定更新版本的相关操作)</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://rbsoft.org/downloads/AutoUpdaterTest.zip<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">changelog</span>&gt;</span>https://github.com/ravibpatel/AutoUpdater.NET/releases<span class="tag">&lt;/<span class="name">changelog</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mandatory</span>&gt;</span>false<span class="tag">&lt;/<span class="name">mandatory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将2.3步骤的文件放到本地的iis网站中</p>
+</li>
+<li><p>在项目中需要检查更新的逻辑代码中加入<code>AutoUpdater.Start(&quot;http://rbsoft.org/updates/AutoUpdaterTest.xml&quot;);</code>即获取步骤3的xml文件.到此就已经大功告成了</p>
+</li>
+<li><p>需要注意的是,如果没有更新程序显示或者新版本的应用程序没有打开,那么url肯定有问题,如果新版程序没有打开也有可能两个程序名不一样.仔细检查一下.</p>
+</li>
 </ol>
 <p>如果后悔忽略当前版本,可以通过修改注册表的值来取消忽略</p>
 <h3 id="简单测试下两个的区别"><a href="#简单测试下两个的区别" class="headerlink" title="简单测试下两个的区别"></a>简单测试下两个的区别</h3><p>因为没有深入测试第三方的nuget包,项目里面还是有很多参数是可以设置的.就目前看来:  </p>
@@ -458,7 +546,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：8.6k字 | 预计阅读时长：30分钟
+          字数：8.5k字 | 预计阅读时长：30分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -469,9 +557,7 @@
 <li>不存在指向空值的引用这个事实意味着使用引用的代码效率比使用指针的要高。因为在使用引用之前不需要测试它的合法性。</li>
 </ul>
 <h2 id="3-2-Item-M2：尽量使用C-风格的类型转换"><a href="#3-2-Item-M2：尽量使用C-风格的类型转换" class="headerlink" title="3.2 Item M2：尽量使用C++风格的类型转换"></a>3.2 Item M2：尽量使用C++风格的类型转换</h2><hr>
-<blockquote>
 <p>C++通过引进四个新的类型转换操作符克服了C风格类型转换的缺点，这四个操作符是, <code>static_cast</code>, <code>const_cast</code>, <code>dynamic_cast</code>, 和<code>reinterpret_cast</code>。在大多数情况下，对于这些操作符你只需要知道原来你习惯于这样写<code>(type) expression</code> 而现在你总应该这样写： <code>static_cast&lt;type&gt;(expression)</code>  </p>
-</blockquote>
         
       
 
@@ -548,8 +634,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="VMware虚拟机黑屏问题"><a href="#VMware虚拟机黑屏问题" class="headerlink" title="VMware虚拟机黑屏问题"></a>VMware虚拟机黑屏问题</h2><p><strong>可能是版本低的原因不兼容，提升到15.5.1就可以解决黑屏</strong>  </p>
-<h2 id="如果不升级又不嫌麻烦"><a href="#如果不升级又不嫌麻烦" class="headerlink" title="如果不升级又不嫌麻烦"></a>如果不升级又不嫌麻烦</h2><p>查看任务管理器，结束其中的VMware进程，如果无法结束。需要打开msconfig来禁用其中的VMware服务，此时就需要重新启动，并且开机后再打开服务便可以再次运行。这个方法弊端特别大就是你打开一次虚拟机最好就别关了，因为第二次打开的时候又会黑屏了。  </p>
+        <h2 id="VMware虚拟机黑屏问题"><a href="#VMware虚拟机黑屏问题" class="headerlink" title="VMware虚拟机黑屏问题"></a>VMware虚拟机黑屏问题</h2><h3 id="可能是版本低的原因不兼容，提升到15-5-1就可以解决黑屏"><a href="#可能是版本低的原因不兼容，提升到15-5-1就可以解决黑屏" class="headerlink" title="可能是版本低的原因不兼容，提升到15.5.1就可以解决黑屏"></a>可能是版本低的原因不兼容，提升到15.5.1就可以解决黑屏</h3><h2 id="如果不升级又不嫌麻烦"><a href="#如果不升级又不嫌麻烦" class="headerlink" title="如果不升级又不嫌麻烦"></a>如果不升级又不嫌麻烦</h2><p>查看任务管理器，结束其中的VMware进程，如果无法结束。需要打开msconfig来禁用其中的VMware服务，此时就需要重新启动，并且开机后再打开服务便可以再次运行。这个方法弊端特别大就是你打开一次虚拟机最好就别关了，因为第二次打开的时候又会黑屏了。  </p>
 <h2 id="安装注意事项"><a href="#安装注意事项" class="headerlink" title="安装注意事项"></a>安装注意事项</h2><p>安装时记得选中稍后安装Linux，然后在编辑虚拟机中选中镜像文件。</p>
 
       
@@ -627,7 +712,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="如何将视频用pr剪辑成手机视频"><a href="#如何将视频用pr剪辑成手机视频" class="headerlink" title="如何将视频用pr剪辑成手机视频"></a>如何将视频用pr剪辑成手机视频</h1><h2 id="序列设置"><a href="#序列设置" class="headerlink" title="序列设置"></a>序列设置</h2><blockquote>
+        <h2 id="如何将视频用pr剪辑成手机视频"><a href="#如何将视频用pr剪辑成手机视频" class="headerlink" title="如何将视频用pr剪辑成手机视频"></a>如何将视频用pr剪辑成手机视频</h2><h2 id="序列设置"><a href="#序列设置" class="headerlink" title="序列设置"></a>序列设置</h2><blockquote>
 <ol>
 <li><p>在媒体库右下角，快捷创建出序列  </p>
 </li>
@@ -642,7 +727,7 @@
 <li>将素材拖到序列，点击出运动窗口  </li>
 <li>点击一下需要运动的视频  </li>
 <li>点击位置关键帧，调节自己需要的镜头位置  </li>
-<li>尽量减少关键帧的使用，特别是在原视频有移动的情况下，否则会让视频看起来非常抖动。    </li>
+<li>尽量减少关键帧的使用，特别是在原视频有移动的情况下，否则会让视频看起来非常抖动。</li>
 </ol>
 </blockquote>
 <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>最好直接使用视频默认的序列，这样会同步上该视频的帧率以及一些其他的设置。  </p>
@@ -895,10 +980,11 @@
 </ul>
 </li>
 <li>赛道相关变量<ul>
-<li>检查点<h2 id="转向"><a href="#转向" class="headerlink" title="转向"></a>转向</h2>赛道上放置相应的检查点，小车的行驶目标就是每一个检查点，所以简化流程就是，需要处理小车如何运行到下一个检查点的问题。<br>首先求出小车的转向角度，并区分左右转向。可跟玩家的操作输入相同，即输入值在正负1之间.得出转向输入之后，就可以控制小车的旋转角度，然后根据小车的旋转角度和最大旋转角比较，从而判断是否需要减速。</li>
+<li>检查点</li>
 </ul>
 </li>
 </ol>
+<h2 id="转向"><a href="#转向" class="headerlink" title="转向"></a>转向</h2><p>赛道上放置相应的检查点，小车的行驶目标就是每一个检查点，所以简化流程就是，需要处理小车如何运行到下一个检查点的问题。<br>首先求出小车的转向角度，并区分左右转向。可跟玩家的操作输入相同，即输入值在正负1之间.得出转向输入之后，就可以控制小车的旋转角度，然后根据小车的旋转角度和最大旋转角比较，从而判断是否需要减速。</p>
 
       
 
@@ -923,92 +1009,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/06/20/Unity/%E7%AE%80%E6%98%93%E8%B5%9B%E8%BD%A6%E8%87%AA%E5%8A%A8%E5%AF%BB%E8%B7%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-c++/分治算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/26/c++/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">分治算法</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/26/c++/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：306字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h2><ul>
-<li>分解  </li>
-<li>解决  </li>
-<li>合并  </li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li>将序列的首尾传入  </li>
-<li>分解：将序列分成左右两个序列。直到中间值等于尾值。此时进入方法必然会有超过两个值。</li>
-<li>解决：当分解完成后，将分解的左右序列开始排序。比较左右序列的大小并填充到原始数组中。</li>
-<li>合并：将每个解决中排序好的数组再次排序。每一次完成两个有序序列的排列。
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/26/c++/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/">展开全文 >></a>
         </p>
       
 
@@ -1139,7 +1139,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1152,22 +1160,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1187,7 +1179,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1243,11 +1243,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

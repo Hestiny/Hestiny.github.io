@@ -16,7 +16,7 @@
 <meta property="og:description" content="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开背景需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同TextBlock的TextDecorations属性可以增加下划线和删除线RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock） 冲突 TextBlock的前景色会修">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-30T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:07:23.590Z">
+<meta property="article:modified_time" content="2023-08-23T13:42:05.589Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="UWP">
 <meta property="article:tag" content="TextBlock">
@@ -65,10 +65,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -181,12 +181,12 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：744字 | 预计阅读时长：3分钟
+          字数：700字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><a href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开" class="headerlink" title="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"></a>实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同<br>TextBlock的TextDecorations属性可以增加下划线和删除线<br>RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock）</p>
+        <h2 id="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><a href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开" class="headerlink" title="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"></a>实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</h2><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同<br>TextBlock的TextDecorations属性可以增加下划线和删除线<br>RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock）</p>
 <h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><ol>
 <li><strong>TextBlock的前景色会修改文字以及下划线</strong>：所以必须将两者分开，即绘制下划线用另一个TextBlock实现。并且绘制下划线的textblock需要用空白来填充。  </li>
 <li><strong>绘制下划线TextBlock的text属性无法显示空白</strong>：利用<code>&lt;Run&gt;</code>可以显示空白，空白字符为<code>&amp;#160；</code>，但是如果绑定Run的Text则不能直接将<code>&amp;#160；</code>进行赋值，而是<code>(char)160</code>  </li>
@@ -197,12 +197,29 @@
 <a id="more"></a>
 
 <h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><ul>
-<li>用来测量长度用的Textblock<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextBlock x:Name&#x3D;&quot;ContentBlock_NoWarp&quot;  Foreground&#x3D;&quot;Transparent&quot; &#x2F;&gt;</span><br><span class="line">&lt;TextBlock x:Name&#x3D;&quot;Underline&quot; Foreground&#x3D;&quot;Transparent&quot; &gt;</span><br><span class="line">    &lt;Run  Text&#x3D;&quot;&amp;#160;&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;TextBlock&gt;</span><br></pre></td></tr></table></figure></li>
-<li>插入零宽字符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str &#x3D; ContentBlock.Text;</span><br><span class="line">str&#x3D;string.Join(&quot;\u200B&quot;, str.ToCharArray());</span><br><span class="line">return  str.Replace(&quot;\r\u200B\n&quot;, &quot;\r\n&quot;);&#x2F;&#x2F;防止出现换行两次</span><br></pre></td></tr></table></figure></li>
-<li>分割每一行字符<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string[] contentblock_textarray &#x3D; System.Text.RegularExpressions.Regex.Split(contentblock_text, &quot;\r\n&quot;, RegexOptions.IgnoreCase);</span><br></pre></td></tr></table></figure></li>
-<li>RichEditBox波浪线的实现<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RichEditBoxWave.IsReadOnly &#x3D; false;&#x2F;&#x2F;只读将无法给文本修改值</span><br><span class="line">RichEditBoxWave.Document.SetText(TextSetOptions.None, ContentBlockWave_text);</span><br><span class="line">ITextRange textRange &#x3D; RichEditBoxWave.Document.GetRange(0, ContentBlockWave_text.Length-1);</span><br><span class="line">textRange.CharacterFormat.Underline &#x3D; Windows.UI.Text.UnderlineType.Wave;</span><br><span class="line">RichEditBoxWave.IsReadOnly &#x3D; true;</span><br><span class="line">RichEditBoxWave.IsEnabled &#x3D; false;&#x2F;&#x2F;取消交互，不会出现右键等选项</span><br></pre></td></tr></table></figure></li>
-<li>实现文字高亮<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">TextRange textRange &#x3D; new TextRange()</span><br><span class="line">    &#123;</span><br><span class="line">        StartIndex &#x3D; 0,</span><br><span class="line">        Length &#x3D; ContentBlockHeighLight.Text.Length</span><br><span class="line">    &#125;;</span><br><span class="line">    TextHighlighter highlighter &#x3D; new TextHighlighter()</span><br><span class="line">    &#123;</span><br><span class="line">        Background &#x3D;ContentBlockUnderline.Foreground,</span><br><span class="line">        Ranges &#x3D; &#123; textRange &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    ContentBlockHeighLight.TextHighlighters.Clear();</span><br><span class="line">    ContentBlockHeighLight.TextHighlighters.Add(highlighter);</span><br></pre></td></tr></table></figure></li>
+<li>用来测量长度用的Textblock</li>
 </ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextBlock x:Name=<span class="string">"ContentBlock_NoWarp"</span>  Foreground=<span class="string">"Transparent"</span> /&gt;</span><br><span class="line">&lt;TextBlock x:Name=<span class="string">"Underline"</span> Foreground=<span class="string">"Transparent"</span> &gt;</span><br><span class="line">    &lt;Run  Text=<span class="string">"&amp;#160;"</span>/&gt;</span><br><span class="line">&lt;/TextBlock&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入零宽字符</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = ContentBlock.Text;</span><br><span class="line">str=<span class="keyword">string</span>.Join(<span class="string">"\u200B"</span>, str.ToCharArray());</span><br><span class="line"><span class="keyword">return</span>  str.Replace(<span class="string">"\r\u200B\n"</span>, <span class="string">"\r\n"</span>);<span class="comment">//防止出现换行两次</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>分割每一行字符</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span>[] contentblock_textarray = System.Text.RegularExpressions.Regex.Split(contentblock_text, <span class="string">"\r\n"</span>, RegexOptions.IgnoreCase);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>RichEditBox波浪线的实现</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RichEditBoxWave.IsReadOnly = <span class="literal">false</span>;<span class="comment">//只读将无法给文本修改值</span></span><br><span class="line">RichEditBoxWave.Document.SetText(TextSetOptions.None, ContentBlockWave_text);</span><br><span class="line">ITextRange textRange = RichEditBoxWave.Document.GetRange(<span class="number">0</span>, ContentBlockWave_text.Length<span class="number">-1</span>);</span><br><span class="line">textRange.CharacterFormat.Underline = Windows.UI.Text.UnderlineType.Wave;</span><br><span class="line">RichEditBoxWave.IsReadOnly = <span class="literal">true</span>;</span><br><span class="line">RichEditBoxWave.IsEnabled = <span class="literal">false</span>;<span class="comment">//取消交互，不会出现右键等选项</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现文字高亮</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">TextRange textRange = <span class="keyword">new</span> TextRange()</span><br><span class="line">    &#123;</span><br><span class="line">        StartIndex = <span class="number">0</span>,</span><br><span class="line">        Length = ContentBlockHeighLight.Text.Length</span><br><span class="line">    &#125;;</span><br><span class="line">    TextHighlighter highlighter = <span class="keyword">new</span> TextHighlighter()</span><br><span class="line">    &#123;</span><br><span class="line">        Background =ContentBlockUnderline.Foreground,</span><br><span class="line">        Ranges = &#123; textRange &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    ContentBlockHeighLight.TextHighlighters.Clear();</span><br><span class="line">    ContentBlockHeighLight.TextHighlighters.Add(highlighter);</span><br></pre></td></tr></table></figure>
 
       
 
@@ -353,7 +370,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><span class="toc-number">1.</span> <span class="toc-text">实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冲突"><span class="toc-number">1.2.</span> <span class="toc-text">冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">1.3.</span> <span class="toc-text">实现代码</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><span class="toc-number">1.</span> <span class="toc-text">实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">2.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冲突"><span class="toc-number">3.</span> <span class="toc-text">冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现代码"><span class="toc-number">4.</span> <span class="toc-text">实现代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -469,7 +486,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,22 +507,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +526,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +590,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

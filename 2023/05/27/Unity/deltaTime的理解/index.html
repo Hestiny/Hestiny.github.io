@@ -16,7 +16,7 @@
 <meta property="og:description" content="deltaTime的官方定义The interval in seconds from the last frame to the current one (Read Only).翻译过来就是两帧之间的秒间隔 牛角尖的地方其实结合上update来看 解释就已经很清楚了,比如60帧 一秒就会调用60次update 那么deltatime就是1&#x2F;60 这里其实都好理解,但是speed*Time.delt">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-27T08:05:43.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:05:49.755Z">
+<meta property="article:modified_time" content="2023-08-23T13:26:52.528Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -184,8 +184,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="deltaTime的官方定义"><a href="#deltaTime的官方定义" class="headerlink" title="deltaTime的官方定义"></a>deltaTime的官方定义</h1><p>The interval in seconds from the last frame to the current one (Read Only).<br>翻译过来就是两帧之间的秒间隔</p>
-<h1 id="牛角尖的地方"><a href="#牛角尖的地方" class="headerlink" title="牛角尖的地方"></a>牛角尖的地方</h1><p>其实结合上update来看 解释就已经很清楚了,比如60帧 一秒就会调用60次update 那么deltatime就是1/60 这里其实都好理解,但是speed*Time.deltaTime脑子就转不过来了,速度为啥要乘上这个,乘上之后变成了啥,现在梳理的时候都觉得这么清楚为什么会不理解,但是每次过段时间都会忘记.最简单的方法其实是将值log出来,这样最直观.<br><strong>简单来说最主要的就是speed的单位是以秒为单位的(或者其他自定义的现实单位),但是update方法中并不是以秒为单位的而是帧,所以在update中需要转换单位,而deltaTime就相当于转换单位,这下就十分简单明晰了</strong><br>之所以钻牛角尖其实是 自己也不知道到底自己哪不懂,看别人介绍 都是为了适应不同设备的帧率啊 巴拉巴拉,这一听就懂,但是就是觉得哪里不对劲</p>
+        <h2 id="deltaTime的官方定义"><a href="#deltaTime的官方定义" class="headerlink" title="deltaTime的官方定义"></a>deltaTime的官方定义</h2><p>The interval in seconds from the last frame to the current one (Read Only).<br>翻译过来就是两帧之间的秒间隔</p>
+<h2 id="牛角尖的地方"><a href="#牛角尖的地方" class="headerlink" title="牛角尖的地方"></a>牛角尖的地方</h2><p>其实结合上update来看 解释就已经很清楚了,比如60帧 一秒就会调用60次update 那么deltatime就是1/60 这里其实都好理解,但是speed*Time.deltaTime脑子就转不过来了,速度为啥要乘上这个,乘上之后变成了啥,现在梳理的时候都觉得这么清楚为什么会不理解,但是每次过段时间都会忘记.最简单的方法其实是将值log出来,这样最直观.<br><strong>简单来说最主要的就是speed的单位是以秒为单位的(或者其他自定义的现实单位),但是update方法中并不是以秒为单位的而是帧,所以在update中需要转换单位,而deltaTime就相当于转换单位,这下就十分简单明晰了</strong><br>之所以钻牛角尖其实是 自己也不知道到底自己哪不懂,看别人介绍 都是为了适应不同设备的帧率啊 巴拉巴拉,这一听就懂,但是就是觉得哪里不对劲</p>
 
       
 
@@ -290,9 +290,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2023/08/26/Unity/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Unity拾取文件插件
+        
+      </div>
+    </a>
   
-    <a href="/2023/05/26/OpenGL/openGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Opengl环境搭建</div>
+  
+    <a href="/2023/05/26/c#/c#%E5%A1%AB%E5%9D%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">c#填坑</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -319,7 +328,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#deltaTime的官方定义"><span class="toc-number">1.</span> <span class="toc-text">deltaTime的官方定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#牛角尖的地方"><span class="toc-number">2.</span> <span class="toc-text">牛角尖的地方</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#deltaTime的官方定义"><span class="toc-number">1.</span> <span class="toc-text">deltaTime的官方定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#牛角尖的地方"><span class="toc-number">2.</span> <span class="toc-text">牛角尖的地方</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -435,7 +444,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,22 +465,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -483,7 +484,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,11 +548,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

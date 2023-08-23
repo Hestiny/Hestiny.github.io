@@ -16,7 +16,7 @@
 <meta property="og:description" content="WPF更新其实网上的方法蛮多了,这里只是简单的尝试了两个方法 本地测试需要准备好iis,并搭建一个网站. clickonce微软官方是有教程的,不过看起来也乏味.网上详细教程也很多[clickonce]https:&#x2F;&#x2F;www.cnblogs.com&#x2F;weixing&#x2F;p&#x2F;3358740.html.简单的测试了一下:  设置发布的位置(记得用管理员模式打开vs)就是将你新版的软件推送到服务器或者本地">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-28T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:07:21.896Z">
+<meta property="article:modified_time" content="2023-08-23T13:44:37.813Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="WPF">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,7 +179,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：779字 | 预计阅读时长：2分钟
+          字数：747字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -192,14 +192,21 @@
 <li>设置更新的相关参数</li>
 <li>发布成功后,打开setup.exe或者MyApp.application文件即可启动安装程序</li>
 </ol>
-<h3 id="Autoupdater-NET-Official-NuGet包"><a href="#Autoupdater-NET-Official-NuGet包" class="headerlink" title="Autoupdater.NET.Official NuGet包"></a>Autoupdater.NET.Official NuGet包</h3><p>第三方的更新包,上手十分简单.有一个b站视频很详细[链接]<a href="https://www.bilibili.com/video/av244584350/" target="_blank" rel="noopener">https://www.bilibili.com/video/av244584350/</a>,包的项目地址[URL]<a href="https://github.com/ravibpatel/AutoUpdater.NET" target="_blank" rel="noopener">https://github.com/ravibpatel/AutoUpdater.NET</a>   </p>
+<h3 id="Autoupdater-NET-Official-NuGet包"><a href="#Autoupdater-NET-Official-NuGet包" class="headerlink" title="Autoupdater.NET.Official NuGet包"></a>Autoupdater.NET.Official NuGet包</h3><p>第三方的更新包,上手十分简单.有一个b站视频很详细<a href="https://www.bilibili.com/video/av244584350/" target="_blank" rel="noopener">链接</a>,包的项目地址<a href="https://github.com/ravibpatel/AutoUpdater.NET" target="_blank" rel="noopener">URL</a></p>
 <ol>
-<li>安装Nuget包</li>
-<li>准备好更新的debug文件,并压缩为zip格式,(注意要程序名要一样,如果是别的程序名则不能打开)</li>
-<li>准备xml文件,具体的参数意义和如何修改,查看项目介绍,里面讲的很详细(相当于最新版本的信息介绍,以此来决定更新版本的相关操作) <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;item&gt;</span><br><span class="line">    &lt;version&gt;2.0.0.0&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;url&gt;http:&#x2F;&#x2F;rbsoft.org&#x2F;downloads&#x2F;AutoUpdaterTest.zip&lt;&#x2F;url&gt;</span><br><span class="line">    &lt;changelog&gt;https:&#x2F;&#x2F;github.com&#x2F;ravibpatel&#x2F;AutoUpdater.NET&#x2F;releases&lt;&#x2F;changelog&gt;</span><br><span class="line">    &lt;mandatory&gt;false&lt;&#x2F;mandatory&gt;</span><br><span class="line">&lt;&#x2F;item&gt;</span><br></pre></td></tr></table></figure></li>
-<li>将2.3步骤的文件放到本地的iis网站中</li>
-<li>在项目中需要检查更新的逻辑代码中加入<code>AutoUpdater.Start(&quot;http://rbsoft.org/updates/AutoUpdaterTest.xml&quot;);</code>即获取步骤3的xml文件.到此就已经大功告成了</li>
-<li>需要注意的是,如果没有更新程序显示或者新版本的应用程序没有打开,那么url肯定有问题,如果新版程序没有打开也有可能两个程序名不一样.仔细检查一下.</li>
+<li><p>安装Nuget包</p>
+</li>
+<li><p>准备好更新的debug文件,并压缩为zip格式,(注意要程序名要一样,如果是别的程序名则不能打开)</p>
+</li>
+<li><p>准备xml文件,具体的参数意义和如何修改,查看项目介绍,里面讲的很详细(相当于最新版本的信息介绍,以此来决定更新版本的相关操作)</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://rbsoft.org/downloads/AutoUpdaterTest.zip<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">changelog</span>&gt;</span>https://github.com/ravibpatel/AutoUpdater.NET/releases<span class="tag">&lt;/<span class="name">changelog</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mandatory</span>&gt;</span>false<span class="tag">&lt;/<span class="name">mandatory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将2.3步骤的文件放到本地的iis网站中</p>
+</li>
+<li><p>在项目中需要检查更新的逻辑代码中加入<code>AutoUpdater.Start(&quot;http://rbsoft.org/updates/AutoUpdaterTest.xml&quot;);</code>即获取步骤3的xml文件.到此就已经大功告成了</p>
+</li>
+<li><p>需要注意的是,如果没有更新程序显示或者新版本的应用程序没有打开,那么url肯定有问题,如果新版程序没有打开也有可能两个程序名不一样.仔细检查一下.</p>
+</li>
 </ol>
 <p>如果后悔忽略当前版本,可以通过修改注册表的值来取消忽略</p>
 <h3 id="简单测试下两个的区别"><a href="#简单测试下两个的区别" class="headerlink" title="简单测试下两个的区别"></a>简单测试下两个的区别</h3><p>因为没有深入测试第三方的nuget包,项目里面还是有很多参数是可以设置的.就目前看来:  </p>
@@ -477,7 +484,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,22 +505,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -525,7 +524,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,11 +588,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

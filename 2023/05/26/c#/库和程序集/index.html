@@ -16,7 +16,7 @@
 <meta property="og:description" content="C++编译原理网上c++的编译原理文档写的很详细,这里并不仔细再费时间介绍,总的过程就是预编译(将代码文件的宏定义等处理)&gt;编译(将预编译的文件编译成汇编代码)&gt;汇编(将汇编代码编译成机器代码)&gt;链接(链接成一个完整的可执行程序（或者静态库、动态库）)编译原理 G++编译过程Makefile主要分几步:  g++ -c 文件 输出编译文件.obj g++ -0 目标 关联文件Ma">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-26T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T21:55:56.779Z">
+<meta property="article:modified_time" content="2023-08-22T14:22:35.160Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="c#">
 <meta property="article:tag" content="c++">
@@ -64,10 +64,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -185,12 +185,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-编译原理"><a href="#C-编译原理" class="headerlink" title="C++编译原理"></a>C++编译原理</h1><p>网上c++的编译原理文档写的很详细,这里并不仔细再费时间介绍,总的过程就是预编译(将代码文件的宏定义等处理)&gt;编译(将预编译的文件编译成汇编代码)&gt;汇编(将汇编代码编译成机器代码)&gt;链接(链接成一个完整的可执行程序（或者静态库、动态库）)<a href="https://blog.csdn.net/z164470/article/details/126349684" target="_blank" rel="noopener">编译原理</a></p>
-<h1 id="G-编译过程"><a href="#G-编译过程" class="headerlink" title="G++编译过程"></a>G++编译过程</h1><p><a href="https://www.bilibili.com/video/BV188411L7d2/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=f74f53359bcb74d1b11824aef4f0ae8b" target="_blank" rel="noopener">Makefile</a><br>主要分几步:</p>
+        <h2 id="C-编译原理"><a href="#C-编译原理" class="headerlink" title="C++编译原理"></a>C++编译原理</h2><p>网上c++的编译原理文档写的很详细,这里并不仔细再费时间介绍,总的过程就是预编译(将代码文件的宏定义等处理)&gt;编译(将预编译的文件编译成汇编代码)&gt;汇编(将汇编代码编译成机器代码)&gt;链接(链接成一个完整的可执行程序（或者静态库、动态库）)<a href="https://blog.csdn.net/z164470/article/details/126349684" target="_blank" rel="noopener">编译原理</a></p>
+<h2 id="G-编译过程"><a href="#G-编译过程" class="headerlink" title="G++编译过程"></a>G++编译过程</h2><p><a href="https://www.bilibili.com/video/BV188411L7d2/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=f74f53359bcb74d1b11824aef4f0ae8b" target="_blank" rel="noopener">Makefile</a><br>主要分几步:</p>
 <ol>
 <li>g++ -c 文件 输出编译文件.obj</li>
-<li>g++ -0 目标 关联文件<br>Makefile和Cmake<br>这两个工具都是调用g++的编译器而已,他们出现的原因就是当文件过多难以人工维护的时候就派上用场了,他们会自动执行,并且优化编译的流程,避免一些不需要编译的文件<h1 id="C-程序集"><a href="#C-程序集" class="headerlink" title="C#程序集"></a>C#程序集</h1><a href="https://blog.csdn.net/qq_39941918/article/details/121266553" target="_blank" rel="noopener">程序集</a></li>
+<li>g++ -0 目标 关联文件<br>Makefile和Cmake<br>这两个工具都是调用g++的编译器而已,他们出现的原因就是当文件过多难以人工维护的时候就派上用场了,他们会自动执行,并且优化编译的流程,避免一些不需要编译的文件</li>
 </ol>
+<h2 id="C-程序集"><a href="#C-程序集" class="headerlink" title="C#程序集"></a>C#程序集</h2><p><a href="https://blog.csdn.net/qq_39941918/article/details/121266553" target="_blank" rel="noopener">程序集</a></p>
 <ul>
 <li>可执行文件（.exe文件）和 类库文件（.dll文件）。</li>
 <li>在VS开发环境中，一个解决方案可以包含多个项目，而每个项目就是一个程序集。</li>
@@ -303,18 +304,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/05/26/c#/c#%E5%A1%AB%E5%9D%91/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/05/26/OpenGL/openGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          c#填坑
+          Opengl环境搭建
         
       </div>
     </a>
   
   
-    <a href="/2023/05/11/Unity/RectTransform%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">RectTransform的常用方法</div>
+    <a href="/2023/05/26/Unity/AssetBundle%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AssetBundle入门</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -341,7 +342,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-编译原理"><span class="toc-number">1.</span> <span class="toc-text">C++编译原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#G-编译过程"><span class="toc-number">2.</span> <span class="toc-text">G++编译过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#C-程序集"><span class="toc-number">3.</span> <span class="toc-text">C#程序集</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C-编译原理"><span class="toc-number">1.</span> <span class="toc-text">C++编译原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#G-编译过程"><span class="toc-number">2.</span> <span class="toc-text">G++编译过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-程序集"><span class="toc-number">3.</span> <span class="toc-text">C#程序集</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -457,7 +458,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,22 +479,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,7 +498,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,11 +562,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

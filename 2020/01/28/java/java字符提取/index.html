@@ -16,7 +16,7 @@
 <meta property="og:description" content="利用stingBuffer实现分离字符string中有split函数，可以设置分隔符。并用string数组来接收。 利用scanner逐部分读取字符将字符串输入到scanner，然后利用next来读取。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-28T08:05:43.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:03:11.633Z">
+<meta property="article:modified_time" content="2023-08-23T13:31:10.526Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,7 +179,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：393字 | 预计阅读时长：2分钟
+          字数：338字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -187,7 +187,8 @@
         <h2 id="利用stingBuffer实现分离字符"><a href="#利用stingBuffer实现分离字符" class="headerlink" title="利用stingBuffer实现分离字符"></a>利用stingBuffer实现分离字符</h2><p>string中有split函数，可以设置分隔符。并用string数组来接收。</p>
 <h2 id="利用scanner逐部分读取字符"><a href="#利用scanner逐部分读取字符" class="headerlink" title="利用scanner逐部分读取字符"></a>利用scanner逐部分读取字符</h2><p>将字符串输入到scanner，然后利用next来读取。  </p>
 <a id="more"></a>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line">class sort&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">       select();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    static void select()&#123;</span><br><span class="line">        Scanner in &#x3D; new Scanner(System.in);</span><br><span class="line">         System.out.println(&quot;选择方法:1.stringbuffer  2.scanner&quot;);</span><br><span class="line">         String t &#x3D; in.nextLine();</span><br><span class="line">         switch(t)&#123;</span><br><span class="line">             case &quot;1&quot; :</span><br><span class="line">                sort n&#x3D;new sort();&#x2F;&#x2F;生成实例对象来调用实例方法</span><br><span class="line">                n.StringBuffer0();</span><br><span class="line">                break;</span><br><span class="line">            case  &quot;2&quot; :</span><br><span class="line">                scanner();               </span><br><span class="line">         &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void StringBuffer0()&#123;</span><br><span class="line">     Scanner in &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.print(&quot;输入待排序字符串：&quot;);</span><br><span class="line">        String str &#x3D; in.nextLine();</span><br><span class="line">        String[] str1&#x3D; str.split(&quot; &quot;);</span><br><span class="line">        int[] a&#x3D;new int[50];</span><br><span class="line">        &#x2F;&#x2F;将字符串转换成数组</span><br><span class="line">        for(int i&#x3D;0;i&lt;str1.length;i++)&#123;</span><br><span class="line">            a[i]&#x3D;Integer.parseInt(str1[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(a,0,str1.length);&#x2F;&#x2F;排序       </span><br><span class="line">        StringBuffer strB &#x3D; new StringBuffer(&quot;&quot;);</span><br><span class="line">        &#x2F;&#x2F;把排序后的数组转换成字符串</span><br><span class="line">        for(int i&#x3D;0;i&lt;str1.length;i++)&#123;</span><br><span class="line">            strB.append(a[i]+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(strB);</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void scanner()&#123;</span><br><span class="line">        Scanner in &#x3D; new Scanner(System.in);</span><br><span class="line">        System.out.print(&quot;输入待排序字符串：&quot;);</span><br><span class="line">        String str &#x3D; in.nextLine();</span><br><span class="line">        Scanner s&#x3D;new Scanner(str);</span><br><span class="line">        &#x2F;&#x2F;s.useDelimiter(&quot; &quot;);</span><br><span class="line">        int  a[]&#x3D;new int[50],t&#x3D;0;</span><br><span class="line">        while(s.hasNext())&#123;</span><br><span class="line">            a[t++]&#x3D;Integer.parseInt(s.next());</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(a,0,t);&#x2F;&#x2F;排序       </span><br><span class="line">        StringBuffer strB &#x3D; new StringBuffer(&quot;&quot;);</span><br><span class="line">        &#x2F;&#x2F;把排序后的数组转换成字符串</span><br><span class="line">        for(int i&#x3D;0;i&lt;t;i++)&#123;</span><br><span class="line">            strB.append(a[i]+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(strB);</span><br><span class="line">        in.close();</span><br><span class="line">        s.close();</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sort</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       select();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">select</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">         System.out.println(<span class="string">"选择方法:1.stringbuffer  2.scanner"</span>);</span><br><span class="line">         String t = in.nextLine();</span><br><span class="line">         <span class="keyword">switch</span>(t)&#123;</span><br><span class="line">             <span class="keyword">case</span> <span class="string">"1"</span> :</span><br><span class="line">                sort n=<span class="keyword">new</span> sort();<span class="comment">//生成实例对象来调用实例方法</span></span><br><span class="line">                n.StringBuffer0();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span>  <span class="string">"2"</span> :</span><br><span class="line">                scanner();               </span><br><span class="line">         &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">StringBuffer0</span><span class="params">()</span></span>&#123;</span><br><span class="line">     Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.print(<span class="string">"输入待排序字符串："</span>);</span><br><span class="line">        String str = in.nextLine();</span><br><span class="line">        String[] str1= str.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">int</span>[] a=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">50</span>];</span><br><span class="line">        <span class="comment">//将字符串转换成数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str1.length;i++)&#123;</span><br><span class="line">            a[i]=Integer.parseInt(str1[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(a,<span class="number">0</span>,str1.length);<span class="comment">//排序       </span></span><br><span class="line">        StringBuffer strB = <span class="keyword">new</span> StringBuffer(<span class="string">""</span>);</span><br><span class="line">        <span class="comment">//把排序后的数组转换成字符串</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str1.length;i++)&#123;</span><br><span class="line">            strB.append(a[i]+<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(strB);</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">scanner</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.print(<span class="string">"输入待排序字符串："</span>);</span><br><span class="line">        String str = in.nextLine();</span><br><span class="line">        Scanner s=<span class="keyword">new</span> Scanner(str);</span><br><span class="line">        <span class="comment">//s.useDelimiter(" ");</span></span><br><span class="line">        <span class="keyword">int</span>  a[]=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">50</span>],t=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(s.hasNext())&#123;</span><br><span class="line">            a[t++]=Integer.parseInt(s.next());</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(a,<span class="number">0</span>,t);<span class="comment">//排序       </span></span><br><span class="line">        StringBuffer strB = <span class="keyword">new</span> StringBuffer(<span class="string">""</span>);</span><br><span class="line">        <span class="comment">//把排序后的数组转换成字符串</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;t;i++)&#123;</span><br><span class="line">            strB.append(a[i]+<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(strB);</span><br><span class="line">        in.close();</span><br><span class="line">        s.close();</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -445,7 +446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -458,22 +467,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,7 +486,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,11 +550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

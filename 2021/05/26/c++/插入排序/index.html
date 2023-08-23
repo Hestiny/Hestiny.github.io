@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>插入排序 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="性能平均时间复杂度O(n^2)    是稳定的   不适合过千数据排序">
+  <meta name="description" content="性能 平均时间复杂度O(n^2)   是稳定的   不适合过千数据排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="插入排序">
 <meta property="og:url" content="http://yoursite.com/2021/05/26/c++/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="性能平均时间复杂度O(n^2)    是稳定的   不适合过千数据排序">
+<meta property="og:description" content="性能 平均时间复杂度O(n^2)   是稳定的   不适合过千数据排序">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-26T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-14T06:16:24.374Z">
+<meta property="article:modified_time" content="2023-08-22T14:28:45.649Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="排序">
@@ -64,10 +64,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -180,19 +180,26 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：226字 | 预计阅读时长：1分钟
+          字数：211字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><pre><code>平均时间复杂度O(n^2)  
+        <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><ul>
+<li>平均时间复杂度O(n^2)  </li>
+<li>是稳定的  </li>
+<li>不适合过千数据排序  <a id="more"></a>
 
-是稳定的  
-不适合过千数据排序  </code></pre><a id="more"></a>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>1.取出一个元素  
-2.将此元素与前一个元素比较  
-3.如果大则交换并比较其与后一位的大小关系，循环2步骤直到结束  
-4.每次都会将当前遍历的最小的一位，移到最前面。  </code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">void insertionSort(int *a,int len) &#123;</span><br><span class="line">	 int i &#x3D;1;&#x2F;&#x2F;从0开始必然会浪费一次循环判断</span><br><span class="line">		for (; i&lt; len; i++) &#123;</span><br><span class="line">			int j &#x3D; i;</span><br><span class="line">            &#x2F;&#x2F;不断循环比较相近两位将最小的值a[j]前移</span><br><span class="line">            &#x2F;&#x2F;只有a[j]小于前者才交换，故a[j]上的值一直未变</span><br><span class="line">			while (a[j-1]&gt;a[j]&amp;&amp;j&gt;0)</span><br><span class="line">			&#123;</span><br><span class="line">				int temp &#x3D; a[j-1];</span><br><span class="line">			    a[j -1]&#x3D;a[j];</span><br><span class="line">				a[j--] &#x3D; temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>取出一个元素  </li>
+<li>将此元素与前一个元素比较  </li>
+<li>如果大则交换并比较其与后一位的大小关系，循环2步骤直到结束  </li>
+<li>每次都会将当前遍历的最小的一位，移到最前面。  </li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i =<span class="number">1</span>;<span class="comment">//从0开始必然会浪费一次循环判断</span></span><br><span class="line">  <span class="keyword">for</span> (; i&lt; len; i++) &#123;</span><br><span class="line">   <span class="keyword">int</span> j = i;</span><br><span class="line">            <span class="comment">//不断循环比较相近两位将最小的值a[j]前移</span></span><br><span class="line">            <span class="comment">//只有a[j]小于前者才交换，故a[j]上的值一直未变</span></span><br><span class="line">   <span class="keyword">while</span> (a[j<span class="number">-1</span>]&gt;a[j]&amp;&amp;j&gt;<span class="number">0</span>)</span><br><span class="line">   &#123;</span><br><span class="line">    <span class="keyword">int</span> temp = a[j<span class="number">-1</span>];</span><br><span class="line">       a[j <span class="number">-1</span>]=a[j];</span><br><span class="line">    a[j--] = temp;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -300,11 +307,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/05/26/c++/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/26/c++/%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          快速排序
+          排序的使用比较
         
       </div>
     </a>
@@ -454,7 +461,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -467,22 +482,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +501,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,11 +565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,19 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>More Effective c++ | 诗酒趁年华</title>
+  <title>Archives: 2023/8 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="3.1 Item M1：指针与引用的区别  要认识到在任何情况下都不能使用指向空值的引用   不存在指向空值的引用这个事实意味着使用引用的代码效率比使用指针的要高。因为在使用引用之前不需要测试它的合法性。  3.2 Item M2：尽量使用C++风格的类型转换 C++通过引进四个新的类型转换操作符克服了C风格类型转换的缺点，这四个操作符是, static_cast, const_cast, dyn">
-<meta property="og:type" content="article">
-<meta property="og:title" content="More Effective c++">
-<meta property="og:url" content="http://yoursite.com/2021/11/28/%E4%B9%A6/more%20Effective%20c++/index.html">
+  <meta name="description" content="终点站">
+<meta property="og:type" content="website">
+<meta property="og:title" content="诗酒趁年华">
+<meta property="og:url" content="http://yoursite.com/archives/2023/08/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="3.1 Item M1：指针与引用的区别  要认识到在任何情况下都不能使用指向空值的引用   不存在指向空值的引用这个事实意味着使用引用的代码效率比使用指针的要高。因为在使用引用之前不需要测试它的合法性。  3.2 Item M2：尽量使用C++风格的类型转换 C++通过引进四个新的类型转换操作符克服了C风格类型转换的缺点，这四个操作符是, static_cast, const_cast, dyn">
+<meta property="og:description" content="终点站">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-11-28T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-22T14:15:51.158Z">
 <meta property="article:author" content="Fortune">
-<meta property="article:tag" content="More Effective C++">
 <meta name="twitter:card" content="summary">
   
   
@@ -161,436 +158,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-书/more Effective c++" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      More Effective c++
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2023/08/26/Unity/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/" class="archive-article-date">
+  	<time datetime="2023-08-26T02:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-26</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2023/08/26/Unity/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/">Unity拾取文件插件</a>
     </h1>
   
 
-        
-        <a href="/2021/11/28/%E4%B9%A6/more%20Effective%20c++/" class="archive-article-date">
-  	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：8.5k字 | 预计阅读时长：30分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="3-1-Item-M1：指针与引用的区别"><a href="#3-1-Item-M1：指针与引用的区别" class="headerlink" title="3.1 Item M1：指针与引用的区别"></a>3.1 Item M1：指针与引用的区别</h2><hr>
-<ul>
-<li>要认识到在任何情况下都不能使用指向空值的引用  </li>
-<li>不存在指向空值的引用这个事实意味着使用引用的代码效率比使用指针的要高。因为在使用引用之前不需要测试它的合法性。</li>
-</ul>
-<h2 id="3-2-Item-M2：尽量使用C-风格的类型转换"><a href="#3-2-Item-M2：尽量使用C-风格的类型转换" class="headerlink" title="3.2 Item M2：尽量使用C++风格的类型转换"></a>3.2 Item M2：尽量使用C++风格的类型转换</h2><hr>
-<p>C++通过引进四个新的类型转换操作符克服了C风格类型转换的缺点，这四个操作符是, <code>static_cast</code>, <code>const_cast</code>, <code>dynamic_cast</code>, 和<code>reinterpret_cast</code>。在大多数情况下，对于这些操作符你只需要知道原来你习惯于这样写<code>(type) expression</code> 而现在你总应该这样写： <code>static_cast&lt;type&gt;(expression)</code>  </p>
-<a id="more"></a>
-<h2 id="3-3-Item-M3：不要对数组使用多态"><a href="#3-3-Item-M3：不要对数组使用多态" class="headerlink" title="3.3 Item M3：不要对数组使用多态"></a>3.3 Item M3：不要对数组使用多态</h2><hr>
-<ul>
-<li>你也可以定义一个宏来模拟<code>dynamic_cast</code>的功能，就象模拟其它的类型转换一样： <code>#define dynamic_cast(TYPE,EXPR)     (TYPE)(EXPR)</code> 请记住，这个模拟并不能完全实现<code>dynamic_cast</code>的功能，它没有办法知道转换是否失败。  </li>
-<li>不要对数组使用多态</li>
-<li>编译器原先已经假设数组中元素与BST对象的大小一致，但是现在数组中每一个对象大小却与BalancedBST一致。派生类的长度通常都比基类要长。我们料想BalancedBST对象长度的比BST长。如果如此的话，printBSTArray函数生成的指针算法将是错误的，没有人知道如果用BalancedBST数组来执行printBSTArray函数将会发生什么样的后果。不论是什么后果都是令人不愉快的。</li>
-</ul>
-<h2 id="3-4-Item-M4：避免无用的缺省构造函数"><a href="#3-4-Item-M4：避免无用的缺省构造函数" class="headerlink" title="3.4 Item M4：避免无用的缺省构造函数"></a>3.4 Item M4：避免无用的缺省构造函数</h2><hr>
-<ul>
-<li><p>多态和指针算法不能混合在一起来用，所以数组与多态也不能用在一起。</p>
-</li>
-<li><p>避免无用的缺省构造函数</p>
-</li>
-</ul>
-<h2 id="4-1-Item-M5：谨慎定义类型转换函数"><a href="#4-1-Item-M5：谨慎定义类型转换函数" class="headerlink" title="4.1 Item M5：谨慎定义类型转换函数"></a>4.1 Item M5：谨慎定义类型转换函数</h2><hr>
-<ul>
-<li><p>谨慎定义类型转换函数</p>
-</li>
-<li><p>根本问题是当你在不需要使用转换函数时，这些的函数缺却会被调用运行。结果，这些不正确的程序会做出一些令人恼火的事情，而你又很难判断出原因。</p>
-</li>
-<li><p>解决方法是用不使用语法关键字的等同的函数来替代转换运算符。例如为了把Rational对象转换为double，用asDouble函数代替operator double函数：</p>
-</li>
-</ul>
-<h2 id="4-2-Item-M6：自增-increment-、自减-decrement-操作符前缀形式与后缀形式的区别"><a href="#4-2-Item-M6：自增-increment-、自减-decrement-操作符前缀形式与后缀形式的区别" class="headerlink" title="4.2 Item M6：自增(increment)、自减(decrement)操作符前缀形式与后缀形式的区别"></a>4.2 Item M6：自增(increment)、自减(decrement)操作符前缀形式与后缀形式的区别</h2><hr>
-<ul>
-<li><p>前缀形式返回一个引用，后缀形式返回一个const类型</p>
-</li>
-<li><p><code>i++++;                                     // 两次increment后缀 这组代码与下面的代码相同： i.operator++(0).operator++(0);</code><br>很明显，第一个调用的operator++函数返回的对象调用了第二个operator++函数。<br>有两个理由导致我们应该厌恶上述这种做法，第一是与内置类型行为不一致。当设计一个类遇到问题时，一个好的准则是使该类的行为与int类型一致。而int类型不允许连续进行两次后缀increment：</p>
-</li>
-<li><p><code>int i;
-i++++;                                       // 错误!</code><br>第二个原因是使用两次后缀 increment 所产生的结果与调用者期望的不一致。如上所示，第二次调用 operator++改变的值是第一次调用返回对象的值，而不是原始对象的值。因此如果： i++++;  是合法的，i将仅仅增加了一次。这与人的直觉相违背，使人迷惑（对于int类型和UPInt都是一样）,所以最好禁止这么做。</p>
-</li>
-</ul>
-<h2 id="4-3-Item-M7：不要重载“-amp-amp-”-“-”-或“-”"><a href="#4-3-Item-M7：不要重载“-amp-amp-”-“-”-或“-”" class="headerlink" title="4.3 Item M7：不要重载“&amp;&amp;”,“||”, 或“,”"></a>4.3 Item M7：不要重载“&amp;&amp;”,“||”, 或“,”</h2><hr>
-<p>说如果你重载了操作符&amp;&amp;，对于你来说代码是这样的： <code>if (expression1 &amp;&amp; expression2) ...</code><br>对于编译器来说，等同于下面代码之一：<br><code>if (expression1.operator&amp;&amp;(expression2)) ...
-// when operator&amp;&amp; is a  
-// member function if (operator&amp;&amp;(expression1, expression2)) ...
-// when operator&amp;&amp; is a
-// global function</code><br>这好像没有什么不同，但是函数调用法与短路求值法是绝对不同的。首先当函数被调用时，需要运算其所有参数，所以调用函数 functions operator&amp;&amp; 和 operator||时，两个参数都需要计算，换言之，没有采用短路计算法。第二是C++语言规范没有定义函数参数的计算顺序，所以没有办法知道表达式1与表达式2哪一个先计算。完全可能与具有从左参数到右参数计算顺序的短路计算法相反。</p>
-<h2 id="4-4-Item-M8：理解各种不同含义的new和delete"><a href="#4-4-Item-M8：理解各种不同含义的new和delete" class="headerlink" title="4.4 Item M8：理解各种不同含义的new和delete"></a>4.4 Item M8：理解各种不同含义的new和delete</h2><hr>
-<ul>
-<li><p>函数operator new 通常这样声明： <code>void * operator new(size_t size);</code><br>返回值类型是 <code>void*</code>，因为这个函数返回一个未经处理（raw）的指针，未初始化的内存。</p>
-</li>
-<li><p>有时你确实想直接调用构造函数。在一个已存在的对象上调用构造函数是没有意义的，因为构造函数用来初始化对象，而一个对象仅仅能在给它初值时被初始化一次。但是有时你有一些已经被分配但是尚未处理的(raw)内存，你需要在这些内存中构造一个对象。你可以使用一个特殊的operator new ，它被称为placement new。</p>
-</li>
-<li><p><code>new (buffer) Widget(widgetSize)</code> 这初看上去有些陌生，但是它是new操作符的一个用法，需要使用一个额外的变量（buffer），当new操作符隐含调用operator new函数时，把这个变量传递给它</p>
-</li>
-<li><p>为了使用 placement new，你必须使用语句<code>#include &lt;new&gt;</code>  </p>
-</li>
-<li><p>如果你只想处理未被初始化的内存，你应该绕过 new 和 delete操作符，而调用operator new 获得内存和operator delete释放内存给系统：</p>
-</li>
-<li><p>如果你用placement new在内存中建立对象，你应该避免在该内存中用delete操作符。因为 delete 操作符调用 operator delete 来释放内存，但是包含对象的内存最初不是被operator new分配的，placement new只是返回转递给它的指针。谁知道这个指针来自何方？而你应该显式调用对象的析构函数来解除构造函数的影响：</p>
-<ul>
-<li><p>第一是内存不再用 operator new 分配，代替以等同的数组分配函数，叫做<code>operator new[]</code>（经常被称为array new）。它与<code>operator new</code>一样能被重载。这就允许你控制数组的内存分配，就象你能控制单个对象内存分配一样</p>
-</li>
-<li><p>第二个不同是new操作符调用构造函数的数量。对于数组，在数组里的每一个对象的构造函数都必须被调用</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="5-异常"><a href="#5-异常" class="headerlink" title="5.  异常"></a>5.  异常</h2><hr>
-<ul>
-<li><p>同样当delete操作符用于数组时，它为每个数组元素调用析构函数，然后调用operator delete来释放内存。</p>
-</li>
-<li><p>使用未经处理的或原始的指针变得很危险；资源泄漏的可能性增加了；写出具有你希望的行为的构造函数与析构函数变得更加困难。特别小心防止程序执行时突然崩溃。执行程序和库程序尺寸增加了，同时运行速度降低了。</p>
-</li>
-</ul>
-<h2 id="5-1-Item-M9：使用析构函数防止资源泄漏"><a href="#5-1-Item-M9：使用析构函数防止资源泄漏" class="headerlink" title="5.1 Item M9：使用析构函数防止资源泄漏"></a>5.1 Item M9：使用析构函数防止资源泄漏</h2><hr>
-<p>用auto_ptr对象代替raw指针，你将不再为堆对象不能被删除而担心，即使在抛出异常时，对象也能被及时删除。(因为auto_ptr的析构函数使用的是单对象形式的delete，所以auto_ptr不能用于指向对象数组的指针。如果想让 auto_ptr 类似于一个数组模板，你必须自己写一个。在这种情况下，用 vector 代替array可能更好。)</p>
-<h2 id="5-2-Item-M10：在构造函数中防止资源泄漏"><a href="#5-2-Item-M10：在构造函数中防止资源泄漏" class="headerlink" title="5.2 Item M10：在构造函数中防止资源泄漏"></a>5.2 Item M10：在构造函数中防止资源泄漏</h2><hr>
-<ul>
-<li><p>C++拒绝为没有完成构造操作的对象调用析构函数是有一些原因的，而不是故意为你制造困难。原因是：在很多情况下这么做是没有意义的，甚至是有害的。如果为没有完成构造操作的对象调用析构函数，析构函数如何去做呢？仅有的办法是在每个对象里加入一些字节来指示构造函数执行了多少步？然后让析构函数检测这些字节并判断该执行哪些操作。这样的记录会减慢析构函数的运行速度，并使得对象的尺寸变大。C++避免了这种开销，但是代价是不能自动地删除被部分构造的对象</p>
-</li>
-<li><p>因为当对象在构造中抛出异常后C++不负责清除对象，所以你必须重新设计你的构造函数以让它们自己清除。经常用的方法是捕获所有的异常，然后执行一些清除代码，最后再重新抛出异常让它继续转递。如下所示，在BookEntry构造函数中使用这个方法：  </p>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BookEntry::BookEntry(<span class="keyword">const</span> <span class="built_in">string</span>&amp; name,<span class="keyword">const</span> <span class="built_in">string</span>&amp; address,<span class="keyword">const</span> <span class="built_in">string</span>&amp; imageFileName,<span class="keyword">const</span> <span class="built_in">string</span>&amp; audioClipFileName) : theName(name), theAddress(address),   theImage(<span class="number">0</span>), theAudioClip(<span class="number">0</span>) &#123;  </span><br><span class="line">     <span class="keyword">try</span> &#123;                            <span class="comment">// 这try block是新加入的    </span></span><br><span class="line">        <span class="keyword">if</span> (imageFileName != <span class="string">""</span>) &#123;       </span><br><span class="line">          theImage = <span class="keyword">new</span> Image(imageFileName);     </span><br><span class="line">          &#125;    </span><br><span class="line">        <span class="keyword">if</span> (audioClipFileName != <span class="string">""</span>) &#123;      </span><br><span class="line">         theAudioClip = <span class="keyword">new</span> AudioClip(audioClipFileName);    </span><br><span class="line">          &#125;  </span><br><span class="line">           &#125;  </span><br><span class="line">     <span class="keyword">catch</span> (...) &#123;                      <span class="comment">// 捕获所有异常     </span></span><br><span class="line">        <span class="keyword">delete</span> theImage;                 <span class="comment">// 完成必要的清除代码    </span></span><br><span class="line">        <span class="keyword">delete</span> theAudioClip;     </span><br><span class="line">        <span class="keyword">throw</span>;                           <span class="comment">// 继续传递异常</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-3-Item-M11：禁止异常信息（exceptions）传递到析构函数外"><a href="#5-3-Item-M11：禁止异常信息（exceptions）传递到析构函数外" class="headerlink" title="5.3 Item M11：禁止异常信息（exceptions）传递到析构函数外"></a>5.3 Item M11：禁止异常信息（exceptions）传递到析构函数外</h2><hr>
-<ul>
-<li><p>在有两种情况下会调用析构函数。第一种是在正常情况下删除一个对象，例如对象超出了作用域或被显式地delete。第二种是异常传递的堆栈辗转开解（stack-unwinding）过程中，由异常处理系统删除一个对象</p>
-</li>
-<li><p>函数logCreation 和 logDestruction被分别用于记录对象的建立与释放。我们因此可以这样编写Session的析构函数： <code>Session::~Session() {   logDestruction(this); }</code><br>一切看上去很好，但是如果 logDestruction 抛出一个异常，会发生什么事呢？异常没有被Session的析构函数捕获住，所以它被传递到析构函数的调用者那里。但是如果析构函数本身的调用就是源自于某些其它异常的抛出，那么terminate函数将被自动调用，彻底终止你的程序。这不是你所希望发生的事情。程序没有记录下释放对象的信息，这是不幸的，甚至是一个大麻烦。</p>
-<ul>
-<li><p>唯一的方法是用try和catch blocks。</p>
-</li>
-<li><p>如果在 catch 中调用 operator&lt;&lt;时导致一个异常被抛出，我们就又遇到了老问题，一个异常被转递到Session析构函数的外面。  </p>
-</li>
-<li><p>我们可以在catch中放入try，但是这总得有一个限度，否则会陷入循环。因此我们在释放Session时必须忽略掉所有它抛出的异常<code>Session::~Session() {   try {     logDestruction(this);   }   catch (...) {  } }</code></p>
-</li>
-<li><p>catch 表面上好像没有做任何事情，这是一个假象，实际上它阻止了任何从logDestruction 抛出的异常被传递到 session 析构函数的外面。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="5-4-Item-M12：理解“抛出一个异常”与“传递一个参数”或“调用一个虚函数”间的差异"><a href="#5-4-Item-M12：理解“抛出一个异常”与“传递一个参数”或“调用一个虚函数”间的差异" class="headerlink" title="5.4 Item M12：理解“抛出一个异常”与“传递一个参数”或“调用一个虚函数”间的差异"></a>5.4 Item M12：理解“抛出一个异常”与“传递一个参数”或“调用一个虚函数”间的差异</h2><hr>
-<ul>
-<li><p>禁止异常传递到析构函数外有两个原因，第一能够在异常转递的堆栈辗转开解（stack-unwinding）的过程中，防止 terminate 被调用。第二它能帮助确保析构函数总能完成我们希望它做的所有事情。</p>
-</li>
-<li><p>你传递函数参数与异常的途径可以是传值、传递引用或传递指针，这是相同的。但是当你传递参数和异常时，系统所要完成的操作过程则是完全不同的。产生这个差异的原因是：你调用函数时，程序的控制权最终还会返回到函数的调用处，但是当你抛出一个异常时，控制权永远不会回到抛出异常的地方。</p>
-</li>
-<li><p>C++规范要求被做为异常抛出的对象必须被复制。</p>
-</li>
-<li><p>数传递与抛出异常的第二个差异：抛出异常运行速度比参数传递要慢。</p>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">catch</span> (Widget&amp; w)                 <span class="comment">// 捕获Widget异常 </span></span><br><span class="line">&#123;   </span><br><span class="line">    ...                             <span class="comment">// 处理异常   </span></span><br><span class="line">    <span class="keyword">throw</span>;                          <span class="comment">// 重新抛出异常，让它 </span></span><br><span class="line">&#125;                                 <span class="comment">// 继续传递 </span></span><br><span class="line"><span class="keyword">catch</span> (Widget&amp; w)                 <span class="comment">// 捕获Widget异常 </span></span><br><span class="line">&#123;   </span><br><span class="line">    ...                             <span class="comment">// 处理异常   </span></span><br><span class="line">    <span class="keyword">throw</span> w;                        <span class="comment">// 传递被捕获异常的 </span></span><br><span class="line">&#125;                                 <span class="comment">// 拷贝</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>第一个块中重新抛出的是当前异常（current exception）,无论它是什么类型。特别是如果这个异常开始就是做为SpecialWidget类型抛出的，那么第一个块中传递出去的还是SpecialWidget异常，即使w的静态类型（static type）是Widget。这是因为重新抛出异常时没有进行拷贝操作。第二个 catch 块重新抛出的是新异常，类型总是 Widget，因为w的静态类型（static type）是Widget。一般来说，你应该用throw来重新抛出当前的异常，因为这样不会改变被传递出去的异常类型，而且更有效率，因为不用生成一个新拷贝。</p>
-</li>
-<li><p>一个被异常抛出的对象（刚才解释过，总是一个临时对象）可以通过普通的引用捕获；它不需要通过指向const对象的引用（reference-to-const）捕获。在函数调用中不允许转递一个临时对象到一个非const引用类型的参数里（参见条款M19），但是在异常中却被允许。</p>
-</li>
-<li><p>在catch子句中进行异常匹配时可以进行两种类型转换。第一种是继承类与基类间的转换。一个用来捕获基类的catch子句也可以处理派生类类型的异常</p>
-</li>
-<li><p>第二种是允许从一个类型化指针（typed pointer）转变成无类型指针（untyped pointer），所以带有const void* 指针的catch子句能捕获任何类型的指针类型异常： <code>catch (const void*) ...                 //捕获任何指针类型异常</code></p>
-</li>
-<li><p>传递参数和传递异常间最后一点差别是 catch 子句匹配顺序总是取决于它们在程序中出现的顺序。</p>
-</li>
-</ul>
-<h2 id="5-5-Item-M13：通过引用（reference）捕获异常"><a href="#5-5-Item-M13：通过引用（reference）捕获异常" class="headerlink" title="5.5 Item M13：通过引用（reference）捕获异常"></a>5.5 Item M13：通过引用（reference）捕获异常</h2><hr>
-<ul>
-<li><p>把一个对象传递给函数或一个对象调用虚拟函数与把一个对象做为异常抛出，这之间有三个主要区别。</p>
-<ul>
-<li>第一、异常对象在传递时总被进行拷贝；当通过传值方式捕获时，异常对象被拷贝了两次。对象做为参数传递给函数时不一定需要被拷贝。  </li>
-<li>第二、对象做为异常被抛出与做为参数传递给函数相比，前者类型转换比后者要少（前者只有两种转换形式）。  </li>
-<li>最后一点，catch 子句进行异常类型匹配的顺序是它们在源代码中出现的顺序，第一个类型匹配成功的catch将被用来执行。当一个对象调用一个虚拟函数时，被选择的函数位于与对象类型匹配最佳的类里，即使该类不是在源代码的最前头</li>
-</ul>
-</li>
-<li><p>通过引用捕获异常能使你避开上述所有问题。不象通过指针捕获异常，这种方法不会有对象删除的问题而且也能捕获标准异常类型。也不象通过值捕获异常，这种方法没有slicing problem，而且异常对象只被拷贝一次。</p>
-</li>
-</ul>
-<h2 id="5-6-Item-M14：审慎使用异常规格-exception-specifications"><a href="#5-6-Item-M14：审慎使用异常规格-exception-specifications" class="headerlink" title="5.6 Item M14：审慎使用异常规格(exception specifications)"></a>5.6 Item M14：审慎使用异常规格(exception specifications)</h2><hr>
-<ul>
-<li><p>如果一个函数抛出一个不在异常规格范围里的异常，系统在运行时能够检测出这个错误，然后一个特殊函数 unexpected 将被自动地调用。函数unexpected缺省的行为是调用函数terminate，而terminate缺省的行为是调用函数abort，所以一个违反异常规格的程序其缺省的行为就是halt（停止运行）。在激活的栈中的局部变量没有被释放，因为abort在关闭程序时不进行这样的清除操作。对异常规格的触犯变成了一场并不应该发生的灾难。</p>
-</li>
-<li><p>我们几乎不可能为一个模板提供一个有意义的异常规格。因为模板总是采用不同的方法使用类型参数。解决方法只能是模板和异常规格不要混合使用。</p>
-</li>
-</ul>
-<h2 id="6-1-Item-M16：牢记80－20准则（80－20-rule）"><a href="#6-1-Item-M16：牢记80－20准则（80－20-rule）" class="headerlink" title="6.1 Item M16：牢记80－20准则（80－20 rule）"></a>6.1 Item M16：牢记80－20准则（80－20 rule）</h2><hr>
-<p>软件整体的性能取决于代码组成中的一小部分。</p>
-<h2 id="6-2-Item-M17：考虑使用lazy-evaluation（懒惰计算法）"><a href="#6-2-Item-M17：考虑使用lazy-evaluation（懒惰计算法）" class="headerlink" title="6.2 Item M17：考虑使用lazy evaluation（懒惰计算法）"></a>6.2 Item M17：考虑使用lazy evaluation（懒惰计算法）</h2><hr>
-<ul>
-<li><p>lazy  evaluation：除非你确实需要，不去为任何东西制作拷贝。我们应该是懒惰的，只要可能就共享使用其它值。在一些应用领域，你经常可以这么做。</p>
-</li>
-<li><p>我们应能够区别对待读调用和写调用，因为读取 reference-counted string 是很容易的，而写入这个string则需要在写入前对该string值制作一个新拷贝</p>
-</li>
-<li><p>你面临着一个问题：在任何成员函数里都有可能需要初始化空指针使其指向真实的数据，包括在const成员函数里，例如field1。然而当你试图在const成员函数里修改数据时，编译器会出现问题。最好的方法是声明字段指针为mutable，这表示在任何函数里它们都能被修改，甚至在const成员函数里（参见Effective C++条款21）。这就是为什么在LargeObject里把字段声明为mutable。</p>
-</li>
-<li><p>一种方法让编译器允许你在const成员函数里修改数据成员。一种方法叫做“fake this”（伪造this指针）,你建立一个指向non-const指针，指向的对象与this<br>bbs.theithome.com指针一样。当你想修改数据成员时，你通过“fake this”访问它</p>
-</li>
-<li><p>该建立一个数据结构来表示m3的值是m1与m2的和，在用一个enum表示它们间是加法操作。很明显，建立这个数据结构比m1与m2相加要快许多，也能够节省大量的内存。</p>
-</li>
-<li><p>使用lazy evaluation 来拖延它们的计算直到确切地知道需要矩阵哪一部分的结果，然后仅仅计算这一部分</p>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m3 = m1 + m2;                                <span class="comment">// 记住m3是m1与m2的和</span></span><br><span class="line">m1 = m4;                                     <span class="comment">// 现在m3是m2与m1的旧值之和</span></span><br><span class="line"><span class="comment">//   </span></span><br><span class="line">这里我们我们必须采取措施确保赋值给m1以后不会改变m3。在Matrix&lt;<span class="keyword">int</span>&gt;赋值操作符里，我们能够在改变m1之前捕获m3的值，或者我们可以给m1的旧值制作一个拷贝让m3依赖于这个拷贝计算，我们必须采取措施确保m1被赋值以后m3的值保持不变。其它可能会修改矩阵的函数都必须用同样的方式处理。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>lazy evaluation在各个领域都是有用的：能避免不需要的对象拷贝，通过使用 operator[]区分出读操作，避免不需要的数据库读取操作，避免不需要的数字操作。但是它并不总是有用。就好象如果你的父母总是来检查你的房间，那么拖延整理房间将不会减少你的工作量。实际上，如果你的计算都是重要的，lazy evaluation可能会减慢速度并增加内存的使用，因为除了进行所有的计算以外，你还必须维护数据结构让lazy evaluation 尽可能地在第一时间运行。在某些情况下要求软件进行原来可以避免的计算，这时lazy evaluation才是有用的。</li>
-</ul>
-<h2 id="6-3-Item-M18：分期摊还期望的计算"><a href="#6-3-Item-M18：分期摊还期望的计算" class="headerlink" title="6.3 Item M18：分期摊还期望的计算"></a>6.3 Item M18：分期摊还期望的计算</h2><hr>
-<ul>
-<li><p>over-eager evaluation（过度热情计算法）：在要求你做某些事情以前就完成它们。</p>
-</li>
-<li><p>使用 over-eager evaluation（过度热情计算法），我们随时跟踪目前集合的最小值，最大值和平均值，这样当min,max或avg被调用时，我们可以不用计算就立刻返回正确的数值。如果频繁调用min,max和avg，我们把跟踪集合最小值、最大值和平均值的开销分摊到所有这些函数的调用上，每次函数调用所分摊的开销比 eager evaluation 或 lazy evaluation要小。</p>
-</li>
-<li><p>隐藏在over-eager evaluation后面的思想是如果你认为一个计算需要频繁进行，你就可以设计一个数据结构高效地处理这些计算需求，这样可以降低每次计算需求时的开销。</p>
-</li>
-</ul>
-<h2 id="6-4-Item-M19：理解临时对象的来源"><a href="#6-4-Item-M19：理解临时对象的来源" class="headerlink" title="6.4 Item M19：理解临时对象的来源"></a>6.4 Item M19：理解临时对象的来源</h2><hr>
-<p>在C++中真正的临时对象是看不见的，它们不出现在你的源代码中。建立一个没有命名的非堆（non-heap）对象会产生临时对象。这种未命名的对象通常在两种条件下产生：为了使函数成功调用而进行隐式类型转换和函数返回对象时。理解如何和为什么建立这些临时对象是很重要的，因为构造和释放它们的开销对于程序的性能来说有着不可忽视的影响。</p>
-<h2 id="6-5-Item-M20：协助完成返回值优化"><a href="#6-5-Item-M20：协助完成返回值优化" class="headerlink" title="6.5 Item M20：协助完成返回值优化"></a>6.5 Item M20：协助完成返回值优化</h2><hr>
-<ul>
-<li><p>临时对象是有开销的，所以你应该尽可能地去除它们，然而更重要的是训练自己寻找可能建立临时对象的地方。在任何时候只要见到常量引用（reference-to-const）参数，就存在建立临时对象而绑定在参数上的可能性。在任何时候只要见到函数返回对象，就会有一个临时对象被建立（以后被释放）。学会寻找这些对象构造，你就能显著地增强透过编译器表面动作而看到其背后开销的能力。</p>
-</li>
-<li><p>C++规则允许编译器优化不出现的临时对象（temporary objects out of existence）。因此如果你在如下的环境里调用<code>operator*： Rational a = 10; Rational b(1, 2);  Rational c = a * b;    // 在这里调用operator*</code><br>编译器就会被允许消除在 <code>operator*</code>内的临时变量和 <code>operator*</code>返回的临时变量。它们能在为目标c分配的内存里构造return表达式定义的对象。如果你的编译器这样去做，调用<code>operator*</code>的临时对象的开销就是零：没有建立临时对象。你的代价就是调用一个构造函数――建立c时调用的构造函数。而且你不能比这做得更好了，因为c是命名对象，命名对象不能被消除（参见条款M22）。不过你还可以通过把函数声明为inline来消除<code>operator*</code>的调用开销</p>
-</li>
-</ul>
-<h2 id="6-7-Item-M22：考虑用运算符的赋值形式（op-）取代其单独形式（op）"><a href="#6-7-Item-M22：考虑用运算符的赋值形式（op-）取代其单独形式（op）" class="headerlink" title="6.7 Item M22：考虑用运算符的赋值形式（op=）取代其单独形式（op）"></a>6.7 Item M22：考虑用运算符的赋值形式（op=）取代其单独形式（op）</h2><hr>
-<ul>
-<li><p>利用重载避免临时对象的方法不只是用在 operator 函数上。比如在大多数程序中，你想允许在所有能使用 string 对象的地方，也一样可以使用 char<em>，反之亦然。同样如果你正在使用 numerical（数字）类，例如 complex（参见条款 M35）,你想让 int 和 double 这样的类型可以使用在 numerical 对象的任何地方。因此任何带有 string、char</em>、complex参数的函数可以采用重载方式来消除类型转换。  </p>
-</li>
-<li><p>不过，必须谨记80－20规则（参见条款M16）。没有必要实现大量的重载函数，除非你有理由确信程序使用重载函数以后其整体效率会有显著的提高。</p>
-</li>
-<li><p>第一、总的来说 operator 的赋值形式比其单独形式效率更高，因为单独形式要返回一个新对象，从而在临时对象的构造和释放上有一些开销（参见条款M19和条款M20，还有Effective C++条款23）。operator的赋值形式把结果写到左边的参数里，因此不需要生成临时对象来容纳operator的返回值</p>
-</li>
-<li><p>第二、提供 operator 的赋值形式的同时也要提供其标准形式，允许类的客户端在便利<br>bbs.theithome.com与效率上做出折衷选择。</p>
-</li>
-</ul>
-<h2 id="6-8-Item-M23：考虑变更程序库"><a href="#6-8-Item-M23：考虑变更程序库" class="headerlink" title="6.8 Item M23：考虑变更程序库"></a>6.8 Item M23：考虑变更程序库</h2><hr>
-<p>考虑 iostream 和 stdio 程序库，对于 C++程序员来说两者都是可以使用的。iostream程序库与C中的stdio相比有几个优点（参见Effective C++）。例如它是类型安全的（type-safe），它是可扩展的。然而在效率方面，iostream程序库总是不如stdio，因为stdio产生的执行文件与iostream产生的执行文件相比尺寸小而且执行速度快。</p>
-<h2 id="6-9-Item-M24：理解虚拟函数、多继承、虚基类和RTTI所需的代价"><a href="#6-9-Item-M24：理解虚拟函数、多继承、虚基类和RTTI所需的代价" class="headerlink" title="6.9 Item M24：理解虚拟函数、多继承、虚基类和RTTI所需的代价"></a>6.9 Item M24：理解虚拟函数、多继承、虚基类和RTTI所需的代价</h2><hr>
-<ul>
-<li><p>虚函数所需的第一个代价：你必须为每个包含虚函数的类的 virtual talbe 留出空间。类的 vtbl 的大小与类中声明的虚函数的数量成正比（包括从基类继承的虚函数）。每个类应该只有一个virtual table，所以virtual table所需的空间不会太大，但是如果你有大量的类或者在每个类中有大量的虚函数，你会发现 vtbl 会占用大量的地址空间。</p>
-</li>
-<li><p>Virtual table只实现了虚拟函数的一半机制，如果只有这些是没有用的。只有用某种方法指出每个对象对应的vtbl时，它们才能使用。这是virtual table pointer的工作，它来建立这种联系。 每个声明了虚函数的对象都带有它，它是一个看不见的数据成员，指向对应类的virtual table。这个看不见的数据成员也称为vptr，被编译器加在对象里，位置只有才编译器知道。</p>
-</li>
-<li><p>虚函数所需的第二个代价是：在每个包含虚函数的类的对象里，你必须为额外的指针付出代价。 如果对象很小，这是一个很大的代价。比如如果你的对象平均只有4比特的成员数据，那么额外的vptr会使成员数据大小增加一倍（假设vptr大小为4比特）。在内存受到限制的系统里，这意味着你必须减少建立对象的数量。即使在内存没有限制的系统里，你也会发现这会降低软件的性能，因为较大的对象有可能不适合放在缓存（cache）或虚拟内存页中(virtual memory page)，这就可能使得系统换页操作增多。</p>
-</li>
-<li><p>虚函数所需的第三个代价：你实际上放弃了使用内联函数。（当通过对象调用虚函数时，它可以被内联，但是大多数虚函数是通过对象的指针或引用被调用的，这种调用不能被内联。因为这种调用是标准的调用方式，所以虚函数实际上不能被内联。）：我们保证可以获得一个对象动态类型信息，如果该类型有至少一个虚函数。这使得 RTTI 数据似乎有些象 virtual function talbe(虚函数表)。每个类我们只需要信息的一个拷贝，我们需要一种方法从任何包含虚函数的对象里获得合适的信息。这种RTTI和virtual function table之间的相似点并不是巧合：RTTI被设计为在类的vtbl基础上实现。</p>
-</li>
-</ul>
-<h2 id="7-1-Item-M25：将构造函数和非成员函数虚拟化"><a href="#7-1-Item-M25：将构造函数和非成员函数虚拟化" class="headerlink" title="7.1 Item M25：将构造函数和非成员函数虚拟化"></a>7.1 Item M25：将构造函数和非成员函数虚拟化</h2><hr>
-<ul>
-<li>虚拟构造函数是指能够根据输入给它的数据的不同而建立不同类型的对象</li>
-</ul>
-<p>一种特殊种类的虚拟构造函数――虚拟拷贝构造函数――也有着广泛的用途。虚拟拷贝构造函数能返回一个指针，指向调用该函数的对象的新拷贝。因为这种行为特性，虚拟拷贝构造函数的名字一般都是copySelf，</p>
-<p>类的虚拟拷贝构造函数只是调用它们真正的拷贝构造函数。因此“拷贝”的含义与真正的拷贝构造函数相同。</p>
-<p>。被派生类重定义的虚拟函数不用必须与基类的虚拟函数具有一样的返回类型。如果函数的返回类型是一个指向基类的指针（或一个引用），那么派生类的函数可以返回一个指向基类的派生类的指针（或引用）。</p>
-<h2 id="7-2-Item-M26：限制某个类所能产生的对象数量"><a href="#7-2-Item-M26：限制某个类所能产生的对象数量" class="headerlink" title="7.2 Item M26：限制某个类所能产生的对象数量"></a>7.2 Item M26：限制某个类所能产生的对象数量</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Printer</span> &#123;</span> </span><br><span class="line">    <span class="keyword">public</span>:   <span class="function"><span class="keyword">void</span> <span class="title">submitJob</span><span class="params">(<span class="keyword">const</span> PrintJob&amp; job)</span></span>; </span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span></span>;  </span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">performSelfTest</span><span class="params">()</span></span>;  </span><br><span class="line">        ...  </span><br><span class="line">        <span class="function"><span class="keyword">friend</span> Printer&amp; <span class="title">thePrinter</span><span class="params">()</span></span>; </span><br><span class="line">    <span class="keyword">private</span>:   </span><br><span class="line">        Printer();   </span><br><span class="line">        Printer(<span class="keyword">const</span> Printer&amp; rhs);    </span><br><span class="line">        ...  </span><br><span class="line">    &#125;; </span><br><span class="line">    <span class="function">Printer&amp; <span class="title">thePrinter</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">         <span class="keyword">static</span> Printer p;                          <span class="comment">// 单个打印机对象  </span></span><br><span class="line">          <span class="keyword">return</span> p; &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>这个设计由三个部分组成，第一、Printer 类的构造函数是 private。这样能阻止建立对象。第二、全局函数thePrinter被声明为类的友元，让thePrinter避免私有构造函数引起的限制。最后thePrinter包含一个静态Printer对象，这意味着只有一个对象被建立</p>
-<ul>
-<li>第一，唯一的 Pritner 对象是位于函数里的静态成员而不是在类中的静态成员，这样做是非常重要的。在类中的静态对象实际上总是被构造（和释放），即使不使用该对象。与此相反，只有第一次执行函数时，才会建立函数中的静态对象，所以如果没有调用函数，就不会建立对象。（不过你得为此付出代价，每次调用函数时都得检查是否需要建立对象。）建立 C++一个理论支柱是你不需为你不用的东西而付出，在函数里，把类似于Printer这样的对象定义为静态成员就是坚持这样的理论。你应该尽可能坚持这种理论。</li>
-</ul>
-</li>
-<li><p>与一个函数的静态成员相比，把Printer声明为类中的静态成员还有一个缺点，它的初始化时间不确定。我们能够准确地知道函数的静态成员什么时候被初始化：“在第一次执行定义静态成员的函数时”。而没有定义一个类的静态成员被初始化的时间。C++为一个translation unit（也就是生成一个 object 文件的源代码的集合）内的静态成员的初始化顺序提供某种保证，但是对于在不同 translation unit 中的静态成员的初始化顺序则没有这种保证</p>
-</li>
-<li><p>“带有内部链接的函数可能在程序内被复制（也就是说程序的目标（object）代码可能包含一个以上的内部链接函数的代码），这种复制也包括函数内的静态对象。”结果如何？如果建立一个包含局部静态对象的非成员函数，你可能会使程序的静态对象的拷贝超过一个！所以不要建立包含局部静态数据的非成员函数。</p>
-</li>
-</ul>
-<h2 id="7-3-Item-M27：要求或禁止在堆中产生对象"><a href="#7-3-Item-M27：要求或禁止在堆中产生对象" class="headerlink" title="7.3 Item M27：要求或禁止在堆中产生对象"></a>7.3 Item M27：要求或禁止在堆中产生对象</h2><hr>
-<p>最好让析构函数成为 private，让构造函数成为public。处理过程与条款26相似，你可以引进一个专用的伪析构函数，用来访问真正的析构函数。</p>
-<h2 id="7-5-Item-M29：引用计数"><a href="#7-5-Item-M29：引用计数" class="headerlink" title="7.5 Item M29：引用计数"></a>7.5 Item M29：引用计数</h2><hr>
-<p>实现引用计数不是没有代价的。每个被引用的值带一个引用计数，其大部分操作都需要以某种形式检查或操作引用计数。对象的值需要更多的内存，而我们在处理它们时需要执行更多的代码。此外，就内部的源代码而言，带引用计数的类的复杂度比不带的版本高。没有引用计数的 String 类只依赖于自己，而我们最终的 String 类如果没有三个辅助类（StringValue、RCObject 和 RCPtr）就无法使用。确实，我们这个更复杂的设计确保在值可共享时的更高的效率；免除了跟踪对象所有权的需要，提高了引用计数的想法和实现的可重用性。但，这四个类必须写出来、被测试、文档化、和被维护，比单个类要多做更多的工作。即使是管理人员也能看出这点。 引用计数是基于对象通常共享相同的值的假设的优化技巧（参见Item M18）。如果假设不成立的话，引用计数将比通常的方法使用更多的内存和执行更多的代码。另一方面，如果你的对象确实有具体相同值的趋势，那么引用计数将同时节省时间和空间。共享的值所占内存越大，同时共享的对象数目越多，节省的内存也就越大。创建和销毁这个值的代价越大，你节省的时间也越多。总之，引用计数在下列情况下对提高效率很有用： 少量的值被大量的对象共享。这样的共享通常通过调用赋值操作和拷贝构造而发生。对象/值的比例越高，越是适宜使用引用计数。 对象的值的创建和销毁代价很高昂，或它们占用大量的内存。即使这样，如果不是多个对象共享相同的值，引用计数仍然帮不了你任何东西。</p>
-<h2 id="8-4-Item-M35：让自己习惯使用标准C-语言"><a href="#8-4-Item-M35：让自己习惯使用标准C-语言" class="headerlink" title="8.4 Item M35：让自己习惯使用标准C++语言"></a>8.4 Item M35：让自己习惯使用标准C++语言</h2><hr>
-<ul>
-<li>如果想在同一程序下混合C++与C编程，记住下面的指导原则：<ul>
-<li>确保C++和C编译器产生兼容的obj文件。</li>
-<li>将在两种语言下都使用的函数申明为extern ‘C’。</li>
-<li>只要可能，用C++写main()。</li>
-<li>总用delete释放new分配的内存；总用free释放malloc分配的内存。</li>
-<li>将在两种语言间传递的东西限制在用C编译的数据结构的范围内；这些结构的C++版本可以包含非虚成员函数。</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">More Effective C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/11/28/%E4%B9%A6/more%20Effective%20c++/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2021/11/28/uwp/WPF%E6%9B%B4%E6%96%B0%E7%A8%8B%E5%BA%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          WPF更新程序
-        
-      </div>
-    </a>
   
   
-    <a href="/2021/11/28/%E6%9D%82%E9%A1%B9/VMware%E5%AE%89%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">VMware安装</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Item-M1：指针与引用的区别"><span class="toc-number">1.</span> <span class="toc-text">3.1 Item M1：指针与引用的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Item-M2：尽量使用C-风格的类型转换"><span class="toc-number">2.</span> <span class="toc-text">3.2 Item M2：尽量使用C++风格的类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Item-M3：不要对数组使用多态"><span class="toc-number">3.</span> <span class="toc-text">3.3 Item M3：不要对数组使用多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-Item-M4：避免无用的缺省构造函数"><span class="toc-number">4.</span> <span class="toc-text">3.4 Item M4：避免无用的缺省构造函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Item-M5：谨慎定义类型转换函数"><span class="toc-number">5.</span> <span class="toc-text">4.1 Item M5：谨慎定义类型转换函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-Item-M6：自增-increment-、自减-decrement-操作符前缀形式与后缀形式的区别"><span class="toc-number">6.</span> <span class="toc-text">4.2 Item M6：自增(increment)、自减(decrement)操作符前缀形式与后缀形式的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-Item-M7：不要重载“-amp-amp-”-“-”-或“-”"><span class="toc-number">7.</span> <span class="toc-text">4.3 Item M7：不要重载“&amp;&amp;”,“||”, 或“,”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-Item-M8：理解各种不同含义的new和delete"><span class="toc-number">8.</span> <span class="toc-text">4.4 Item M8：理解各种不同含义的new和delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-异常"><span class="toc-number">9.</span> <span class="toc-text">5.  异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-Item-M9：使用析构函数防止资源泄漏"><span class="toc-number">10.</span> <span class="toc-text">5.1 Item M9：使用析构函数防止资源泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-Item-M10：在构造函数中防止资源泄漏"><span class="toc-number">11.</span> <span class="toc-text">5.2 Item M10：在构造函数中防止资源泄漏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-Item-M11：禁止异常信息（exceptions）传递到析构函数外"><span class="toc-number">12.</span> <span class="toc-text">5.3 Item M11：禁止异常信息（exceptions）传递到析构函数外</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-Item-M12：理解“抛出一个异常”与“传递一个参数”或“调用一个虚函数”间的差异"><span class="toc-number">13.</span> <span class="toc-text">5.4 Item M12：理解“抛出一个异常”与“传递一个参数”或“调用一个虚函数”间的差异</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-Item-M13：通过引用（reference）捕获异常"><span class="toc-number">14.</span> <span class="toc-text">5.5 Item M13：通过引用（reference）捕获异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-Item-M14：审慎使用异常规格-exception-specifications"><span class="toc-number">15.</span> <span class="toc-text">5.6 Item M14：审慎使用异常规格(exception specifications)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-Item-M16：牢记80－20准则（80－20-rule）"><span class="toc-number">16.</span> <span class="toc-text">6.1 Item M16：牢记80－20准则（80－20 rule）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-Item-M17：考虑使用lazy-evaluation（懒惰计算法）"><span class="toc-number">17.</span> <span class="toc-text">6.2 Item M17：考虑使用lazy evaluation（懒惰计算法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-Item-M18：分期摊还期望的计算"><span class="toc-number">18.</span> <span class="toc-text">6.3 Item M18：分期摊还期望的计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-Item-M19：理解临时对象的来源"><span class="toc-number">19.</span> <span class="toc-text">6.4 Item M19：理解临时对象的来源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-Item-M20：协助完成返回值优化"><span class="toc-number">20.</span> <span class="toc-text">6.5 Item M20：协助完成返回值优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-7-Item-M22：考虑用运算符的赋值形式（op-）取代其单独形式（op）"><span class="toc-number">21.</span> <span class="toc-text">6.7 Item M22：考虑用运算符的赋值形式（op&#x3D;）取代其单独形式（op）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-8-Item-M23：考虑变更程序库"><span class="toc-number">22.</span> <span class="toc-text">6.8 Item M23：考虑变更程序库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-9-Item-M24：理解虚拟函数、多继承、虚基类和RTTI所需的代价"><span class="toc-number">23.</span> <span class="toc-text">6.9 Item M24：理解虚拟函数、多继承、虚基类和RTTI所需的代价</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-Item-M25：将构造函数和非成员函数虚拟化"><span class="toc-number">24.</span> <span class="toc-text">7.1 Item M25：将构造函数和非成员函数虚拟化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-Item-M26：限制某个类所能产生的对象数量"><span class="toc-number">25.</span> <span class="toc-text">7.2 Item M26：限制某个类所能产生的对象数量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-Item-M27：要求或禁止在堆中产生对象"><span class="toc-number">26.</span> <span class="toc-text">7.3 Item M27：要求或禁止在堆中产生对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-Item-M29：引用计数"><span class="toc-number">27.</span> <span class="toc-text">7.5 Item M29：引用计数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-Item-M35：让自己习惯使用标准C-语言"><span class="toc-number">28.</span> <span class="toc-text">8.4 Item M35：让自己习惯使用标准C++语言</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -613,8 +234,8 @@ i++++;                                       // 错误!</code><br>第二个原�
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

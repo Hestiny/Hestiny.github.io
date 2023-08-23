@@ -16,7 +16,7 @@
 <meta property="og:description" content="性能最坏时间复杂度：O（n^2）平均，最优时间复杂度：O（nlogn） 基本思路 利用分治思想找出基准，并利用递归：   确定基准（将数组分成大于基准和小于基准的两组）   递归两个数组   终止条件：每个分组只剩一个元素">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-26T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T21:57:16.869Z">
+<meta property="article:modified_time" content="2023-08-22T14:30:42.358Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="排序">
@@ -64,10 +64,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -180,7 +180,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：926字 | 预计阅读时长：4分钟
+          字数：879字 | 预计阅读时长：4分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -191,36 +191,36 @@
 <li>确定基准（将数组分成大于基准和小于基准的两组）  </li>
 <li>递归两个数组  </li>
 <li>终止条件：每个分组只剩一个元素  <a id="more"></a>
-<h2 id="具体实现（从小到大示例）"><a href="#具体实现（从小到大示例）" class="headerlink" title="具体实现（从小到大示例）"></a>具体实现（从小到大示例）</h2></li>
+
+</li>
 </ol>
 </li>
+</ul>
+<h2 id="具体实现（从小到大示例）"><a href="#具体实现（从小到大示例）" class="headerlink" title="具体实现（从小到大示例）"></a>具体实现（从小到大示例）</h2><ul>
 <li><strong>方法1</strong>  <ol>
 <li>选出准值key  </li>
 <li>从两端开始与key比较，首端i比key大时停止，尾端j相反（注意跳过key开始循环），交换i，j上的值。  </li>
 <li>i&gt;=j时中断循环（此时大小两个组已完成）  </li>
 <li>交换key与中间的值,若key在尾端交换i值否则交换j值  </li>
 </ol>
-  <strong>代码</strong>   </li>
+  <strong>代码</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt; </span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line"></span><br><span class="line">void  quickSort(int a[],int p,int r) &#123;</span><br><span class="line">	if (p &lt; r) &#x2F;&#x2F;p为段首r为段尾，当段为一个元素时结束</span><br><span class="line">    &#123;</span><br><span class="line">		int q &#x3D; partition(a, p, r);&#x2F;&#x2F;记录下中间值的下标q</span><br><span class="line">		quickSort(a, p, q - 1);</span><br><span class="line">		quickSort(a, q + 1, r);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> int partition(int a[],int p,int r)&#123;</span><br><span class="line">	int key &#x3D; a[r];&#x2F;&#x2F;提出尾部一个数</span><br><span class="line">	int i&#x3D;p-1,j&#x3D;r;&#x2F;&#x2F;p导入为0，r为数组最后一个下标</span><br><span class="line">	</span><br><span class="line">	while (true)</span><br><span class="line">	&#123;</span><br><span class="line">		while (a[--j]&gt;key)&#x2F;&#x2F;跳过key</span><br><span class="line">		&#123;</span><br><span class="line">			if (j &#x3D;&#x3D; p)break;&#x2F;&#x2F;j上值必定是小于key的</span><br><span class="line">		&#125;</span><br><span class="line">		while (a[++i]&lt;key)&#x2F;&#x2F;先++从数组0开始</span><br><span class="line">		&#123;</span><br><span class="line">			if (i &#x3D;&#x3D; r)break;&#x2F;&#x2F;与j性质相反</span><br><span class="line">		&#125;</span><br><span class="line">		if (i &gt;&#x3D;j) break;</span><br><span class="line">        &#x2F;&#x2F;交换ij上的值</span><br><span class="line">		int tt &#x3D; a[i];</span><br><span class="line">			a[i] &#x3D; a[j];</span><br><span class="line">			a[j] &#x3D; tt;</span><br><span class="line">	&#125;</span><br><span class="line">    &#x2F;&#x2F;根据key位置来选择换哪个中间值</span><br><span class="line">	a[r] &#x3D; a[i];</span><br><span class="line">	a[i] &#x3D; key;</span><br><span class="line">	return i;</span><br><span class="line">&#125; </span><br><span class="line">&#96;&#96;&#96;   </span><br><span class="line"></span><br><span class="line">- **方法2**   </span><br><span class="line">    1. 找出准值key  </span><br><span class="line">    2. 从首端跟key比较，从首端j循环到另一端r-1（空出最后key位）。i从-1开始，只有当a[j]小于key时i加1并a[i]与a[j]交换。相当于将小于key的值全放在i段。小于key有多少，i就等于多少。  </span><br><span class="line">    3. 交换key与a[i+1]，因为a[i]及以后的值都小于key  </span><br><span class="line">    **代码**  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; </span><br><span class="line">#include &lt;cstdio&gt;   </span><br><span class="line">#include &lt;cstdlib&gt;  </span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F;quickSort函数同方法1</span><br><span class="line">    void  quickSort(int a[],int p,int r) &#123;</span><br><span class="line">	     if (p &lt; r) &#123;</span><br><span class="line">		 int q &#x3D; partition(a, p, r);</span><br><span class="line">		 quickSort(a, p, q - 1);</span><br><span class="line">		 quickSort(a, q + 1, r);</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;&#x2F;&#x2F;p，r取值同方法1</span><br><span class="line">    int partition(int a[],int p,int r)&#123;</span><br><span class="line">        int key&#x3D;a[r];</span><br><span class="line">        int i&#x3D;p-1,j&#x3D;p;&#x2F;&#x2F;i不从p开始可以避免ij相同时，无用功的a[i],a[j]的互换（此时i&#x3D;j）</span><br><span class="line">        for(;j&lt;r;++j)&#123;</span><br><span class="line">            if(a[j]&lt;&#x3D;key)&#123;</span><br><span class="line">            ++i;</span><br><span class="line">            int t&#x3D;a[i];</span><br><span class="line">            a[i]&#x3D;a[j];</span><br><span class="line">            a[j]&#x3D;t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int t&#x3D;a[i+1];</span><br><span class="line">        a[i+1]&#x3D;a[r];</span><br><span class="line">        a[r]&#x3D;t;</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">- **方法3**  </span><br><span class="line">    此方法采用左右轮流填坑，并移动坑的位置。  </span><br><span class="line">    1. 选定基准值  </span><br><span class="line">    2. 从一端开始寻找特定范围的值，并将该值填入到坑中。将指向坑的指针缩小1  </span><br><span class="line">    3. 再从另一端重复上述步骤，直到左右指针相等  </span><br><span class="line">    4. 将基准值填入到左右指针的位置，即最后一个坑位</span><br></pre></td></tr></table></figure>
-<p>int partition(vector<double> &amp;a, const int p, const int r) {<br>     int s = p,e=r;<br>     int point = a[r];<br>     int pointindex = r;<br>     while (s&lt;e)<br>     {<br>         //left<br>         while (s &lt; e) {<br>             if (a[s] &gt; point) {<br>                 a[pointindex] = a[s];<br>                 pointindex = s;            //将坑的指针位置更新<br>                 –e;                                //填完坑后，坑的指针变到对面。此时该指针上的值被排好了，需要移动一位。<br>                 break;<br>             }<br>             ++s;<br>         }</p>
-<pre><code>    //right
-    while (s&lt;e)
-    {
-        if (a[e] &lt; point) {
-            a[pointindex] = a[e];
-            pointindex = e;
-            ++s;
-            break;
-        }
-        --e;
-    }
-}
-a[pointindex] = point;
-return pointindex;</code></pre><p> }</p>
-<pre><code>**附**  
-- quickSort函数的调用以及数组的输入都在另一个文件中实现。  
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> p,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (p &lt; r) <span class="comment">//p为段首r为段尾，当段为一个元素时结束</span></span><br><span class="line">    &#123;</span><br><span class="line">  <span class="keyword">int</span> q = partition(a, p, r);<span class="comment">//记录下中间值的下标q</span></span><br><span class="line">  quickSort(a, p, q - <span class="number">1</span>);</span><br><span class="line">  quickSort(a, q + <span class="number">1</span>, r);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> p,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line"> <span class="keyword">int</span> key = a[r];<span class="comment">//提出尾部一个数</span></span><br><span class="line"> <span class="keyword">int</span> i=p<span class="number">-1</span>,j=r;<span class="comment">//p导入为0，r为数组最后一个下标</span></span><br><span class="line"> </span><br><span class="line"> <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="keyword">while</span> (a[--j]&gt;key)<span class="comment">//跳过key</span></span><br><span class="line">  &#123;</span><br><span class="line">   <span class="keyword">if</span> (j == p)<span class="keyword">break</span>;<span class="comment">//j上值必定是小于key的</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (a[++i]&lt;key)<span class="comment">//先++从数组0开始</span></span><br><span class="line">  &#123;</span><br><span class="line">   <span class="keyword">if</span> (i == r)<span class="keyword">break</span>;<span class="comment">//与j性质相反</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (i &gt;=j) <span class="keyword">break</span>;</span><br><span class="line">        <span class="comment">//交换ij上的值</span></span><br><span class="line">  <span class="keyword">int</span> tt = a[i];</span><br><span class="line">   a[i] = a[j];</span><br><span class="line">   a[j] = tt;</span><br><span class="line"> &#125;</span><br><span class="line">    <span class="comment">//根据key位置来选择换哪个中间值</span></span><br><span class="line"> a[r] = a[i];</span><br><span class="line"> a[i] = key;</span><br><span class="line"> <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>方法2</strong><ol>
+<li>找出准值key  </li>
+<li>从首端跟key比较，从首端j循环到另一端r-1（空出最后key位）。i从-1开始，只有当a[j]小于key时i加1并a[i]与a[j]交换。相当于将小于key的值全放在i段。小于key有多少，i就等于多少。  </li>
+<li>交换key与a[i+1]，因为a[i]及以后的值都小于key  </li>
+</ol>
+  <strong>代码</strong>  </li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;   </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;  </span></span></span><br><span class="line"></span><br><span class="line">     <span class="comment">//quickSort函数同方法1</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span>  <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> p,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (p &lt; r) &#123;</span><br><span class="line">   <span class="keyword">int</span> q = partition(a, p, r);</span><br><span class="line">   quickSort(a, p, q - <span class="number">1</span>);</span><br><span class="line">   quickSort(a, q + <span class="number">1</span>, r);</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;<span class="comment">//p，r取值同方法1</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> p,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> key=a[r];</span><br><span class="line">        <span class="keyword">int</span> i=p<span class="number">-1</span>,j=p;<span class="comment">//i不从p开始可以避免ij相同时，无用功的a[i],a[j]的互换（此时i=j）</span></span><br><span class="line">        <span class="keyword">for</span>(;j&lt;r;++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j]&lt;=key)&#123;</span><br><span class="line">            ++i;</span><br><span class="line">            <span class="keyword">int</span> t=a[i];</span><br><span class="line">            a[i]=a[j];</span><br><span class="line">            a[j]=t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> t=a[i+<span class="number">1</span>];</span><br><span class="line">        a[i+<span class="number">1</span>]=a[r];</span><br><span class="line">        a[r]=t;</span><br><span class="line">        <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">- **方法<span class="number">3</span>**  </span><br><span class="line">    此方法采用左右轮流填坑，并移动坑的位置。  </span><br><span class="line">    <span class="number">1.</span> 选定基准值  </span><br><span class="line">    <span class="number">2.</span> 从一端开始寻找特定范围的值，并将该值填入到坑中。将指向坑的指针缩小<span class="number">1</span>  </span><br><span class="line">    <span class="number">3.</span> 再从另一端重复上述步骤，直到左右指针相等  </span><br><span class="line">    <span class="number">4.</span> 将基准值填入到左右指针的位置，即最后一个坑位  </span><br><span class="line"></span><br><span class="line">```c++</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; &amp;a, <span class="keyword">const</span> <span class="keyword">int</span> p, <span class="keyword">const</span> <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> s = p,e=r;</span><br><span class="line">  <span class="keyword">int</span> <span class="built_in">point</span> = a[r];</span><br><span class="line">  <span class="keyword">int</span> pointindex = r;</span><br><span class="line">  <span class="keyword">while</span> (s&lt;e)</span><br><span class="line">  &#123;</span><br><span class="line">   <span class="comment">//left</span></span><br><span class="line">   <span class="keyword">while</span> (s &lt; e) &#123;</span><br><span class="line">    <span class="keyword">if</span> (a[s] &gt; <span class="built_in">point</span>) &#123;</span><br><span class="line">     a[pointindex] = a[s];</span><br><span class="line">     pointindex = s;   <span class="comment">//将坑的指针位置更新</span></span><br><span class="line">     --e;        <span class="comment">//填完坑后，坑的指针变到对面。此时该指针上的值被排好了，需要移动一位。</span></span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ++s;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//right</span></span><br><span class="line">   <span class="keyword">while</span> (s&lt;e)</span><br><span class="line">   &#123;</span><br><span class="line">    <span class="keyword">if</span> (a[e] &lt; <span class="built_in">point</span>) &#123;</span><br><span class="line">     a[pointindex] = a[e];</span><br><span class="line">     pointindex = e;</span><br><span class="line">     ++s;</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    --e;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  a[pointindex] = <span class="built_in">point</span>;</span><br><span class="line">  <span class="keyword">return</span> pointindex;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><ul>
+<li>quickSort函数的调用以及数组的输入都在另一个文件中实现。  </li>
+</ul>
+
       
 
       
@@ -328,18 +328,18 @@ return pointindex;</code></pre><p> }</p>
   
 <nav id="article-nav">
   
-    <a href="/2021/05/26/c++/%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/26/c++/%E5%A4%9A%E5%B9%B3%E5%8F%B0%EF%BC%8C%E5%A4%9A%E8%B4%A6%E5%8F%B7%E5%90%8C%E6%AD%A5hexo%20blog/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          排序的使用比较
+          多平台,多账号同步hexo blog
         
       </div>
     </a>
   
   
-    <a href="/2021/05/26/c++/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">插入排序</div>
+    <a href="/2021/05/26/c++/%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">排序的使用比较</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -366,7 +366,7 @@ return pointindex;</code></pre><p> }</p>
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思路"><span class="toc-number">2.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现（从小到大示例）"><span class="toc-number">3.</span> <span class="toc-text">具体实现（从小到大示例）</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本思路"><span class="toc-number">2.</span> <span class="toc-text">基本思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体实现（从小到大示例）"><span class="toc-number">3.</span> <span class="toc-text">具体实现（从小到大示例）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附"><span class="toc-number">4.</span> <span class="toc-text">附</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -482,7 +482,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,22 +503,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,7 +522,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -586,11 +586,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

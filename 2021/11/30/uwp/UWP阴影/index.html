@@ -16,7 +16,7 @@
 <meta property="og:description" content="在UWP中实现控件边框的投影微软官方自带的投影[官方介绍]https:&#x2F;&#x2F;docs.microsoft.com&#x2F;zh-cn&#x2F;windows&#x2F;uwp&#x2F;design&#x2F;layout&#x2F;depth-shadow   利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanelDropShadowPanel必须有内部控件DropShadowPanel跟border并">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-30T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:07:23.577Z">
+<meta property="article:modified_time" content="2023-08-23T13:42:55.388Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="UWP">
 <meta property="article:tag" content="DropShadowPanel">
@@ -64,10 +64,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -180,12 +180,12 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：267字 | 预计阅读时长：1分钟
+          字数：241字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h1><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
+        <h2 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h2><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
 <h2 id="利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><a href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel" class="headerlink" title="利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel"></a>利用<code>Microsoft.Toolkit.Uwp.UI.Controls</code>中的<code>DropShadowPanel</code></h2><h3 id="DropShadowPanel必须有内部控件"><a href="#DropShadowPanel必须有内部控件" class="headerlink" title="DropShadowPanel必须有内部控件"></a>DropShadowPanel必须有内部控件</h3><p>DropShadowPanel跟border并不一样,border可以设置大小,但是DropShadowPanel是严格依靠内部控件的,毕竟没有实物哪来的影子,</p>
 <h3 id="DropShadowPanel的内部控件颜色不能为空"><a href="#DropShadowPanel的内部控件颜色不能为空" class="headerlink" title="DropShadowPanel的内部控件颜色不能为空"></a>DropShadowPanel的内部控件颜色不能为空</h3><p>控件不能透明,哪怕在DropShadowPanel中设置颜色也不行.</p>
 <h3 id="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><a href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch" class="headerlink" title="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"></a><code>DropShadowPanel</code>的<code>HorizontalContentAlignment</code>属性设置为<code>Stretch</code></h3><p>只有填充阴影才有效果</p>
@@ -193,7 +193,8 @@
 <a id="more"></a>  
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>内部并没有设置大小,是因为将其与内部空同时放入一个grid下就可以根据内部控件来自动适应大小</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;controls:DropShadowPanel x:Name&#x3D;&quot;InnerShadow&quot;</span><br><span class="line">                              HorizontalContentAlignment&#x3D;&quot;Stretch&quot;</span><br><span class="line">                              BlurRadius&#x3D;&quot;25&quot;</span><br><span class="line">                              ShadowOpacity&#x3D;&quot;0.6&quot;</span><br><span class="line">                              Color&#x3D;&quot;Black&quot;&gt;</span><br><span class="line">            &lt;Rectangle x:Name&#x3D;&quot;BorderColor1&quot;</span><br><span class="line">                   Stroke&#x3D;&quot;#FFFAFAFA&quot; </span><br><span class="line">                   StrokeThickness&#x3D;&quot;3&quot; &#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;controls:DropShadowPanel&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">controls:DropShadowPanel</span> <span class="attr">x:Name</span>=<span class="string">"InnerShadow"</span></span></span><br><span class="line"><span class="tag">                              <span class="attr">HorizontalContentAlignment</span>=<span class="string">"Stretch"</span></span></span><br><span class="line"><span class="tag">                              <span class="attr">BlurRadius</span>=<span class="string">"25"</span></span></span><br><span class="line"><span class="tag">                              <span class="attr">ShadowOpacity</span>=<span class="string">"0.6"</span></span></span><br><span class="line"><span class="tag">                              <span class="attr">Color</span>=<span class="string">"Black"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Rectangle</span> <span class="attr">x:Name</span>=<span class="string">"BorderColor1"</span></span></span><br><span class="line"><span class="tag">                   <span class="attr">Stroke</span>=<span class="string">"#FFFAFAFA"</span> </span></span><br><span class="line"><span class="tag">                   <span class="attr">StrokeThickness</span>=<span class="string">"3"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">controls:DropShadowPanel</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -339,7 +340,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#在UWP中实现控件边框的投影"><span class="toc-number">1.</span> <span class="toc-text">在UWP中实现控件边框的投影</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#微软官方自带的投影"><span class="toc-number">1.1.</span> <span class="toc-text">微软官方自带的投影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><span class="toc-number">1.2.</span> <span class="toc-text">利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DropShadowPanel必须有内部控件"><span class="toc-number">1.2.1.</span> <span class="toc-text">DropShadowPanel必须有内部控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DropShadowPanel的内部控件颜色不能为空"><span class="toc-number">1.2.2.</span> <span class="toc-text">DropShadowPanel的内部控件颜色不能为空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><span class="toc-number">1.2.3.</span> <span class="toc-text">DropShadowPanel的HorizontalContentAlignment属性设置为Stretch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DropShadowPanel控件层级应低于内部控件"><span class="toc-number">1.2.4.</span> <span class="toc-text">DropShadowPanel控件层级应低于内部控件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.3.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在UWP中实现控件边框的投影"><span class="toc-number">1.</span> <span class="toc-text">在UWP中实现控件边框的投影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#微软官方自带的投影"><span class="toc-number">2.</span> <span class="toc-text">微软官方自带的投影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><span class="toc-number">3.</span> <span class="toc-text">利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DropShadowPanel必须有内部控件"><span class="toc-number">3.1.</span> <span class="toc-text">DropShadowPanel必须有内部控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DropShadowPanel的内部控件颜色不能为空"><span class="toc-number">3.2.</span> <span class="toc-text">DropShadowPanel的内部控件颜色不能为空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><span class="toc-number">3.3.</span> <span class="toc-text">DropShadowPanel的HorizontalContentAlignment属性设置为Stretch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DropShadowPanel控件层级应低于内部控件"><span class="toc-number">3.4.</span> <span class="toc-text">DropShadowPanel控件层级应低于内部控件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">4.</span> <span class="toc-text">代码</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -455,7 +456,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,22 +477,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -503,7 +496,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,11 +560,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

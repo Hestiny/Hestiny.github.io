@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>UWP GridVIew,ListVIew虚拟化 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于UWP中,自定义加载项目的范围 官方文档   C#代码主要接口 IList IItemsRangeInfo应用思路   数据源类需要继承IList类,或者继承ObservableCollection类也可以实现.这么做的目的是为了将IItemsRangeInfo也封装进来,否则直接采用列表就可以绑定. 实现IItemsRangeInfo中的RangesChanged接口,这个接口不需要调用,会">
+  <meta name="description" content="关于UWP中,自定义加载项目的范围 官方文档   C#代码  主要接口 IList IItemsRangeInfo  应用思路 数据源类需要继承IList类,或者继承ObservableCollection类也可以实现.这么做的目的是为了将IItemsRangeInfo也封装进来,否则直接采用列表就可以绑定. 实现IItemsRangeInfo中的RangesChanged接口,这个接口不需要调用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UWP GridVIew,ListVIew虚拟化">
 <meta property="og:url" content="http://yoursite.com/2021/11/28/uwp/UWP%20GridVIew,ListVIew%E8%99%9A%E6%8B%9F%E5%8C%96/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="关于UWP中,自定义加载项目的范围 官方文档   C#代码主要接口 IList IItemsRangeInfo应用思路   数据源类需要继承IList类,或者继承ObservableCollection类也可以实现.这么做的目的是为了将IItemsRangeInfo也封装进来,否则直接采用列表就可以绑定. 实现IItemsRangeInfo中的RangesChanged接口,这个接口不需要调用,会">
+<meta property="og:description" content="关于UWP中,自定义加载项目的范围 官方文档   C#代码  主要接口 IList IItemsRangeInfo  应用思路 数据源类需要继承IList类,或者继承ObservableCollection类也可以实现.这么做的目的是为了将IItemsRangeInfo也封装进来,否则直接采用列表就可以绑定. 实现IItemsRangeInfo中的RangesChanged接口,这个接口不需要调用">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-28T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:07:23.590Z">
+<meta property="article:modified_time" content="2023-08-23T13:41:38.939Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="UWP">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -186,11 +186,13 @@
       
         <h2 id="关于UWP中-自定义加载项目的范围"><a href="#关于UWP中-自定义加载项目的范围" class="headerlink" title="关于UWP中,自定义加载项目的范围"></a>关于UWP中,自定义加载项目的范围</h2><ul>
 <li><a href="https://docs.microsoft.com/zh-cn/windows/uwp/debug-test-perf/listview-and-gridview-data-optimization" target="_blank" rel="noopener">官方文档</a>  </li>
-<li><a href="https://git.computools.org/Herutskyi/uwp-win-samples/-/tree/f2eeceb6aee256e304ce1c415b61103de8688f41/Samples/XamlDataVirtualization" target="_blank" rel="noopener">C#代码</a><h2 id="主要接口"><a href="#主要接口" class="headerlink" title="主要接口"></a>主要接口</h2></li>
-<li>IList</li>
-<li>IItemsRangeInfo<h2 id="应用思路"><a href="#应用思路" class="headerlink" title="应用思路"></a>应用思路</h2></li>
+<li><a href="https://git.computools.org/Herutskyi/uwp-win-samples/-/tree/f2eeceb6aee256e304ce1c415b61103de8688f41/Samples/XamlDataVirtualization" target="_blank" rel="noopener">C#代码</a></li>
 </ul>
-<ol>
+<h2 id="主要接口"><a href="#主要接口" class="headerlink" title="主要接口"></a>主要接口</h2><ul>
+<li>IList</li>
+<li>IItemsRangeInfo</li>
+</ul>
+<h2 id="应用思路"><a href="#应用思路" class="headerlink" title="应用思路"></a>应用思路</h2><ol>
 <li>数据源类需要继承IList类,或者继承ObservableCollection类也可以实现.这么做的目的是为了将IItemsRangeInfo也封装进来,否则直接采用列表就可以绑定.</li>
 <li>实现IItemsRangeInfo中的<code>RangesChanged</code>接口,这个接口不需要调用,会在刷新girdvie时候被系统自动调用.可以返回当前窗口的显示项目个数范围.如此就可以将资源加到想要加载的项目中了.</li>
 </ol>
@@ -452,7 +454,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,22 +475,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,7 +494,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,11 +558,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

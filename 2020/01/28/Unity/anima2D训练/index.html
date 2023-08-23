@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/anima2d/3.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/anima2d/4.jpg">
 <meta property="article:published_time" content="2020-01-28T13:46:42.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:05:49.744Z">
+<meta property="article:modified_time" content="2023-08-23T13:36:16.798Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
@@ -68,10 +68,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -189,21 +189,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>其实官网关于插件的运用已经很详细了，无非就是创建2Dmesh然后将创建的骨骼拖进mesh的组件之中。然后利用spritemesh editor对其进行骨骼绑定。<br>难的还是对于动画每一帧的调整，对时间轴上的一些修改。这里应该就不只是插件了，而是unity自身的动画方面的学习了。<br>记一下自己做的僵硬小人。 </p>
+        <p>其实官网关于插件的运用已经很详细了，无非就是创建2Dmesh然后将创建的骨骼拖进mesh的组件之中。然后利用spritemesh editor对其进行骨骼绑定。<br>难的还是对于动画每一帧的调整，对时间轴上的一些修改。这里应该就不只是插件了，而是unity自身的动画方面的学习了。<br>记一下自己做的僵硬小人。</p>
 <a id="more"></a>
 
 <p>1.首先导入素材<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/anima2d/1.jpg" alt="texture type就是了，这是已经选好的了"><br>    格式png将需要的四肢分别画出来，好绑骨骼。<br>    将导入的图片设为精灵体，点击右下角的apply。  </p>
 <pre><code>然后右键点击导入的图片，create中选择anima2d的spritemesh就完成了第一部分了。再将mesh拖入场景中到想要的位置。</code></pre><p>2.接下来创建骨骼bone，在hierarchy面板右键2d object 选中bone 其中ik选项也在其中后面会用到。<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/anima2d/2.jpg" alt="flip可调节不同的弯曲方向，orient child勾选可避免一些不可控的旋转"><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/anima2d/3.jpg" alt=" flip可调节不同的弯曲方向，orient child勾选可避免一些不可控的旋转"><br>    然后根据自己想要的调整骨骼位置，在关节的转动处处理不好会影响后面的动作，等绑好骨头再回来调就有点麻烦了。</p>
 <pre><code>再增加mesh和bone的必然联系。点击图片在inspector面板查看下面的组件并在bones中将对应的骨头放入。（使用的时候如果发现骨头多了，而减号无法使用时，可以先点加号，再尝试减掉多余的骨头）这时候可以加上limb了方便模仿人的关节。  </code></pre><p>3.接下来就打开spritemesh editor</p>
-<pre><code>slice可以调整点的数量，自己也可以增减拖动个别点，完成自己的理想状态。之后就可以点击bind绑定再点apply就完成了。里面的一些别的功能摸索摸索挺有意思。  </code></pre><p>4.接下来创建动画，可以打开animation添加。 </p>
+<pre><code>slice可以调整点的数量，自己也可以增减拖动个别点，完成自己的理想状态。之后就可以点击bind绑定再点apply就完成了。里面的一些别的功能摸索摸索挺有意思。  </code></pre><p>4.接下来创建动画，可以打开animation添加。</p>
 <!-- ![img](/Img/anima2D/4.jpg) -->
-<p><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/anima2d/4.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/anima2d/4.jpg" alt="animation"></p>
 <!-- ![img](https://github.com/Hestiny/Hestiny.github.io/blob/master/img/anima2D/4.jpg) -->
 <p>动画关键帧可以用dope sheet和curves来调整。关键帧可以鼠标拖动到想要的位置，也可以用ctrl+c/v实现粘贴。调整动画可以开启onion skin来观察动画的走向。</p>
-<p><strong>提示：</strong> </p>
-<blockquote>
-<p>关键帧只加骨骼不用加mesh，点击录制ik的关键帧一定要细心的考虑，最好全录进去在第一帧，否则可能动画打包出去后会有问题。CCD使用时要调一下影响骨头数，那个圈才会亮起来。</p>
-</blockquote>
+<p><strong>提示：</strong><br>关键帧只加骨骼不用加mesh，点击录制ik的关键帧一定要细心的考虑，最好全录进去在第一帧，否则可能动画打包出去后会有问题。CCD使用时要调一下影响骨头数，那个圈才会亮起来。</p>
 
       
 
@@ -308,18 +305,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/05/26/%E6%9D%82%E9%A1%B9/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/26/%E6%9D%82%E9%A1%B9/%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          环境变量
+          网易云外链
         
       </div>
     </a>
   
   
-    <a href="/2020/01/28/hexo/hexo%E5%86%85markdown%E6%B3%A8%E6%84%8F%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo内markdown注意项</div>
+    <a href="/2020/01/28/c++/c++%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8F%90%E5%8F%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">c++字符串提取</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -462,7 +459,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,22 +480,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,7 +499,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,11 +563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

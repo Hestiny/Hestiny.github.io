@@ -16,7 +16,7 @@
 <meta property="og:description" content="主要思想 分解   解决   合并    思路 将序列的首尾传入   分解：将序列分成左右两个序列。直到中间值等于尾值。此时进入方法必然会有超过两个值。 解决：当分解完成后，将分解的左右序列开始排序。比较左右序列的大小并填充到原始数组中。 合并：将每个解决中排序好的数组再次排序。每一次完成两个有序序列的排列。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-26T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T21:57:16.869Z">
+<meta property="article:modified_time" content="2023-08-22T14:29:57.343Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,7 +179,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：306字 | 预计阅读时长：1分钟
+          字数：304字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -196,70 +196,71 @@
 <li>合并：将每个解决中排序好的数组再次排序。每一次完成两个有序序列的排列。<a id="more"></a>
 <h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2></li>
 </ol>
-<pre><code>
-#include &lt;cstdio&gt;
-#include &lt;vector&gt;
-#include &lt;iterator&gt;
-#include &lt;iostream&gt;
-#include &quot;head.h&quot;
+<pre><code class="c++">
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iterator&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span>
+<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"head.h"</span></span>
 
-using namespace std;
-void merge(vector&lt;double&gt; &amp;a, int p, int q, int r) {
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
+<span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; &amp;a, <span class="keyword">int</span> p, <span class="keyword">int</span> q, <span class="keyword">int</span> r)</span> </span>{
 
-    vector&lt;double&gt; ll,rr;
-    for(int i=p;i&lt;=q;++i)
-    {
-        ll.push_back(a[i]);
-    }
-    for (int i = q+1; i &lt;=r; ++i)
-    {
-        rr.push_back(a[i]);
-    }
-    vector&lt;double&gt;::iterator lcount = ll.begin();
-    vector&lt;double&gt;::iterator rcount = rr.begin();
+ <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; ll,rr;
+ <span class="keyword">for</span>(<span class="keyword">int</span> i=p;i&lt;=q;++i)
+ {
+  ll.push_back(a[i]);
+ }
+ <span class="keyword">for</span> (<span class="keyword">int</span> i = q+<span class="number">1</span>; i &lt;=r; ++i)
+ {
+  rr.push_back(a[i]);
+ }
+ <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt;::iterator lcount = ll.<span class="built_in">begin</span>();
+ <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt;::iterator rcount = rr.<span class="built_in">begin</span>();
 
 
-    for (int i = p; i &lt;= r; ++i) {
-        if (lcount == ll.end()) {
-            a[i] = *rcount;
-            if (rcount != rr.end())++rcount;
-        }
-        else if (rcount == rr.end()) {
-            a[i] = *lcount;
-            if (lcount != ll.end())++lcount;
-        }
-        else
-        {
-            if (*lcount &lt;= *rcount)
-            {
-                a[i] = *lcount;
-                if (lcount != ll.end())++lcount;
+ <span class="keyword">for</span> (<span class="keyword">int</span> i = p; i &lt;= r; ++i) {
+  <span class="keyword">if</span> (lcount == ll.<span class="built_in">end</span>()) {
+   a[i] = *rcount;
+   <span class="keyword">if</span> (rcount != rr.<span class="built_in">end</span>())++rcount;
+  }
+  <span class="keyword">else</span> <span class="keyword">if</span> (rcount == rr.<span class="built_in">end</span>()) {
+   a[i] = *lcount;
+   <span class="keyword">if</span> (lcount != ll.<span class="built_in">end</span>())++lcount;
+  }
+  <span class="keyword">else</span>
+  {
+   <span class="keyword">if</span> (*lcount &lt;= *rcount)
+   {
+    a[i] = *lcount;
+    <span class="keyword">if</span> (lcount != ll.<span class="built_in">end</span>())++lcount;
 
-            }
-            else
-            {
-                a[i] = *rcount;
-                if (rcount != rr.end())++rcount;
-            }
+   }
+   <span class="keyword">else</span>
+   {
+    a[i] = *rcount;
+    <span class="keyword">if</span> (rcount != rr.<span class="built_in">end</span>())++rcount;
+   }
 
-        }
+  }
 
-    }
+ }
 
 }
 
-void mergeSort(vector&lt;double&gt; &amp;a, int p, int r) {
+<span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; &amp;a, <span class="keyword">int</span> p, <span class="keyword">int</span> r)</span> </span>{
 
-    if (p &lt; r) {
-        int q = (p + r) / 2;
-        mergeSort(a, p, q);
-        mergeSort(a, q + 1, r);
-        merge(a, p, q, r);
-    }
+ <span class="keyword">if</span> (p &lt; r) {
+  <span class="keyword">int</span> q = (p + r) / <span class="number">2</span>;
+  mergeSort(a, p, q);
+  mergeSort(a, q + <span class="number">1</span>, r);
+  merge(a, p, q, r);
+ }
 
 
 }
 </code></pre>
+
       
 
       
@@ -517,7 +518,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -530,22 +539,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,7 +558,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,11 +622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

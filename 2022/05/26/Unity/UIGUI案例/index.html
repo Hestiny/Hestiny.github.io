@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>UIGUI案例 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="UGUI学习UI与3d为物体的响应 如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。3d物体可以通过onMouseDown方法触发点击事件而UI需要继承IPointerClickHandler接口   如果3d物体和UI同时继承自接口，但想让它们能够同时触发 通过EventSystem.curren">
+  <meta name="description" content="UI与3d为物体的响应 如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。3d物体可以通过onMouseDown方法触发点击事件而UI需要继承IPointerClickHandler接口   如果3d物体和UI同时继承自接口，但想让它们能够同时触发 通过EventSystem.current.Rayc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIGUI案例">
 <meta property="og:url" content="http://yoursite.com/2022/05/26/Unity/UIGUI%E6%A1%88%E4%BE%8B/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="UGUI学习UI与3d为物体的响应 如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。3d物体可以通过onMouseDown方法触发点击事件而UI需要继承IPointerClickHandler接口   如果3d物体和UI同时继承自接口，但想让它们能够同时触发 通过EventSystem.curren">
+<meta property="og:description" content="UI与3d为物体的响应 如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。3d物体可以通过onMouseDown方法触发点击事件而UI需要继承IPointerClickHandler接口   如果3d物体和UI同时继承自接口，但想让它们能够同时触发 通过EventSystem.current.Rayc">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-26T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:05:49.757Z">
+<meta property="article:modified_time" content="2023-08-23T13:39:58.489Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -184,7 +184,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="UGUI学习"><a href="#UGUI学习" class="headerlink" title="UGUI学习"></a>UGUI学习</h1><h2 id="UI与3d为物体的响应"><a href="#UI与3d为物体的响应" class="headerlink" title="UI与3d为物体的响应"></a>UI与3d为物体的响应</h2><ol>
+        <h2 id="UI与3d为物体的响应"><a href="#UI与3d为物体的响应" class="headerlink" title="UI与3d为物体的响应"></a>UI与3d为物体的响应</h2><ol>
 <li>如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。<br>3d物体可以通过onMouseDown方法触发点击事件<br>而UI需要继承IPointerClickHandler接口  </li>
 <li>如果3d物体和UI同时继承自接口，但想让它们能够同时触发<ul>
 <li>通过EventSystem.current.RaycastAll()方法，获取全部的触发物体</li>
@@ -210,12 +210,17 @@
 </li>
 <li><strong>UV与控件</strong><ul>
 <li>控件的高宽与UV的高宽存在缩放系数,即<strong>缩放系数=uv高宽/控件高宽</strong>;那么从控件中的点获取到相应的UV点,即<strong>控件点×缩放系数=UV点</strong>;其中UV高宽范围为0到1,控件高宽为像素大小;控件点坐标系以锚点为中心点,即范围为控件的高宽;</li>
-<li>简单理解就是,一个图片放大到另一个图片,那么系数是固定的,所以就可以根据系数,通过大的图片中的一个坐标点来获取小图片中的相应位置的一个点 </li>
+<li>简单理解就是,一个图片放大到另一个图片,那么系数是固定的,所以就可以根据系数,通过大的图片中的一个坐标点来获取小图片中的相应位置的一个点</li>
 </ul>
 </li>
-<li><strong>UIVertex</strong><br>顶点类用于画布管理顶点。包含顶点颜色，position:顶点在控件中位置,即rectTransform;UV0:uv位置中相应的实际图片的位置点,不直接采用0到1的范围是因为可能截取图片的部分区域进行填充<h3 id="VertexHelper"><a href="#VertexHelper" class="headerlink" title="VertexHelper"></a>VertexHelper</h3>通过这个类，可以创建顶点，构成三角形，可帮助生成 UI 的网格。  </li>
+<li><strong>UIVertex</strong><br>顶点类用于画布管理顶点。包含顶点颜色，position:顶点在控件中位置,即rectTransform;UV0:uv位置中相应的实际图片的位置点,不直接采用0到1的范围是因为可能截取图片的部分区域进行填充</li>
+</ol>
+<h3 id="VertexHelper"><a href="#VertexHelper" class="headerlink" title="VertexHelper"></a>VertexHelper</h3><p>通过这个类，可以创建顶点，构成三角形，可帮助生成 UI 的网格。  </p>
+<ol>
 <li><strong>面片</strong><br>每个面片是由三个顶点组成的三角形，并且通过顺时针来判断是否为正面，反面则不会渲染。每个点都记录有颜色，而两点之间的颜色为两点颜色的渐变色。</li>
-<li><strong>构造网格</strong><br>AddVert方法将所有的顶点信息存进去，并按顺序编码；然后通过AddTriangle方法来构造面片;并通过FillMesh方法将面片填充到网格中; <h3 id="点击响应"><a href="#点击响应" class="headerlink" title="点击响应"></a>点击响应</h3></li>
+<li><strong>构造网格</strong><br>AddVert方法将所有的顶点信息存进去，并按顺序编码；然后通过AddTriangle方法来构造面片;并通过FillMesh方法将面片填充到网格中;</li>
+</ol>
+<h3 id="点击响应"><a href="#点击响应" class="headerlink" title="点击响应"></a>点击响应</h3><ol>
 <li>通过绘制网格，自行判断点击区域<ul>
 <li>IsRaycastLoactionValid()方法可以捕获点击是否有效,RectTr ndformUtility.ScreenPointInRectangle()方法将屏幕坐标转化为相对RectTransform的本地坐标,可以判断是否是否在指定的UI区域内</li>
 <li>只响应UI范围内算法<br> 从点击点向任意方向发射一条射线,与UI边界产生奇数个交点则为图像内,为偶数则为图像外;<br> 将所有的顶点按顺序放入容器，组成闭合图像。分别提出两点，来判断其与射线是否存在交点，即判断射点y是否在两点y的范围内，并x值小于两直线交点的x值</li>
@@ -223,36 +228,50 @@
 </li>
 <li>重载image并附加collider2d来实现点击区域判断<ul>
 <li>Collider类中有一个OverlapPoint方法,可以返回是否在检测区内</li>
-<li>通过重写IsRaycastLoactionValid方法,并调用ovelapPoint方法实现点击判断<h2 id="利用2d模拟3d轮转图"><a href="#利用2d模拟3d轮转图" class="headerlink" title="利用2d模拟3d轮转图"></a>利用2d模拟3d轮转图</h2></li>
+<li>通过重写IsRaycastLoactionValid方法,并调用ovelapPoint方法实现点击判断</li>
 </ul>
 </li>
+</ol>
+<h2 id="利用2d模拟3d轮转图"><a href="#利用2d模拟3d轮转图" class="headerlink" title="利用2d模拟3d轮转图"></a>利用2d模拟3d轮转图</h2><ol>
 <li>创建一个脚本自动控制每个选项的生成，加载图片和父物体的位置信息,调整item的层级(显示顺序)</li>
-<li>每一个选项都会在总长的范围内进行循环,并随着x来调整缩放比例<h2 id="雷达图"><a href="#雷达图" class="headerlink" title="雷达图"></a>雷达图</h2></li>
+<li>每一个选项都会在总长的范围内进行循环,并随着x来调整缩放比例</li>
+</ol>
+<h2 id="雷达图"><a href="#雷达图" class="headerlink" title="雷达图"></a>雷达图</h2><ol>
 <li>设置雷达图的背景标记点Point，即范围最大值。通过弧长和三角公式来取出每个point的坐标值,并赋给anchoredPosition</li>
 <li>设置操作点的point,每一个point继承IDragHandler接口变成一个handler,并设置每个点的颜色和脚本已经位置</li>
-<li>绘制网格填充操作点中的范围,操作点就是每个顶点的位置,将顶点加入到VertexHelper中,并绘制三角面<h2 id="滚动条优化"><a href="#滚动条优化" class="headerlink" title="滚动条优化"></a>滚动条优化</h2></li>
+<li>绘制网格填充操作点中的范围,操作点就是每个顶点的位置,将顶点加入到VertexHelper中,并绘制三角面</li>
+</ol>
+<h2 id="滚动条优化"><a href="#滚动条优化" class="headerlink" title="滚动条优化"></a>滚动条优化</h2><ol>
 <li>主要优化思路为只显示屏幕展示的几个滚动选项，根据滚动的情况跟进index来加载相关的item数据</li>
 <li>创建一个scrollView的脚本，用来实现item的初始化，以及滑动时事件响应，以及容器大小以及显示条数的设置</li>
 <li>创建一个item脚本，用来调整自身的id和pos，因为选项的位置会随着滑动而不断改变index和position</li>
 <li>关于index的求值以及容器当前显示item的id范围，通过容器的anchoredPosition的高除以选项的高度来求出，设置item的位置也同理</li>
-<li>item滚动时只需要改变超出显示容器的item，改变id算法为，计算出当然显示容器的范围，并算出选项移动的偏移量，然后将偏移量与边界item的id进行计算，上下的边界处理不同。<h2 id="血条"><a href="#血条" class="headerlink" title="血条"></a>血条</h2></li>
+<li>item滚动时只需要改变超出显示容器的item，改变id算法为，计算出当然显示容器的范围，并算出选项移动的偏移量，然后将偏移量与边界item的id进行计算，上下的边界处理不同。</li>
+</ol>
+<h2 id="血条"><a href="#血条" class="headerlink" title="血条"></a>血条</h2><ol>
 <li>创建血条的预制体，在3d物体上挂载生成血条的脚本，生成的位置由物体的位置加上偏移量并转移到屏幕坐标</li>
 <li>血条由前后背景组成，分为扣血和加血的逻辑，分别对血条的image进行操作</li>
-<li>对扣血逻辑进行超值判断<h2 id="特效层级问题"><a href="#特效层级问题" class="headerlink" title="特效层级问题"></a>特效层级问题</h2></li>
+<li>对扣血逻辑进行超值判断</li>
+</ol>
+<h2 id="特效层级问题"><a href="#特效层级问题" class="headerlink" title="特效层级问题"></a>特效层级问题</h2><ol>
 <li>通过canvas可以实现不同的层级</li>
 <li>将需要分层级的特性分别放在相应的canvas下</li>
 <li>canvas的renderMode改为Screen Space-Camera</li>
-<li>canvas不应设置过多会影响性能         <h2 id="照片墙"><a href="#照片墙" class="headerlink" title="照片墙"></a>照片墙</h2></li>
+<li>canvas不应设置过多会影响性能</li>
+</ol>
+<h2 id="照片墙"><a href="#照片墙" class="headerlink" title="照片墙"></a>照片墙</h2><ol>
 <li>根据屏幕绘制出所需要的缩略图，并编制id，将清晰的图片打到图集中。</li>
 <li>每个照片添加点击事件,用来放大和缩小,并锁定范围将附近的照片透明处理</li>
-<li>通过遍历每个项的周边项,来实现波纹效果<h2 id="检测区问题"><a href="#检测区问题" class="headerlink" title="检测区问题"></a>检测区问题</h2></li>
+<li>通过遍历每个项的周边项,来实现波纹效果</li>
 </ol>
-<ul>
+<h2 id="检测区问题"><a href="#检测区问题" class="headerlink" title="检测区问题"></a>检测区问题</h2><ul>
 <li>子物体的raycasttarget可以拓展父物体的响应区域</li>
-<li>如果需要实现拖动物体的区域检测，需要关掉拖动物体上的所有射线检测，否则区域检测将被物体所遮挡，而无法响应。可以在物体拖动激活之后将其射线检测关闭<h2 id="图文混排"><a href="#图文混排" class="headerlink" title="图文混排"></a>图文混排</h2></li>
-<li>Text的<code>OnPpulateMesh</code>方法需要设置<code>m_DisableFontTextureRebuilCallback</code>标志位,以防止在<code>FontTexttureChanged</code>方法中循环调用<code>OnPpulateMesh</code><h2 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h2></li>
+<li>如果需要实现拖动物体的区域检测，需要关掉拖动物体上的所有射线检测，否则区域检测将被物体所遮挡，而无法响应。可以在物体拖动激活之后将其射线检测关闭</li>
 </ul>
-<ol>
+<h2 id="图文混排"><a href="#图文混排" class="headerlink" title="图文混排"></a>图文混排</h2><ul>
+<li>Text的<code>OnPpulateMesh</code>方法需要设置<code>m_DisableFontTextureRebuilCallback</code>标志位,以防止在<code>FontTexttureChanged</code>方法中循环调用<code>OnPpulateMesh</code></li>
+</ul>
+<h2 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h2><ol>
 <li>利用ExcelDataReader插件来实现excel文案的切换和读取</li>
 <li>[InitializeOnLoadMethod]</li>
 <li>editorApplication.hierarchyChanged监听面板窗口</li>
@@ -262,7 +281,7 @@
 <li>3个基本，DOxx做什么，Setxxx以什么样的方式，oNxxx回调</li>
 <li>常用的功能移动<code>DoMove</code>与<code>DoLocalMove</code>，缩放<code>DOScale</code>，旋转<code>DOLocalRotate</code></li>
 <li>震动Punch（<code>DOPunchPosition</code>）：在原始坐标与目标坐标来回冲压，同样适应于旋转与缩放，shake（<code>DOShakePosition</code>）：在自身坐标下±值的来回震动</li>
-<li>队列:Append添加一个动画,insert在某一时间插入动画,并会覆盖原本这段时间的动画,join加入到上一个append与其一起执行.<br>prepend与append播放顺序相反,属于后添加先执行.加入到序列开头.<br>insertCallback:在某一秒调用回调函数 </li>
+<li>队列:Append添加一个动画,insert在某一时间插入动画,并会覆盖原本这段时间的动画,join加入到上一个append与其一起执行.<br>prepend与append播放顺序相反,属于后添加先执行.加入到序列开头.<br>insertCallback:在某一秒调用回调函数</li>
 <li>属性设置:<ul>
 <li>setupdate:帧动画函数,可以忽略timescale的影响,并可以根据更新模式调整</li>
 <li>onsetComplete:每次循环的回调</li>
@@ -277,9 +296,11 @@
 </ul>
 </li>
 </ol>
-<h1 id="UGIUI优化学习"><a href="#UGIUI优化学习" class="headerlink" title="UGIUI优化学习"></a>UGIUI优化学习</h1><h2 id="基础名词"><a href="#基础名词" class="headerlink" title="基础名词"></a>基础名词</h2><ul>
+<h2 id="UGIUI优化学习"><a href="#UGIUI优化学习" class="headerlink" title="UGIUI优化学习"></a>UGIUI优化学习</h2><h2 id="基础名词"><a href="#基础名词" class="headerlink" title="基础名词"></a>基础名词</h2><ul>
 <li>drawcall: cpu将绘制的数据输入到一个位置,由gpu去访问并绘制的过程</li>
-<li>overdraw: 重复绘制的区域<h2 id="canvas与Graphic"><a href="#canvas与Graphic" class="headerlink" title="canvas与Graphic"></a>canvas与Graphic</h2></li>
+<li>overdraw: 重复绘制的区域</li>
+</ul>
+<h2 id="canvas与Graphic"><a href="#canvas与Graphic" class="headerlink" title="canvas与Graphic"></a>canvas与Graphic</h2><ul>
 <li>Graphic<ul>
 <li>所有需要显示的组件都需要继承自Graphic</li>
 <li>Graphic继承了ICanvasElement接口，用来挂载到canvas下，ICanvasElement中有<code>Rebuild</code>方法，重新绘制组件</li>
@@ -310,30 +331,43 @@
 <li>如果修改某一ui的posZ值，会打断该ui前后的Ui合批处理，同样旋转也会</li>
 </ol>
 </li>
-<li>canvas中PixelPerfect完美像素会带来较大的性能损耗<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2></li>
-<li>深度测试，摄像机会检测物体的深度并来进行排序，也可以通过shader来修改深度<h2 id="RectMask2D"><a href="#RectMask2D" class="headerlink" title="RectMask2D"></a>RectMask2D</h2></li>
+<li>canvas中PixelPerfect完美像素会带来较大的性能损耗</li>
+</ul>
+<h2 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h2><ul>
+<li>深度测试，摄像机会检测物体的深度并来进行排序，也可以通过shader来修改深度</li>
+</ul>
+<h2 id="RectMask2D"><a href="#RectMask2D" class="headerlink" title="RectMask2D"></a>RectMask2D</h2><ul>
 <li>继承了clipper接口，来实现剪切，而mask并没有用而是采用stencil的模板检测来实现</li>
 </ul>
 <ol>
 <li>本身不占用drawCall</li>
 <li>会直接裁剪子物体,只绘制显示的顶点,与mask不同,不会计算没有显示的物体深度</li>
-<li>同样会打算合批,不同mask2D直接不能合批,同一个mask2D下可以合批<h2 id="填充率"><a href="#填充率" class="headerlink" title="填充率"></a>填充率</h2></li>
-<li>多层UI尽量不要重叠</li>
-<li>尽量减少空白区域 </li>
-<li>通过利用sliced来掏空中间的覆盖区域<h2 id="outline-shadow"><a href="#outline-shadow" class="headerlink" title="outline,shadow"></a>outline,shadow</h2></li>
-<li>两种实现的方法过于简单粗暴,会直接生成多个文字的复制调整偏移来实现,结果就是会生成过多顶点</li>
-<li>可以用textpro来替换,或者重新写组件脚本来实现 <h2 id="3d相机会自动生成一定数量的顶点"><a href="#3d相机会自动生成一定数量的顶点" class="headerlink" title="3d相机会自动生成一定数量的顶点"></a>3d相机会自动生成一定数量的顶点</h2></li>
-<li>将天空盒设置为纯色</li>
-<li>分别设为3d相机和ui相机，并关闭3d相机<h2 id="image的tiled模式会增加过多的顶点可以采用rawimage来替换"><a href="#image的tiled模式会增加过多的顶点可以采用rawimage来替换" class="headerlink" title="image的tiled模式会增加过多的顶点可以采用rawimage来替换"></a>image的tiled模式会增加过多的顶点可以采用rawimage来替换</h2><h2 id="UI动静分离"><a href="#UI动静分离" class="headerlink" title="UI动静分离"></a>UI动静分离</h2></li>
+<li>同样会打算合批,不同mask2D直接不能合批,同一个mask2D下可以合批</li>
 </ol>
-<ul>
+<h2 id="填充率"><a href="#填充率" class="headerlink" title="填充率"></a>填充率</h2><ol>
+<li>多层UI尽量不要重叠</li>
+<li>尽量减少空白区域</li>
+<li>通过利用sliced来掏空中间的覆盖区域</li>
+</ol>
+<h2 id="outline-shadow"><a href="#outline-shadow" class="headerlink" title="outline,shadow"></a>outline,shadow</h2><ol>
+<li>两种实现的方法过于简单粗暴,会直接生成多个文字的复制调整偏移来实现,结果就是会生成过多顶点</li>
+<li>可以用textpro来替换,或者重新写组件脚本来实现</li>
+</ol>
+<h2 id="3d相机会自动生成一定数量的顶点"><a href="#3d相机会自动生成一定数量的顶点" class="headerlink" title="3d相机会自动生成一定数量的顶点"></a>3d相机会自动生成一定数量的顶点</h2><ol>
+<li>将天空盒设置为纯色</li>
+<li>分别设为3d相机和ui相机，并关闭3d相机</li>
+</ol>
+<h2 id="image的tiled模式会增加过多的顶点可以采用rawimage来替换"><a href="#image的tiled模式会增加过多的顶点可以采用rawimage来替换" class="headerlink" title="image的tiled模式会增加过多的顶点可以采用rawimage来替换"></a>image的tiled模式会增加过多的顶点可以采用rawimage来替换</h2><h2 id="UI动静分离"><a href="#UI动静分离" class="headerlink" title="UI动静分离"></a>UI动静分离</h2><ul>
 <li>canvas下的某一元素变化时，会将所以的元素重新绘制网格</li>
 <li>可以分别将动态和静态的ui放在不同的canvas下，缺点是不便于ui层级的调整并打断合批，不太建议使用</li>
-<li>在需要调整ui的控件上增加canvas脚本，停止的时候再移除掉<h2 id="UI重建"><a href="#UI重建" class="headerlink" title="UI重建"></a>UI重建</h2></li>
+<li>在需要调整ui的控件上增加canvas脚本，停止的时候再移除掉</li>
+</ul>
+<h2 id="UI重建"><a href="#UI重建" class="headerlink" title="UI重建"></a>UI重建</h2><ul>
 <li>image修改图片也会造成mesh重建，可以通过新建材质球，并修改材质球的颜色来减少重建</li>
 <li>单个UI的显隐可以用canvasRender的Cull来调整，性能消耗会比active小</li>
-<li>一个组的UI显隐可以通过增加canvasGroups中的alpha值来调整，如果有交互功能则需要关闭block选项,UI显隐的性能消耗是因为会触发graphic中的SetAllDirty,即全部设为脏标记进行重新绘制<h2 id="Text的BestFit"><a href="#Text的BestFit" class="headerlink" title="Text的BestFit"></a>Text的BestFit</h2>BestFit会将每一个字符都加入图集，每一个字体大小都会增加，会增加图集的大小</li>
+<li>一个组的UI显隐可以通过增加canvasGroups中的alpha值来调整，如果有交互功能则需要关闭block选项,UI显隐的性能消耗是因为会触发graphic中的SetAllDirty,即全部设为脏标记进行重新绘制</li>
 </ul>
+<h2 id="Text的BestFit"><a href="#Text的BestFit" class="headerlink" title="Text的BestFit"></a>Text的BestFit</h2><p>BestFit会将每一个字符都加入图集，每一个字体大小都会增加，会增加图集的大小</p>
 <h2 id="图集"><a href="#图集" class="headerlink" title="图集"></a>图集</h2><ol>
 <li>用来减少drawcall，通常一个页面一张图集。常用的资源打成一张图集，并常驻内存.</li>
 <li>大的背景图就不需要打成图集</li>
@@ -346,7 +380,7 @@
 <li>创建文件夹来放置图集</li>
 <li>创建SpriteAtlas</li>
 <li>设置Packing Tag,但是如果压缩模式不同也是无法打在一个图集的</li>
-<li>Type,默认是master类型,variant类型就是指原有图集的一个变种。它会复制原有图集的贴图，并根据一个比例系数(scale)来调整复制贴图的大小。这样的Variant通常用于为高分辨率和低分辨率的屏幕准备不同的图集； </li>
+<li>Type,默认是master类型,variant类型就是指原有图集的一个变种。它会复制原有图集的贴图，并根据一个比例系数(scale)来调整复制贴图的大小。这样的Variant通常用于为高分辨率和低分辨率的屏幕准备不同的图集；</li>
 <li>动态图集：将图片加载到一个资源内，然后通过管理类来将图片的资源绘制到需要的UI上</li>
 <li>TexturePacker软件，自动打包算法，优化图集大小</li>
 </ol>
@@ -362,36 +396,37 @@
 </ul>
 </li>
 </ol>
-<h2 id="UI框架学习"><a href="#UI框架学习" class="headerlink" title="UI框架学习"></a>UI框架学习</h2><h1 id="spine"><a href="#spine" class="headerlink" title="spine"></a>spine</h1><h2 id="SkeletonAnimation"><a href="#SkeletonAnimation" class="headerlink" title="SkeletonAnimation"></a>SkeletonAnimation</h2><ul>
-<li>动画名称<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local skeleton &#x3D; obj[Spine.Unity.SkeletonAnimation]</span><br><span class="line">local skeletonName &#x3D; skeleton.AnimationName</span><br></pre></td></tr></table></figure></li>
+<h2 id="UI框架学习"><a href="#UI框架学习" class="headerlink" title="UI框架学习"></a>UI框架学习</h2><h2 id="spine"><a href="#spine" class="headerlink" title="spine"></a>spine</h2><h2 id="SkeletonAnimation"><a href="#SkeletonAnimation" class="headerlink" title="SkeletonAnimation"></a>SkeletonAnimation</h2><ul>
+<li>动画名称</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local skeleton = obj[Spine.Unity.SkeletonAnimation]</span><br><span class="line">local skeletonName = skeleton.AnimationName</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>动画时长<br><code>local time = skeleton.Skeleton.Data.FindAnimation(skeletonName).Duration</code></li>
 <li>动画播放<br><code>skeleton.AnimationState.SetAnimation(0, aniName, isLoop)</code></li>
 <li>获取动画列表<br><code>skeleton.skeletonDataAsset.GetAnimationStateData().SkeletonData.Animations.item[i];</code><br><code>skeleton.skeleton.Data.Animations.item[i]</code></li>
 <li>获取当前播放动画<br><code>skeleton.AnimationState:GetCurrent(0)</code></li>
 </ul>
-<h1 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h1><h2 id="添加帧事件"><a href="#添加帧事件" class="headerlink" title="添加帧事件"></a>添加帧事件</h2><ol>
+<h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><h2 id="添加帧事件"><a href="#添加帧事件" class="headerlink" title="添加帧事件"></a>添加帧事件</h2><ol>
 <li>在动画片段上添加,如果是模型动画则,点击模型,在模型的animation中点开events添加事件即可,然后在该动画的同个物体下挂载事件脚本即可触发</li>
-<li>直接动态添加<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建一个事件</span><br><span class="line">AnimationEvent evt &#x3D; new AnimationEvent();</span><br><span class="line">&#x2F;&#x2F; 绑定触发事件后要执行的方法名</span><br><span class="line">evt.functionName &#x3D; &quot;PrintEvent&quot;;</span><br><span class="line">&#x2F;&#x2F; 执行方法后要传入的参数</span><br><span class="line">evt.intParameter &#x3D; 12345;</span><br><span class="line">&#x2F;&#x2F; 设置事件关键帧的位置，当事件过了1.3秒后执行</span><br><span class="line">evt.time &#x3D; 1.3f;</span><br><span class="line">&#x2F;&#x2F; 设置目标动画剪辑</span><br><span class="line">AnimationClip clip &#x3D; armAnimator.runtimeAnimatorController.animationClips[0];</span><br><span class="line">&#x2F;&#x2F; 绑定事件</span><br><span class="line">clip.AddEvent(evt);</span><br></pre></td></tr></table></figure>
-<h2 id="动画状态相关"><a href="#动画状态相关" class="headerlink" title="动画状态相关"></a>动画状态相关</h2></li>
+<li>直接动态添加</li>
+</ol>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个事件</span></span><br><span class="line">AnimationEvent evt = <span class="keyword">new</span> AnimationEvent();</span><br><span class="line"><span class="comment">// 绑定触发事件后要执行的方法名</span></span><br><span class="line">evt.functionName = <span class="string">"PrintEvent"</span>;</span><br><span class="line"><span class="comment">// 执行方法后要传入的参数</span></span><br><span class="line">evt.intParameter = <span class="number">12345</span>;</span><br><span class="line"><span class="comment">// 设置事件关键帧的位置，当事件过了1.3秒后执行</span></span><br><span class="line">evt.time = <span class="number">1.3f</span>;</span><br><span class="line"><span class="comment">// 设置目标动画剪辑</span></span><br><span class="line">AnimationClip clip = armAnimator.runtimeAnimatorController.animationClips[<span class="number">0</span>];</span><br><span class="line"><span class="comment">// 绑定事件</span></span><br><span class="line">clip.AddEvent(evt);</span><br></pre></td></tr></table></figure>
+
+<h2 id="动画状态相关"><a href="#动画状态相关" class="headerlink" title="动画状态相关"></a>动画状态相关</h2><ol>
 <li>进度相关<br>animatorInfo.normalizedTime获取当前动画的播放进度，animatorInfo.IsTag识别当前动画<br>可以直接使用animatorInfo.normalizedTime &gt;= 1判断；不过融合的动画可能在normalizedTime&gt;=1之前就切换到下个动画了，导致触发不了回调；Loop循环的动画在第二次循环播放后，normalizedTime的值会一直&gt;1，导致在动画循环完第一次的时候就已经触发了回调</li>
 <li>animatorInfo.shortNameHash对比两个AnimatorStateInfo，animatorInfo.IsTag识别当前动画</li>
 </ol>
 <h2 id="rectTransform"><a href="#rectTransform" class="headerlink" title="rectTransform"></a>rectTransform</h2><ol>
-<li>改变RectTransform的top</li>
+<li><p>改变RectTransform的top<br><code>GetComponent&lt;RectTransform&gt;().offsetMax = new Vector2(GetComponent&lt;RectTransform&gt;().offsetMax.x, top);</code></p>
+</li>
+<li><p>改变RectTransform的bottom<br><code>GetComponent&lt;RectTransform&gt;().offsetMin = new Vector2(GetComponent&lt;RectTransform&gt;().offsetMin.x, bottom);</code></p>
+</li>
+<li><p>改变RectTransform的width，height<br><code>GetComponent&lt;RectTransform&gt;().sizeDelta = new Vector2(width, height);</code></p>
+</li>
+<li><p>改变RectTransform的pos<br><code>GetComponent&lt;RectTransform&gt;().anchoredPosition3D = new Vector3(posx,posy,posz);</code></p>
+</li>
 </ol>
-<p>GetComponent<RectTransform>().offsetMax = new Vector2(GetComponent<RectTransform>().offsetMax.x, top);</p>
-<ol start="2">
-<li>改变RectTransform的bottom</li>
-</ol>
-<p>GetComponent<RectTransform>().offsetMin = new Vector2(GetComponent<RectTransform>().offsetMin.x, bottom);</p>
-<ol start="3">
-<li>改变RectTransform的width，height</li>
-</ol>
-<p>GetComponent<RectTransform>().sizeDelta = new Vector2(width, height);</p>
-<ol start="4">
-<li>改变RectTransform的pos</li>
-</ol>
-<p>GetComponent<RectTransform>().anchoredPosition3D = new Vector3(posx,posy,posz);</p>
 
       
 
@@ -506,8 +541,8 @@
     </a>
   
   
-    <a href="/2022/05/26/Unity/UnityUI/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">UnityUI</div>
+    <a href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Unity中Camera学习</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -534,7 +569,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UGUI学习"><span class="toc-number">1.</span> <span class="toc-text">UGUI学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UI与3d为物体的响应"><span class="toc-number">1.1.</span> <span class="toc-text">UI与3d为物体的响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取顶点并绘制图片"><span class="toc-number">1.2.</span> <span class="toc-text">获取顶点并绘制图片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UV"><span class="toc-number">1.2.1.</span> <span class="toc-text">UV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VertexHelper"><span class="toc-number">1.2.2.</span> <span class="toc-text">VertexHelper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点击响应"><span class="toc-number">1.2.3.</span> <span class="toc-text">点击响应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用2d模拟3d轮转图"><span class="toc-number">1.3.</span> <span class="toc-text">利用2d模拟3d轮转图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#雷达图"><span class="toc-number">1.4.</span> <span class="toc-text">雷达图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滚动条优化"><span class="toc-number">1.5.</span> <span class="toc-text">滚动条优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#血条"><span class="toc-number">1.6.</span> <span class="toc-text">血条</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特效层级问题"><span class="toc-number">1.7.</span> <span class="toc-text">特效层级问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#照片墙"><span class="toc-number">1.8.</span> <span class="toc-text">照片墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测区问题"><span class="toc-number">1.9.</span> <span class="toc-text">检测区问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图文混排"><span class="toc-number">1.10.</span> <span class="toc-text">图文混排</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多语言"><span class="toc-number">1.11.</span> <span class="toc-text">多语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOTWeen动画"><span class="toc-number">1.12.</span> <span class="toc-text">DOTWeen动画</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UGIUI优化学习"><span class="toc-number">2.</span> <span class="toc-text">UGIUI优化学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础名词"><span class="toc-number">2.1.</span> <span class="toc-text">基础名词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#canvas与Graphic"><span class="toc-number">2.2.</span> <span class="toc-text">canvas与Graphic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染"><span class="toc-number">2.3.</span> <span class="toc-text">渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RectMask2D"><span class="toc-number">2.4.</span> <span class="toc-text">RectMask2D</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#填充率"><span class="toc-number">2.5.</span> <span class="toc-text">填充率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outline-shadow"><span class="toc-number">2.6.</span> <span class="toc-text">outline,shadow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3d相机会自动生成一定数量的顶点"><span class="toc-number">2.7.</span> <span class="toc-text">3d相机会自动生成一定数量的顶点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image的tiled模式会增加过多的顶点可以采用rawimage来替换"><span class="toc-number">2.8.</span> <span class="toc-text">image的tiled模式会增加过多的顶点可以采用rawimage来替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI动静分离"><span class="toc-number">2.9.</span> <span class="toc-text">UI动静分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI重建"><span class="toc-number">2.10.</span> <span class="toc-text">UI重建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Text的BestFit"><span class="toc-number">2.11.</span> <span class="toc-text">Text的BestFit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图集"><span class="toc-number">2.12.</span> <span class="toc-text">图集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片资源"><span class="toc-number">2.13.</span> <span class="toc-text">图片资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI框架学习"><span class="toc-number">2.14.</span> <span class="toc-text">UI框架学习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spine"><span class="toc-number">3.</span> <span class="toc-text">spine</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SkeletonAnimation"><span class="toc-number">3.1.</span> <span class="toc-text">SkeletonAnimation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#animation"><span class="toc-number">4.</span> <span class="toc-text">animation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加帧事件"><span class="toc-number">4.1.</span> <span class="toc-text">添加帧事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动画状态相关"><span class="toc-number">4.2.</span> <span class="toc-text">动画状态相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rectTransform"><span class="toc-number">4.3.</span> <span class="toc-text">rectTransform</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UI与3d为物体的响应"><span class="toc-number">1.</span> <span class="toc-text">UI与3d为物体的响应</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取顶点并绘制图片"><span class="toc-number">2.</span> <span class="toc-text">获取顶点并绘制图片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#UV"><span class="toc-number">2.1.</span> <span class="toc-text">UV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VertexHelper"><span class="toc-number">2.2.</span> <span class="toc-text">VertexHelper</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#点击响应"><span class="toc-number">2.3.</span> <span class="toc-text">点击响应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用2d模拟3d轮转图"><span class="toc-number">3.</span> <span class="toc-text">利用2d模拟3d轮转图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#雷达图"><span class="toc-number">4.</span> <span class="toc-text">雷达图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滚动条优化"><span class="toc-number">5.</span> <span class="toc-text">滚动条优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#血条"><span class="toc-number">6.</span> <span class="toc-text">血条</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特效层级问题"><span class="toc-number">7.</span> <span class="toc-text">特效层级问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#照片墙"><span class="toc-number">8.</span> <span class="toc-text">照片墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测区问题"><span class="toc-number">9.</span> <span class="toc-text">检测区问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图文混排"><span class="toc-number">10.</span> <span class="toc-text">图文混排</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多语言"><span class="toc-number">11.</span> <span class="toc-text">多语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOTWeen动画"><span class="toc-number">12.</span> <span class="toc-text">DOTWeen动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UGIUI优化学习"><span class="toc-number">13.</span> <span class="toc-text">UGIUI优化学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础名词"><span class="toc-number">14.</span> <span class="toc-text">基础名词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#canvas与Graphic"><span class="toc-number">15.</span> <span class="toc-text">canvas与Graphic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#渲染"><span class="toc-number">16.</span> <span class="toc-text">渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RectMask2D"><span class="toc-number">17.</span> <span class="toc-text">RectMask2D</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#填充率"><span class="toc-number">18.</span> <span class="toc-text">填充率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#outline-shadow"><span class="toc-number">19.</span> <span class="toc-text">outline,shadow</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3d相机会自动生成一定数量的顶点"><span class="toc-number">20.</span> <span class="toc-text">3d相机会自动生成一定数量的顶点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#image的tiled模式会增加过多的顶点可以采用rawimage来替换"><span class="toc-number">21.</span> <span class="toc-text">image的tiled模式会增加过多的顶点可以采用rawimage来替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI动静分离"><span class="toc-number">22.</span> <span class="toc-text">UI动静分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI重建"><span class="toc-number">23.</span> <span class="toc-text">UI重建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Text的BestFit"><span class="toc-number">24.</span> <span class="toc-text">Text的BestFit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图集"><span class="toc-number">25.</span> <span class="toc-text">图集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片资源"><span class="toc-number">26.</span> <span class="toc-text">图片资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI框架学习"><span class="toc-number">27.</span> <span class="toc-text">UI框架学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spine"><span class="toc-number">28.</span> <span class="toc-text">spine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SkeletonAnimation"><span class="toc-number">29.</span> <span class="toc-text">SkeletonAnimation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#animation"><span class="toc-number">30.</span> <span class="toc-text">animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加帧事件"><span class="toc-number">31.</span> <span class="toc-text">添加帧事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动画状态相关"><span class="toc-number">32.</span> <span class="toc-text">动画状态相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rectTransform"><span class="toc-number">33.</span> <span class="toc-text">rectTransform</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -650,7 +685,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -663,22 +706,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -698,7 +725,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,11 +789,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

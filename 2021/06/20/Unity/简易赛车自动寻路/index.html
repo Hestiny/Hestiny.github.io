@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>简易赛车自动寻路 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景简单实习小车根据地图自动行驶的功能，需要能够转弯时自动调节速度。 需要的变量 小车相关变量 加速度 转向速度 最大转向角 最大速度   赛道相关变量 检查点转向赛道上放置相应的检查点，小车的行驶目标就是每一个检查点，所以简化流程就是，需要处理小车如何运行到下一个检查点的问题。首先求出小车的转向角度，并区分左右转向。可跟玩家的操作输入相同，即输入值在正负1之间.得出转向输入之后，就可以控制小车的">
+  <meta name="description" content="背景简单实习小车根据地图自动行驶的功能，需要能够转弯时自动调节速度。 需要的变量 小车相关变量 加速度 转向速度 最大转向角 最大速度   赛道相关变量 检查点    转向赛道上放置相应的检查点，小车的行驶目标就是每一个检查点，所以简化流程就是，需要处理小车如何运行到下一个检查点的问题。首先求出小车的转向角度，并区分左右转向。可跟玩家的操作输入相同，即输入值在正负1之间.得出转向输入之后，就可以控">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简易赛车自动寻路">
 <meta property="og:url" content="http://yoursite.com/2021/06/20/Unity/%E7%AE%80%E6%98%93%E8%B5%9B%E8%BD%A6%E8%87%AA%E5%8A%A8%E5%AF%BB%E8%B7%AF/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="背景简单实习小车根据地图自动行驶的功能，需要能够转弯时自动调节速度。 需要的变量 小车相关变量 加速度 转向速度 最大转向角 最大速度   赛道相关变量 检查点转向赛道上放置相应的检查点，小车的行驶目标就是每一个检查点，所以简化流程就是，需要处理小车如何运行到下一个检查点的问题。首先求出小车的转向角度，并区分左右转向。可跟玩家的操作输入相同，即输入值在正负1之间.得出转向输入之后，就可以控制小车的">
+<meta property="og:description" content="背景简单实习小车根据地图自动行驶的功能，需要能够转弯时自动调节速度。 需要的变量 小车相关变量 加速度 转向速度 最大转向角 最大速度   赛道相关变量 检查点    转向赛道上放置相应的检查点，小车的行驶目标就是每一个检查点，所以简化流程就是，需要处理小车如何运行到下一个检查点的问题。首先求出小车的转向角度，并区分左右转向。可跟玩家的操作输入相同，即输入值在正负1之间.得出转向输入之后，就可以控">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-20T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T22:05:48.247Z">
+<meta property="article:modified_time" content="2023-08-23T13:34:35.202Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -194,10 +194,11 @@
 </ul>
 </li>
 <li>赛道相关变量<ul>
-<li>检查点<h2 id="转向"><a href="#转向" class="headerlink" title="转向"></a>转向</h2>赛道上放置相应的检查点，小车的行驶目标就是每一个检查点，所以简化流程就是，需要处理小车如何运行到下一个检查点的问题。<br>首先求出小车的转向角度，并区分左右转向。可跟玩家的操作输入相同，即输入值在正负1之间.得出转向输入之后，就可以控制小车的旋转角度，然后根据小车的旋转角度和最大旋转角比较，从而判断是否需要减速。</li>
+<li>检查点</li>
 </ul>
 </li>
 </ol>
+<h2 id="转向"><a href="#转向" class="headerlink" title="转向"></a>转向</h2><p>赛道上放置相应的检查点，小车的行驶目标就是每一个检查点，所以简化流程就是，需要处理小车如何运行到下一个检查点的问题。<br>首先求出小车的转向角度，并区分左右转向。可跟玩家的操作输入相同，即输入值在正负1之间.得出转向输入之后，就可以控制小车的旋转角度，然后根据小车的旋转角度和最大旋转角比较，从而判断是否需要减速。</p>
 
       
 
@@ -456,7 +457,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,22 +478,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,7 +497,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,11 +561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

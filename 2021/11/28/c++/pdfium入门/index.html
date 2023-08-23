@@ -16,7 +16,7 @@
 <meta property="og:description" content="pdfium编译具体的顺序按照下面的博客操作：[bolg]https:&#x2F;&#x2F;www.cnblogs.com&#x2F;purehol&#x2F;p&#x2F;11734015.html记下几个可能出的问题：    1. depot工具的安装：将depot的下载路径放在系统变量中；在depot的路径下执行gclient命令；注：如果提示python是外部指令，那么应该就是没有执行该命令。如果你自己安装python3在编译时会需要p">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-28T10:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-19T21:59:59.510Z">
+<meta property="article:modified_time" content="2023-08-22T14:35:53.389Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="pdfium">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 62
+            总文章数 63
         </nav>
 		<nav>
-            总字数 <span class="post-count">60.2k</span>
+            总字数 <span class="post-count">59.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -188,7 +188,9 @@
 <a id="more"></a>
 <h2 id="pdfium具体测试"><a href="#pdfium具体测试" class="headerlink" title="pdfium具体测试"></a>pdfium具体测试</h2><ul>
 <li>pdfiumViewer_TextSelection项目入手<br>  github上应该有pdfiumViewer_TextSelection的基于pdfium的简单demo，里面有很多东西需要自己实现。介绍一下这个demo里面比较重要的几个文件：<br>  NativeMethods.Pdfium.cs:主要是导入pdfium的接口。<br>  PdfFile.cs:用来调用NativeMethods.Pdfium.cs里面的封装方法，并且handle和document以及page一般会在这里传入。具体方法看一下给的例子。<br>  IPdfDocument.cs,PdfDocument.cs：分别是声明和调用PdfFile.c里的封装方法，并再次封装。<br>  MainForm.cs,PdfRangeDocument.cs:都是调用PdfDocument.cs里面的方法。  </li>
-<li>pdfium自带demo<br>  根据上面的博客，把pdfium_test编译出来，然后用<code>pdfium_test &lt;path&gt;.xxpdf</code>命令来测试，具体测试看官方介绍。<h2 id="pdfium源码"><a href="#pdfium源码" class="headerlink" title="pdfium源码"></a>pdfium源码</h2></li>
+<li>pdfium自带demo<br>  根据上面的博客，把pdfium_test编译出来，然后用<code>pdfium_test &lt;path&gt;.xxpdf</code>命令来测试，具体测试看官方介绍。</li>
+</ul>
+<h2 id="pdfium源码"><a href="#pdfium源码" class="headerlink" title="pdfium源码"></a>pdfium源码</h2><ul>
 <li>接口<br>  pdfium源码里面有一个fpdf_view_c_api_test.c文件里面包含着源码的接口。可以查找关键字”CHK”</li>
 <li>文件<br>  其实源码文件命名以及挺清晰了，主要的代码都在core和fpdfsdk里面</li>
 <li>用法<br>  这个就需要参考pdf文档了，不知道pdf里面有什么，就不知道怎么写。</li>
@@ -452,7 +454,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -465,22 +475,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,7 +494,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,11 +558,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

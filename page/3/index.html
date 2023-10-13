@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 76
+            总文章数 91
         </nav>
 		<nav>
-            总字数 <span class="post-count">63.6k</span>
+            总字数 <span class="post-count">69.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -160,130 +160,49 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Unity/UIGUI案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/unity程序集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/UIGUI%E6%A1%88%E4%BE%8B/">UIGUI案例</a>
+      <a class="article-title" href="/2023/09/06/Unity/unity%E7%A8%8B%E5%BA%8F%E9%9B%86/">unity程序集使用</a>
     </h1>
   
 
         
-        <a href="/2022/05/26/Unity/UIGUI%E6%A1%88%E4%BE%8B/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+        <a href="/2023/09/06/Unity/unity%E7%A8%8B%E5%BA%8F%E9%9B%86/" class="archive-article-date">
+  	<time datetime="2023-09-06T06:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-06</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：4k字 | 预计阅读时长：14分钟
+          字数：365字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="UI与3d为物体的响应"><a href="#UI与3d为物体的响应" class="headerlink" title="UI与3d为物体的响应"></a>UI与3d为物体的响应</h2><ol>
-<li>如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。<br>3d物体可以通过onMouseDown方法触发点击事件<br>而UI需要继承IPointerClickHandler接口  </li>
-<li>如果3d物体和UI同时继承自接口，但想让它们能够同时触发<ul>
-<li>通过EventSystem.current.RaycastAll()方法，获取全部的触发物体</li>
-<li>遍历物体，并通过ExecuteEvents.Execute方法激活其相应的事件</li>
+        <h2 id="程序集的作用"><a href="#程序集的作用" class="headerlink" title="程序集的作用"></a>程序集的作用</h2><p><a href="https://docs.unity3d.com/cn/2021.3/Manual/ScriptCompilationAssemblyDefinitionFiles.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>unity中默认创建的脚步都在默认的程序集中 除非你在assets目录下重新创建了程序集<br>通过程序集可以降低编译时间 封装模块随时迁移到别的项目 和你用编译器生成c#类库是相似的</p>
+<h2 id="在unity中创建和使用程序集"><a href="#在unity中创建和使用程序集" class="headerlink" title="在unity中创建和使用程序集"></a>在unity中创建和使用程序集</h2><p>文件夹右键创建 assembly definition<br>那么该文件夹下的所有脚本都会编译到该程序集中</p>
+<p>那么如果想在别的文件夹下也编译到该程序集中怎么办</p>
+<ul>
+<li>创建 assembly definition references</li>
+<li>在 assembly definition references中 将assembly definition 选为想要的程序集</li>
+</ul>
+<p>基本上可以正常使用了</p>
+<h2 id="常用用法"><a href="#常用用法" class="headerlink" title="常用用法"></a>常用用法</h2><p>这里就不跟着程序集下面的选项来跟着讲了 官方文档和很多博客都是这样的 没必要复述一遍 这里我就按实际需求然后来修改不同选项</p>
+<ol>
+<li>想在unity的默认程序集中调用 或者不想关心程序集之间引用关系<br>直接勾选auto references(默认勾选)</li>
+<li>该程序集并不直接为unity服务 而是为中间件类库负责<ul>
+<li>取消勾选auto references</li>
+<li>在中间件类库勾选override references</li>
+<li>在中间件类库中assembly references中添加该程序集</li>
 </ul>
 </li>
-<li>通过GraphicRaycaster.Raycast方法获取碰撞的物体，包含挂在collider组件的2d和3d物体.可以通过此方法来实现一些较为复杂的UI场景与鼠标事件交互</li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/UIGUI%E6%A1%88%E4%BE%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/UnityUI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/UnityUI/">UnityUI</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/UnityUI/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：279字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="UnityUI入门"><a href="#UnityUI入门" class="headerlink" title="UnityUI入门"></a>UnityUI入门</h2><h2 id="UI组件的基本属性-Rect-Transform"><a href="#UI组件的基本属性-Rect-Transform" class="headerlink" title="UI组件的基本属性(Rect Transform)"></a>UI组件的基本属性(Rect Transform)</h2><ul>
-<li>anchors<br>  anchors是为了控制Ui适配在屏幕上的缩放和偏移,比如左侧返回按钮,如果考虑屏幕适配则需要将锚点顶在左侧</li>
-<li>pivot<br>  是控制ui自身的旋转和坐标的锚点</li>
-<li>blueprint mode<br>  用来控制UI旋转时Rect边框是否自适应大小</li>
-<li>Raw edit mode<br>  用来控制ui是否自动跟随新调整的pivot位置</li>
-</ul>
-<h2 id="常用的UI控件"><a href="#常用的UI控件" class="headerlink" title="常用的UI控件"></a>常用的UI控件</h2><ol>
-<li>Text<ul>
-<li>有字体,大小富文本等选项.  </li>
-<li><strong>align by geometry:</strong> 将场景渲染模式改为wireframe就可以很清楚看到文字的网格,这个选项就是根据文字的网格将文字对齐到边框,如果只是对齐需要谨慎使用,避免出现意外情况</li>
-<li><strong>best fit:</strong>  让文字自适应在一个范围内调整文字大小来适配窗口</li>
-</ul>
-</li>
-<li>image<ul>
-<li><strong>set native size:</strong> 设置为图片大小,可以不用手动调整控件大小.</li>
-<li><strong>image type:</strong> 图片展示的方式,simple直接填充,sliced会采用九宫格来填充,filled类似于滑动条来填充</li>
+<li>只想在编辑器模式下编译(具体用法查看官方文档的define constraints)<ul>
+<li>在define constraints中添加</li>
 </ul>
 </li>
 </ol>
@@ -310,7 +229,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/UnityUI/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/09/06/Unity/unity%E7%A8%8B%E5%BA%8F%E9%9B%86/">展开全文 >></a>
         </p>
       
 
@@ -340,35 +259,34 @@
 
 
   
-    <article id="post-Unity/Unity中Camera学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/unity测试用例和profile相关探索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">Unity中Camera学习</a>
+      <a class="article-title" href="/2023/09/05/Unity/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/">unity测试用例和profile工具相关探索</a>
     </h1>
   
 
         
-        <a href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+        <a href="/2023/09/05/Unity/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/" class="archive-article-date">
+  	<time datetime="2023-09-05T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-05</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：136字 | 预计阅读时长：1分钟
+          字数：274字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Unity中关于Camera有两个调整方法"><a href="#Unity中关于Camera有两个调整方法" class="headerlink" title="Unity中关于Camera有两个调整方法"></a>Unity中关于Camera有两个调整方法</h2><ul>
-<li>下载官方的Cinemachine包，并创建虚拟camera</li>
-<li>创建camera组件，并用代码调整</li>
-</ul>
-<h3 id="Cinemachine"><a href="#Cinemachine" class="headerlink" title="Cinemachine"></a>Cinemachine</h3><p>不需要多余的代码调整，可以直接调整相关的参数，可以实现跟随的摄像效果，需要注意镜头抖动的问题，可以在主摄像头中调整刷新的方式来寻求解决。</p>
-<h3 id="创建camera"><a href="#创建camera" class="headerlink" title="创建camera"></a>创建camera</h3><p>实现逻辑代码，来完成自己需要的功能，相比官方的包，自己需要实现的功能比较多。</p>
+        <h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p>起初研究测试用例完全是因为想在测试性能时候直接跑相关的方法 然后输出性能 然后跑去研究了一下 发现并不能满足我的需求<br>主要的局限在于你需要下载一个unity的内部集成的测试NUnit插件 然后需要新创建一个程序集来使用 并不能像我想的那样直接调用我想要的程序集 其实程序集这块还没搞太熟 先放这了</p>
+<h2 id="profile"><a href="#profile" class="headerlink" title="profile"></a>profile</h2><p>profile可以抓取很多的性能问题 然后向自己打上标记 方便观察和比较不同代码之间性能的问题其实就两句代码 巨简单封装可能都不太需要<br>记住一个<code>BeginSample</code> 对应一个<code>EndSample</code> 和大小括号一样<br>之前不知道看谁的文档两个begin一个end 给我都整懵了 还测试半天太误人子弟了</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Profiler.BeginSample(name); </span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line">Profiler.EndSample();</span><br></pre></td></tr></table></figure>
+
+<h2 id="直接记录运行时间"><a href="#直接记录运行时间" class="headerlink" title="直接记录运行时间"></a>直接记录运行时间</h2><p>通过<code>Stopwatch</code>类来记录直接返回<code>stopwatch.ElapsedMilliseconds</code>就行了</p>
 
       
 
@@ -392,7 +310,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/09/05/Unity/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/">展开全文 >></a>
         </p>
       
 
@@ -422,36 +340,203 @@
 
 
   
-    <article id="post-Unity/Unity开发学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-杂项/Githhub超时" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/Unity%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">Unity开发学习</a>
+      <a class="article-title" href="/2023/08/30/%E6%9D%82%E9%A1%B9/Githhub%E8%B6%85%E6%97%B6/">github超时问题</a>
     </h1>
   
 
         
-        <a href="/2022/05/26/Unity/Unity%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+        <a href="/2023/08/30/%E6%9D%82%E9%A1%B9/Githhub%E8%B6%85%E6%97%B6/" class="archive-article-date">
+  	<time datetime="2023-08-30T07:06:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-30</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：160字 | 预计阅读时长：1分钟
+          字数：211字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="游戏对象的创建"><a href="#游戏对象的创建" class="headerlink" title="游戏对象的创建"></a>游戏对象的创建</h2><ul>
-<li>一个游戏对象会包含很多的obj，类似于一个类。可以通过创建一个emptyObject来挂载所有对象。</li>
-<li>对象中设计到模型和碰撞体积的位置问题，这里会有世界坐标和相对坐标的转换问题（3dmax中默认为世界坐标，如果想要调整相对坐标需要在坐标表中调整），每个对象的transform都是相对于父对象的。</li>
+        <h2 id="问题复现"><a href="#问题复现" class="headerlink" title="问题复现"></a>问题复现</h2><p>简单复现一下当时问题环境</p>
+<ul>
+<li>VPN是连上的 谷歌正常访问 github网站也是正常访问的</li>
+<li>git无法push和clone 一直是超时提示</li>
 </ul>
-<h3 id="放在同一个obj下，模型和碰撞体并不会同步移动"><a href="#放在同一个obj下，模型和碰撞体并不会同步移动" class="headerlink" title="放在同一个obj下，模型和碰撞体并不会同步移动"></a>放在同一个obj下，模型和碰撞体并不会同步移动</h3><ul>
-<li>不要将带有Collider和Rigidbody互有碰撞，否则将会触发碰撞。</li>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p><a href="https://blog.csdn.net/qq_44985985/article/details/124178193" target="_blank" rel="noopener">解决方法</a><br>简而言之就是你现在的github ip地址解析出问题了 需要重新设置 可以看一下你的host是不是自己设置了<br>如果没有查一下github 连通性比较好的ip 这里有网站可以帮忙<a href="https://www.ipaddress.com" target="_blank" rel="noopener">查询ip</a></p>
+<p>如果说没有vpn可以试一下这个网站<a href="https://ping.chinaz.com/github.com" target="_blank" rel="noopener">国内网站ip连通性查询</a></p>
+<h2 id="网站使用方法"><a href="#网站使用方法" class="headerlink" title="网站使用方法"></a>网站使用方法</h2><p>国内的网址使用起来还是很简单的 毕竟都是中文<br>主要说一下ipaddress网站 其实只要点一下翻译一样很简单 或者仔细找一下 简单记录一下<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/1.png" alt="入口"><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/2.png" alt="入口"><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/3.png" alt="入口"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/08/30/%E6%9D%82%E9%A1%B9/Githhub%E8%B6%85%E6%97%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/unity拾取文件插件UnityNativeFilePicker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/08/26/Unity/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/">Unity拾取文件插件</a>
+    </h1>
+  
+
+        
+        <a href="/2023/08/26/Unity/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/" class="archive-article-date">
+  	<time datetime="2023-08-26T02:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：1.3k字 | 预计阅读时长：6分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="UnityNativeFilePicker"><a href="#UnityNativeFilePicker" class="headerlink" title="UnityNativeFilePicker"></a>UnityNativeFilePicker</h2><p><a href="https://github.com/yasirkula/UnityNativeFilePicker" target="_blank" rel="noopener">github地址</a></p>
+<h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p>可以实现在ios和Android设备上打开默认的文件管理器 然后导入或者导出文件(注意只有文件 不包含文件夹)  </p>
+<h2 id="常用的接口"><a href="#常用的接口" class="headerlink" title="常用的接口"></a>常用的接口</h2><ul>
+<li><code>NativeFilePicker.Permission NativeFilePicker.RequestPermission( bool readPermissionOnly = false )</code> 读取用户是否授予了读写权限 提供中间操作空间 防止用户直接点击拒绝权限</li>
+<li><code>NativeFilePicker.IsFilePickerBusy()</code> 判断当前是否已经打开了文件夹拾取 因为所有的文件导入导出接口都异步的</li>
+<li><code>NativeFilePicker.ConvertExtensionToFileType()</code> 参数直接写文件后拓展就行 例如zip 会自动转换为Android标记的文档类型</li>
+<li><code>NativeFilePicker.ExportFile( string filePath, FilesExportedCallback callback = null )</code> 导出文件 ExportMultipleFiles导出多个文件类似</li>
+<li><code>PickFile( FilePickedCallback callback, params string[] allowedFileTypes )</code> 导入文件 PickMultipleFiles导入多个文件类似 注意callback会传入当前导入文档的绝对路径 但是这个只能在这callback中进行文件夹相关操作 在外部是效果的(可以是因为异步的原因没有拿到真实的文件夹路径 不过应该还是不行 因为作者说了只是提供了沙盒的 如果想对文件进行操作 直接导入到本地 然后再操作就行了 不用在这个地方纠结)</li>
 </ul>
+<h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><p>看官方文档就行 在unity商店中也有上架 就不多说了  </p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
+<li>在安卓中读写文档貌似不需要判断是否创建了文件夹 但是在mac上是一定要判断的 不然就会报找不到目标路径的错误暂时没有过多的想了
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/08/26/Unity/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/打包相关接口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/08/24/Unity/%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/">打包相关接口</a>
+    </h1>
+  
+
+        
+        <a href="/2023/08/24/Unity/%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/" class="archive-article-date">
+  	<time datetime="2023-08-24T02:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-24</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：109字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>一般在两个类中<code>PlayerSettings</code> <code>EditorUserBuildSettings</code> <code>BuildPipeline</code></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PlayerSettings.bundleVersion;<span class="comment">//Version</span></span><br><span class="line">PlayerSettings.Android.bundleVersionCode;<span class="comment">//bundleVersion</span></span><br><span class="line">ditorUserBuildSettings.buildAppBundle;<span class="comment">//abb 谷歌商店包</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Build</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BuildPlayerWindow.ShowBuildPlayerWindow();<span class="comment">//打开打包窗口</span></span><br><span class="line">    BuildPlayerOptions option = BuildPlayerWindow.DefaultBuildMethods.GetBuildPlayerOptions(<span class="keyword">new</span>());<span class="comment">//参数暂时没了解清楚 应该是可以自己设置的 比如路径什么的 这里会打开目录 然后选择输出的包路径</span></span><br><span class="line">    BuildPlayerWindow.DefaultBuildMethods.BuildPlayer(option);<span class="comment">//打包到指定路径</span></span><br><span class="line">    <span class="keyword">var</span> path = Path.GetDirectoryName(option.locationPathName);</span><br><span class="line">    System.Diagnostics.Process.Start(path);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -475,7 +560,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/Unity%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/08/24/Unity/%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/">展开全文 >></a>
         </p>
       
 
@@ -505,35 +590,45 @@
 
 
   
-    <article id="post-Unity/Unity音频学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/Odin简单使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">Unity音频学习</a>
+      <a class="article-title" href="/2023/08/24/Unity/Odin%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">Odin简单使用</a>
     </h1>
   
 
         
-        <a href="/2022/05/26/Unity/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+        <a href="/2023/08/24/Unity/Odin%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2023-08-24T01:59:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-24</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：110字 | 预计阅读时长：1分钟
+          字数：448字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h2><p>简单的实现赛车的引擎声，打滑声和物体碰撞声</p>
-<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><ol>
-<li>确定资源放置的物体<br> 这三个声音都可以放在赛车上，如果一些背景声音可以利用audioListen来拾取</li>
-<li>增加声音的生动性<br> 可以跟随速度来调整声音的pitch，来模拟高速和低速的一些情况</li>
-<li>创建混合器来输出声音</li>
-</ol>
+        <h2 id="想要实现的界面"><a href="#想要实现的界面" class="headerlink" title="想要实现的界面"></a>想要实现的界面</h2><p><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Odin/packWindow.png" alt="预览"></p>
+<h2 id="使用的控件-特性"><a href="#使用的控件-特性" class="headerlink" title="使用的控件(特性)"></a>使用的控件(特性)</h2><ul>
+<li>Button</li>
+<li>LabelText</li>
+<li>Space</li>
+<li>InfoBox</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>入门需要知道:</p>
+<ul>
+<li>创建的窗口类继承自<code>OdinEditorWindow</code></li>
+<li>所有的Public变量都会输出到窗口 例如string 和int等 如果不想显示就设置为private</li>
+<li>如果不设置布局 那么排列顺序就是类的声明顺序(所以button总是默认在最下面 因为是方法)</li>
+</ul>
+<p>普通的string bool int都是可以直接输出到面板的 如果想修改这个变量名 在上面加上 <code>[LabelText(&quot;你想要的名字&quot;)]</code><br>其他详细的看odin的使用示例就行了 这里只看了自己需要的</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果在编译窗口时使用了unity的自带的变量<code>PlayerSettings.bundleVersion</code> 需要确保窗口是关闭的 否则将会报错导致窗口无法打开<br>解决方法 将该窗口关闭 然后重新编译一次就正常了<br>不能用public变量来初始化承接unity自带变量 也是会报错的 需要用private static 变量来承接 这也是为什么unity的自带变量会报错的原因 有可能跟快速编译有关 静态变量没有销毁导致的 暂时没有测 后面再看吧</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PackTool</span> : <span class="title">OdinEditorWindow</span></span><br><span class="line">   &#123;</span><br><span class="line">       [<span class="meta">MenuItem(<span class="meta-string">"配置/--"</span>, false, 1)</span>]</span><br><span class="line">       <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShowPackWindow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">var</span> window = GetWindow&lt;PackTool&gt;();</span><br><span class="line">           window.name = <span class="string">"--"</span>;</span><br><span class="line">           window.position = GUIHelper.GetEditorWindowRect().AlignCenter(<span class="number">600</span>, <span class="number">600</span>);</span><br><span class="line">           window.Show();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _version = PlayerSettings.bundleVersion;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> _bundleVersion = PlayerSettings.Android.bundleVersionCode;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">bool</span> _abb = EditorUserBuildSettings.buildAppBundle;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> version = _version;</span><br><span class="line">       [<span class="meta">LabelText(<span class="meta-string">"BundleVersion"</span>)</span>] <span class="keyword">public</span> <span class="keyword">int</span> bundleVersion = _bundleVersion;</span><br><span class="line"></span><br><span class="line">       [<span class="meta">Space(10)</span>] <span class="keyword">public</span> <span class="keyword">bool</span> abb = _abb;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _log = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">       [<span class="meta">HorizontalGroup(<span class="meta-string">"pack"</span>)</span>]</span><br><span class="line">       [<span class="meta">Button(<span class="meta-string">"资源Build"</span>)</span>]</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ResBuild</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       [<span class="meta">HorizontalGroup(<span class="meta-string">"pack"</span>)</span>]</span><br><span class="line">       [<span class="meta">Button(<span class="meta-string">"←先打资源 打包"</span>)</span>]</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Build</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       [<span class="meta">InfoBox(<span class="meta-string">"留意查看输出有没有报错 (console窗口不是这个窗口)"</span>, InfoMessageType.Warning)</span>] [TextArea]</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> packLog = _log;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -557,7 +652,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/08/24/Unity/Odin%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">展开全文 >></a>
         </p>
       
 
@@ -587,67 +682,39 @@
 
 
   
-    <article id="post-Unity/unity性能优化点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/Odin调用ScriptableObject报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/">unity性能优化点</a>
+      <a class="article-title" href="/2023/05/27/Unity/Odin%E8%B0%83%E7%94%A8ScriptableObject%E6%8A%A5%E9%94%99/">Odin调用ScriptableObject报错</a>
     </h1>
   
 
         
-        <a href="/2022/05/26/Unity/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+        <a href="/2023/05/27/Unity/Odin%E8%B0%83%E7%94%A8ScriptableObject%E6%8A%A5%E9%94%99/" class="archive-article-date">
+  	<time datetime="2023-05-27T08:05:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-27</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：604字 | 预计阅读时长：2分钟
+          字数：168字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="unity优化的零碎点"><a href="#unity优化的零碎点" class="headerlink" title="unity优化的零碎点"></a>unity优化的零碎点</h2><h2 id="字符串处理相关"><a href="#字符串处理相关" class="headerlink" title="字符串处理相关"></a>字符串处理相关</h2><ul>
-<li>字符串的拼接：不用采用replace，而是format, replace的性能消耗高,关于$的用法</li>
-</ul>
-<h2 id="UI相关"><a href="#UI相关" class="headerlink" title="UI相关"></a>UI相关</h2><ul>
-<li>获取属性名应使用id而非字符串参数,因为会多一次哈希计算</li>
-<li>sprite 和image的区别:sprite会有更多的顶点运算,但在使用时性能会比image更好,并在不同分辨率下image的效果可能达不到预期</li>
-<li>layout:自动排序损耗性能过重,少数控件可代码自行写</li>
-<li>Text文本长度预判</li>
-</ul>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextGenerator mTextGenerator = talkText.cachedTextGeneratorForLayout;</span><br><span class="line">TextGenerationSettings mTgSettings = talkText.GetGenerationSettings(Vector2.zero);</span><br><span class="line"><span class="keyword">float</span> textWidth = mTextGenerator.GetPreferredWidth(LanguageCtrl.Instance.GetById(textid), mTgSettings) / talkText.pixelsPerUnit ;</span><br></pre></td></tr></table></figure>
+        <h2 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h2><p>Load is not allowed to be called from a ScriptableObject constructor (or instance field initializer), call it in OnEnable instead.</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>网上找了一些方法 无非是ScriptableObject的构建有问题 用了new 应该用CreateInstance的方法</p>
+<p>不过这不是我的问题 这是在odin的特性使用时候直接调用时候报错的 和直接使用unity相关变量很像 所以就直接换一个变量来承接而不是直接使用该变量</p>
+<p>还是不行就重启unity</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>AppConfig 是一个ScriptableObject</p>
+<p>报错:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Title(<span class="meta-string">"App Config"</span>)</span>] [VerticalGroup(<span class="string">"config"</span>)]</span><br><span class="line"><span class="keyword">public</span> AppConfig.APP_MODE appMode = AppConfig.S.appMode;</span><br></pre></td></tr></table></figure>
 
-<h2 id="debug相关"><a href="#debug相关" class="headerlink" title="debug相关"></a>debug相关</h2><ul>
-<li>debug不要调用自带的 而是Foundation.logUtility.LogInfo();即主要可以用预编译关掉的日志</li>
-<li>避免空事件 最好用预处理指令对debug等事件,可以在playsetting中进行统一关闭</li>
-</ul>
-<h2 id="脚本相关"><a href="#脚本相关" class="headerlink" title="脚本相关"></a>脚本相关</h2><ul>
-<li>start和awake的区别,留言初始化的时机,以及awake与start在不同激活状态下调用的情况.awake一般用来初始化本地数据,start一定是在awake之后调用</li>
-<li>lambda表达式可以用局部方法来实现，action也可以实现，action是不带参数的，继承自委托，如果需要本地的参数局部表达式同样可以解决。</li>
-<li>foreach会产生cg，只有两个情况可能不会有cg</li>
-</ul>
-<h2 id="引擎相关"><a href="#引擎相关" class="headerlink" title="引擎相关"></a>引擎相关</h2><ul>
-<li>gameobject只有在激活的状态下才能修改其属性</li>
-<li>获取子孩子应将其保持在局部，避免重复获取</li>
-<li>在频繁的调用方法中,应该格外注意数据格式的开销<ul>
-<li>泛型数据是类型安全的,并且不需要强转为object</li>
-</ul>
-</li>
-<li>避免运行时添加组件</li>
-<li>销毁getcomponent对象时可能造成卡顿:Destroy(go.GetComponent&lt;&gt;);可以提前获取对象,或者失活处理即可</li>
-<li>移动模型上的boxcollide,在场景生成时,可能并没有跟随到模型的位置,需要重启来更新位置,或者调整参数也可以实现相同效果</li>
-<li>计时器的开启如果不忽略Update更新模式，则会在游戏开始就计数，从而产生一些奇怪的bug</li>
-</ul>
-<h2 id="C"><a href="#C" class="headerlink" title="C#"></a>C#</h2><ul>
-<li>条件编译 Conditiona来替换#if#endif</li>
-<li>用is as来转换类型</li>
-<li>常用readonly 来替换const除非该值一成不变</li>
-<li>确保none的存在,作为没有状态选中</li>
-</ul>
+<p>正常:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> AppConfig.APP_MODE _appMode = AppConfig.S.appMode;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Title(<span class="meta-string">"App Config"</span>)</span>] [VerticalGroup(<span class="string">"config"</span>)]</span><br><span class="line"><span class="keyword">public</span> AppConfig.APP_MODE appMode = _appMode;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -671,7 +738,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/05/27/Unity/Odin%E8%B0%83%E7%94%A8ScriptableObject%E6%8A%A5%E9%94%99/">展开全文 >></a>
         </p>
       
 
@@ -701,39 +768,32 @@
 
 
   
-    <article id="post-Unity/简易事件系统实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/deltaTime的理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/26/Unity/%E7%AE%80%E6%98%93%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/">简易事件系统实现</a>
+      <a class="article-title" href="/2023/05/27/Unity/deltaTime%E7%9A%84%E7%90%86%E8%A7%A3/">deltaTime的理解</a>
     </h1>
   
 
         
-        <a href="/2022/01/26/Unity/%E7%AE%80%E6%98%93%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2022-01-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
+        <a href="/2023/05/27/Unity/deltaTime%E7%9A%84%E7%90%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2023-05-27T08:05:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-27</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：201字 | 预计阅读时长：1分钟
+          字数：308字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>游戏中利用观察者模式来解耦各个模块的功能是十分常用的,其中事件系统就是十分典型的.之前在项目中事件主要通过采用字符串当作id来存储不同事件,然后通过action来传递参数.参数是用类来传递的,并且都是利用obj来传递,那么这里面就需要一层装箱和拆箱,并且需要存在判空的操作.自己写项目的时候便考虑直接用结构体替换.</p>
-<h2 id="设计思路-主要是观察者模式"><a href="#设计思路-主要是观察者模式" class="headerlink" title="设计思路(主要是观察者模式)"></a>设计思路(主要是观察者模式)</h2><h3 id="所需结构"><a href="#所需结构" class="headerlink" title="所需结构"></a>所需结构</h3><ul>
-<li>事件的参数结构体定义</li>
-<li>事件的路由字典定义(用于订阅和通知)</li>
-</ul>
-<h3 id="主功能方法"><a href="#主功能方法" class="headerlink" title="主功能方法"></a>主功能方法</h3><ul>
-<li>订阅,移除订阅</li>
-<li>通知</li>
-</ul>
-<h3 id="具体代码"><a href="#具体代码" class="headerlink" title="具体代码"></a>具体代码</h3>
+        <h2 id="deltaTime的官方定义"><a href="#deltaTime的官方定义" class="headerlink" title="deltaTime的官方定义"></a>deltaTime的官方定义</h2><p>The interval in seconds from the last frame to the current one (Read Only).<br>翻译过来就是两帧之间的秒间隔</p>
+<h2 id="牛角尖的地方"><a href="#牛角尖的地方" class="headerlink" title="牛角尖的地方"></a>牛角尖的地方</h2><p>其实结合上update来看 解释就已经很清楚了,比如60帧 一秒就会调用60次update 那么deltatime就是1/60 这里其实都好理解,但是speed*Time.deltaTime脑子就转不过来了,速度为啥要乘上这个,乘上之后变成了啥,现在梳理的时候都觉得这么清楚为什么会不理解,但是每次过段时间都会忘记.最简单的方法其实是将值log出来,这样最直观.<br><strong>简单来说最主要的就是speed的单位是以秒为单位的(或者其他自定义的现实单位),但是update方法中并不是以秒为单位的而是帧,所以在update中需要转换单位,而deltaTime就相当于转换单位,这下就十分简单明晰了</strong><br>之所以钻牛角尖其实是 自己也不知道到底自己哪不懂,看别人介绍 都是为了适应不同设备的帧率啊 巴拉巴拉,这一听就懂,但是就是觉得哪里不对劲</p>
+
       
 
       
@@ -756,7 +816,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/01/26/Unity/%E7%AE%80%E6%98%93%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/05/27/Unity/deltaTime%E7%9A%84%E7%90%86%E8%A7%A3/">展开全文 >></a>
         </p>
       
 
@@ -786,30 +846,31 @@
 
 
   
-    <article id="post-uwp/UWP主题切换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/AssetBundle入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/uwp/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/">UWP主题切换</a>
+      <a class="article-title" href="/2023/05/26/Unity/AssetBundle%E5%85%A5%E9%97%A8/">AssetBundle入门</a>
     </h1>
   
 
         
-        <a href="/2021/11/30/uwp/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+        <a href="/2023/05/26/Unity/AssetBundle%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：472字 | 预计阅读时长：2分钟
+          字数：868字 | 预计阅读时长：4分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="uwp切换主题"><a href="#uwp切换主题" class="headerlink" title="uwp切换主题"></a>uwp切换主题</h2><h2 id="切换接口和方法"><a href="#切换接口和方法" class="headerlink" title="切换接口和方法"></a>切换接口和方法</h2><p><code>Application</code> 应用程序的主题色.枚举为三种默认,亮,暗.但是无法在运行时修改程序的颜色.只能重启应用的时候应用.在应用程序中只能在app.xaml中调用.<br><code>ElementTheme</code> 单个页面的主题色变换.可以修改当前的控件色,修改当前页以及子项的主题.可以在最外层的页面设置RequestedTheme.就可以实现主题的转换<br><code>Window.Current.Content</code> 可以实现当前软件的控件主题更改,该属性在app.cs中需要在初始化之后才能获取.并且无法修改对话框的主题.</p>
+        <h2 id="AssetBundle基本知识"><a href="#AssetBundle基本知识" class="headerlink" title="AssetBundle基本知识"></a>AssetBundle基本知识</h2><p>主要是将不同资源进行压缩打包的,然后在运行游戏时选择的进行加载,来避免内存压力,以及满足热更的前提条件,如果不用Asset Bundle那么就会全部打到一个resource下,只适合自己做demo用.后面unity升级的addressBundle其实是升级的asset bundle 增加了url 指定  </p>
+<p>assetBundle的主要结构为 被打的具体包,还有一个记录依赖关系的主包,主包的名称和文件夹同名</p>
         
       
 
@@ -823,7 +884,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
         		</li>
       		
 		</ul>
@@ -833,7 +894,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/uwp/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/05/26/Unity/AssetBundle%E5%85%A5%E9%97%A8/">展开全文 >></a>
         </p>
       
 
@@ -863,34 +924,32 @@
 
 
   
-    <article id="post-uwp/UWP修改textbox颜色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-OpenGL/openGL环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/">UWP修改textbox颜色</a>
+      <a class="article-title" href="/2023/05/26/OpenGL/openGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Opengl环境搭建</a>
     </h1>
   
 
         
-        <a href="/2021/11/30/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+        <a href="/2023/05/26/OpenGL/openGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：302字 | 预计阅读时长：1分钟
+          字数：326字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="实现实时修改textbox颜色"><a href="#实现实时修改textbox颜色" class="headerlink" title="实现实时修改textbox颜色"></a>实现实时修改textbox颜色</h2><h2 id="通过Foreground属性直接绑定到修改的数据源"><a href="#通过Foreground属性直接绑定到修改的数据源" class="headerlink" title="通过Foreground属性直接绑定到修改的数据源"></a>通过Foreground属性直接绑定到修改的数据源</h2><p>通过颜色拾取器或者自定义颜色赋值，可以实现令textbox修改颜色。<br>但是，当想利用滑动条来修改透明度的时候，即只修改前两个十六进制值。将起不到效果。</p>
-<h2 id="没有效果是因为textbox没有进行刷新"><a href="#没有效果是因为textbox没有进行刷新" class="headerlink" title="没有效果是因为textbox没有进行刷新"></a>没有效果是因为textbox没有进行刷新</h2><p>可以通过切换textbox状态来实现刷新颜色，切换状态需要延时，否则同样没有效果</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="xaml文件"><a href="#xaml文件" class="headerlink" title="xaml文件"></a>xaml文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextBox</span> <span class="attr">x:Name</span>=<span class="string">"box"</span> <span class="attr">Text</span>=<span class="string">"67676"</span> <span class="attr">Width</span>=<span class="string">"300"</span> <span class="attr">Height</span>=<span class="string">"55"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">Foreground</span>=<span class="string">"&#123;x:Bind employee.Color,Mode=OneWay&#125;"</span>   </span></span><br><span class="line"><span class="tag">                 <span class="attr">TextWrapping</span>=<span class="string">"Wrap"</span> <span class="attr">AcceptsReturn</span>=<span class="string">"True"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">SelectionHighlightColor</span>=<span class="string">"#402572AC"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">IsHitTestVisible</span>=<span class="string">"False"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">TextBox</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">Slider</span> <span class="attr">Width</span>=<span class="string">"300"</span> <span class="attr">Height</span>=<span class="string">"50"</span> <span class="attr">Margin</span>=<span class="string">"0 200 0 0"</span> <span class="attr">ValueChanged</span>=<span class="string">"Slider_ValueChanged"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="cs文件"><a href="#cs文件" class="headerlink" title="cs文件"></a>cs文件</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据模板类</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">Employee</span> : <span class="title">INotifyPropertyChanged</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">string</span> color;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Color</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> color; &#125;</span><br><span class="line">            <span class="keyword">set</span></span><br><span class="line">            &#123;</span><br><span class="line">                color = <span class="keyword">value</span>;</span><br><span class="line">               RaisePropertyChanged(<span class="string">"Color"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">event</span> PropertyChangedEventHandler PropertyChanged;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">RaisePropertyChanged</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (PropertyChanged != <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                PropertyChanged(<span class="keyword">this</span>, <span class="keyword">new</span> PropertyChangedEventArgs(name));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//滑动条事件</span></span><br><span class="line"><span class="function"><span class="keyword">private</span>  <span class="keyword">void</span> <span class="title">Slider_ValueChanged</span>(<span class="params"><span class="keyword">object</span> sender, RangeBaseValueChangedEventArgs e</span>)  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    employee.Color= <span class="string">"#"</span> + ((<span class="keyword">int</span>)((e.NewValue / <span class="number">100</span>) * <span class="number">255</span>)).ToString(<span class="string">"X2"</span>) + employee.Color.Substring(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">var</span> m = box.Foreground;</span><br><span class="line">    box.Foreground.Opacity= e.NewValue / <span class="number">100</span>;</span><br><span class="line">    box.IsHitTestVisible = <span class="literal">true</span>; </span><br><span class="line">    VisualStateManager.GoToState(box, <span class="string">"PointerOver"</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    wite();</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">wite</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">await</span> Task.Delay(<span class="number">10</span>);</span><br><span class="line">    VisualStateManager.GoToState(box, <span class="string">"Normal"</span>, <span class="literal">true</span>);</span><br><span class="line">    box.IsHitTestVisible = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="OpenGL入门"><a href="#OpenGL入门" class="headerlink" title="OpenGL入门"></a>OpenGL入门</h2><p>想学习opengl是想自己从头实现一个游戏 并从中理解一些游戏的基本原理和知识 比如什么图像学之类的,然后就在主流的图形库中做了选择,一个是opengl还有一个就是微软的directx了,本着快速上手 提升能力是原则 就选择了opengl,但是入门这个发现还是有一堆的问题,什么红宝书蓝宝书,各种人说法都不一样,最重要的是 没有从零搭建的教程.万事开头难,那段时间焦虑了很久,最后好在b站看来learnopengl,算是开始着手这个了,但是本来就没有什么多余时间,就只能挤挤时间来学了.</p>
+<h2 id="教程参考"><a href="#教程参考" class="headerlink" title="教程参考"></a>教程参考</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">leanOpengl</a><br>其实这里面的搭建教程已经十分的详细了,各种视频也是有的,但是我还是踩到了一个坑.<br>那就是cmake编译的lib的平台和debug的平台冲突了,最后还是重新编译了一下cmake仔细的替换路径才正常(细心呀 唉这个就浪费我一下午时间)</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>就不浪费时间了 直接上看上面的教程就行了 这个文档留着后面学一部分 回来填坑</p>
 
       
 
@@ -904,11 +963,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">TextBox</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenGL</a>
         		</li>
       		
 		</ul>
@@ -918,99 +973,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-uwp/UWP绘制下划线,删除线,波浪线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/uwp/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">UWP绘制下划线,删除线,波浪线</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/30/uwp/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：700字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><a href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开" class="headerlink" title="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"></a>实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</h2><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同<br>TextBlock的TextDecorations属性可以增加下划线和删除线<br>RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock）</p>
-<h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><ol>
-<li><strong>TextBlock的前景色会修改文字以及下划线</strong>：所以必须将两者分开，即绘制下划线用另一个TextBlock实现。并且绘制下划线的textblock需要用空白来填充。  </li>
-<li><strong>绘制下划线TextBlock的text属性无法显示空白</strong>：利用<code>&lt;Run&gt;</code>可以显示空白，空白字符为<code>&amp;#160；</code>，但是如果绑定Run的Text则不能直接将<code>&amp;#160；</code>进行赋值，而是<code>(char)160</code>  </li>
-<li><strong>绘制下划线TextBlock空白个数计算</strong>：因为每个字体的宽度并不一样，所以不能单纯用字符个数来计算。TextBlock中有ActualWidth属性可以获取当前渲染的长度。于是用不换行的文字渲染长度除以当个空白的渲染长度就可以得到空白字符需要的个数</li>
-<li><strong>处理文字的TextBlock和下划线textblock换行不同步</strong>：在textblock中<code>\r\n</code>、<code>\r</code>、<code>\n</code>都可以换行，解析字符利用split将每一行字符分离处理，分别计算每一行下划线textblock空白所需要的长度并在结尾加入相应的换行</li>
-<li><strong>文字textblock和下划线的textblock换行长度不匹配</strong>：因为textblock的换行默认采用空格换行，所以遇到单词会直接整个换行从而留下空白。<strong>解决办法</strong>：处理文字，在每个文字直接加入零宽字符<code>\u200B</code>，这样就会与下划线换行大致匹配。<em>此步骤应在4步之前，注意<code>\r\n</code>之间不要插入空白字符否则会变成两次换行</em></li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TextBlock</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RichEditBox</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/uwp/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/05/26/OpenGL/openGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">展开全文 >></a>
         </p>
       
 
@@ -1042,7 +1005,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1141,19 +1104,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1169,11 +1132,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,11 +1148,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1213,6 +1176,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
@@ -1221,15 +1188,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1237,11 +1196,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1253,7 +1212,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1265,6 +1228,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
@@ -1273,19 +1240,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

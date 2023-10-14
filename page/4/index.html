@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 91
+            总文章数 93
         </nav>
 		<nav>
-            总字数 <span class="post-count">69.5k</span>
+            总字数 <span class="post-count">69.7k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,163 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/AssetBundle入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/26/Unity/AssetBundle%E5%85%A5%E9%97%A8/">AssetBundle入门</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/26/Unity/AssetBundle%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：868字 | 预计阅读时长：4分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="AssetBundle基本知识"><a href="#AssetBundle基本知识" class="headerlink" title="AssetBundle基本知识"></a>AssetBundle基本知识</h2><p>主要是将不同资源进行压缩打包的,然后在运行游戏时选择的进行加载,来避免内存压力,以及满足热更的前提条件,如果不用Asset Bundle那么就会全部打到一个resource下,只适合自己做demo用.后面unity升级的addressBundle其实是升级的asset bundle 增加了url 指定  </p>
+<p>assetBundle的主要结构为 被打的具体包,还有一个记录依赖关系的主包,主包的名称和文件夹同名</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/26/Unity/AssetBundle%E5%85%A5%E9%97%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-OpenGL/openGL环境搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/26/OpenGL/openGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Opengl环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/26/OpenGL/openGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：326字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="OpenGL入门"><a href="#OpenGL入门" class="headerlink" title="OpenGL入门"></a>OpenGL入门</h2><p>想学习opengl是想自己从头实现一个游戏 并从中理解一些游戏的基本原理和知识 比如什么图像学之类的,然后就在主流的图形库中做了选择,一个是opengl还有一个就是微软的directx了,本着快速上手 提升能力是原则 就选择了opengl,但是入门这个发现还是有一堆的问题,什么红宝书蓝宝书,各种人说法都不一样,最重要的是 没有从零搭建的教程.万事开头难,那段时间焦虑了很久,最后好在b站看来learnopengl,算是开始着手这个了,但是本来就没有什么多余时间,就只能挤挤时间来学了.</p>
+<h2 id="教程参考"><a href="#教程参考" class="headerlink" title="教程参考"></a>教程参考</h2><p><a href="https://learnopengl-cn.github.io/" target="_blank" rel="noopener">leanOpengl</a><br>其实这里面的搭建教程已经十分的详细了,各种视频也是有的,但是我还是踩到了一个坑.<br>那就是cmake编译的lib的平台和debug的平台冲突了,最后还是重新编译了一下cmake仔细的替换路径才正常(细心呀 唉这个就浪费我一下午时间)</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>就不浪费时间了 直接上看上面的教程就行了 这个文档留着后面学一部分 回来填坑</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenGL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/26/OpenGL/openGL%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-c#/c#填坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -593,6 +750,88 @@
 
 
   
+    <article id="post-Unity/Unity中Camera学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">Unity中Camera学习</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：136字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Unity中关于Camera有两个调整方法"><a href="#Unity中关于Camera有两个调整方法" class="headerlink" title="Unity中关于Camera有两个调整方法"></a>Unity中关于Camera有两个调整方法</h2><ul>
+<li>下载官方的Cinemachine包，并创建虚拟camera</li>
+<li>创建camera组件，并用代码调整</li>
+</ul>
+<h3 id="Cinemachine"><a href="#Cinemachine" class="headerlink" title="Cinemachine"></a>Cinemachine</h3><p>不需要多余的代码调整，可以直接调整相关的参数，可以实现跟随的摄像效果，需要注意镜头抖动的问题，可以在主摄像头中调整刷新的方式来寻求解决。</p>
+<h3 id="创建camera"><a href="#创建camera" class="headerlink" title="创建camera"></a>创建camera</h3><p>实现逻辑代码，来完成自己需要的功能，相比官方的包，自己需要实现的功能比较多。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Unity/UnityUI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -688,88 +927,6 @@
 
 
   
-    <article id="post-Unity/Unity中Camera学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">Unity中Camera学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：136字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Unity中关于Camera有两个调整方法"><a href="#Unity中关于Camera有两个调整方法" class="headerlink" title="Unity中关于Camera有两个调整方法"></a>Unity中关于Camera有两个调整方法</h2><ul>
-<li>下载官方的Cinemachine包，并创建虚拟camera</li>
-<li>创建camera组件，并用代码调整</li>
-</ul>
-<h3 id="Cinemachine"><a href="#Cinemachine" class="headerlink" title="Cinemachine"></a>Cinemachine</h3><p>不需要多余的代码调整，可以直接调整相关的参数，可以实现跟随的摄像效果，需要注意镜头抖动的问题，可以在主摄像头中调整刷新的方式来寻求解决。</p>
-<h3 id="创建camera"><a href="#创建camera" class="headerlink" title="创建camera"></a>创建camera</h3><p>实现逻辑代码，来完成自己需要的功能，相比官方的包，自己需要实现的功能比较多。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Unity/Unity开发学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -824,202 +981,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/26/Unity/Unity%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/Unity音频学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">Unity音频学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：110字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h2><p>简单的实现赛车的引擎声，打滑声和物体碰撞声</p>
-<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><ol>
-<li>确定资源放置的物体<br> 这三个声音都可以放在赛车上，如果一些背景声音可以利用audioListen来拾取</li>
-<li>增加声音的生动性<br> 可以跟随速度来调整声音的pitch，来模拟高速和低速的一些情况</li>
-<li>创建混合器来输出声音</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/unity性能优化点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/">unity性能优化点</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：604字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="unity优化的零碎点"><a href="#unity优化的零碎点" class="headerlink" title="unity优化的零碎点"></a>unity优化的零碎点</h2><h2 id="字符串处理相关"><a href="#字符串处理相关" class="headerlink" title="字符串处理相关"></a>字符串处理相关</h2><ul>
-<li>字符串的拼接：不用采用replace，而是format, replace的性能消耗高,关于$的用法</li>
-</ul>
-<h2 id="UI相关"><a href="#UI相关" class="headerlink" title="UI相关"></a>UI相关</h2><ul>
-<li>获取属性名应使用id而非字符串参数,因为会多一次哈希计算</li>
-<li>sprite 和image的区别:sprite会有更多的顶点运算,但在使用时性能会比image更好,并在不同分辨率下image的效果可能达不到预期</li>
-<li>layout:自动排序损耗性能过重,少数控件可代码自行写</li>
-<li>Text文本长度预判</li>
-</ul>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TextGenerator mTextGenerator = talkText.cachedTextGeneratorForLayout;</span><br><span class="line">TextGenerationSettings mTgSettings = talkText.GetGenerationSettings(Vector2.zero);</span><br><span class="line"><span class="keyword">float</span> textWidth = mTextGenerator.GetPreferredWidth(LanguageCtrl.Instance.GetById(textid), mTgSettings) / talkText.pixelsPerUnit ;</span><br></pre></td></tr></table></figure>
-
-<h2 id="debug相关"><a href="#debug相关" class="headerlink" title="debug相关"></a>debug相关</h2><ul>
-<li>debug不要调用自带的 而是Foundation.logUtility.LogInfo();即主要可以用预编译关掉的日志</li>
-<li>避免空事件 最好用预处理指令对debug等事件,可以在playsetting中进行统一关闭</li>
-</ul>
-<h2 id="脚本相关"><a href="#脚本相关" class="headerlink" title="脚本相关"></a>脚本相关</h2><ul>
-<li>start和awake的区别,留言初始化的时机,以及awake与start在不同激活状态下调用的情况.awake一般用来初始化本地数据,start一定是在awake之后调用</li>
-<li>lambda表达式可以用局部方法来实现，action也可以实现，action是不带参数的，继承自委托，如果需要本地的参数局部表达式同样可以解决。</li>
-<li>foreach会产生cg，只有两个情况可能不会有cg</li>
-</ul>
-<h2 id="引擎相关"><a href="#引擎相关" class="headerlink" title="引擎相关"></a>引擎相关</h2><ul>
-<li>gameobject只有在激活的状态下才能修改其属性</li>
-<li>获取子孩子应将其保持在局部，避免重复获取</li>
-<li>在频繁的调用方法中,应该格外注意数据格式的开销<ul>
-<li>泛型数据是类型安全的,并且不需要强转为object</li>
-</ul>
-</li>
-<li>避免运行时添加组件</li>
-<li>销毁getcomponent对象时可能造成卡顿:Destroy(go.GetComponent&lt;&gt;);可以提前获取对象,或者失活处理即可</li>
-<li>移动模型上的boxcollide,在场景生成时,可能并没有跟随到模型的位置,需要重启来更新位置,或者调整参数也可以实现相同效果</li>
-<li>计时器的开启如果不忽略Update更新模式，则会在游戏开始就计数，从而产生一些奇怪的bug</li>
-</ul>
-<h2 id="C"><a href="#C" class="headerlink" title="C#"></a>C#</h2><ul>
-<li>条件编译 Conditiona来替换#if#endif</li>
-<li>用is as来转换类型</li>
-<li>常用readonly 来替换const除非该值一成不变</li>
-<li>确保none的存在,作为没有状态选中</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%82%B9/">展开全文 >></a>
         </p>
       
 
@@ -1194,11 +1155,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1222,10 +1183,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
@@ -1238,6 +1195,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
@@ -1246,7 +1207,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1258,11 +1223,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1270,15 +1231,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,15 +1243,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">

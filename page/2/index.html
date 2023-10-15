@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 93
+            总文章数 96
         </nav>
 		<nav>
-            总字数 <span class="post-count">69.7k</span>
+            总字数 <span class="post-count">71.4k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,254 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-godot/godot在mac中打开rider问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/10/godot/godot%E5%9C%A8mac%E4%B8%AD%E6%89%93%E5%BC%80rider%E9%97%AE%E9%A2%98/">godot删除atlas文件并复原原本文件</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/10/godot/godot%E5%9C%A8mac%E4%B8%AD%E6%89%93%E5%BC%80rider%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2023-10-10T09:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：219字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="godot的安装"><a href="#godot的安装" class="headerlink" title="godot的安装"></a>godot的安装</h2><p>godot版本 4.1</p>
+<p><a href="https://docs.godotengine.org/en/stable/contributing/development/configuring_an_ide/rider.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>在哪window上的godot用的vs2022 没遇到问题 但是mac就比较麻烦<br>尝试了vscode vs2022 和rider<br>其实在mac上vs基本上就放弃 还没有vscode好用 vscode目前是问题最少的 安装相关的插件就可以了<br>vs2022直接报个未知解决方法 查了一下应该是需要装个插件 懒得折腾了 就这样吧<br>而rider就是无法用godot打开的问题 报错如下:<br>    modules/mono/glue/runtime_interop.cpp:1324 - Error when trying to run code editor: JetBrains Rider. Exception message: ‘The FileName property should not be a directory unless UseShellExecute is set.’</p>
+<p><a href="https://github.com/godotengine/godot/issues/78501" target="_blank" rel="noopener">修复rider无法打开</a><br>应该是读取路径有问题 解决问题也很简单<br>在编辑器中 将editor path optional 改成下面就可以正常打开了 也可以尝试自定义路径 懒得折腾了<br><code>/Applications/Rider.app/Contents/MacOS/rider</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">godot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/10/godot/godot%E5%9C%A8mac%E4%B8%AD%E6%89%93%E5%BC%80rider%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/UI/CanEditMultipleObjects" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/10/Unity/UI/CanEditMultipleObjects/">Unity CanEditMultipleObjects特性</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/10/Unity/UI/CanEditMultipleObjects/" class="archive-article-date">
+  	<time datetime="2023-10-10T07:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：397字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简单来说就是 在面板中选中多个是否支持一起编辑和现实</p>
+<p>Unity的CanEditMultipleObjects属性是用于指定一个自定义编辑器是否支持多个对象同时编辑的特性。当脚本挂载到多个对象上时，CanEditMultipleObjects属性可以控制是否使用相同的自定义编辑器来编辑这些对象。</p>
+<p>要使用CanEditMultipleObjects属性，首先需要将CustomEditor属性与脚本一起使用，指定使用的自定义编辑器。然后在自定义编辑器类中，添加CanEditMultipleObjects属性并设置为true，表示支持多个对象同时编辑。</p>
+<p>以下是一个示例，展示了如何使用CanEditMultipleObjects属性：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"></span><br><span class="line">[<span class="meta">CustomEditor(typeof(MyScript))</span>]</span><br><span class="line">[<span class="meta">CanEditMultipleObjects</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyScriptEditor</span> : <span class="title">Editor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInspectorGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Custom inspector GUI code goes here</span></span><br><span class="line">        <span class="comment">// You can use EditorGUILayout, EditorGUI, and other GUI functions provided by Unity's editor API</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的示例中，[CanEditMultipleObjects] 属性被添加到 MyScriptEditor 类上，表示该自定义编辑器支持多个对象同时编辑。因此，当多个对象挂载了 MyScript 脚本时，它们将共享同一个自定义编辑器来进行编辑。</p>
+<p>要使用自定义编辑器，只需将 MyScript 脚本挂载到 Unity 编辑器中的一个或多个 GameObject 上。然后，选择这些 GameObject，在 Inspector 窗口中将会显示自定义的编辑器界面，可以对这些对象进行编辑。如果这些对象上的 MyScript 组件之间具有相同的属性，它们将在自定义编辑器中共享相同的属性设置和布局。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/10/Unity/UI/CanEditMultipleObjects/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/UI/CustomEditor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/10/Unity/UI/CustomEditor/">Unity CustomEditor特性</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/10/Unity/UI/CustomEditor/" class="archive-article-date">
+  	<time datetime="2023-10-10T07:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：308字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Unity的CustomEditor用法是为脚本或组件创建自定义检视面板。通过给一个脚本添加CustomEditor属性，可以定义一个自定义的检视面板来替代默认的检视面板。</p>
+<p>要创建一个自定义检视面板，需要创建一个新的类，继承自UnityEditor.Editor，并重写OnInspectorGUI()方法。这个方法负责绘制自定义的检视面板GUI。</p>
+<p>其中的第二个参数如果设置为true 则子类会继承父类的面板</p>
+<p>下面是一个示例，展示如何为名为MyScript的脚本创建自定义检视面板：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"></span><br><span class="line">[<span class="meta">CustomEditor(typeof(MyScript))</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyScriptEditor</span> : <span class="title">Editor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInspectorGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 自定义检视面板的GUI代码写在这里</span></span><br><span class="line">        <span class="comment">// 可以使用EditorGUILayout、EditorGUI和其他Unity编辑器API提供的GUI函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的示例中，[CustomEditor(typeof(MyScript))]属性用于将自定义检视面板与MyScript脚本关联起来。MyScriptEditor类继承自Editor，并重写了OnInspectorGUI()方法来绘制自定义的检视面板GUI。</p>
+<p>要使用自定义检视面板，只需将MyScript脚本附加到Unity编辑器中的一个GameObject上，自定义检视面板将显示在该GameObject的检视窗口中。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/10/Unity/UI/CustomEditor/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/UI/Unity拓展button面板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -741,241 +989,6 @@
 
 
   
-    <article id="post-godot/godotYsort问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/24/godot/godotYsort%E9%97%AE%E9%A2%98/">godot Y Sort的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2023/09/24/godot/godotYsort%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2023-09-23T17:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：133字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Y-Sort"><a href="#Y-Sort" class="headerlink" title="Y Sort"></a>Y Sort</h2><p>在unity中关于2d的排序 可以在项目中设置排序的轴 默认为z轴 即ui中的深度排列类似 如果在场景中想实现伪透视就需要改为y轴<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/godot/ySort/0.png" alt="0"><br>不过这是针对整个项目的 如果想特殊调整就得在精灵中调整<br>再看看godot中对这个是怎么使用的<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/godot/ySort/1.png" alt="1"><br>大概和unity相反 如果想自定义排序就选择这个 注意排序的是这个节点下的子物体 而非该物体</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">godot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/09/24/godot/godotYsort%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/性能优化/unityADB调试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/16/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unityADB%E8%B0%83%E8%AF%95/">Adb调试</a>
-    </h1>
-  
-
-        
-        <a href="/2023/09/16/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unityADB%E8%B0%83%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2023-09-16T08:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-16</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：4字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://blog.csdn.net/u014361280/article/details/117562897" target="_blank" rel="noopener">文章占位</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/09/16/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unityADB%E8%B0%83%E8%AF%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/Spine/SkeletonGraphic换肤优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/16/Unity/Spine/SkeletonGraphic%E6%8D%A2%E8%82%A4%E4%BC%98%E5%8C%96/">SkeletonGraphic换肤性能优化</a>
-    </h1>
-  
-
-        
-        <a href="/2023/09/16/Unity/Spine/SkeletonGraphic%E6%8D%A2%E8%82%A4%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2023-09-16T08:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-16</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：1.6k字 | 预计阅读时长：8分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>开启游戏时 加载同一批SkeletonGraphic 并根据主题来换皮肤<br>基本思路就是 示例化SkeletonGraphic =&gt; 更换插槽 =&gt; 设置皮肤</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spine</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/09/16/Unity/Spine/SkeletonGraphic%E6%8D%A2%E8%82%A4%E4%BC%98%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1077,11 +1090,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1105,10 +1118,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
@@ -1118,6 +1127,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1149,6 +1162,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
@@ -1161,15 +1178,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,11 +1198,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1197,19 +1210,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

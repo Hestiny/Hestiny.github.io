@@ -912,32 +912,61 @@
 
 
   
-    <article id="post-java/java类与方法的调用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java/java简易实现文本编辑器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/java/java%E7%B1%BB%E4%B8%8E%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8/">java类与方法的调用</a>
+      <a class="article-title" href="/2020/01/28/java/java%E7%AE%80%E6%98%93%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">java简易实现文本编辑器</a>
     </h1>
   
 
         
-        <a href="/2020/01/28/java/java%E7%B1%BB%E4%B8%8E%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8/" class="archive-article-date">
+        <a href="/2020/01/28/java/java%E7%AE%80%E6%98%93%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/" class="archive-article-date">
   	<time datetime="2020-01-28T08:05:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：96字 | 预计阅读时长：1分钟
+          字数：1.9k字 | 预计阅读时长：9分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="类与方法"><a href="#类与方法" class="headerlink" title="类与方法"></a>类与方法</h2><p>方法即函数必须写在类中，Java只是面向对象所以只有类  </p>
-<h2 id="类中方法的调用"><a href="#类中方法的调用" class="headerlink" title="类中方法的调用"></a>类中方法的调用</h2><p>动态方法可以调用静态，静态方法只能调用静态除非采用&lt;类名&gt;.&lt;方法名&gt;的格式<br>静态方法不需要对象便存在，而动态方法需要创建类才能使用。</p>
-
+        <h2 id="实现功能"><a href="#实现功能" class="headerlink" title="实现功能"></a>实现功能</h2><table>
+<thead>
+<tr>
+<th align="center">功能</th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>菜单项</strong></td>
+<td align="center">新建</td>
+<td align="center">打开</td>
+<td align="center">保存</td>
+<td align="center">退出</td>
+<td align="center">工具栏</td>
+<td align="center">弹出菜单</td>
+</tr>
+<tr>
+<td align="center"><strong>文本编辑</strong></td>
+<td align="center">复制</td>
+<td align="center">粘贴</td>
+<td align="center">剪切</td>
+<td align="center">查找</td>
+<td align="center">替换</td>
+<td align="center">字体颜色</td>
+</tr>
+</tbody></table>
+        
       
 
       
@@ -960,7 +989,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/java/java%E7%B1%BB%E4%B8%8E%E6%96%B9%E6%B3%95%E7%9A%84%E8%B0%83%E7%94%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/01/28/java/java%E7%AE%80%E6%98%93%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">展开全文 >></a>
         </p>
       
 
@@ -1115,19 +1144,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,6 +1172,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
@@ -1159,15 +1188,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1223,11 +1252,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">

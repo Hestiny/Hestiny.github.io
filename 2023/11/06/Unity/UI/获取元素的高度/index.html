@@ -16,7 +16,7 @@
 <meta property="og:description" content="unity preferredHeight的作用是指定一个布局元素在有足够空间时应该分配的首选高度。它是ILayoutElement接口的一个属性，可以通过添加Layout Element组件来覆盖²。preferredHeight的值会影响布局控制器（如VerticalLayoutGroup）如何分配额外的可用高度³。preferredHeight和flexibleHeight一起决定了布局元素">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-11-06T06:58:00.000Z">
-<meta property="article:modified_time" content="2023-11-06T12:11:56.810Z">
+<meta property="article:modified_time" content="2023-12-12T12:16:57.287Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 123
+            总文章数 131
         </nav>
 		<nav>
-            总字数 <span class="post-count">84k</span>
+            总字数 <span class="post-count">89k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,7 +179,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：271字 | 预计阅读时长：1分钟
+          字数：608字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -187,6 +187,14 @@
         <p>unity preferredHeight的作用是指定一个布局元素在有足够空间时应该分配的首选高度。它是ILayoutElement接口的一个属性，可以通过添加Layout Element组件来覆盖²。preferredHeight的值会影响布局控制器（如VerticalLayoutGroup）如何分配额外的可用高度³。preferredHeight和flexibleHeight一起决定了布局元素在父容器中的高度比例⁴。如果你想了解更多关于unity的自动布局系统，请参考<a href="https://www.jianshu.com/p/66ec57f99ff8" target="_blank" rel="noopener">这篇文章</a>。</p>
 <p>Unity GetPreferredHeight方法是一个用于获取布局元素的首选高度的函数。它是TextGenerator类的一个成员，可以根据字符串和设置，返回将容纳此文本的容器的首选高度²。它也是UI.LayoutUtility类的一个静态方法，可以查询GameObject中实现ILayoutElement接口的所有组件，并返回具有最高优先级或最大值的组件的首选高度¹³⁴。这个方法可以用于自动布局系统中，调整布局元素的大小和位置。</p>
 <p>¹: <a href="https://docs.unity.cn/cn/2019.2/ScriptReference/TextGenerator.GetPreferredHeight.html" target="_blank" rel="noopener">UI.LayoutUtility-GetPreferredHeight - Unity 脚本 API</a><br>²: <a href="https://docs.unity3d.com/cn/2019.1/ScriptReference/UI.LayoutUtility.GetPreferredHeight.html" target="_blank" rel="noopener">TextGenerator-GetPreferredHeight - Unity 脚本 API</a></p>
+<p>TextGenerator.GetPreferredWidth是一个Unity脚本API，它可以根据字符串和设置，返回将容纳此文本的容器的首选宽度。</p>
+<p>要使用这个方法，您需要先创建一个TextGenerator对象，然后传入一个字符串和一个TextGenerationSettings结构体，其中包含了文本的字体、大小、颜色、对齐方式等属性。</p>
+<p>例如，如果您想获取一个Text组件的文字宽度，您可以这样写：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Text text = GetComponent&lt;Text&gt;(); <span class="comment">//获取Text组件</span></span><br><span class="line">TextGenerator textGenerator = <span class="keyword">new</span> TextGenerator(); <span class="comment">//创建TextGenerator对象</span></span><br><span class="line">TextGenerationSettings settings = text.GetGenerationSettings(Vector2.zero); <span class="comment">//获取Text组件的设置</span></span><br><span class="line"><span class="keyword">float</span> width = textGenerator.GetPreferredWidth(text.text, settings); <span class="comment">//获取文字宽度</span></span><br></pre></td></tr></table></figure>
+
+<p>text generationExtents是一个Vector2类型的参数，它表示生成器将尝试使文本适合的范围。<br>这个参数通常用于限制文本的最大宽度和高度，以避免文本超出屏幕或其他UI元素的边界。</p>
+<p>例如，如果您想让一个Text组件的文本自动换行，您可以设置text generationExtents的x值为Text组件的宽度，y值为无穷大，然后调用TextGenerator类的Populate方法，如下所示：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Text text = GetComponent&lt;Text&gt;(); <span class="comment">//获取Text组件</span></span><br><span class="line">TextGenerator textGenerator = <span class="keyword">new</span> TextGenerator(); <span class="comment">//创建TextGenerator对象</span></span><br><span class="line">TextGenerationSettings settings = text.GetGenerationSettings(Vector2.zero); <span class="comment">//获取Text组件的设置</span></span><br><span class="line">settings.generationExtents = <span class="keyword">new</span> Vector2(text.rectTransform.rect.width, Mathf.Infinity); <span class="comment">//设置文本的最大宽度和高度</span></span><br><span class="line">textGenerator.Populate(text.text, settings); <span class="comment">//生成文本</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -449,19 +457,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -469,15 +465,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -485,11 +473,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,11 +481,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -521,6 +513,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
@@ -533,27 +533,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,7 +541,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,11 +565,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,7 +573,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,11 +593,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spine</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">shader</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">package</a>
               </li>
             
             <div class="clearfix"></div>

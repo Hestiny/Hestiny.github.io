@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 123
+            总文章数 131
         </nav>
 		<nav>
-            总字数 <span class="post-count">84k</span>
+            总字数 <span class="post-count">89k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,779 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-c++/排序的使用比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/26/c++/%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83/">排序的使用比较</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/26/c++/%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83/" class="archive-article-date">
+  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：734字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="算法一览表"><a href="#算法一览表" class="headerlink" title="算法一览表"></a>算法一览表</h2><table>
+<thead>
+<tr>
+<th align="center">排序算法</th>
+<th align="center">平均时间复杂度</th>
+<th align="center">最好</th>
+<th align="center">最坏</th>
+<th align="center">空间复杂度</th>
+<th align="center">排序方式</th>
+<th align="center">稳定性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">冒泡</td>
+<td align="center">n^2</td>
+<td align="center">n</td>
+<td align="center">n^2</td>
+<td align="center">1</td>
+<td align="center">in</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">选择</td>
+<td align="center">n^2</td>
+<td align="center">n^2</td>
+<td align="center">n^2</td>
+<td align="center">1</td>
+<td align="center">in</td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center">插入</td>
+<td align="center">n^2</td>
+<td align="center">n</td>
+<td align="center">n^2</td>
+<td align="center">1</td>
+<td align="center">in</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">希尔</td>
+<td align="center">n^1.5</td>
+<td align="center">n^1.3</td>
+<td align="center">n^2</td>
+<td align="center">1</td>
+<td align="center">in</td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center">归并</td>
+<td align="center">nlogn</td>
+<td align="center">nlogn</td>
+<td align="center">nlong</td>
+<td align="center">n</td>
+<td align="center">out</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">快速</td>
+<td align="center">nlogn</td>
+<td align="center">nlogn</td>
+<td align="center">n^2</td>
+<td align="center">longn</td>
+<td align="center">in</td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center">堆</td>
+<td align="center">nlogn</td>
+<td align="center">nlogn</td>
+<td align="center">nlogn</td>
+<td align="center">1</td>
+<td align="center">in</td>
+<td align="center">不稳定</td>
+</tr>
+<tr>
+<td align="center">计数</td>
+<td align="center">n+k</td>
+<td align="center">n+k</td>
+<td align="center">n+k</td>
+<td align="center">k</td>
+<td align="center">out</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">桶</td>
+<td align="center">n+k</td>
+<td align="center">n+k</td>
+<td align="center">n^2</td>
+<td align="center">n+K</td>
+<td align="center">out</td>
+<td align="center">稳定</td>
+</tr>
+<tr>
+<td align="center">基数</td>
+<td align="center">n X k</td>
+<td align="center">n X k</td>
+<td align="center">n X k</td>
+<td align="center">n+k</td>
+<td align="center">out</td>
+<td align="center">稳定</td>
+</tr>
+</tbody></table>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/26/c++/%E6%8E%92%E5%BA%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AF%94%E8%BE%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c++/插入排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/26/c++/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">插入排序</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/26/c++/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：211字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><ul>
+<li>平均时间复杂度O(n^2)  </li>
+<li>是稳定的  </li>
+<li>不适合过千数据排序
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/26/c++/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c++/最大数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/26/c++/%E6%9C%80%E5%A4%A7%E6%95%B0%E7%BB%84/">最大数组</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/26/c++/%E6%9C%80%E5%A4%A7%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：698字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="算法导论实现"><a href="#算法导论实现" class="headerlink" title="算法导论实现"></a>算法导论实现</h2><p>采用分治的思想来实现。<br>分为两个函数，一个实现分组，一个实现判断最大子数组。  </p>
+<ol>
+<li>将序列分成两个数组  </li>
+<li>从中间值开始向两边累加  </li>
+<li>将两边最大值相加，并判断三个值的大小  </li>
+</ol>
+<h3 id="纠结点"><a href="#纠结点" class="headerlink" title="纠结点"></a>纠结点</h3><ul>
+<li>如何确保每个组合都遍历到：<br>  分治将序列全部分开，每次分开就会遍历一次。直到最后的单一数据。
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/26/c++/%E6%9C%80%E5%A4%A7%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-书/住宅设计解刨书" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/26/%E4%B9%A6/%E4%BD%8F%E5%AE%85%E8%AE%BE%E8%AE%A1%E8%A7%A3%E5%88%A8%E4%B9%A6/">住宅涉及解刨书</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/26/%E4%B9%A6/%E4%BD%8F%E5%AE%85%E8%AE%BE%E8%AE%A1%E8%A7%A3%E5%88%A8%E4%B9%A6/" class="archive-article-date">
+  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：126字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><em>作者：饭冢丰</em></p>
+</blockquote>
+<h2 id="关于住宅的几个基本要点"><a href="#关于住宅的几个基本要点" class="headerlink" title="关于住宅的几个基本要点"></a>关于住宅的几个基本要点</h2><ul>
+<li>用地情况：不可选择用地基不稳等改造费用高的</li>
+<li>整体布局：多采用四叶草布局，注意车位和庭院的位置，重视采光</li>
+<li>窗户的安排：窗户涉及采光和通风应该在前期就规划进去。最好安排在侧角，这样光线反射会使房间更亮</li>
+<li>注意梳理格局：将用水区划分在一起</li>
+<li>屋檐，阳台，阁楼：</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">室内设计</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/26/%E4%B9%A6/%E4%BD%8F%E5%AE%85%E8%AE%BE%E8%AE%A1%E8%A7%A3%E5%88%A8%E4%B9%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-书/叔本华人生的智慧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/26/%E4%B9%A6/%E5%8F%94%E6%9C%AC%E5%8D%8E%E4%BA%BA%E7%94%9F%E7%9A%84%E6%99%BA%E6%85%A7/">叔本华人生的智慧</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/26/%E4%B9%A6/%E5%8F%94%E6%9C%AC%E5%8D%8E%E4%BA%BA%E7%94%9F%E7%9A%84%E6%99%BA%E6%85%A7/" class="archive-article-date">
+  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：3.1k字 | 预计阅读时长：10分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>意欲是这个世界的本源，它超越于时间、空间和因果律以外，既没有原因，也没有目的；它盲目、不顾一切地争取客体化。我们这个存在于时间、空间、遵循着因果律的复杂多样的现象世界就是意欲的产物和表现，是意欲在时、空中的客体化。由于意欲在客体化的过程中遵循着个体化原理，亦即存在于现象世界中的具体、单个组成部分的意欲各自为战，为生存、发展而努力；在现象界中，这也表现在低一级的形态向着高一级的形态的争取、斗争之中，所以，意欲客体化的过程是一场永恒的、无目的的斗争和发展；它与痛苦和灾难不可分割地联系在一起。中文对叔本华的意欲(wille)的翻译就是“意志”。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">哲学</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">阅读</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/26/%E4%B9%A6/%E5%8F%94%E6%9C%AC%E5%8D%8E%E4%BA%BA%E7%94%9F%E7%9A%84%E6%99%BA%E6%85%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-书/图解HTTP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/26/%E4%B9%A6/%E5%9B%BE%E8%A7%A3HTTP/">图解Http</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/26/%E4%B9%A6/%E5%9B%BE%E8%A7%A3HTTP/" class="archive-article-date">
+  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：9.4k字 | 预计阅读时长：33分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="图解HTTP"><a href="#图解HTTP" class="headerlink" title="图解HTTP"></a>图解HTTP</h2><p>上野宣、于均良</p>
+<h2 id="1-1-使用-HTTP-协议访问-Web"><a href="#1-1-使用-HTTP-协议访问-Web" class="headerlink" title="1.1 使用 HTTP 协议访问 Web"></a>1.1 使用 HTTP 协议访问 Web</h2><p>HTTP 通常被译为超文本传输协议，但这种译法并不严谨。严谨的译名应该为“超文本转移协议”。</p>
+<h2 id="1-2-HTTP-的诞生"><a href="#1-2-HTTP-的诞生" class="headerlink" title="1.2 HTTP 的诞生"></a>1.2 HTTP 的诞生</h2><p>3项 WWW 构建技术，分别是：</p>
+<ul>
+<li>把 SGML（Standard Generalized Markup Language，标准通用标记语言）作为页面的文本标记语言的 HTML（HyperText Markup Language，超文本标记语言）;  </li>
+<li>作为文档传递协议的 HTTP ；  </li>
+<li>指定文档所在地址的 URL（Uniform Resource Locator，统一资源定位符）。
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/26/%E4%B9%A6/%E5%9B%BE%E8%A7%A3HTTP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-书/训练文笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/26/%E4%B9%A6/%E8%AE%AD%E7%BB%83%E6%96%87%E7%AC%94/">训练文笔</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/26/%E4%B9%A6/%E8%AE%AD%E7%BB%83%E6%96%87%E7%AC%94/" class="archive-article-date">
+  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：73字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="注意词汇"><a href="#注意词汇" class="headerlink" title="注意词汇"></a>注意词汇</h2><h3 id="直述的情感词"><a href="#直述的情感词" class="headerlink" title="直述的情感词"></a>直述的情感词</h3><p>痛苦、伤心、难过、开心、愉快、忧郁、惋惜、可惜、可怜…</p>
+<h3 id="形容词-副词"><a href="#形容词-副词" class="headerlink" title="形容词,副词"></a>形容词,副词</h3><p> 改为动词,只需要给画面感</p>
+<h3 id="提升精炼"><a href="#提升精炼" class="headerlink" title="提升精炼"></a>提升精炼</h3><p> 废除多余的字 除非刻意为之,凡是不确定有没有用,都是多余</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/26/%E4%B9%A6/%E8%AE%AD%E7%BB%83%E6%96%87%E7%AC%94/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-书/小岛经济学" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/05/26/%E4%B9%A6/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6/">小岛经济学</a>
+    </h1>
+  
+
+        
+        <a href="/2021/05/26/%E4%B9%A6/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="archive-article-date">
+  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：3.1k字 | 预计阅读时长：10分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><em>作者：彼得·希夫; 安德鲁·希夫</em></p>
+</blockquote>
+<ul>
+<li><p>推荐序</p>
+<p>  对经济的过度干预，是催生天量货币不断被滥发的根源。政府通过通货膨胀稀释民众的财富，通过悄悄盗用民众的财富满足所谓的经济干预计划，而这些计划无不是被种种动听的承诺包装着，尽管这些动听的承诺很少真正兑现。</p>
+</li>
+<li><p>序言</p>
+<p>  美国的独特之处就在于，它维护个体权利、限制政府权力。</p>
+<p>  自由市场资本主义的本质就是权力分散，因此这一体制在全球大部分地区都对原有的僵化权力结构构成了威胁。</p>
+<p>  凯恩斯的核心观点是，在经济不景气时，政府可以通过扩大货币供给和财政赤字缓和自由市场的波动。</p>
+<p>  奥地利学派认为，经济衰退是经济繁荣期所做出的错误决定的必要补偿，经济迅猛发展过后必然会有一个相应的衰退期。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">阅读</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">经济学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/05/26/%E4%B9%A6/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-书/金字塔原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -320,679 +1093,9 @@
 
 
   
-    <article id="post-杂项/网易云外链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/05/26/%E6%9D%82%E9%A1%B9/%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/">网易云外链</a>
-    </h1>
-  
-
-        
-        <a href="/2021/05/26/%E6%9D%82%E9%A1%B9/%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/" class="archive-article-date">
-  	<time datetime="2021-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：60字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在谷歌浏览器中，调用审查CTRL+shift+i。再ctrl+f查找生成外链，双击复制前面的<code>/outchain/*/********/</code>.<br>然后打开<code>http://music.163.com/#/outchain/*/********/</code><br>利用下面的超链可以听<br><code>http://music.163.com/song/media/outer/url?id=********.mp3</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">配置</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/05/26/%E6%9D%82%E9%A1%B9/%E7%BD%91%E6%98%93%E4%BA%91%E5%A4%96%E9%93%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/anima2D训练" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/Unity/anima2D%E8%AE%AD%E7%BB%83/">anima2D训练</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/28/Unity/anima2D%E8%AE%AD%E7%BB%83/" class="archive-article-date">
-  	<time datetime="2020-01-28T13:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：588字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>其实官网关于插件的运用已经很详细了，无非就是创建2Dmesh然后将创建的骨骼拖进mesh的组件之中。然后利用spritemesh editor对其进行骨骼绑定。<br>难的还是对于动画每一帧的调整，对时间轴上的一些修改。这里应该就不只是插件了，而是unity自身的动画方面的学习了。<br>记一下自己做的僵硬小人。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/Unity/anima2D%E8%AE%AD%E7%BB%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-c++/c++跳出多层循环" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/c++/c++%E8%B7%B3%E5%87%BA%E5%A4%9A%E5%B1%82%E5%BE%AA%E7%8E%AF/">c++跳出多层循环</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/28/c++/c++%E8%B7%B3%E5%87%BA%E5%A4%9A%E5%B1%82%E5%BE%AA%E7%8E%AF/" class="archive-article-date">
-  	<time datetime="2020-01-28T13:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：84字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>c++无法像Java在循环处加标志，所以必须设计好循环的标准  </p>
-<ol>
-<li>在判断条件处增加判断条件  <blockquote>
-<p>必须在嵌套的循环都用上，当满足条件时全部跳出。</p>
-</blockquote>
-</li>
-<li>套用函数直接return跳过</li>
-<li>用goto  <blockquote>
-<p>偷懒时使用，不用在复杂的项目上</p>
-</blockquote>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/c++/c++%E8%B7%B3%E5%87%BA%E5%A4%9A%E5%B1%82%E5%BE%AA%E7%8E%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-c++/c++字符串提取" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/c++/c++%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8F%90%E5%8F%96/">c++字符串提取</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/28/c++/c++%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8F%90%E5%8F%96/" class="archive-article-date">
-  	<time datetime="2020-01-28T13:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：177字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="利用-lt-sstream-gt-中istringsteam"><a href="#利用-lt-sstream-gt-中istringsteam" class="headerlink" title="利用&lt;sstream&gt;中istringsteam"></a>利用&lt;sstream&gt;中istringsteam</h2><p>其他类型能输入到istringsteam。同样，也能输出为其他类型。并且istringsteam可以实现空格或者设置分隔符来分隔字符，并利用循环实现输出。  </p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"> getline(<span class="built_in">cin</span>, str);</span><br><span class="line"> <span class="function"><span class="built_in">istringstream</span> <span class="title">is</span><span class="params">(str)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> c; </span><br><span class="line">    <span class="keyword">while</span> (is &gt;&gt; c)</span><br><span class="line"> &#123;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
-<li>如果采用while(is){is&gt;&gt;c}就会多循环一遍  </li>
-<li>如果采用while(is.eof())会直接跳过循环  </li>
-</ul>
-<h2 id="利用-lt-cstring-gt-中atoi或stoi"><a href="#利用-lt-cstring-gt-中atoi或stoi" class="headerlink" title="利用&lt;cstring&gt;中atoi或stoi"></a>利用&lt;cstring&gt;中atoi或stoi</h2><ul>
-<li>他们都是传入一个参数分为char*和string*,无法像istringsteam一样处理</li>
-<li>stoi会检查范围  </li>
-</ul>
-<h2 id="利用标准输出来读取"><a href="#利用标准输出来读取" class="headerlink" title="利用标准输出来读取"></a>利用标准输出来读取</h2><p>利用循环来实现cin的不断输入，并利用特定的结束符来停止。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/c++/c++%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8F%90%E5%8F%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-c++/cjson学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/c++/cjson%E5%AD%A6%E4%B9%A0/">cjson学习</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/28/c++/cjson%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-01-28T13:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：4.5k字 | 预计阅读时长：24分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="json数据类型"><a href="#json数据类型" class="headerlink" title="json数据类型"></a>json数据类型</h2><p>值可以是对象、数组、数字、字符串或者三个字面值(false、null、true)中的一个。值中的字面值中的英文必须使用小写。<br>采用结构体来实现一个json数据存储，结构体内包括上述七种值。<br>其中string用来存值的名字。<br>字面值：直接赋给类型，只有为true时将valueint设为1。<br>对象：设置类型，解析孩子，孩子可以包含json所以类型值。<br>数组：类似于对象，格式不同。<br>数字：存储double和int两个值，根据需要获取。<br>字符串：只需要存储valuestring。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">c</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/c++/cjson%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo/hexo内markdown注意点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/hexo/hexo%E5%86%85markdown%E6%B3%A8%E6%84%8F%E7%82%B9/">hexo内markdown注意项</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/28/hexo/hexo%E5%86%85markdown%E6%B3%A8%E6%84%8F%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-01-28T13:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：171字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>在自己建的文件中给文章加标签时，—后不可以有其他的包括空格，否则会直接打印在页面上，但是在vscode中并不会显示  </li>
-<li>使用代码段的时候```之前的字的上一行，记得用双空格加回车来分行。否则那一行的字也将被填入代码区，但是在vscode中同样被正常显示</li>
-<li>增加多个标签：使用无序列表的形式（- tags）  </li>
-<li>在文章中加入图片:<br>通过常规的 markdown 语法和相对路径来引用图片和其它资源可能会导致它们在存档页或者主页上显示不正确。    
-  
-
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/hexo/hexo%E5%86%85markdown%E6%B3%A8%E6%84%8F%E7%82%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo/hexo指令无效以及报错问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/hexo/hexo%E6%8C%87%E4%BB%A4%E6%97%A0%E6%95%88%E4%BB%A5%E5%8F%8A%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/">hexo指令无效以及报错问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/28/hexo/hexo%E6%8C%87%E4%BB%A4%E6%97%A0%E6%95%88%E4%BB%A5%E5%8F%8A%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-01-28T13:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：69字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>Usage: hexo &lt;command&gt;报错<br>  必须在你安装的hexo文件夹下才有hexo指令  </li>
-<li>hexo g时产生报错<br>  此时会提醒那个文件出现问题，去修改就好了，如果报错在_posts文件夹下删除非文章文件就好了</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/hexo/hexo%E6%8C%87%E4%BB%A4%E6%97%A0%E6%95%88%E4%BB%A5%E5%8F%8A%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo/hexo部署coding的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/28/hexo/hexo%E9%83%A8%E7%BD%B2coding%E7%9A%84%E5%9D%91/">hexo部署coding的坑</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/28/hexo/hexo%E9%83%A8%E7%BD%B2coding%E7%9A%84%E5%9D%91/" class="archive-article-date">
-  	<time datetime="2020-01-28T13:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：459字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="因为GitHub部署的hexo国内很慢，所以打算部署到coding。我以为跟github差不多，但是还是遇到不少头疼问题"><a href="#因为GitHub部署的hexo国内很慢，所以打算部署到coding。我以为跟github差不多，但是还是遇到不少头疼问题" class="headerlink" title="因为GitHub部署的hexo国内很慢，所以打算部署到coding。我以为跟github差不多，但是还是遇到不少头疼问题"></a>因为GitHub部署的hexo国内很慢，所以打算部署到coding。我以为跟github差不多，但是还是遇到不少头疼问题</h2><hr>
-<ul>
-<li><p>注册问题  </p>
-<p>  1.稀里糊涂的注册：<br>  coding官网一上来我就开始注册，心里想注意的无非就是用户名和域名，然后一上来我就把团队名和域名设一样。因为我以为用户名就是团队名。后来查了半天才知道，我注册的邮箱才是用户名。  </p>
-<p>  2.qq邮箱其实可以当成两个邮箱来换绑（虽然没啥意义），邮箱可以用QQ号同时也可以自己设名字。  </p>
-<p>  3.用户名无法修改，在个人信息里也不提供查看（反正就是你邮箱号，但是他不直接告诉我就很气）。反而团队和昵称都可以改。  </p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>coding pages问题  </p>
-<p>  1.注册项目时要看清楚，选择功能最多的那个，不然扒翻天也找不到静态pages服务。<br>  2.部署后访问网站并不是 uesrname.coding.me 而是随机生成的 coding-pages.com（我新建了不少来找一个域名好记一点的，emmm）跟我看的教程一点都不一样。我都不知道我注册的是什么鬼。但是它确实打开了能访问。算了无所谓了。不想再折腾了。  </p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>后续<br>  最近几天我已经打不开coding上的网页了。我又羡慕人家访问速度快的一批，我就搜了不少，什么cdn,百度云加速。给我一小白头都看大了。恨不得钻计算机网络书里面狠狠恶补一下。后来我就在coding上绑定了我GitHub的域名。访问速度竟然一下子就上来了，我都佛了，但是手机上还是慢。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/28/hexo/hexo%E9%83%A8%E7%BD%B2coding%E7%9A%84%E5%9D%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/12/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/12/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1095,19 +1198,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1115,15 +1206,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1131,11 +1214,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1143,11 +1222,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1167,6 +1254,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
@@ -1179,27 +1274,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1207,7 +1282,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,11 +1306,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1231,7 +1314,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1247,11 +1334,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Spine</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">shader</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">package</a>
               </li>
             
             <div class="clearfix"></div>

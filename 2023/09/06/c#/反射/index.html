@@ -16,7 +16,7 @@
 <meta property="og:description" content="反射一些用法获取特定属性参考文档反射性能这里主要说一下unity里面会用到的地方一般都是书写框架和工具的时候会用到 十分方便和灵活 但是性能并不好所以正常的业务逻辑是不太考虑的 常用的方法 获取type 这个方法是反射中性能好点了 会小很多   1234567&#x2F;&#x2F;使用 C# typeof 运算符。Type t &#x3D; typeof(string);&#x2F;&#x2F;使用对象GetType()方法。string s">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-06T06:46:00.000Z">
-<meta property="article:modified_time" content="2023-11-11T06:51:06.860Z">
+<meta property="article:modified_time" content="2024-02-08T08:41:53.017Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="c#">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 159
+            总文章数 169
         </nav>
 		<nav>
-            总字数 <span class="post-count">99.5k</span>
+            总字数 <span class="post-count">107.7k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -195,18 +195,18 @@
 <p><strong>Type类的属性：</strong><br>        <code>Name</code> 数据类型名<br>        <code>FullName</code> 数据类型的完全限定名(包括命名空间名)<br>        <code>Namespace</code> 定义数据类型的命名空间名<br>        <code>IsAbstract</code> 指示该类型是否是抽象类型<br>        <code>IsArray</code>   指示该类型是否是数组<br>        <code>IsClass</code>   指示该类型是否是类<br>        <code>IsEnum</code>   指示该类型是否是枚举<br>        <code>IsInterface</code>    指示该类型是否是接口<br>        <code>IsPublic</code> 指示该类型是否是公有的<br>        <code>IsSealed</code> 指示该类型是否是密封类<br>        <code>IsValueType</code> 指示该类型是否是值类型<br><strong>Type类的方法：</strong><br>        <code>GetConstructor()</code>, <code>GetConstructors()</code>：返回ConstructorInfo类型，用于取得该类的构造函数的信息<br>        <code>GetEvent(), GetEvents()</code>：返回EventInfo类型，用于取得该类的事件的信息<br>        <code>GetField(), GetFields()</code>：返回FieldInfo类型，用于取得该类的字段（成员变量）的信息<br>        <code>GetInterface(), GetInterfaces()</code>：返回InterfaceInfo类型，用于取得该类实现的接口的信息<br>       <code>GetMember(), GetMembers()</code>：返回MemberInfo类型，用于取得该类的所有成员的信息<br>        <code>GetMethod(), GetMethods()</code>：返回MethodInfo类型，用于取得该类的方法的信息<br>        <code>GetProperty(), GetProperties()</code>：返回PropertyInfo类型，用于取得该类的属性的信息<br>        可以调用这些成员，其方式是调用Type的InvokeMember()方法，或者调用MethodInfo, PropertyInfo和其他类的Invoke()方法。</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// These flags indicate what to search for when binding</span></span><br><span class="line">   IgnoreCase = <span class="number">0x01</span>,          <span class="comment">// Ignore the case of Names while searching</span></span><br><span class="line">   DeclaredOnly = <span class="number">0x02</span>,        <span class="comment">// Only look at the members declared on the Type</span></span><br><span class="line">   Instance = <span class="number">0x04</span>,            <span class="comment">// Include Instance members in search</span></span><br><span class="line">   Static = <span class="number">0x08</span>,              <span class="comment">// Include Static members in search</span></span><br><span class="line">   Public = <span class="number">0x10</span>,              <span class="comment">// Include Public members in search</span></span><br><span class="line">   NonPublic = <span class="number">0x20</span>,           <span class="comment">// Include Non-Public members in search</span></span><br><span class="line">   FlattenHierarchy = <span class="number">0x40</span>,    <span class="comment">// Rollup the statics into the class.</span></span><br></pre></td></tr></table></figure>
 
-<p>特性是一种用于向程序元素（如类型、方法、属性等）添加元数据的机制。特性可以在编译时或运行时被检索。¹</p>
-<p>如果您想要查看一个枚举类型或枚举成员是否定义了特性，您可以使用反射的方法来获取特性的信息。反射是一种在运行时检查和操作类型的能力。²</p>
-<p>例如，假设您有一个枚举类型，它使用了Flags特性来表示位标志，如下所示：</p>
+<p>特性是一种用于向程序元素（如类型、方法、属性等）添加元数据的机制。特性可以在编译时或运行时被检索。</p>
+<p>如果想要查看一个枚举类型或枚举成员是否定义了特性，可以使用反射的方法来获取特性的信息。反射是一种在运行时检查和操作类型的能力。</p>
+<p>例如，假设有一个枚举类型，它使用了Flags特性来表示位标志，如下所示：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Flags</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Days</span><br><span class="line">&#123;</span><br><span class="line">    None = <span class="number">0b</span>_0000_0000, <span class="comment">// 0</span></span><br><span class="line">    Monday = <span class="number">0b</span>_0000_0001, <span class="comment">// 1</span></span><br><span class="line">    Tuesday = <span class="number">0b</span>_0000_0010, <span class="comment">// 2</span></span><br><span class="line">    Wednesday = <span class="number">0b</span>_0000_0100, <span class="comment">// 4</span></span><br><span class="line">    Thursday = <span class="number">0b</span>_0000_1000, <span class="comment">// 8</span></span><br><span class="line">    Friday = <span class="number">0b</span>_0001_0000, <span class="comment">// 16</span></span><br><span class="line">    Saturday = <span class="number">0b</span>_0010_0000, <span class="comment">// 32</span></span><br><span class="line">    Sunday = <span class="number">0b</span>_0100_0000, <span class="comment">// 64</span></span><br><span class="line">    Weekend = Saturday | Sunday</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>您可以使用Type.GetCustomAttributes方法来获取枚举类型上定义的所有特性，或者使用Type.IsDefined方法来检查枚举类型上是否定义了某个特定的特性，如下所示：</p>
+<p>可以使用Type.GetCustomAttributes方法来获取枚举类型上定义的所有特性，或者使用Type.IsDefined方法来检查枚举类型上是否定义了某个特定的特性，如下所示：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Get the type of the enum</span></span><br><span class="line">        Type enumType = <span class="keyword">typeof</span>(Days);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Get all the attributes defined on the enum</span></span><br><span class="line">        <span class="keyword">object</span>[] attributes = enumType.GetCustomAttributes(<span class="literal">false</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Print the attributes</span></span><br><span class="line">        Console.WriteLine(<span class="string">$"The enum <span class="subst">&#123;enumType.Name&#125;</span> has the following attributes:"</span>);</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> attribute <span class="keyword">in</span> attributes)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(attribute);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Check if the enum has the Flags attribute</span></span><br><span class="line">        <span class="keyword">bool</span> hasFlags = enumType.IsDefined(<span class="keyword">typeof</span>(FlagsAttribute), <span class="literal">false</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Print the result</span></span><br><span class="line">        Console.WriteLine(<span class="string">$"The enum <span class="subst">&#123;enumType.Name&#125;</span> <span class="subst">&#123;(hasFlags ? <span class="string">"has"</span> : <span class="string">"does not have"</span>)&#125;</span> the Flags attribute."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The enum Days has the following attributes:</span><br><span class="line">System.FlagsAttribute</span><br><span class="line">The enum Days has the Flags attribute.</span><br></pre></td></tr></table></figure>
 
-<p>如果您想要查看一个枚举成员是否定义了特性，您可以使用Enum.GetValues方法来获取枚举类型的所有值，然后使用FieldInfo.GetCustomAttributes方法来获取每个值上定义的所有特性，或者使用FieldInfo.IsDefined方法来检查每个值上是否定义了某个特定的特性，如下所示：</p>
+<p>如果想要查看一个枚举成员是否定义了特性，您可以使用Enum.GetValues方法来获取枚举类型的所有值，然后使用FieldInfo.GetCustomAttributes方法来获取每个值上定义的所有特性，或者使用FieldInfo.IsDefined方法来检查每个值上是否定义了某个特定的特性，如下所示：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Get the type of the enum</span></span><br><span class="line">        Type enumType = <span class="keyword">typeof</span>(Days);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Get all the values of the enum</span></span><br><span class="line">        Array values = Enum.GetValues(enumType);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// For each value, get the attributes and check if it has a specific attribute</span></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> <span class="keyword">value</span> <span class="keyword">in</span> values)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Get the field info of the value</span></span><br><span class="line">            FieldInfo fieldInfo = enumType.GetField(<span class="keyword">value</span>.ToString());</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// Get all the attributes defined on the value</span></span><br><span class="line">            <span class="keyword">object</span>[] attributes = fieldInfo.GetCustomAttributes(<span class="literal">false</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// Print the attributes</span></span><br><span class="line">            Console.WriteLine(<span class="string">$"The enum value <span class="subst">&#123;<span class="keyword">value</span>&#125;</span> has the following attributes:"</span>);</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">var</span> attribute <span class="keyword">in</span> attributes)</span><br><span class="line">            &#123;</span><br><span class="line">                Console.WriteLine(attribute);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// Check if the value has the Obsolete attribute</span></span><br><span class="line">            <span class="keyword">bool</span> hasObsolete = fieldInfo.IsDefined(<span class="keyword">typeof</span>(ObsoleteAttribute), <span class="literal">false</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// Print the result</span></span><br><span class="line">            Console.WriteLine(<span class="string">$"The enum value <span class="subst">&#123;<span class="keyword">value</span>&#125;</span> <span class="subst">&#123;(hasObsolete ? <span class="string">"has"</span> : <span class="string">"does not have"</span>)&#125;</span> the Obsolete attribute."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果为：</p>
@@ -477,15 +477,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -493,11 +489,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,7 +505,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,7 +521,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,10 +530,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,15 +569,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,18 +593,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
@@ -609,7 +601,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -617,11 +617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,11 +629,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

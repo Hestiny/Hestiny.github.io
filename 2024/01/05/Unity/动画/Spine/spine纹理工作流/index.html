@@ -16,7 +16,7 @@
 <meta property="og:description" content="Premultiplied文档alpha合成 spine是一个用于制作2D动画的软件，它支持两种纹理导出的基本工作流：Premultiplied alpha（预乘alpha）和Straight alpha（直接alpha）。 Premultiplied alpha是指图像中的RGB分量已经和alpha分量做了乘法，这样可以减少边缘的锯齿和过滤瑕疵，但是需要修改混合公式。Premultiplied">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-05T02:14:00.000Z">
-<meta property="article:modified_time" content="2024-01-08T12:12:51.564Z">
+<meta property="article:modified_time" content="2024-02-08T08:41:53.011Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Spine">
@@ -64,10 +64,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 159
+            总文章数 169
         </nav>
 		<nav>
-            总字数 <span class="post-count">99.5k</span>
+            总字数 <span class="post-count">107.7k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -189,7 +189,7 @@
 <p>spine是一个用于制作2D动画的软件，它支持两种纹理导出的基本工作流：Premultiplied alpha（预乘alpha）和Straight alpha（直接alpha）。</p>
 <p>Premultiplied alpha是指图像中的RGB分量已经和alpha分量做了乘法，这样可以减少边缘的锯齿和过滤瑕疵，但是需要修改混合公式。Premultiplied alpha的混合公式是：</p>
 <p>$$<br>RGB_{result} = RGB_{src} + RGB_{dst} \times (1 - A_{src})<br>$$</p>
-<p>Straight alpha是指图像中的RGB分量仅表示像素的颜色，与alpha分量无关，这样可以保持颜色的纯度，但是容易出现边缘的半透明和过滤瑕疵²⁴。Straight alpha的混合公式是：</p>
+<p>Straight alpha是指图像中的RGB分量仅表示像素的颜色，与alpha分量无关，这样可以保持颜色的纯度，但是容易出现边缘的半透明和过滤瑕疵。Straight alpha的混合公式是：</p>
 <p>$$<br>RGB_{result} = A_{src} \times RGB_{src} + RGB_{dst} \times (1 - A_{src})<br>$$</p>
 <p>两种工作流的选择取决于你的需求和喜好，一般来说，Premultiplied alpha更适合于有大量半透明效果的动画，而Straight alpha更适合于有纯色和锐利边缘的动画。你可以在spine的导出设置中选择你想要的工作流，也可以在Unity的纹理设置中选择Alpha Is Transparency选项来覆写全透明像素的RGB，使其和临近像素一致。</p>
 
@@ -462,15 +462,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,11 +474,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -494,7 +490,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +506,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,10 +515,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,15 +554,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,18 +578,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
@@ -594,7 +586,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,11 +602,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,11 +614,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

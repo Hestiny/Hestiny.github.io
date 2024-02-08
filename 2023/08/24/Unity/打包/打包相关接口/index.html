@@ -16,7 +16,7 @@
 <meta property="og:description" content="接口官方文档 一般在两个类中PlayerSettings EditorUserBuildSettings BuildPipeline 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-08-24T02:32:00.000Z">
-<meta property="article:modified_time" content="2024-01-08T12:12:51.567Z">
+<meta property="article:modified_time" content="2024-02-08T08:41:53.017Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 159
+            总文章数 169
         </nav>
 		<nav>
-            总字数 <span class="post-count">99.5k</span>
+            总字数 <span class="post-count">107.7k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,7 +179,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：434字 | 预计阅读时长：2分钟
+          字数：981字 | 预计阅读时长：5分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -190,6 +190,11 @@
 
 <p>build前后的监听方法 还有特性的使用方法<code>PostProcessBuild</code>和<code>PostProcessBuildAttribute</code></p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现接口的方式</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BuildReport</span> : <span class="title">IPostprocessBuildWithReport</span>, <span class="title">IPreprocessBuildWithReport</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> callbackOrder &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPreprocessBuild</span>(<span class="params">UnityEditor.Build.Reporting.BuildReport report</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// build前</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPostprocessBuild</span>(<span class="params">UnityEditor.Build.Reporting.BuildReport report</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// build完成后</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简易ios打包代码参考</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PackTool</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">MenuItem(<span class="meta-string">"打包/IOS &amp;B"</span>, false, 1)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PackToolWindow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> config = PackToolConfig.CheckSelf();</span><br><span class="line">        _packFolderPath = config.IosFolderPath;</span><br><span class="line">        _version = PlayerSettings.bundleVersion;</span><br><span class="line">        _bundleVersion = PlayerSettings.iOS.buildNumber;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> window = GetWindow&lt;PackTool&gt;(title: <span class="string">"IOS打包"</span>);</span><br><span class="line">        window.minSize = <span class="keyword">new</span> Vector2(<span class="number">600</span>, <span class="number">600</span>);</span><br><span class="line">        window.Show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _version;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _bundleVersion;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _packFolderPath;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        GUILayout.BeginVertical();</span><br><span class="line">        <span class="comment">//version</span></span><br><span class="line">        GUILayout.BeginHorizontal();</span><br><span class="line">        GUILayout.Label(<span class="string">"version:"</span>, GUILayout.Width(<span class="number">100</span>));</span><br><span class="line">        GUILayout.TextField(_version, GUILayout.ExpandWidth(<span class="literal">true</span>));</span><br><span class="line">        GUILayout.EndHorizontal();</span><br><span class="line">        <span class="comment">//bundle</span></span><br><span class="line">        GUILayout.BeginHorizontal();</span><br><span class="line">        GUILayout.Label(<span class="string">"bundle:"</span>, GUILayout.Width(<span class="number">100</span>));</span><br><span class="line">        GUILayout.TextField(_bundleVersion, GUILayout.ExpandWidth(<span class="literal">true</span>));</span><br><span class="line">        GUILayout.EndHorizontal();</span><br><span class="line">        <span class="comment">//path</span></span><br><span class="line">        GUILayout.BeginHorizontal();</span><br><span class="line">        GUILayout.Label(<span class="string">"path:"</span>, GUILayout.Width(<span class="number">100</span>));</span><br><span class="line">        GUILayout.TextField(_packFolderPath, GUILayout.ExpandWidth(<span class="literal">true</span>));</span><br><span class="line">        <span class="keyword">if</span> (GUILayout.Button(<span class="string">"选择路径"</span>, GUILayout.Width(<span class="number">100</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            _packFolderPath = EditorUtility.OpenFolderPanel(<span class="string">"选择路径"</span>, <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GUILayout.EndHorizontal();</span><br><span class="line">        <span class="keyword">if</span> (GUILayout.Button(<span class="string">"保存配置"</span>, GUILayout.Width(<span class="number">100</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            SaveConfig();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GUILayout.Space(<span class="number">20</span>);</span><br><span class="line">        <span class="comment">//打包</span></span><br><span class="line">        GUILayout.BeginHorizontal();</span><br><span class="line">        GUILayout.FlexibleSpace();</span><br><span class="line">        <span class="keyword">if</span> (GUILayout.Button(<span class="string">"快速打包"</span>, GUILayout.Width(<span class="number">200</span>), GUILayout.Height(<span class="number">50</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            SaveConfig();</span><br><span class="line">            <span class="keyword">var</span> options = <span class="keyword">new</span> BuildPlayerOptions</span><br><span class="line">            &#123;</span><br><span class="line">                locationPathName = _packFolderPath</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="comment">// if (File.Exists(options.locationPathName))</span></span><br><span class="line">            <span class="comment">// &#123;</span></span><br><span class="line">            <span class="comment">//     File.Delete(options.locationPathName);</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="keyword">var</span> option = CreateBuildPlayerOptions(options);</span><br><span class="line">            BuildPlayerWindow.DefaultBuildMethods.BuildPlayer(option);</span><br><span class="line">            EditorUtility.RevealInFinder(option.locationPathName);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GUILayout.FlexibleSpace();</span><br><span class="line">        <span class="keyword">if</span> (GUILayout.Button(<span class="string">"常规打包"</span>, GUILayout.Width(<span class="number">200</span>), GUILayout.Height(<span class="number">50</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> option = BuildPlayerWindow.DefaultBuildMethods.GetBuildPlayerOptions(<span class="keyword">default</span>);</span><br><span class="line">            BuildPlayerWindow.DefaultBuildMethods.BuildPlayer(option);</span><br><span class="line">            EditorUtility.RevealInFinder(option.locationPathName);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GUILayout.FlexibleSpace();</span><br><span class="line">        GUILayout.EndHorizontal();</span><br><span class="line"></span><br><span class="line">        GUILayout.EndVertical();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">SaveConfig</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        PlayerSettings.bundleVersion = _version;</span><br><span class="line">        PlayerSettings.iOS.buildNumber = _bundleVersion;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> BuildPlayerOptions <span class="title">CreateBuildPlayerOptions</span>(<span class="params">BuildPlayerOptions defaultBuildPlayerOptions</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        BuildPlayerOptions playerOptionsInternal = defaultBuildPlayerOptions;</span><br><span class="line">        BuildTarget selectedBuildTarget = EditorUserBuildSettings.activeBuildTarget;</span><br><span class="line">        BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;</span><br><span class="line">        playerOptionsInternal.options |= BuildOptions.CompressWithLz4;</span><br><span class="line">        <span class="keyword">bool</span> development = EditorUserBuildSettings.development;</span><br><span class="line">        <span class="keyword">if</span> (development)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.Development;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.allowDebugging &amp; development)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.AllowDebugging;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.symlinkSources)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.SymlinkSources;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.connectProfiler &amp;&amp; (development || selectedBuildTarget == BuildTarget.WSAPlayer))</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.ConnectWithProfiler;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.buildWithDeepProfilingSupport &amp; development)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.EnableDeepProfilingSupport;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.buildScriptsOnly)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.BuildScriptsOnly;</span><br><span class="line">        playerOptionsInternal.target = selectedBuildTarget;</span><br><span class="line">        playerOptionsInternal.targetGroup = buildTargetGroup;</span><br><span class="line">        <span class="keyword">string</span> bundleManifestPath = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (Directory.Exists(<span class="string">"Assets/StreamingAssets"</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">string</span> path = Path.Combine(<span class="string">"Assets/StreamingAssets"</span>, <span class="string">"StreamingAssets.manifest"</span>);</span><br><span class="line">            <span class="keyword">if</span> (File.Exists(path))</span><br><span class="line">                bundleManifestPath = path;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//默认开启CanAppendBuild</span></span><br><span class="line">        playerOptionsInternal.options |= BuildOptions.AcceptExternalModificationsToPlayer;</span><br><span class="line">        playerOptionsInternal.assetBundleManifestPath = bundleManifestPath;</span><br><span class="line">        ArrayList arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">foreach</span> (EditorBuildSettingsScene scene <span class="keyword">in</span> EditorBuildSettings.scenes)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (scene.enabled)</span><br><span class="line">                arrayList.Add(scene.path);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        playerOptionsInternal.scenes = arrayList.ToArray(<span class="keyword">typeof</span>(<span class="keyword">string</span>)) <span class="keyword">as</span> <span class="keyword">string</span>[];</span><br><span class="line">        <span class="keyword">return</span> playerOptionsInternal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[<span class="meta">CreateAssetMenu(fileName = <span class="meta-string">"PackToolConfig"</span>, menuName = <span class="meta-string">"数据/PackToolConfig"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PackToolConfig</span> : <span class="title">ScriptableObject</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> IosFolderPath = <span class="string">"/Users/fortune/Public/BuildFolder/"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> AssetPath = <span class="string">"Assets/Editor/PackTool/PackToolConfig.asset"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PackToolConfig <span class="title">CheckSelf</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (File.Exists(AssetPath))</span><br><span class="line">            <span class="keyword">return</span> AssetDatabase.LoadAssetAtPath&lt;PackToolConfig&gt;(AssetPath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个ScriptableObject的实例</span></span><br><span class="line">        PackToolConfig asset = CreateInstance&lt;PackToolConfig&gt;();</span><br><span class="line">        <span class="comment">// 将ScriptableObject的实例保存为资源文件</span></span><br><span class="line">        AssetDatabase.CreateAsset(asset, AssetPath);</span><br><span class="line">        <span class="comment">// 保存创建的资源</span></span><br><span class="line">        AssetDatabase.SaveAssets();</span><br><span class="line">        <span class="comment">// 刷新编辑器界面</span></span><br><span class="line">        AssetDatabase.Refresh();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> AssetDatabase.LoadAssetAtPath&lt;PackToolConfig&gt;(AssetPath);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -456,15 +461,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,11 +473,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,7 +489,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,7 +505,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,10 +514,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,15 +553,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,18 +577,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
@@ -588,7 +585,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,11 +601,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,11 +613,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

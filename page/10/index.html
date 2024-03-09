@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 169
+            总文章数 174
         </nav>
 		<nav>
-            总字数 <span class="post-count">107.7k</span>
+            总字数 <span class="post-count">109.1k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,408 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/坑/Unity关于点击事件的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/27/Unity/%E5%9D%91/Unity%E5%85%B3%E4%BA%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%9D%91/">unity中关于点击事件Execute的坑</a>
+    </h1>
+  
+
+        
+        <a href="/2023/09/27/Unity/%E5%9D%91/Unity%E5%85%B3%E4%BA%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%9D%91/" class="archive-article-date">
+  	<time datetime="2023-09-27T04:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-27</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：483字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>因为部分弹窗需要点击任何地方关闭 所有想着用事件穿透来处理</p>
+<p>代码:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ClickPass</span> : <span class="title">MonoBehaviour</span>, <span class="title">IPointerClickHandler</span></span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">public</span> UnityEvent callAction = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPointerClick</span>(<span class="params">PointerEventData eventData</span>)</span></span><br><span class="line"><span class="function"></span>     &#123;</span><br><span class="line">         callAction?.Invoke();</span><br><span class="line">         PassEvent(eventData, ExecuteEvents.pointerClickHandler);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> PassEvent&lt;T&gt;(PointerEventData data, ExecuteEvents.EventFunction&lt;T&gt; function)</span><br><span class="line">         <span class="keyword">where</span> T : IEventSystemHandler</span><br><span class="line">     &#123;</span><br><span class="line">         List&lt;RaycastResult&gt; results = <span class="keyword">new</span> List&lt;RaycastResult&gt;();</span><br><span class="line">         EventSystem.current.RaycastAll(data, results);</span><br><span class="line">         GameObject current = data.pointerCurrentRaycast.gameObject;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; results.Count; i++)</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="keyword">if</span> (current != results[i].gameObject)</span><br><span class="line">             &#123;</span><br><span class="line">                 ExecuteEvents.Execute(results[i].gameObject, data, function);</span><br><span class="line">                 <span class="keyword">return</span>;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>基本上都是可以正常触发按钮的 但是出现了部分不正常的情况</p>
+<p>Unity的事件代码</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> Execute&lt;T&gt;(GameObject target, BaseEventData eventData, EventFunction&lt;T&gt; functor) <span class="keyword">where</span> T : IEventSystemHandler</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> internalHandlers = ListPool&lt;IEventSystemHandler&gt;.Get();</span><br><span class="line">    GetEventList&lt;T&gt;(target, internalHandlers);</span><br><span class="line">    <span class="comment">//  if (s_InternalHandlers.Count &gt; 0)</span></span><br><span class="line">    <span class="comment">//      Debug.Log("Executinng " + typeof (T) + " on " + target);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> internalHandlersCount = internalHandlers.Count;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; internalHandlersCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        T arg;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            arg = (T)internalHandlers[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> temp = internalHandlers[i];</span><br><span class="line">            Debug.LogException(<span class="keyword">new</span> Exception(<span class="keyword">string</span>.Format(<span class="string">"Type &#123;0&#125; expected &#123;1&#125; received."</span>, <span class="keyword">typeof</span>(T).Name, temp.GetType().Name), e));</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            functor(arg, eventData);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> handlerCount = internalHandlers.Count;</span><br><span class="line">    ListPool&lt;IEventSystemHandler&gt;.Release(internalHandlers);</span><br><span class="line">    <span class="keyword">return</span> handlerCount &gt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>正常的透传会在  <code>GetEventList&lt;T&gt;(target, internalHandlers);</code>方法之后获取到数量的 但是不正常的情况是获取到了检测的物体 但是获取不到事件</p>
+<ul>
+<li>添加的tmp拦截了button的点击(表现上是这样的 实际上tmp的检测是关掉的 所以十分诡异) 一旦隐藏tmp就正常了 不过这还不是最坑的 因为这个tmp重新建一个就又正常了 属实离谱这个暂时没有找到解决方法 实际上是没找到问题点</li>
+<li>button上挂在image 只是在其子物体上挂image 依旧会获取不到事件 只能检测到点击到了物体 但是无法获取事件 必须在btn自身挂上image才可以获取到</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/09/27/Unity/%E5%9D%91/Unity%E5%85%B3%E4%BA%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%9D%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/坑/UnitySetParent" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/27/Unity/%E5%9D%91/UnitySetParent/">unity中setParent需要注意的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/09/27/Unity/%E5%9D%91/UnitySetParent/" class="archive-article-date">
+  	<time datetime="2023-09-27T04:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-27</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：115字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于SetParent可能引发的问题"><a href="#关于SetParent可能引发的问题" class="headerlink" title="关于SetParent可能引发的问题"></a>关于SetParent可能引发的问题</h2><p>一般在创建obj的时候我们都会习惯的归一化所有的属性 避免出现问题<br>但是在修改父节点之后依旧可能会出现问题 所以需要重新修改<br>不然在手机上如果不同屏幕出现适配不同的时候就会将缩放调整 或者位置调整 发生一些编辑器上没有出现的问题</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/09/27/Unity/%E5%9D%91/UnitySetParent/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-code/godot/godot删除atlas文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/25/code/godot/godot%E5%88%A0%E9%99%A4atlas%E6%96%87%E4%BB%B6/">godot删除atlas文件并复原原本文件</a>
+    </h1>
+  
+
+        
+        <a href="/2023/09/25/code/godot/godot%E5%88%A0%E9%99%A4atlas%E6%96%87%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2023-09-25T13:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-25</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：181字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>godot4.1</p>
+<h2 id="创建atlas"><a href="#创建atlas" class="headerlink" title="创建atlas"></a>创建atlas</h2><p>虽然感觉应该有别的操作 但是给问题解决了就先记录一下</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">godot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/09/25/code/godot/godot%E5%88%A0%E9%99%A4atlas%E6%96%87%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-code/godot/godotAnimation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/24/code/godot/godotAnimation/">godot4.1animationPlayer和animationtree</a>
+    </h1>
+  
+
+        
+        <a href="/2023/09/24/code/godot/godotAnimation/" class="archive-article-date">
+  	<time datetime="2023-09-23T17:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：195字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在animationplayer中可以创建多个动画然后再animationtree中决定这些动画的过渡 就像是unity中animation和animator的关系一样</p>
+<ul>
+<li>animationplayer中播放动画脚本<br>  <code>AnimationPlayer.Play(&quot;fire&quot;);</code></li>
+<li>animationTree<br>  <img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/godot/animation/0.png" alt="animationtree"><br>  里面有几个简单的过渡 一个是立即过渡 一个是播放完过渡 还有就是是否自动过渡 几个常用的属性在图中标出了<br>  在unity中常用的是用某个值来确定动画是否过渡 在godot在混合动画中实现 现在还没摸 感觉不太好玩 等以后吧<br>  脚本:<br>  如果场景中没有设置激活记得脚本激活 如果想用playback还得使用start方法 没研究先这样把<br>  <code>AnimationTree.Active = true;</code><br>  <code>_playback = (AnimationNodeStateMachinePlayback)_animationTree.Get(&quot;parameters/playback&quot;);</code><br>  <code>_playback.Travel(&quot;fire&quot;);</code></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">godot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/09/24/code/godot/godotAnimation/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-code/godot/godotYsort问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/24/code/godot/godotYsort%E9%97%AE%E9%A2%98/">godot Y Sort的使用</a>
+    </h1>
+  
+
+        
+        <a href="/2023/09/24/code/godot/godotYsort%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2023-09-23T17:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：133字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Y-Sort"><a href="#Y-Sort" class="headerlink" title="Y Sort"></a>Y Sort</h2><p>在unity中关于2d的排序 可以在项目中设置排序的轴 默认为z轴 即ui中的深度排列类似 如果在场景中想实现伪透视就需要改为y轴<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/godot/ySort/0.png" alt="0"><br>不过这是针对整个项目的 如果想特殊调整就得在精灵中调整<br>再看看godot中对这个是怎么使用的<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/godot/ySort/1.png" alt="1"><br>大概和unity相反 如果想自定义排序就选择这个 注意排序的是这个节点下的子物体 而非该物体</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">godot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/09/24/code/godot/godotYsort%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/性能优化/unityADB调试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -601,444 +1003,9 @@
 
 
   
-    <article id="post-Unity/测试/unity测试用例和profile相关探索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/05/Unity/%E6%B5%8B%E8%AF%95/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/">unity测试用例和profile工具相关探索</a>
-    </h1>
-  
-
-        
-        <a href="/2023/09/05/Unity/%E6%B5%8B%E8%AF%95/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/" class="archive-article-date">
-  	<time datetime="2023-09-05T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-05</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：274字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p>起初研究测试用例完全是因为想在测试性能时候直接跑相关的方法 然后输出性能 然后跑去研究了一下 发现并不能满足我的需求<br>主要的局限在于你需要下载一个unity的内部集成的测试NUnit插件 然后需要新创建一个程序集来使用 并不能像我想的那样直接调用我想要的程序集 其实程序集这块还没搞太熟 先放这了</p>
-<h2 id="profile"><a href="#profile" class="headerlink" title="profile"></a>profile</h2><p>profile可以抓取很多的性能问题 然后向自己打上标记 方便观察和比较不同代码之间性能的问题其实就两句代码 巨简单封装可能都不太需要<br>记住一个<code>BeginSample</code> 对应一个<code>EndSample</code> 和大小括号一样<br>之前不知道看谁的文档两个begin一个end 给我都整懵了 还测试半天太误人子弟了</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Profiler.BeginSample(name); </span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line">Profiler.EndSample();</span><br></pre></td></tr></table></figure>
-
-<h2 id="直接记录运行时间"><a href="#直接记录运行时间" class="headerlink" title="直接记录运行时间"></a>直接记录运行时间</h2><p>通过<code>Stopwatch</code>类来记录直接返回<code>stopwatch.ElapsedMilliseconds</code>就行了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/09/05/Unity/%E6%B5%8B%E8%AF%95/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-code/git/Githhub超时" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/08/30/code/git/Githhub%E8%B6%85%E6%97%B6/">github超时问题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/08/30/code/git/Githhub%E8%B6%85%E6%97%B6/" class="archive-article-date">
-  	<time datetime="2023-08-30T07:06:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-30</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：263字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题复现"><a href="#问题复现" class="headerlink" title="问题复现"></a>问题复现</h2><p>简单复现一下当时问题环境</p>
-<ul>
-<li>VPN是连上的 谷歌正常访问 github网站也是正常访问的</li>
-<li>git无法push和clone 一直是超时提示</li>
-</ul>
-<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p><a href="https://blog.csdn.net/qq_44985985/article/details/124178193" target="_blank" rel="noopener">解决方法</a><br>简而言之就是你现在的github ip地址解析出问题了 需要重新设置 可以看一下你的host是不是自己设置了<br>如果没有查一下github 连通性比较好的ip 这里有网站可以帮忙<a href="https://www.ipaddress.com" target="_blank" rel="noopener">查询ip</a></p>
-<p>如果说没有vpn可以试一下这个网站<a href="https://ping.chinaz.com/github.com" target="_blank" rel="noopener">国内网站ip连通性查询</a></p>
-<p>修改host文件</p>
-<p><strong>mac</strong><br>command+shift+g 输入<code>etc/host</code> 复制host文件出来 然后新增github ip 将复制的文件替换回去就行了</p>
-<p><strong>window</strong><br>直接用power工具 里面有改host的工具</p>
-<h2 id="网站使用方法"><a href="#网站使用方法" class="headerlink" title="网站使用方法"></a>网站使用方法</h2><p>国内的网址使用起来还是很简单的 毕竟都是中文<br>主要说一下ipaddress网站 其实只要点一下翻译一样很简单 或者仔细找一下 简单记录一下<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/1.png" alt="入口"><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/2.png" alt="入口"><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/3.png" alt="入口"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/08/30/code/git/Githhub%E8%B6%85%E6%97%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/工具/unity拾取文件插件UnityNativeFilePicker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/08/26/Unity/%E5%B7%A5%E5%85%B7/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/">Unity拾取文件插件</a>
-    </h1>
-  
-
-        
-        <a href="/2023/08/26/Unity/%E5%B7%A5%E5%85%B7/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/" class="archive-article-date">
-  	<time datetime="2023-08-26T02:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：1.3k字 | 预计阅读时长：6分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="UnityNativeFilePicker"><a href="#UnityNativeFilePicker" class="headerlink" title="UnityNativeFilePicker"></a>UnityNativeFilePicker</h2><p><a href="https://github.com/yasirkula/UnityNativeFilePicker" target="_blank" rel="noopener">github地址</a></p>
-<h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><p>可以实现在ios和Android设备上打开默认的文件管理器 然后导入或者导出文件(注意只有文件 不包含文件夹)  </p>
-<h2 id="常用的接口"><a href="#常用的接口" class="headerlink" title="常用的接口"></a>常用的接口</h2><ul>
-<li><code>NativeFilePicker.Permission NativeFilePicker.RequestPermission( bool readPermissionOnly = false )</code> 读取用户是否授予了读写权限 提供中间操作空间 防止用户直接点击拒绝权限</li>
-<li><code>NativeFilePicker.IsFilePickerBusy()</code> 判断当前是否已经打开了文件夹拾取 因为所有的文件导入导出接口都异步的</li>
-<li><code>NativeFilePicker.ConvertExtensionToFileType()</code> 参数直接写文件后拓展就行 例如zip 会自动转换为Android标记的文档类型</li>
-<li><code>NativeFilePicker.ExportFile( string filePath, FilesExportedCallback callback = null )</code> 导出文件 ExportMultipleFiles导出多个文件类似</li>
-<li><code>PickFile( FilePickedCallback callback, params string[] allowedFileTypes )</code> 导入文件 PickMultipleFiles导入多个文件类似 注意callback会传入当前导入文档的绝对路径 但是这个只能在这callback中进行文件夹相关操作 在外部是没有效果的(可以是因为异步的原因没有拿到真实的文件夹路径 不过应该还是不行 因为作者说了只是提供了沙盒的 <strong>如果想对文件进行操作 直接导入到本地 然后再操作就行了 不用在这个地方纠结</strong>)</li>
-</ul>
-<h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><p>看官方文档就行 在unity商店中也有上架 就不多说了  </p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
-<li>在安卓中读写文档貌似不需要判断是否创建了文件夹 但是在mac上是一定要判断的 不然就会报找不到目标路径的错误暂时没有过多的想了
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/08/26/Unity/%E5%B7%A5%E5%85%B7/unity%E6%8B%BE%E5%8F%96%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6UnityNativeFilePicker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/打包/打包相关接口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/08/24/Unity/%E6%89%93%E5%8C%85/%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/">打包相关接口</a>
-    </h1>
-  
-
-        
-        <a href="/2023/08/24/Unity/%E6%89%93%E5%8C%85/%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/" class="archive-article-date">
-  	<time datetime="2023-08-24T02:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-24</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：981字 | 预计阅读时长：5分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p><a href="https://docs.unity3d.com/ScriptReference/BuildPlayerWindow.html" target="_blank" rel="noopener">官方文档</a></p>
-<p>一般在两个类中<code>PlayerSettings</code> <code>EditorUserBuildSettings</code> <code>BuildPipeline</code></p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">PlayerSettings.bundleVersion;<span class="comment">//Version</span></span><br><span class="line">PlayerSettings.Android.bundleVersionCode;<span class="comment">//bundleVersion</span></span><br><span class="line">ditorUserBuildSettings.buildAppBundle;<span class="comment">//abb 谷歌商店包</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Build</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    BuildPlayerWindow.ShowBuildPlayerWindow();<span class="comment">//打开打包窗口</span></span><br><span class="line">    BuildPlayerOptions option = BuildPlayerWindow.DefaultBuildMethods.GetBuildPlayerOptions(<span class="keyword">new</span>());<span class="comment">//可以设置部分默认的参数 这是一个struct</span></span><br><span class="line">    BuildPlayerWindow.DefaultBuildMethods.BuildPlayer(option);<span class="comment">//用指定方案打包</span></span><br><span class="line">    <span class="keyword">var</span> path = Path.GetDirectoryName(option.locationPathName);</span><br><span class="line">    System.Diagnostics.Process.Start(path);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">BuildByCustom</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> aab= EditorUserBuildSettings.buildAppBundle;</span><br><span class="line">    <span class="keyword">var</span> tmp = <span class="keyword">new</span> BuildPlayerOptions();</span><br><span class="line">    <span class="keyword">if</span> (aab)</span><br><span class="line">    &#123;</span><br><span class="line">        tmp.locationPathName = AppConfig.S.aabFolderPath + <span class="string">"/"</span> + packName + <span class="string">".aab"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        tmp.locationPathName = AppConfig.S.packFolderPath + <span class="string">"/"</span> + packName + <span class="string">".apk"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//如果不删除 打包的时候会报错</span></span><br><span class="line">    <span class="keyword">if</span> (File.Exists(tmp.locationPathName))</span><br><span class="line">    &#123;</span><br><span class="line">        File.Delete(tmp.locationPathName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    BuildPlayerOptions option = CreateBuildPlayerOptions(tmp);</span><br><span class="line">    BuildPlayerWindow.DefaultBuildMethods.BuildPlayer(option);</span><br><span class="line">    <span class="keyword">var</span> path = Path.GetDirectoryName(option.locationPathName);</span><br><span class="line">    <span class="keyword">if</span> (path != <span class="literal">null</span>) System.Diagnostics.Process.Start(path);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将DefaultBuildMethods中 GetBuildPlayerOptions方法部分的代码剥离出来 主要就是自己设置输出路径 这里的打包方案可以用第三方方案进行处理 这里只是简单的使用内置打包管线</span></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> BuildPlayerOptions <span class="title">CreateBuildPlayerOptions</span>(<span class="params">BuildPlayerOptions defaultBuildPlayerOptions</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            BuildPlayerOptions playerOptionsInternal = defaultBuildPlayerOptions;</span><br><span class="line">            BuildTarget selectedBuildTarget = EditorUserBuildSettings.activeBuildTarget;</span><br><span class="line">            BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.CompressWithLz4;</span><br><span class="line">            <span class="keyword">bool</span> development = EditorUserBuildSettings.development;</span><br><span class="line">            <span class="keyword">if</span> (development)</span><br><span class="line">                playerOptionsInternal.options |= BuildOptions.Development;</span><br><span class="line">            <span class="keyword">if</span> (EditorUserBuildSettings.allowDebugging &amp; development)</span><br><span class="line">                playerOptionsInternal.options |= BuildOptions.AllowDebugging;</span><br><span class="line">            <span class="keyword">if</span> (EditorUserBuildSettings.symlinkSources)</span><br><span class="line">                playerOptionsInternal.options |= BuildOptions.SymlinkSources;</span><br><span class="line">            <span class="keyword">if</span> (EditorUserBuildSettings.connectProfiler &amp;&amp; (development || selectedBuildTarget == BuildTarget.WSAPlayer))</span><br><span class="line">                playerOptionsInternal.options |= BuildOptions.ConnectWithProfiler;</span><br><span class="line">            <span class="keyword">if</span> (EditorUserBuildSettings.buildWithDeepProfilingSupport &amp; development)</span><br><span class="line">                playerOptionsInternal.options |= BuildOptions.EnableDeepProfilingSupport;</span><br><span class="line">            <span class="keyword">if</span> (EditorUserBuildSettings.buildScriptsOnly)</span><br><span class="line">                playerOptionsInternal.options |= BuildOptions.BuildScriptsOnly;</span><br><span class="line">            playerOptionsInternal.target = selectedBuildTarget;</span><br><span class="line">            playerOptionsInternal.targetGroup = buildTargetGroup;</span><br><span class="line">            <span class="keyword">string</span> bundleManifestPath = <span class="string">""</span>;</span><br><span class="line">            <span class="keyword">if</span> (Directory.Exists(<span class="string">"Assets/StreamingAssets"</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">string</span> path = Path.Combine(<span class="string">"Assets/StreamingAssets"</span>, <span class="string">"StreamingAssets.manifest"</span>);</span><br><span class="line">                <span class="keyword">if</span> (File.Exists(path))</span><br><span class="line">                    bundleManifestPath = path;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            playerOptionsInternal.assetBundleManifestPath = bundleManifestPath;</span><br><span class="line">            ArrayList arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">            <span class="keyword">foreach</span> (EditorBuildSettingsScene scene <span class="keyword">in</span> EditorBuildSettings.scenes)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (scene.enabled)</span><br><span class="line">                    arrayList.Add((<span class="keyword">object</span>)scene.path);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            playerOptionsInternal.scenes = arrayList.ToArray(<span class="keyword">typeof</span>(<span class="keyword">string</span>)) <span class="keyword">as</span> <span class="keyword">string</span>[];</span><br><span class="line">            <span class="keyword">return</span> playerOptionsInternal;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<p>build前后的监听方法 还有特性的使用方法<code>PostProcessBuild</code>和<code>PostProcessBuildAttribute</code></p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实现接口的方式</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BuildReport</span> : <span class="title">IPostprocessBuildWithReport</span>, <span class="title">IPreprocessBuildWithReport</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> callbackOrder &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPreprocessBuild</span>(<span class="params">UnityEditor.Build.Reporting.BuildReport report</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// build前</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPostprocessBuild</span>(<span class="params">UnityEditor.Build.Reporting.BuildReport report</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// build完成后</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>简易ios打包代码参考</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PackTool</span> : <span class="title">EditorWindow</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">MenuItem(<span class="meta-string">"打包/IOS &amp;B"</span>, false, 1)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PackToolWindow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> config = PackToolConfig.CheckSelf();</span><br><span class="line">        _packFolderPath = config.IosFolderPath;</span><br><span class="line">        _version = PlayerSettings.bundleVersion;</span><br><span class="line">        _bundleVersion = PlayerSettings.iOS.buildNumber;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> window = GetWindow&lt;PackTool&gt;(title: <span class="string">"IOS打包"</span>);</span><br><span class="line">        window.minSize = <span class="keyword">new</span> Vector2(<span class="number">600</span>, <span class="number">600</span>);</span><br><span class="line">        window.Show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _version;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _bundleVersion;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _packFolderPath;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">OnGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        GUILayout.BeginVertical();</span><br><span class="line">        <span class="comment">//version</span></span><br><span class="line">        GUILayout.BeginHorizontal();</span><br><span class="line">        GUILayout.Label(<span class="string">"version:"</span>, GUILayout.Width(<span class="number">100</span>));</span><br><span class="line">        GUILayout.TextField(_version, GUILayout.ExpandWidth(<span class="literal">true</span>));</span><br><span class="line">        GUILayout.EndHorizontal();</span><br><span class="line">        <span class="comment">//bundle</span></span><br><span class="line">        GUILayout.BeginHorizontal();</span><br><span class="line">        GUILayout.Label(<span class="string">"bundle:"</span>, GUILayout.Width(<span class="number">100</span>));</span><br><span class="line">        GUILayout.TextField(_bundleVersion, GUILayout.ExpandWidth(<span class="literal">true</span>));</span><br><span class="line">        GUILayout.EndHorizontal();</span><br><span class="line">        <span class="comment">//path</span></span><br><span class="line">        GUILayout.BeginHorizontal();</span><br><span class="line">        GUILayout.Label(<span class="string">"path:"</span>, GUILayout.Width(<span class="number">100</span>));</span><br><span class="line">        GUILayout.TextField(_packFolderPath, GUILayout.ExpandWidth(<span class="literal">true</span>));</span><br><span class="line">        <span class="keyword">if</span> (GUILayout.Button(<span class="string">"选择路径"</span>, GUILayout.Width(<span class="number">100</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            _packFolderPath = EditorUtility.OpenFolderPanel(<span class="string">"选择路径"</span>, <span class="string">""</span>, <span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GUILayout.EndHorizontal();</span><br><span class="line">        <span class="keyword">if</span> (GUILayout.Button(<span class="string">"保存配置"</span>, GUILayout.Width(<span class="number">100</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            SaveConfig();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GUILayout.Space(<span class="number">20</span>);</span><br><span class="line">        <span class="comment">//打包</span></span><br><span class="line">        GUILayout.BeginHorizontal();</span><br><span class="line">        GUILayout.FlexibleSpace();</span><br><span class="line">        <span class="keyword">if</span> (GUILayout.Button(<span class="string">"快速打包"</span>, GUILayout.Width(<span class="number">200</span>), GUILayout.Height(<span class="number">50</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            SaveConfig();</span><br><span class="line">            <span class="keyword">var</span> options = <span class="keyword">new</span> BuildPlayerOptions</span><br><span class="line">            &#123;</span><br><span class="line">                locationPathName = _packFolderPath</span><br><span class="line">            &#125;;</span><br><span class="line">            <span class="comment">// if (File.Exists(options.locationPathName))</span></span><br><span class="line">            <span class="comment">// &#123;</span></span><br><span class="line">            <span class="comment">//     File.Delete(options.locationPathName);</span></span><br><span class="line">            <span class="comment">// &#125;</span></span><br><span class="line">            <span class="keyword">var</span> option = CreateBuildPlayerOptions(options);</span><br><span class="line">            BuildPlayerWindow.DefaultBuildMethods.BuildPlayer(option);</span><br><span class="line">            EditorUtility.RevealInFinder(option.locationPathName);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GUILayout.FlexibleSpace();</span><br><span class="line">        <span class="keyword">if</span> (GUILayout.Button(<span class="string">"常规打包"</span>, GUILayout.Width(<span class="number">200</span>), GUILayout.Height(<span class="number">50</span>)))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> option = BuildPlayerWindow.DefaultBuildMethods.GetBuildPlayerOptions(<span class="keyword">default</span>);</span><br><span class="line">            BuildPlayerWindow.DefaultBuildMethods.BuildPlayer(option);</span><br><span class="line">            EditorUtility.RevealInFinder(option.locationPathName);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        GUILayout.FlexibleSpace();</span><br><span class="line">        GUILayout.EndHorizontal();</span><br><span class="line"></span><br><span class="line">        GUILayout.EndVertical();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">SaveConfig</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        PlayerSettings.bundleVersion = _version;</span><br><span class="line">        PlayerSettings.iOS.buildNumber = _bundleVersion;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> BuildPlayerOptions <span class="title">CreateBuildPlayerOptions</span>(<span class="params">BuildPlayerOptions defaultBuildPlayerOptions</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        BuildPlayerOptions playerOptionsInternal = defaultBuildPlayerOptions;</span><br><span class="line">        BuildTarget selectedBuildTarget = EditorUserBuildSettings.activeBuildTarget;</span><br><span class="line">        BuildTargetGroup buildTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;</span><br><span class="line">        playerOptionsInternal.options |= BuildOptions.CompressWithLz4;</span><br><span class="line">        <span class="keyword">bool</span> development = EditorUserBuildSettings.development;</span><br><span class="line">        <span class="keyword">if</span> (development)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.Development;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.allowDebugging &amp; development)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.AllowDebugging;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.symlinkSources)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.SymlinkSources;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.connectProfiler &amp;&amp; (development || selectedBuildTarget == BuildTarget.WSAPlayer))</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.ConnectWithProfiler;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.buildWithDeepProfilingSupport &amp; development)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.EnableDeepProfilingSupport;</span><br><span class="line">        <span class="keyword">if</span> (EditorUserBuildSettings.buildScriptsOnly)</span><br><span class="line">            playerOptionsInternal.options |= BuildOptions.BuildScriptsOnly;</span><br><span class="line">        playerOptionsInternal.target = selectedBuildTarget;</span><br><span class="line">        playerOptionsInternal.targetGroup = buildTargetGroup;</span><br><span class="line">        <span class="keyword">string</span> bundleManifestPath = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (Directory.Exists(<span class="string">"Assets/StreamingAssets"</span>))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">string</span> path = Path.Combine(<span class="string">"Assets/StreamingAssets"</span>, <span class="string">"StreamingAssets.manifest"</span>);</span><br><span class="line">            <span class="keyword">if</span> (File.Exists(path))</span><br><span class="line">                bundleManifestPath = path;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//默认开启CanAppendBuild</span></span><br><span class="line">        playerOptionsInternal.options |= BuildOptions.AcceptExternalModificationsToPlayer;</span><br><span class="line">        playerOptionsInternal.assetBundleManifestPath = bundleManifestPath;</span><br><span class="line">        ArrayList arrayList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">foreach</span> (EditorBuildSettingsScene scene <span class="keyword">in</span> EditorBuildSettings.scenes)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (scene.enabled)</span><br><span class="line">                arrayList.Add(scene.path);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        playerOptionsInternal.scenes = arrayList.ToArray(<span class="keyword">typeof</span>(<span class="keyword">string</span>)) <span class="keyword">as</span> <span class="keyword">string</span>[];</span><br><span class="line">        <span class="keyword">return</span> playerOptionsInternal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[<span class="meta">CreateAssetMenu(fileName = <span class="meta-string">"PackToolConfig"</span>, menuName = <span class="meta-string">"数据/PackToolConfig"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PackToolConfig</span> : <span class="title">ScriptableObject</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> IosFolderPath = <span class="string">"/Users/fortune/Public/BuildFolder/"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> AssetPath = <span class="string">"Assets/Editor/PackTool/PackToolConfig.asset"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PackToolConfig <span class="title">CheckSelf</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (File.Exists(AssetPath))</span><br><span class="line">            <span class="keyword">return</span> AssetDatabase.LoadAssetAtPath&lt;PackToolConfig&gt;(AssetPath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个ScriptableObject的实例</span></span><br><span class="line">        PackToolConfig asset = CreateInstance&lt;PackToolConfig&gt;();</span><br><span class="line">        <span class="comment">// 将ScriptableObject的实例保存为资源文件</span></span><br><span class="line">        AssetDatabase.CreateAsset(asset, AssetPath);</span><br><span class="line">        <span class="comment">// 保存创建的资源</span></span><br><span class="line">        AssetDatabase.SaveAssets();</span><br><span class="line">        <span class="comment">// 刷新编辑器界面</span></span><br><span class="line">        AssetDatabase.Refresh();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> AssetDatabase.LoadAssetAtPath&lt;PackToolConfig&gt;(AssetPath);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/08/24/Unity/%E6%89%93%E5%8C%85/%E6%89%93%E5%8C%85%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/编辑器/Odin简单使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/08/24/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Odin%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">Odin简单使用</a>
-    </h1>
-  
-
-        
-        <a href="/2023/08/24/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Odin%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2023-08-24T01:59:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-24</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：448字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="想要实现的界面"><a href="#想要实现的界面" class="headerlink" title="想要实现的界面"></a>想要实现的界面</h2><p><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Odin/packWindow.png" alt="预览"></p>
-<h2 id="使用的控件-特性"><a href="#使用的控件-特性" class="headerlink" title="使用的控件(特性)"></a>使用的控件(特性)</h2><ul>
-<li>Button</li>
-<li>LabelText</li>
-<li>Space</li>
-<li>InfoBox</li>
-</ul>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>入门需要知道:</p>
-<ul>
-<li>创建的窗口类继承自<code>OdinEditorWindow</code></li>
-<li>所有的Public变量都会输出到窗口 例如string 和int等 如果不想显示就设置为private</li>
-<li>如果不设置布局 那么排列顺序就是类的声明顺序(所以button总是默认在最下面 因为是方法)</li>
-</ul>
-<p>普通的string bool int都是可以直接输出到面板的 如果想修改这个变量名 在上面加上 <code>[LabelText(&quot;你想要的名字&quot;)]</code><br>其他详细的看odin的使用示例就行了 这里只看了自己需要的</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果在编译窗口时使用了unity的自带的变量<code>PlayerSettings.bundleVersion</code> 需要确保窗口是关闭的 否则将会报错导致窗口无法打开<br>解决方法 将该窗口关闭 然后重新编译一次就正常了<br>不能用public变量来初始化承接unity自带变量 也是会报错的 需要用private static 变量来承接 这也是为什么unity的自带变量会报错的原因 有可能跟快速编译有关 静态变量没有销毁导致的 暂时没有测 后面再看吧</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PackTool</span> : <span class="title">OdinEditorWindow</span></span><br><span class="line">   &#123;</span><br><span class="line">       [<span class="meta">MenuItem(<span class="meta-string">"配置/--"</span>, false, 1)</span>]</span><br><span class="line">       <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShowPackWindow</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">           <span class="keyword">var</span> window = GetWindow&lt;PackTool&gt;();</span><br><span class="line">           window.name = <span class="string">"--"</span>;</span><br><span class="line">           window.position = GUIHelper.GetEditorWindowRect().AlignCenter(<span class="number">600</span>, <span class="number">600</span>);</span><br><span class="line">           window.Show();</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _version = PlayerSettings.bundleVersion;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> _bundleVersion = PlayerSettings.Android.bundleVersionCode;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">bool</span> _abb = EditorUserBuildSettings.buildAppBundle;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> version = _version;</span><br><span class="line">       [<span class="meta">LabelText(<span class="meta-string">"BundleVersion"</span>)</span>] <span class="keyword">public</span> <span class="keyword">int</span> bundleVersion = _bundleVersion;</span><br><span class="line"></span><br><span class="line">       [<span class="meta">Space(10)</span>] <span class="keyword">public</span> <span class="keyword">bool</span> abb = _abb;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span> _log = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">       [<span class="meta">HorizontalGroup(<span class="meta-string">"pack"</span>)</span>]</span><br><span class="line">       [<span class="meta">Button(<span class="meta-string">"资源Build"</span>)</span>]</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ResBuild</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       [<span class="meta">HorizontalGroup(<span class="meta-string">"pack"</span>)</span>]</span><br><span class="line">       [<span class="meta">Button(<span class="meta-string">"←先打资源 打包"</span>)</span>]</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Build</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>       &#123;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       [<span class="meta">InfoBox(<span class="meta-string">"留意查看输出有没有报错 (console窗口不是这个窗口)"</span>, InfoMessageType.Warning)</span>] [TextArea]</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> packLog = _log;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/08/24/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Odin%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1153,11 +1120,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1181,15 +1152,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,11 +1168,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,7 +1184,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,15 +1192,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,19 +1224,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1269,19 +1248,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">

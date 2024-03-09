@@ -16,7 +16,7 @@
 <meta property="og:description" content="setlookat参考api解释 其中需要注意的 在设置2d平面 PathMode.TopDown2D参数时 setlookat的forwardDirection和up与Full3D模式是不一样的在TopDown2D中up才是路径的朝向 而forwardDirection才是上方向 而且此时默认的朝向路径方向为y轴示例代码 y轴为正方向 沿着路径前进go.DOPath(path, 3f, Path">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-04T02:11:00.000Z">
-<meta property="article:modified_time" content="2024-01-08T12:12:51.565Z">
+<meta property="article:modified_time" content="2024-03-09T07:16:29.135Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="dotween">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 169
+            总文章数 174
         </nav>
 		<nav>
-            总字数 <span class="post-count">107.7k</span>
+            总字数 <span class="post-count">109.1k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -187,7 +187,7 @@
         <p><a href="https://www.karvan1230.com/entry/2020/09/01/223433" target="_blank" rel="noopener">setlookat参考</a><br><a href="https://blog.csdn.net/zcaixzy5211314/article/details/84988535" target="_blank" rel="noopener">api解释</a></p>
 <p>其中需要注意的</p>
 <p>在设置2d平面 PathMode.TopDown2D参数时 setlookat的forwardDirection和up与Full3D模式是不一样的<br>在TopDown2D中up才是路径的朝向 而forwardDirection才是上方向 而且此时默认的朝向路径方向为y轴<br>示例代码 y轴为正方向 沿着路径前进<br><code>go.DOPath(path, 3f, PathType.CubicBezier,PathMode.TopDown2D,5, Color.red).SetLookAt(0.1f, Vector3.forward, Vector3.right);</code></p>
-<p>如果发现在路径移动过场中疯狂抽搐 并且到终点莫名的调整方向 需要检查次数的位置坐标是否离场景中心过大 如果过大就会出现这个问题</p>
+<p>如果发现在路径移动过场中疯狂抽搐 并且到终点莫名的调整方向 需要检查起始的位置坐标是否离场景中心过大 如果过大就会出现这个问题</p>
 
       
 
@@ -462,11 +462,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,15 +494,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,11 +510,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,7 +526,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,15 +534,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,19 +566,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,19 +590,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 174
+            总文章数 179
         </nav>
 		<nav>
-            总字数 <span class="post-count">109.1k</span>
+            总字数 <span class="post-count">110.3k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,340 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Unity/编辑器/vs设置默认字符集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/12/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vs%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%AD%97%E7%AC%A6%E9%9B%86/">vs 字符集设置</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/12/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vs%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%AD%97%E7%AC%A6%E9%9B%86/" class="archive-article-date">
+  	<time datetime="2024-03-12T13:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-12</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：99字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://learn.microsoft.com/en-us/visualstudio/ide/create-portable-custom-editor-options?view=vs-2019" target="_blank" rel="noopener">C#字符集官方文档</a></p>
+<p>添加这个文件 需要注意 如果发现字符集还是没有改 尝试删除现有的内容重新写 然后再保存查看 最好把编辑器重启一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 如果要从更高级别的目录继承 .editorconfig 设置，请删除以下行</span><br><span class="line">root &#x3D; true</span><br><span class="line"></span><br><span class="line"># c# 文件</span><br><span class="line">[*.cs]</span><br><span class="line"></span><br><span class="line">#### Core EditorConfig 选项 ####</span><br><span class="line">end_of_line &#x3D; lf</span><br><span class="line">charset &#x3D; utf-8</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/12/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vs%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%AD%97%E7%AC%A6%E9%9B%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/动画/Spine/spine的动态加载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/12/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%9A%84%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/">SkeletonGraphic换肤性能优化</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/12/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%9A%84%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/" class="archive-article-date">
+  	<time datetime="2024-03-12T01:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-12</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：241字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://zh.esotericsoftware.com/spine-unity#%E9%AB%98%E7%BA%A7---%E8%BF%90%E8%A1%8C%E6%97%B6%E5%AE%9E%E4%BE%8B%E5%8C%96" target="_blank" rel="noopener">官方spine运行时实例化</a></p>
+<p>官方推荐的方法是使用预制体 而不是实例化 实例化主要的缺点是实例化需要设置读取和设置asset资源 而预制体的缺点就是不适合大批量的修改 如果那天策划开始发疯 你也得跟着发疯<br>那么就有一种更简单的方法就是用预制提前将部分设置初始化 然后修改asset从新初始化</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> data = GameMgr.S.resLoader.LoadSync(PetMgr.S.GetSpine(pet)) <span class="keyword">as</span> SkeletonDataAsset;</span><br><span class="line">_graphic.skeletonDataAsset = data;</span><br><span class="line">_graphic.Initialize(<span class="literal">true</span>);</span><br><span class="line"><span class="comment">// petSpine.initialSkinName = "defaultSkin";</span></span><br></pre></td></tr></table></figure>
+
+<p>如果你只是创建了Skeleton而没有放入任何资源初始化 那你就需要自己赋值spine的材质 然后设置皮肤等一系列操作 这样的消耗成本十分小<br>所以大致思路就是<strong>相同材质的可以设置为同一个预制体 然后在预制体上重新加载资源即可</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spine</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/12/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%9A%84%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/开发/协程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/11/Unity/%E5%BC%80%E5%8F%91/%E5%8D%8F%E7%A8%8B/">关于游戏内的一些脚本名词</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/11/Unity/%E5%BC%80%E5%8F%91/%E5%8D%8F%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2024-03-11T09:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-11</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：544字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在C#中，如果你想在一个<code>IEnumerator</code>方法中调用另一个<code>IEnumerator</code>方法，你可以使用<code>yield return StartCoroutine</code>语句。这允许你等待一个协程完成，然后继续执行当前的协程。以下是一个示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">CoroutineA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// CoroutineA的代码</span></span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="literal">null</span>; <span class="comment">// 或者其他操作</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">IEnumerator <span class="title">CoroutineB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 在CoroutineB中调用CoroutineA，并等待它完成</span></span><br><span class="line">    <span class="function"><span class="keyword">yield</span> return <span class="title">StartCoroutine</span>(<span class="params">CoroutineA(</span>))</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// CoroutineA完成后，继续执行CoroutineB的剩余代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>CoroutineB</code>会启动<code>CoroutineA</code>，并等待它完成。一旦<code>CoroutineA</code>完成，<code>CoroutineB</code>会继续执行。</p>
+<p>如果你想要在不同的脚本之间调用<code>IEnumerator</code>方法，你需要有一个对那个脚本的引用，然后使用那个引用来启动协程。例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ScriptA</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerator <span class="title">CoroutineA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// CoroutineA的代码</span></span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> <span class="literal">null</span>; <span class="comment">// 或者其他操作</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ScriptB</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> ScriptA scriptA;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 确保scriptA已经被赋值</span></span><br><span class="line">        <span class="keyword">if</span> (scriptA == <span class="literal">null</span>)</span><br><span class="line">            scriptA = FindObjectOfType&lt;ScriptA&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 在ScriptB中启动ScriptA的CoroutineA</span></span><br><span class="line">        StartCoroutine(scriptA.CoroutineA());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Unity中，当你在一个协程（我们称之为A协程）中调用另一个协程（B协程），然后停止B协程时，A协程会继续执行，直到它自己的逻辑结束或被显式停止。停止B协程不会影响A协程的执行流程。</p>
+<p>这是因为每个协程在Unity中都是独立的执行流，即使它们被嵌套调用。当你使用<code>StopCoroutine</code>方法停止B协程时，只有B协程会被停止，而A协程会继续执行它之后的代码。</p>
+<p>以下是一个简单的例子来说明这一点：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IEnumerator <span class="title">CoroutineA</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// A协程的一些逻辑</span></span><br><span class="line">    <span class="function"><span class="keyword">yield</span> return <span class="title">StartCoroutine</span>(<span class="params">CoroutineB(</span>))</span>; <span class="comment">// 调用B协程</span></span><br><span class="line">    <span class="comment">// 即使B协程被停止，这里的代码仍然会执行</span></span><br><span class="line">    Debug.Log(<span class="string">"A协程继续执行"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">IEnumerator <span class="title">CoroutineB</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">yield</span> return new <span class="title">WaitForSeconds</span>(<span class="params"><span class="number">1</span></span>)</span>; <span class="comment">// 假设B协程有一些延时操作</span></span><br><span class="line">    Debug.Log(<span class="string">"B协程执行"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    StartCoroutine(CoroutineA());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">StopBCoroutine</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    StopCoroutine(<span class="string">"CoroutineB"</span>); <span class="comment">// 停止B协程</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，即使<code>StopBCoroutine</code>方法被调用来停止B协程，A协程中调用B协程之后的<code>Debug.Log(&quot;A协程继续执行&quot;)</code>仍然会被执行。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/11/Unity/%E5%BC%80%E5%8F%91/%E5%8D%8F%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/shader/图片镂空等效果" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/09/Unity/shader/%E5%9B%BE%E7%89%87%E9%95%82%E7%A9%BA%E7%AD%89%E6%95%88%E6%9E%9C/">利用ui/default shader 实现镂空效果</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/09/Unity/shader/%E5%9B%BE%E7%89%87%E9%95%82%E7%A9%BA%E7%AD%89%E6%95%88%E6%9E%9C/" class="archive-article-date">
+  	<time datetime="2024-03-09T08:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-09</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：4字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.jianshu.com/p/3df37c726530" target="_blank" rel="noopener">案例参考</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">shader</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/09/Unity/shader/%E5%9B%BE%E7%89%87%E9%95%82%E7%A9%BA%E7%AD%89%E6%95%88%E6%9E%9C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Unity/打包/打包策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -216,6 +550,90 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2024/03/09/Unity/%E6%89%93%E5%8C%85/%E6%89%93%E5%8C%85%E7%AD%96%E7%95%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/动画/dotween/dotween计时器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/">dotween计时器</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2024-03-08T07:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-08</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：315字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一些dotween 使用悉知 动画链接之间最好不要有任何逻辑操作 可能会打断链接</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a transform tween and set its ease, loops and OnComplete callback</span></span><br><span class="line">transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>).SetEase(Ease.OutQuint).SetLoops(<span class="number">4</span>).OnComplete(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Same as above but using line breaks to make it more readable</span></span><br><span class="line">transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>)</span><br><span class="line">  .SetEase(Ease.OutQuint)</span><br><span class="line">  .SetLoops(<span class="number">4</span>)</span><br><span class="line">  .OnComplete(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Same as above but storing the tween and applying settings without chaining</span></span><br><span class="line">Tween myTween = transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>);</span><br><span class="line">myTween.SetEase(Ease.OutQuint);</span><br><span class="line">myTween.SetLoops(<span class="number">4</span>);</span><br><span class="line">myTween.OnComplete(myFunction);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tweener <span class="title">Delay</span>(<span class="params"><span class="keyword">float</span> time, Action call, GameObject link = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, time).SetRecyclable(<span class="literal">true</span>).OnComplete(() =&gt; &#123; call?.Invoke(); &#125;).SetAutoKill();</span><br><span class="line">    <span class="keyword">if</span> (link != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        tween.SetLink(link);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 默认为可复用tween</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="loop"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="intervalTime"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="call"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="link"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="isImmeExecute"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tweener <span class="title">AddTimer</span>(<span class="params"><span class="keyword">int</span> loop, <span class="keyword">float</span> intervalTime, Action call, GameObject link = <span class="literal">null</span>, <span class="keyword">bool</span> isImmeExecute = <span class="literal">true</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isImmeExecute)</span><br><span class="line">    &#123;</span><br><span class="line">        call?.Invoke();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">    Tweener tween = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (!link)</span><br><span class="line">    &#123;</span><br><span class="line">        tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, intervalTime);</span><br><span class="line">        tween.OnStepComplete(() =&gt; &#123; call?.Invoke(); &#125;);</span><br><span class="line">        tween.SetUpdate(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLoops(loop).SetRecyclable(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLink(link);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, intervalTime);</span><br><span class="line">        tween.OnStepComplete(() =&gt; &#123; call?.Invoke(); &#125;);</span><br><span class="line">        tween.SetUpdate(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLoops(loop).SetRecyclable(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tween;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dotween</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/">展开全文 >></a>
         </p>
       
 
@@ -562,431 +980,6 @@
 
 
   
-    <article id="post-Unity/工具/unity震动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/24/Unity/%E5%B7%A5%E5%85%B7/unity%E9%9C%87%E5%8A%A8/">Unity Android IOS 震动</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/24/Unity/%E5%B7%A5%E5%85%B7/unity%E9%9C%87%E5%8A%A8/" class="archive-article-date">
-  	<time datetime="2024-01-24T03:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-24</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：339字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://blog.csdn.net/qq_40319342/article/details/124243794" target="_blank" rel="noopener">IOS自定义震动强度和时长</a><br><a href="https://github.com/UnityPackage/vibration" target="_blank" rel="noopener">unity震动插件 其实和下面是一样的</a><br><a href="https://github.com/Lofelt/NiceVibrations" target="_blank" rel="noopener">推荐插件 nicevibrations</a></p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Diagnostics;</span><br><span class="line"><span class="keyword">using</span> MoreMountains.NiceVibrations;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">VibrationMgr</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Init</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> UNITY_IOS &amp;&amp; !UNITY_EDITOR</span></span><br><span class="line">        MMVibrationManager.iOSInitializeHaptics();</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> vibrationEnable;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">struct</span> VibrationType</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> milliseconds;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> amplitude;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">int</span> repeat;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">float</span> intervalTime;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">VibrationType</span>(<span class="params"><span class="keyword">int</span> mil, <span class="keyword">int</span> amp, <span class="keyword">int</span> rep = <span class="number">1</span>, <span class="keyword">float</span> interval = <span class="number">0</span></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            milliseconds = mil;</span><br><span class="line">            amplitude = amp;</span><br><span class="line">            repeat = rep;</span><br><span class="line">            intervalTime = interval;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> VibrationType ClickVibration = <span class="keyword">new</span> VibrationType(<span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//正确</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> VibrationType RightVibration = <span class="keyword">new</span> VibrationType(<span class="number">50</span>, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//错误</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> VibrationType WrongVibration = <span class="keyword">new</span> VibrationType(<span class="number">50</span>, <span class="number">70</span>, <span class="number">2</span>, <span class="number">0.05f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//重复</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> VibrationType RepeatVibration = <span class="keyword">new</span> VibrationType(<span class="number">50</span>, <span class="number">70</span>, <span class="number">2</span>, <span class="number">0.05f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> VibrationEnum</span><br><span class="line">    &#123;</span><br><span class="line">        None,</span><br><span class="line">        Click,</span><br><span class="line">        Right,</span><br><span class="line">        Wrong,</span><br><span class="line">        Repeat</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> Dictionary&lt;VibrationEnum, VibrationType&gt; _vibrationDic = <span class="keyword">new</span> Dictionary&lt;VibrationEnum, VibrationType&gt;()</span><br><span class="line">    &#123;</span><br><span class="line">        &#123; VibrationEnum.Click, ClickVibration &#125;,</span><br><span class="line">        &#123; VibrationEnum.Right, RightVibration &#125;,</span><br><span class="line">        &#123; VibrationEnum.Wrong, WrongVibration &#125;,</span><br><span class="line">        &#123; VibrationEnum.Repeat, RepeatVibration &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">region</span> 对外接口</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Haptic</span>(<span class="params"><span class="keyword">long</span> milliseconds, <span class="keyword">int</span> amplitude</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        CallHaptic(milliseconds, amplitude);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Haptic</span>(<span class="params">VibrationEnum vibrationEnum</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vibrationEnable)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (!_vibrationDic.TryGetValue(vibrationEnum, <span class="keyword">out</span> <span class="keyword">var</span> vibrationType))</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> rep = vibrationType.repeat;</span><br><span class="line">        <span class="keyword">float</span> intervalTime = vibrationType.intervalTime;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rep; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            DoTweenHelper.Delay((intervalTime + vibrationType.milliseconds / <span class="number">1000f</span>) * i,</span><br><span class="line">                () =&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    CallHaptic(vibrationType.milliseconds, vibrationType.amplitude);</span><br><span class="line">                    CallHaptic(vibrationEnum);</span><br><span class="line">                &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">region</span> 插件封装</span></span><br><span class="line"></span><br><span class="line">    [<span class="meta">Conditional(<span class="meta-string">"UNITY_ANDROID"</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">CallHaptic</span>(<span class="params"><span class="keyword">long</span> milliseconds, <span class="keyword">int</span> amplitude</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        MMVibrationManager.AndroidVibrate(milliseconds, amplitude);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Conditional(<span class="meta-string">"UNITY_IOS"</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">CallHaptic</span>(<span class="params">VibrationEnum vibrationEnum</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">switch</span> (vibrationEnum)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">case</span> VibrationEnum.Click:</span><br><span class="line">                MMVibrationManager.iOSTriggerHaptics(HapticTypes.Selection);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> VibrationEnum.Right:</span><br><span class="line">                MMVibrationManager.iOSTriggerHaptics(HapticTypes.Success);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> VibrationEnum.Wrong:</span><br><span class="line">                MMVibrationManager.iOSTriggerHaptics(HapticTypes.Failure);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> VibrationEnum.Repeat:</span><br><span class="line">                MMVibrationManager.iOSTriggerHaptics(HapticTypes.Warning);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/24/Unity/%E5%B7%A5%E5%85%B7/unity%E9%9C%87%E5%8A%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/推送" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/23/Unity/%E5%BC%80%E5%8F%91/%E6%8E%A8%E9%80%81/">unity推送</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/23/Unity/%E5%BC%80%E5%8F%91/%E6%8E%A8%E9%80%81/" class="archive-article-date">
-  	<time datetime="2024-01-23T08:20:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-23</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：477字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>推送通知分为两种类型：</p>
-<ul>
-<li><strong>本地推送通知</strong>：由您的应用程序在设备上本地生成和发送的通知，不需要连接到远程服务器。您可以使用本地推送通知来实现一些基于时间或位置的提醒，例如闹钟、日历事件、地理围栏等。</li>
-<li><strong>远程推送通知</strong>：由您的应用程序在远程服务器上生成和发送的通知，需要通过 Apple 的推送通知服务（APNs）来传递给设备。您可以使用远程推送通知来实现一些基于数据或事件的提醒，例如新闻、聊天、社交媒体等。</li>
-</ul>
-<p>要使用 iOS 推送通知，您需要在 Unity 中安装和配置 Mobile Notifications Package，这是一个用于管理和处理 iOS 和 Android 推送通知的 Unity 包。您可以在 Unity Package Manager 中找到并导入这个包。</p>
-<p>安装和配置好 Mobile Notifications Package 后，您可以使用 Unity API 来创建和发送本地推送通知，或者使用 APNs API 来创建和发送远程推送通知。以下是一些使用 iOS 推送通知的示例代码：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建和发送本地推送通知</span></span><br><span class="line"><span class="keyword">using</span> Unity.Notifications.iOS;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个本地推送通知的参数</span></span><br><span class="line"><span class="keyword">var</span> timeTrigger = <span class="keyword">new</span> iOSNotificationTimeIntervalTrigger()</span><br><span class="line">&#123;</span><br><span class="line">    TimeInterval = <span class="keyword">new</span> TimeSpan(<span class="number">0</span>, <span class="number">5</span>, <span class="number">0</span>), <span class="comment">// 5 分钟后触发</span></span><br><span class="line">    Repeats = <span class="literal">false</span> <span class="comment">// 不重复</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> notification = <span class="keyword">new</span> iOSNotification()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 设置通知的标题、正文和标识符</span></span><br><span class="line">    Title = <span class="string">"Hello World"</span>,</span><br><span class="line">    Body = <span class="string">"This is a local notification"</span>,</span><br><span class="line">    Identifier = <span class="string">"_notification_01"</span>,</span><br><span class="line">    <span class="comment">// 设置通知的触发器</span></span><br><span class="line">    Trigger = timeTrigger,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调度通知</span></span><br><span class="line">iOSNotificationCenter.ScheduleNotification(notification);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建和发送远程推送通知</span></span><br><span class="line"><span class="keyword">using</span> Unity.Notifications.iOS;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个远程推送通知的参数</span></span><br><span class="line"><span class="keyword">var</span> pushTrigger = <span class="keyword">new</span> iOSNotificationPushTrigger()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 设置通知的标题、正文和标识符</span></span><br><span class="line">    Title = <span class="string">"Hello World"</span>,</span><br><span class="line">    Body = <span class="string">"This is a remote notification"</span>,</span><br><span class="line">    Identifier = <span class="string">"_notification_02"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个远程推送通知的请求</span></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> iOSNotificationRequest(pushTrigger);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送请求到 APNs</span></span><br><span class="line">iOSNotificationCenter.SendRemoteNotification(request);</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/23/Unity/%E5%BC%80%E5%8F%91/%E6%8E%A8%E9%80%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-c#/linq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/23/c#/linq/">c# Linq join用法</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/23/c#/linq/" class="archive-article-date">
-  	<time datetime="2024-01-23T03:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-23</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：891字 | 预计阅读时长：4分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>LINQ join 操作可以让您将两个或多个数据源（集合）根据一个或多个键进行连接，并返回一个结果集合。LINQ join 操作有以下几种类型：</p>
-<ul>
-<li><strong>内连接</strong>：只返回两个数据源中匹配的元素，类似于 SQL 中的 inner join。</li>
-<li><strong>左外连接</strong>：返回第一个数据源中的所有元素，以及第二个数据源中与之匹配的元素，如果没有匹配的元素，则用默认值填充，类似于 SQL 中的 left outer join。</li>
-<li><strong>右外连接</strong>：返回第二个数据源中的所有元素，以及第一个数据源中与之匹配的元素，如果没有匹配的元素，则用默认值填充，类似于 SQL 中的 right outer join。</li>
-<li><strong>全外连接</strong>：返回两个数据源中的所有元素，如果有匹配的元素，则将它们连接起来，如果没有匹配的元素，则用默认值填充，类似于 SQL 中的 full outer join。</li>
-<li><strong>交叉连接</strong>：返回两个数据源中的所有可能的元素对，类似于 SQL 中的 cross join。</li>
-</ul>
-<p>要使用 LINQ join 操作，您可以使用查询语法或方法语法。查询语法使用 join 子句来指定连接的条件，方法语法使用 Join 或 GroupJoin 扩展方法来实现连接。以下是一些 LINQ join 操作的示例代码：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例数据类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> StudentID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> StudentName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> StandardID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Standard</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> StandardID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> StandardName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例数据源</span></span><br><span class="line">IList&lt;Student&gt; studentList = <span class="keyword">new</span> List&lt;Student&gt;() &#123;</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">1</span>, StudentName = <span class="string">"John"</span>, StandardID =<span class="number">1</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">2</span>, StudentName = <span class="string">"Moin"</span>, StandardID =<span class="number">1</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">3</span>, StudentName = <span class="string">"Bill"</span>, StandardID =<span class="number">2</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">4</span>, StudentName = <span class="string">"Ram"</span> , StandardID =<span class="number">2</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">5</span>, StudentName = <span class="string">"Ron"</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">IList&lt;Standard&gt; standardList = <span class="keyword">new</span> List&lt;Standard&gt;() &#123;</span><br><span class="line">    <span class="keyword">new</span> Standard()&#123; StandardID = <span class="number">1</span>, StandardName=<span class="string">"Standard 1"</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Standard()&#123; StandardID = <span class="number">2</span>, StandardName=<span class="string">"Standard 2"</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Standard()&#123; StandardID = <span class="number">3</span>, StandardName=<span class="string">"Standard 3"</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 内连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> innerJoinQuery = <span class="keyword">from</span> s <span class="keyword">in</span> studentList <span class="comment">// outer sequence</span></span><br><span class="line">                     <span class="keyword">join</span> st <span class="keyword">in</span> standardList <span class="comment">// inner sequence </span></span><br><span class="line">                     <span class="keyword">on</span> s.StandardID <span class="keyword">equals</span> st.StandardID <span class="comment">// key selector</span></span><br><span class="line">                     <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">                     &#123;</span><br><span class="line">                         StudentName = s.StudentName,</span><br><span class="line">                         StandardName = st.StandardName</span><br><span class="line">                     &#125;; <span class="comment">// result selector</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> innerJoinMethod = studentList.Join(standardList, <span class="comment">// inner sequence</span></span><br><span class="line">                                       s =&gt; s.StandardID, <span class="comment">// outer key selector</span></span><br><span class="line">                                       st =&gt; st.StandardID, <span class="comment">// inner key selector</span></span><br><span class="line">                                       (s, st) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                       &#123;</span><br><span class="line">                                           StudentName = s.StudentName,</span><br><span class="line">                                           StandardName = st.StandardName</span><br><span class="line">                                       &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 左外连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> leftOuterJoinQuery = <span class="keyword">from</span> s <span class="keyword">in</span> studentList</span><br><span class="line">                         <span class="keyword">join</span> st <span class="keyword">in</span> standardList</span><br><span class="line">                         <span class="keyword">on</span> s.StandardID <span class="keyword">equals</span> st.StandardID</span><br><span class="line">                         <span class="keyword">into</span> studentGroup</span><br><span class="line">                         <span class="keyword">from</span> std <span class="keyword">in</span> studentGroup.DefaultIfEmpty()</span><br><span class="line">                         <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">                         &#123;</span><br><span class="line">                             StudentName = s.StudentName,</span><br><span class="line">                             StandardName = std == <span class="literal">null</span> ? <span class="string">"No Standard"</span> : std.StandardName</span><br><span class="line">                         &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> leftOuterJoinMethod = studentList.GroupJoin(standardList, <span class="comment">// inner sequence</span></span><br><span class="line">                                                s =&gt; s.StandardID, <span class="comment">// outer key selector</span></span><br><span class="line">                                                st =&gt; st.StandardID, <span class="comment">// inner key selector</span></span><br><span class="line">                                                (s, studentGroup) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                                &#123;</span><br><span class="line">                                                    Students = s,</span><br><span class="line">                                                    Standards = studentGroup</span><br><span class="line">                                                &#125;)</span><br><span class="line">                                      .SelectMany(x =&gt; x.Standards.DefaultIfEmpty(), <span class="comment">// collection selector</span></span><br><span class="line">                                                  (x, y) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                                  &#123;</span><br><span class="line">                                                      StudentName = x.Students.StudentName,</span><br><span class="line">                                                      StandardName = y == <span class="literal">null</span> ? <span class="string">"No Standard"</span> : y.StandardName</span><br><span class="line">                                                  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 右外连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> rightOuterJoinQuery = <span class="keyword">from</span> st <span class="keyword">in</span> standardList</span><br><span class="line">                          <span class="keyword">join</span> s <span class="keyword">in</span> studentList</span><br><span class="line">                          <span class="keyword">on</span> st.StandardID <span class="keyword">equals</span> s.StandardID</span><br><span class="line">                          <span class="keyword">into</span> standardGroup</span><br><span class="line">                          <span class="keyword">from</span> std <span class="keyword">in</span> standardGroup.DefaultIfEmpty()</span><br><span class="line">                          <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">                          &#123;</span><br><span class="line">                              StudentName = std == <span class="literal">null</span> ? <span class="string">"No Student"</span> : std.StudentName,</span><br><span class="line">                              StandardName = st.StandardName</span><br><span class="line">                          &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> rightOuterJoinMethod = standardList.GroupJoin(studentList, <span class="comment">// inner sequence</span></span><br><span class="line">                                                  st =&gt; st.StandardID, <span class="comment">// outer key selector</span></span><br><span class="line">                                                  s =&gt; s.StandardID, <span class="comment">// inner key selector</span></span><br><span class="line">                                                  (st, standardGroup) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                                  &#123;</span><br><span class="line">                                                      Standards = st,</span><br><span class="line">                                                      Students = standardGroup</span><br><span class="line">                                                  &#125;)</span><br><span class="line">                                       .SelectMany(x =&gt; x.Students.DefaultIfEmpty(), <span class="comment">// collection selector</span></span><br><span class="line">                                                   (x, y) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                                   &#123;</span><br><span class="line">                                                       StudentName = y == <span class="literal">null</span> ? <span class="string">"No Student"</span> : y.StudentName,</span><br><span class="line">                                                       StandardName = x.Standards.StandardName</span><br><span class="line">                                                   &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全外连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> fullOuterJoinQuery = leftOuterJoinQuery.Union(rightOuterJoinQuery);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> fullOuterJoinMethod = leftOuterJoinMethod.Union(rightOuterJoinMethod);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 交叉连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> crossJoinQuery = <span class="keyword">from</span> s <span class="keyword">in</span> studentList</span><br><span class="line">                     <span class="keyword">from</span> st <span class="keyword">in</span> standardList</span><br><span class="line">                     <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">                     &#123;</span><br><span class="line">                         StudentName = s.StudentName,</span><br><span class="line">                         StandardName = st.StandardName</span><br><span class="line">                     &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> crossJoinMethod = studentList.SelectMany(s =&gt; standardList, <span class="comment">// collection selector</span></span><br><span class="line">                                             (s, st) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                             &#123;</span><br><span class="line">                                                 StudentName = s.StudentName,</span><br><span class="line">                                                 StandardName = st.StandardName</span><br><span class="line">                                             &#125;);</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/23/c#/linq/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-c#/文件处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/23/c#/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/">c#文件创建</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/23/c#/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2024-01-23T03:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-23</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：348字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C# 中</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">File.Create(path);</span><br><span class="line">File.WriteAllText(path, sb.ToString());</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (StreamWriter sw = <span class="keyword">new</span> StreamWriter(File.Create(saveFullPath))) </span><br><span class="line">sw.Write(content);</span><br></pre></td></tr></table></figure>
-
-<p>这两段代码都是用来创建一个新文件并写入内容的，但是有以下几点不同：</p>
-<ul>
-<li>File.Create(path) 方法会返回一个 FileStream 对象，表示对文件的读写访问，如果不使用它，就需要关闭它，否则文件会被锁定，无法被其他操作。而 using 语句会自动释放 FileStream 对象，不需要手动关闭。</li>
-<li>File.WriteAllText(path, sb.ToString()) 方法会使用 UTF-8 编码（不带 BOM）来写入字符串到文件，并且在写入完成后关闭文件。而 StreamWriter 类可以指定不同的编码来写入字符到文件，并且提供了更多的方法和属性来控制写入的过程。</li>
-<li>File.WriteAllText(path, sb.ToString()) 方法会覆盖文件中已有的内容，如果想要追加内容，需要使用 File.AppendAllText(path, sb.ToString()) 方法。而 StreamWriter 类可以在构造函数中指定一个布尔值，表示是否追加内容，或者使用 AppendText 方法来追加内容。</li>
-</ul>
-<p>总的来说，File.WriteAllText(path, sb.ToString()) 方法比较简单方便，适合一次性写入少量的字符串到文件。而 StreamWriter 类比较灵活强大，适合多次写入大量的字符到文件，或者需要指定不同的编码和格式的情况。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/23/c#/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/性能优化/帧率限制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/17/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%B8%A7%E7%8E%87%E9%99%90%E5%88%B6/">帧率限制</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/17/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%B8%A7%E7%8E%87%E9%99%90%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2024-01-17T07:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-17</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：414字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://docs.unity3d.com/ScriptReference/Application-targetFrameRate.html" target="_blank" rel="noopener">官方文档</a></p>
-<p>如果想在 Unity 中限制最高帧率，可以使用以下方法：</p>
-<ul>
-<li>使用 <code>Application.targetFrameRate</code> 属性，它指示游戏尝试以指定的帧率渲染。您可以在脚本中设置这个属性的值，例如 <code>Application.targetFrameRate = 60;</code> 表示锁定最大帧率为 60 帧。但是，这个属性会受到 <code>QualitySettings.vSyncCount</code> 属性的影响，如果设置了垂直同步，那么游戏将根据屏幕的刷新率来确定目标帧率。您可以参考 [Application.targetFrameRate - Unity 脚本 API] 和 [QualitySettings.vSyncCount - Unity 脚本 API]了解更多信息。</li>
-<li>使用 <code>Time.maximumDeltaTime</code> 属性，它设置每帧更新期间处理物理系统和 FixedUpdate 调用所花费的最大时间。如果帧更新花费的时间超过这个属性的值，那么物理引擎将“让时间停止”并让帧处理赶上。</li>
-</ul>
-<p>如果不设置 Application.targetFrameRate 属性，那么 Unity 会使用平台的默认目标帧率来渲染游戏。这个默认帧率取决于平台的类型和性能。一般来说：</p>
-<ul>
-<li>在独立平台（如 Windows、Mac、Linux）上，默认帧率是可实现的最大帧率。</li>
-<li>在移动平台（如 Android、iOS）上，默认帧率通常是 30 帧每秒，以节省电池电量。移动平台的最大帧率受到屏幕的刷新率的限制，例如 60 Hz 的屏幕对应 60 帧每秒的最大帧率。</li>
-<li>在 WebGL 上，默认帧率由浏览器决定，以匹配其渲染循环时序，这通常会产生最平滑的效果。</li>
-<li>使用 VR 时，Unity 会使用 VR SDK 指定的目标帧率并忽略游戏指定的值。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/17/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%B8%A7%E7%8E%87%E9%99%90%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1096,19 +1089,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1120,15 +1113,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">shader</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1144,15 +1133,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1164,11 +1165,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1177,10 +1174,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1208,19 +1201,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1232,6 +1217,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
@@ -1240,7 +1237,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1248,15 +1245,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">

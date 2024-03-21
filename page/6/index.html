@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 179
+            总文章数 183
         </nav>
 		<nav>
-            总字数 <span class="post-count">110.3k</span>
+            总字数 <span class="post-count">111.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,349 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-c#/dynamic使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/07/c#/dynamic%E4%BD%BF%E7%94%A8/">c# dynamic使用</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/07/c#/dynamic%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2023-12-07T05:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-07</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：262字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>daynamic是一个 使c#变成一个弱类型的类型<br>即不在编译期间来检查错误 而是在运行期间来检查 不运动到这个地方就不会报错<br>注意dynamic 是一种特殊的Object 可以在不同的类型之间直接隐式转换 所以存在一定的性能消耗</p>
+<p>还有在unity中 基于.net4.x的可以mono可以支持该类型 但是il2cpp是不支持的 并且还存在很多限制 不推荐使用</p>
+<p>注意到这个类型 是因为在使用<code>=&gt;</code>属性时 因为属性的初始化时机的问题 我想让改属性不在类创建的时候就初始化 而是在调用该属性时初始化 以此来避免一些属性内赋值还没初始化问题 留意当你需要一些骚操作才能满足你的需求 或者改一些bug的时候 就需要考虑好设计模式是否存在问题</p>
+<p><a href="https://www.cnblogs.com/gygtech/p/9915367.html" target="_blank" rel="noopener">使用参考文档</a><br><a href="https://learn.microsoft.com/zh-cn/dotnet/csharp/advanced-topics/interop/using-type-dynamic" target="_blank" rel="noopener">官方文档</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/07/c#/dynamic%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/excel解析数组逻辑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/excel%E8%A7%A3%E6%9E%90%E6%95%B0%E7%BB%84%E9%80%BB%E8%BE%91/">excel解析数组逻辑</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/excel%E8%A7%A3%E6%9E%90%E6%95%B0%E7%BB%84%E9%80%BB%E8%BE%91/" class="archive-article-date">
+  	<time datetime="2023-12-06T11:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：1.7k字 | 预计阅读时长：8分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>多维数组解析</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/excel%E8%A7%A3%E6%9E%90%E6%95%B0%E7%BB%84%E9%80%BB%E8%BE%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-code/安卓/android遍历xml" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/05/code/%E5%AE%89%E5%8D%93/android%E9%81%8D%E5%8E%86xml/">遍历xml</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/05/code/%E5%AE%89%E5%8D%93/android%E9%81%8D%E5%8E%86xml/" class="archive-article-date">
+  	<time datetime="2023-12-05T03:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-05</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：782字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>XmlResourceParser getName的用法是返回当前XML标签的名字，例如&lt;book&gt;或&lt;/book&gt;。它是XmlResourceParser类的一个方法，用于动态解析XML文件。XmlResourceParser是Android内置的一个XML解析器，继承自XmlPullParser接口。它可以从资源文件中获取XML数据，并提供一些方法和字段来处理XML事件和属性。¹²</p>
+<p>一般的用法是：</p>
+<ul>
+<li>首先，通过getResources().getXml(R.xml.resource)获取XmlResourceParser对象，其中R.xml.resource是要解析的XML文件的资源ID。</li>
+<li>然后，使用getEventType()方法获取当前的事件类型，例如START_DOCUMENT, END_DOCUMENT, START_TAG, END_TAG, TEXT等。</li>
+<li>接着，使用next()方法移动到下一个事件，直到遇到END_DOCUMENT事件或抛出异常为止。</li>
+<li>在移动过程中，如果遇到START_TAG事件，就可以使用getName()方法获取当前标签的名字，例如&lt;book&gt;的名字就是”book”。</li>
+<li>同时，还可以使用其他方法来获取标签的属性或文本内容，例如getAttributeName(int index), getAttributeValue(int index), getText()等。</li>
+</ul>
+<p>下面是一个简单的例子，用于解析如下的XML文件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">books</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">book</span> <span class="attr">id</span>=<span class="string">"1"</span> <span class="attr">name</span>=<span class="string">"Android开发入门"</span> <span class="attr">price</span>=<span class="string">"49.9"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">book</span> <span class="attr">id</span>=<span class="string">"2"</span> <span class="attr">name</span>=<span class="string">"Java编程思想"</span> <span class="attr">price</span>=<span class="string">"99.9"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">book</span> <span class="attr">id</span>=<span class="string">"3"</span> <span class="attr">name</span>=<span class="string">"算法导论"</span> <span class="attr">price</span>=<span class="string">"199.9"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">books</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>解析代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">XmlResourceParser parser = getResources().getXml(R.xml.books);</span><br><span class="line"><span class="keyword">int</span> eventType = parser.getEventType();</span><br><span class="line"><span class="keyword">while</span> (eventType != XmlResourceParser.END_DOCUMENT) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (eventType) &#123;</span><br><span class="line">        <span class="keyword">case</span> XmlResourceParser.START_DOCUMENT:</span><br><span class="line">            Log.d(<span class="string">"XmlResourceParser"</span>, <span class="string">"开始解析XML文件"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> XmlResourceParser.START_TAG:</span><br><span class="line">            String tagName = parser.getName(); <span class="comment">//获取标签名</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="string">"book"</span>.equals(tagName)) &#123;</span><br><span class="line">                <span class="keyword">int</span> id = Integer.parseInt(parser.getAttributeValue(<span class="keyword">null</span>, <span class="string">"id"</span>)); <span class="comment">//获取id属性值</span></span><br><span class="line">                String name = parser.getAttributeValue(<span class="keyword">null</span>, <span class="string">"name"</span>); <span class="comment">//获取name属性值</span></span><br><span class="line">                <span class="keyword">double</span> price = Double.parseDouble(parser.getAttributeValue(<span class="keyword">null</span>, <span class="string">"price"</span>)); <span class="comment">//获取price属性值</span></span><br><span class="line">                Log.d(<span class="string">"XmlResourceParser"</span>, <span class="string">"解析到一本书，id="</span> + id + <span class="string">", name="</span> + name + <span class="string">", price="</span> + price);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> XmlResourceParser.END_TAG:</span><br><span class="line">            Log.d(<span class="string">"XmlResourceParser"</span>, <span class="string">"结束解析"</span> + parser.getName() + <span class="string">"标签"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> XmlResourceParser.TEXT:</span><br><span class="line">            Log.d(<span class="string">"XmlResourceParser"</span>, <span class="string">"解析到文本内容："</span> + parser.getText());</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    eventType = parser.next(); <span class="comment">//移动到下一个事件</span></span><br><span class="line">&#125;</span><br><span class="line">Log.d(<span class="string">"XmlResourceParser"</span>, <span class="string">"结束解析XML文件"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">D&#x2F;XmlResourceParser: 开始解析XML文件</span><br><span class="line">D&#x2F;XmlResourceParser: 结束解析xml标签</span><br><span class="line">D&#x2F;XmlResourceParser: 解析到一本书，id&#x3D;1, name&#x3D;Android开发入门, price&#x3D;49.9</span><br><span class="line">D&#x2F;XmlResourceParser: 结束解析book标签</span><br><span class="line">D&#x2F;XmlResourceParser: 解析到一本书，id&#x3D;2, name&#x3D;Java编程思想, price&#x3D;99.9</span><br><span class="line">D&#x2F;XmlResourceParser: 结束解析book标签</span><br><span class="line">D&#x2F;XmlResourceParser: 解析到一本书，id&#x3D;3, name&#x3D;算法导论, price&#x3D;199.9</span><br><span class="line">D&#x2F;XmlResourceParser: 结束解析book标签</span><br><span class="line">D&#x2F;XmlResourceParser: 结束解析books标签</span><br><span class="line">D&#x2F;XmlResourceParser: 结束解析XML文件</span><br></pre></td></tr></table></figure>
+
+<p>¹: <a href="^1^">【Android学习笔记】XmlResourceParser解析xml文件 - 请叫我 …</a><br>²: <a href="^2^">使用XmlResourceParser动态解析XML - 简书</a></p>
+<p>源: 与必应的对话， 2023/12/5<br>(1) 【Android学习笔记】XmlResourceParser解析xml文件 - 请叫我 …. <a href="https://www.cnblogs.com/dasusu/p/5450919.html" target="_blank" rel="noopener">https://www.cnblogs.com/dasusu/p/5450919.html</a>.<br>(2) 使用XmlResourceParser动态解析XML - 简书. <a href="https://www.jianshu.com/p/36b04fcf3d38" target="_blank" rel="noopener">https://www.jianshu.com/p/36b04fcf3d38</a>.<br>(3) 【Android学习笔记】XmlResourceParser解析xml文件 - 请叫我 …. <a href="https://www.cnblogs.com/dasusu/p/5450919.html" target="_blank" rel="noopener">https://www.cnblogs.com/dasusu/p/5450919.html</a>.<br>(4) 使用XmlResourceParser动态解析XML - 简书. <a href="https://www.jianshu.com/p/36b04fcf3d38" target="_blank" rel="noopener">https://www.jianshu.com/p/36b04fcf3d38</a>.<br>(5) android 使用XmlResourceParser 解析XML-CSDN博客. <a href="https://blog.csdn.net/ym19860303/article/details/7289181" target="_blank" rel="noopener">https://blog.csdn.net/ym19860303/article/details/7289181</a>.<br>(6) Android 关于XmlResourceParser - 简书. <a href="https://www.jianshu.com/p/d3c801584f8f" target="_blank" rel="noopener">https://www.jianshu.com/p/d3c801584f8f</a>.<br>(7) undefined. <a href="http://schemas.android.com/apk/res-auto" target="_blank" rel="noopener">http://schemas.android.com/apk/res-auto</a>.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/05/code/%E5%AE%89%E5%8D%93/android%E9%81%8D%E5%8E%86xml/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-code/安卓/获取指定xml" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/05/code/%E5%AE%89%E5%8D%93/%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9Axml/">获取指定xml</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/05/code/%E5%AE%89%E5%8D%93/%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9Axml/" class="archive-article-date">
+  	<time datetime="2023-12-05T03:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-05</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：489字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>根据我搜索到的结果，getXml是一个Resources类的方法，它可以从res/xml目录下获取一个XML文件，并返回一个XmlResourceParser对象，用于解析XML内容¹。getXml的用法如下：</p>
+<ul>
+<li>首先，你需要在res/xml目录下创建一个XML文件，例如test.xml，定义你想要的XML内容，例如：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"one"</span> <span class="attr">value</span>=<span class="string">"1"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"two"</span> <span class="attr">value</span>=<span class="string">"2"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"three"</span> <span class="attr">value</span>=<span class="string">"3"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>然后，你需要在代码中获取一个Resources对象，你可以通过调用Context类的getResources()方法来获取，例如，如果你在Activity中，你可以使用<code>Resources res = this.getResources();</code>来获取Resources对象。</li>
+<li>接着，你需要调用getXml方法，传入XML文件的资源ID，返回一个XmlResourceParser对象，例如，你可以使用<code>XmlResourceParser parser = res.getXml(R.xml.test);</code>来获取test.xml文件的解析器。</li>
+<li>最后，你需要使用XmlResourceParser对象的方法来解析XML内容，例如，你可以使用getEventType()方法来获取当前的事件类型，使用getName()方法来获取当前的标签名，使用getAttributeValue()方法来获取当前的属性值，使用next()方法来移动到下一个事件，等等²。你可以使用一个while循环来遍历整个XML文件，根据不同的事件类型和标签名来处理不同的逻辑，例如，你可以使用以下代码来打印出XML文件中的所有item的name和value属性：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> eventType = parser.getEventType();</span><br><span class="line">    <span class="keyword">while</span> (eventType != XmlResourceParser.END_DOCUMENT) &#123;</span><br><span class="line">        <span class="keyword">if</span> (eventType == XmlResourceParser.START_TAG) &#123;</span><br><span class="line">            String tagName = parser.getName();</span><br><span class="line">            <span class="keyword">if</span> (tagName.equals(<span class="string">"item"</span>)) &#123;</span><br><span class="line">                String name = parser.getAttributeValue(<span class="keyword">null</span>, <span class="string">"name"</span>);</span><br><span class="line">                String value = parser.getAttributeValue(<span class="keyword">null</span>, <span class="string">"value"</span>);</span><br><span class="line">                Log.d(<span class="string">"XML"</span>, <span class="string">"name: "</span> + name + <span class="string">", value: "</span> + value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        eventType = parser.next();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (XmlPullParserException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>(1) <a href="https://developer.android.google.cn/training/basics/network-ops/xml?hl=zh-cn." target="_blank" rel="noopener">解析 XML 数据 | Connectivity | Android Developers.</a><br>(2) <a href="https://www.jianshu.com/p/caa275369d3e." target="_blank" rel="noopener">Android xml数据的读取和写入（sax,pull,dom,xstream,jsoup ….</a><br>(3) <a href="https://blog.csdn.net/hanjingjingpan/article/details/8812770." target="_blank" rel="noopener">Android中写入读取XML_android 写入xml-CSDN博客.</a><br>(4) <a href="http://www.w3.org/2005/Atom." target="_blank" rel="noopener">undefined.</a><br>(5) <a href="http://backend.userland.com/creativeCommonsRssModule." target="_blank" rel="noopener">undefined.</a><br>(6) <a href="http://stackoverflow.com/q/9439999." target="_blank" rel="noopener">undefined.</a><br>(7) <a href="http://stackoverflow.com." target="_blank" rel="noopener">undefined.</a><br>(8) <a href="http://stackoverflow.com/feeds/tag?tagnames=android&sort=newest/tags." target="_blank" rel="noopener">undefined.</a><br>(9) <a href="http://stackoverflow.com/users/1128925." target="_blank" rel="noopener">undefined.</a><br>(10) <a href="http://stackoverflow.com/questions/9439999/where-is-my-data-file." target="_blank" rel="noopener">undefined.</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/05/code/%E5%AE%89%E5%8D%93/%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9Axml/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-code/安卓/创建通知" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -721,341 +1064,9 @@
 
 
   
-    <article id="post-code/android/安卓获取不同语言资源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/15/code/android/%E5%AE%89%E5%8D%93%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%90%8C%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90/">安卓获取不同语言资源</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/15/code/android/%E5%AE%89%E5%8D%93%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%90%8C%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90/" class="archive-article-date">
-  	<time datetime="2023-11-15T02:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-15</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：151字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>测试推送策划要给一个按钮来看不同国家的语言</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指定当前 activity 的语言</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Resources <span class="title">applyLanguage</span><span class="params">(Context context, Locale locale)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.N) &#123; <span class="comment">// v24 或以上，需要将指定的语言绑定到 context，然后再 attachBaseContext()</span></span><br><span class="line">        Configuration configuration = context.getResources().getConfiguration();</span><br><span class="line">        configuration = <span class="keyword">new</span> Configuration(configuration);</span><br><span class="line">        configuration.setLocale(locale);</span><br><span class="line">        Context myContext = context.createConfigurationContext(configuration);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> myContext.getResources();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; <span class="comment">// v24 以下，直接将指定的语言绑定到 resource，不需要 attachBaseContext()</span></span><br><span class="line">        Resources resource = context.getResources();</span><br><span class="line">        Configuration configuration = resource.getConfiguration();</span><br><span class="line">        configuration.locale = locale;</span><br><span class="line">        DisplayMetrics dm = resource.getDisplayMetrics();</span><br><span class="line">        resource.updateConfiguration(configuration, dm);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> context.getResources();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置指定语言</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Locale  <span class="title">getLocale</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Locale locale = <span class="keyword">new</span> Locale(<span class="string">"us"</span>);</span><br><span class="line">    <span class="keyword">return</span> locale;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/15/code/android/%E5%AE%89%E5%8D%93%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%90%8C%E8%AF%AD%E8%A8%80%E8%B5%84%E6%BA%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/动画/Spine/关于spineUI使用混合模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/11/Unity/%E5%8A%A8%E7%94%BB/Spine/%E5%85%B3%E4%BA%8EspineUI%E4%BD%BF%E7%94%A8%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/">Unity混合模式</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/11/Unity/%E5%8A%A8%E7%94%BB/Spine/%E5%85%B3%E4%BA%8EspineUI%E4%BD%BF%E7%94%A8%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-11-11T06:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-11</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：75字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://zh.esotericsoftware.com/forum/d/17799-ugui%E4%B8%8B%E7%9A%84skeletongraphic%E6%95%88%E6%9E%9C%E4%B8%8D%E6%AD%A3%E7%A1%AE%E4%B8%94%E6%9C%89%E9%97%AA%E7%83%81%E5%AF%B9%E6%AF%94unity2d" target="_blank" rel="noopener">类似问题参考</a><br><a href="https://blog.csdn.net/shaobing32/article/details/122588673" target="_blank" rel="noopener">UI使用多个canvas</a><br><a href="http://zh.esotericsoftware.com/spine-unity/#%E9%AB%98%E7%BA%A7---Premultiplied-%E5%92%8C-Straight-Alpha-%E5%AF%BC%E5%85%A5" target="_blank" rel="noopener">官方文档</a></p>
-<p>简单来说就是如果ui上无法显示但是animation可以正常显示那么就是混合模式有问题 按照官方文档修改一下材质就好了 然后重新导入一下动画资源</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spine</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/11/Unity/%E5%8A%A8%E7%94%BB/Spine/%E5%85%B3%E4%BA%8EspineUI%E4%BD%BF%E7%94%A8%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/坑/奇怪报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/09/Unity/%E5%9D%91/%E5%A5%87%E6%80%AA%E6%8A%A5%E9%94%99/">奇奇怪怪的报错</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/09/Unity/%E5%9D%91/%E5%A5%87%E6%80%AA%E6%8A%A5%E9%94%99/" class="archive-article-date">
-  	<time datetime="2023-11-09T08:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-09</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：382字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>Release of invalid GC handle. The handle is from a previous domain. The release operation is skipped.</code></p>
-<p>这个错误通常是由于在使用资源后没有正确释放或清理资源导致的。这种情况下，可能是由于在加载资源后，资源所属的域已被卸载，但仍然存在对该资源句柄的引用，导致释放句柄时出现错误。</p>
-<p>要解决这个问题，可以采取以下几个步骤：</p>
-<ol>
-<li><p>确保在使用完资源后，及时调用资源的释放方法或清理操作。例如，对于字体资源，在不再需要时调用<code>Resources.UnloadUnusedAssets()</code>方法来释放未使用的资源。</p>
-</li>
-<li><p>检查代码中是否存在资源未正确释放的情况。例如，在调用加载资源的方法之前，先检查是否已经有其他的资源被加载，如果有，则先释放之前的资源再加载新的资源。</p>
-</li>
-<li><p>如果使用了多个域或加载了多个场景，确保在切换域或场景时正确释放先前的资源。可以使用<code>UnloadUnusedAssets()</code>方法来卸载不再使用的资源。</p>
-</li>
-<li><p>检查是否存在跨域或跨场景的资源引用问题。确保在使用资源后，将其引用置为null，以便垃圾回收器可以正确清理。</p>
-</li>
-</ol>
-<p>如果通过上述步骤仍然无法解决问题，可能需要仔细检查代码并进行调试，以确定在哪个具体的位置引发了错误。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/09/Unity/%E5%9D%91/%E5%A5%87%E6%80%AA%E6%8A%A5%E9%94%99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/编辑器/unity编辑器加载资源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E7%BC%96%E8%BE%91%E5%99%A8%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90/">unity加载资源</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E7%BC%96%E8%BE%91%E5%99%A8%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90/" class="archive-article-date">
-  	<time datetime="2023-11-08T09:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-08</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：319字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Unity编辑器模式下加载非”Resources”文件夹下的资源，可以使用<code>AssetDatabase</code>类的<code>LoadAssetAtPath</code>方法。以下是一个示例代码，演示了如何在编辑器模式下加载非”Resources”文件夹中的字体资源：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> fontPath; <span class="comment">// 字体在非"Resources"文件夹中的路径</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">        <span class="comment">// 加载字体资源</span></span><br><span class="line">        Font font = AssetDatabase.LoadAssetAtPath&lt;Font&gt;(fontPath);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (font != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字体加载成功</span></span><br><span class="line">            <span class="comment">// 使用字体...</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字体加载失败</span></span><br><span class="line">            Debug.LogError(<span class="string">"Failed to load font!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">        Debug.LogError(<span class="string">"Asset loading only works in editor mode!"</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上述示例中，我们使用<code>AssetDatabase.LoadAssetAtPath</code>方法在编辑器模式下加载非”Resources”文件夹中的字体资源。将路径<code>fontPath</code>作为参数传递给<code>LoadAssetAtPath</code>方法，并指定要加载的资源类型<code>&lt;Font&gt;</code>。然后，将加载的字体对象赋值给<code>font</code>变量。</p>
-<p>需要注意的是，<code>AssetDatabase</code>类只在Unity编辑器模式下可用，因此在实际运行游戏时，需要将加载资源的代码放置在<code>#if UNITY_EDITOR</code>和<code>#endif</code>之间，以避免运行时错误。</p>
-<p>请确保将<code>fontPath</code>设置为非”Resources”文件夹中字体的正确路径，并确保在编辑器中正确导入了字体资源。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E7%BC%96%E8%BE%91%E5%99%A8%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1162,19 +1173,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1182,11 +1181,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shader</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1194,7 +1201,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">shader</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1206,23 +1225,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1234,7 +1237,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1246,11 +1257,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1262,10 +1273,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
@@ -1274,11 +1281,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1290,18 +1309,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
@@ -1310,7 +1317,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1318,11 +1325,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

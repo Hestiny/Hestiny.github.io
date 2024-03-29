@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 183
+            总文章数 187
         </nav>
 		<nav>
-            总字数 <span class="post-count">111.5k</span>
+            总字数 <span class="post-count">112.7k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,378 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-c#/dictionary使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/18/c#/dictionary%E4%BD%BF%E7%94%A8/">dictionary的线程问题 以及查询时修改问题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/18/c#/dictionary%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2023-12-18T06:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-18</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：967字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="同步遍历"><a href="#同步遍历" class="headerlink" title="同步遍历"></a>同步遍历</h2><p><a href="https://zhuanlan.zhihu.com/p/638243227" target="_blank" rel="noopener">dictionary理解</a></p>
+<p>C# dictionary在被遍历时，不能使用foreach循环来修改字典中的值，编译会不通过。这是因为foreach循环使用了迭代器，而迭代器要求集合在遍历过程中不能被修改。</p>
+<p>如果想要在遍历时修改字典中的值，可以采用以下的一些方法：</p>
+<ul>
+<li>使用for循环，通过索引来访问和修改字典中的值。</li>
+<li>使用ToList方法，将字典转换为列表，然后使用foreach循环遍历列表，同时修改原字典中的值。</li>
+<li>使用ConcurrentDictionary类，它是一个线程安全的字典实现，它允许在遍历时修改字典中的值，而不会抛出异常。</li>
+</ul>
+<p>在dictionary中是有keys属性可以直接用于查询key的 我们都知道如果使用了字典的迭代器那么字典是一定不能修改的 否则迭代器将会报错 这个时候使用一定要慎重<br>写了一个简单的测试<br>keylist是会跟随字典的修改而改变的 所以如果在遍历keyList的时候会报错的如下图 大意就是在用迭代器时修改了字典值 字典值可能添加失败(测试代码中是添加成功了 但依旧会报错警示)<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/dic/1.png" alt="运行截图"></p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">DicTest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Dictionary&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; dictionary = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;()</span><br><span class="line">    &#123;</span><br><span class="line">        &#123; <span class="number">1</span>, <span class="number">1</span> &#125;, &#123; <span class="number">2</span>, <span class="number">2</span> &#125;, &#123; <span class="number">3</span>, <span class="number">3</span> &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> keyList = dictionary.Keys;</span><br><span class="line">    dictionary.Add(<span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">    dictionary.Remove(<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> keyList)</span><br><span class="line">    &#123;</span><br><span class="line">        dictionary.TryAdd(<span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时候再考虑多线程问题 dictionary是非线程安全的 lock又会增加性能消耗在 而需要考虑线程安全时候一定是因为需要频繁修改和查询 所以不建议使用lock<br>在多线程中Containskey的方法就可类比成遍历 次数修改数据就会出现问题 那么解决问题就考虑到一个问题 就是直接拍一个快照下来将此时的字典深拷贝下来 来供查询 其实拍一个快照下来的性能消耗未必比直接查询快 只是这样会最大程度上避免修改被打断 然后unity很多时候其实都是单线程的 需要考虑这种情况会比较少</p>
+<p>同时 字典的<code>Keys</code>属性是会增加gc的 能不用就不用 它会单独为键创建一个数组</p>
+<h2 id="多线程问题"><a href="#多线程问题" class="headerlink" title="多线程问题"></a>多线程问题</h2><p>注意unity目前大概是不支持除dictionary之外的容器</p>
+<p>C# dictionary是一个非线程安全的键值对集合，它在多线程环境中可能会出现数据损坏或异常的问题。如果需要对dictionary频繁查询，同时又需要修改其中的某些项，可以采用以下的一些方法来避免被查询打断：</p>
+<ul>
+<li>使用lock语句来同步对dictionary的访问，确保每次只有一个线程可以修改dictionary，而其他线程在查询时需要等待²。这种方法可以保证数据的一致性，但是会降低性能和并发性。</li>
+<li>使用ConcurrentDictionary类，它是一个线程安全的dictionary实现，它使用原子操作和锁机制来确保数据的一致性和完整性。ConcurrentDictionary还提供了一些特殊的方法，如AddOrUpdate和GetOrAdd，来方便地更新或获取值。这种方法可以提高性能和并发性，但是可能会导致数据的重复创建或丢弃⁴。</li>
+<li>使用ReadOnlyDictionary类，它是一个只读的dictionary包装器，它可以防止对dictionary的修改，但是允许对dictionary的读取。这种方法可以适用于只需要查询而不需要修改的场景，但是需要注意ReadOnlyDictionary本身不是线程安全的，如果底层的dictionary被修改，可能会引发异常。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/18/c#/dictionary%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/框架/package/package依赖处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/15/Unity/%E6%A1%86%E6%9E%B6/package/package%E4%BE%9D%E8%B5%96%E5%A4%84%E7%90%86/">unity包依赖处理</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/15/Unity/%E6%A1%86%E6%9E%B6/package/package%E4%BE%9D%E8%B5%96%E5%A4%84%E7%90%86/" class="archive-article-date">
+  	<time datetime="2023-12-15T03:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-15</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：412字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>dependencies是一个JSON对象，它用来列出您的包所依赖的其他包的名称和版本。您可以在您的包的package.json文件中添加或修改dependencies字段¹。例如，如果您的包需要使用Unity内置的TextMesh Pro包和一个自定义的MyMath包，您可以这样填写：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"com.mycompany.mypackage"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"com.unity.textmeshpro"</span>: <span class="string">"2.1.1"</span>,</span><br><span class="line">    <span class="attr">"com.mycompany.mymath"</span>: <span class="string">"1.2.3"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>您可以使用Unity提供的包注册表，也可以使用本地文件夹、Git URL或tarball来指定依赖包的来源²。您可以使用语义版本号来指定依赖包的版本范围³。例如，如果您想要使用最新的TextMesh Pro包，您可以这样填写：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"com.mycompany.mypackage"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"com.unity.textmeshpro"</span>: <span class="string">"*"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您想要使用一个特定的Git分支或标签，可以这样填写： 这个不能处理包里面的依赖 只能处理unity中的main依赖</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"com.mycompany.mypackage"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"com.mycompany.mymath"</span>: <span class="string">"https://github.com/mycompany/mymath.git#v1.2.3"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果您想要使用一个本地文件夹，您可以这样填写：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"com.mycompany.mypackage"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"com.mycompany.mymath"</span>: <span class="string">"file:../mymath"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>填写好dependencies后，您可以使用Package Manager窗口来安装或更新您的依赖包⁴。您也可以查看您的包的依赖关系和解析结果⁵。</p>
+<p>(1) <a href="https://docs.unity.cn/cn/2021.3/Manual/upm-dependencies.html." target="_blank" rel="noopener">依赖和解析 - Unity 手册.</a><br>(2) <a href="https://docs.unity.cn/cn/2019.4/Manual/CustomPackages.html." target="_blank" rel="noopener">创建自定义包 - Unity 手册.</a><br>(3) <a href="https://bing.com/search?q=unity+package%e4%b8%addependencied%e6%80%8e%e4%b9%88%e5%a1%ab." target="_blank" rel="noopener">Unity工具—制作与使用Package - 知乎.</a><br>(4) <a href="https://zhuanlan.zhihu.com/p/147975801." target="_blank" rel="noopener">Unity工具—制作与使用Package - 知乎.</a><br>(5) <a href="https://docs.unity.cn/cn/2019.4/Manual/upm-dependencies.html." target="_blank" rel="noopener">依赖关系 - Unity 手册.</a><br>(6) <a href="https://docs.unity.cn/cn/2021.1/Manual/class-PackageManager.html." target="_blank" rel="noopener">Package Manager - Unity 手册.</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">package</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/15/Unity/%E6%A1%86%E6%9E%B6/package/package%E4%BE%9D%E8%B5%96%E5%A4%84%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/打包/图集属性相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/12/Unity/%E6%89%93%E5%8C%85/%E5%9B%BE%E9%9B%86%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3/">Unity 图集参数相关</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/12/Unity/%E6%89%93%E5%8C%85/%E5%9B%BE%E9%9B%86%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+  	<time datetime="2023-12-12T03:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-12</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：1k字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://developer.aliyun.com/article/990664" target="_blank" rel="noopener">参考文档</a><br><a href="https://zhuanlan.zhihu.com/p/456101373" target="_blank" rel="noopener">参考文档</a><br><a href="https://www.cnblogs.com/msxh/p/14194756.html" target="_blank" rel="noopener">图集和ab的使用</a></p>
+<p>Unity中type 可以设置Variant和master 来设置不同清晰度的图 调整的参数是scale所以不同的图集就是对应不同的清晰度<br>关于如何选择清晰的就是利用<code>Include in Build</code>属性 将使用图集的属性勾选上即可</p>
+<p>图集的打包方式推荐以文件夹为单位而不是单个图片添加 (视打包的代码为主 因为以单个文件打包可能会以后后期添加的部分图片)</p>
+<p>blockOffset和padding都是用来设置图集中精灵之间的间隙的属性，但是它们有一些不同的作用和影响。</p>
+<p>blockOffset是用来设置图集中每个精灵的偏移量的，它是一个整数值，范围是0到15。它的作用是为了避免精灵之间的缝隙或重叠，提高图集的质量。blockOffset的值越大，表示精灵之间的间隙越大，但是也会占用更多的图集空间。blockOffset的值越小，表示精灵之间的间隙越小，但是也会增加精灵之间的重叠的可能性。</p>
+<p>padding是用来设置图集中每个精灵的边缘空白的，它是一个整数值，范围是0到32。它的作用是为了避免精灵的边缘被其他精灵的颜色污染，提高精灵的清晰度。padding的值越大，表示精灵的边缘空白越大，但是也会占用更多的图集空间。padding的值越小，表示精灵的边缘空白越小，但是也会增加精灵的边缘颜色失真的可能性。</p>
+<p>一般情况下，blockOffset和padding的默认值都为4，可以满足大多数情况的需求。如果您发现图集中的精灵出现了缝隙，重叠，或者颜色失真的问题，您可以尝试调整blockOffset和padding的值，直到找到一个合适的值。</p>
+<h2 id="warpmode"><a href="#warpmode" class="headerlink" title="warpmode"></a>warpmode</h2><p>wrapMode 是用来设置纹理坐标的换行模式的。换行模式决定了当纹理坐标超出 0 到 1 的范围时，纹理如何显示。有以下几种常用的换行模式：</p>
+<ul>
+<li>Clamp：将纹理坐标限制在 0 到 1 的范围内，超出的部分显示边缘的像素。</li>
+<li>Repeat：将纹理坐标对 1 取模，使得纹理在每个方向上重复显示。</li>
+<li>Mirror：将纹理坐标对 1 取模，但是每次超过 1 时，纹理会翻转显示。</li>
+</ul>
+<p>您可以使用 wrapMode 属性来在所有轴上设置相同的换行模式，也可以使用 wrapModeU、wrapModeV、wrapModeW 属性来按轴设置不同的换行模式。查询 wrapMode 的值会返回 U 轴的换行模式。</p>
+<h2 id="meshType"><a href="#meshType" class="headerlink" title="meshType"></a>meshType</h2><p><a href="https://thegamedev.guru/unity-gpu-performance/sprites-full-rect-or-tight/" target="_blank" rel="noopener">性能优化参考</a><br>meshType 是用来设置 Sprite 的网格类型的。网格类型决定了 Sprite 在游戏中的渲染方式。有以下两种常用的网格类型：</p>
+<ul>
+<li>Full Rect：将 Sprite 渲染为一个完整的矩形，包含透明区域。</li>
+<li>Tight：根据像素的透明度，将 Sprite 渲染为一个紧凑的网格，尽可能地裁剪掉多余的像素。</li>
+</ul>
+<p>一般来说，Full Rect 比 Tight 更高效，因为它使用的顶点和三角形更少，但是 Tight 可以节省内存和填充率，因为它不渲染透明区域。并且建议使用tight 避免overdraw 通常情况下</p>
+<h2 id="创建图集代码参考"><a href="#创建图集代码参考" class="headerlink" title="创建图集代码参考"></a>创建图集代码参考</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BuildSpriteAtlas</span>(<span class="params"><span class="keyword">string</span> folderPath</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DirectoryInfo dInfo = <span class="keyword">new</span> DirectoryInfo(folderPath);</span><br><span class="line">    <span class="keyword">string</span> atlasName = dInfo.Name + <span class="string">"_Atlas"</span>;</span><br><span class="line">    <span class="keyword">string</span> spriteDataPath = folderPath + <span class="string">"/"</span> + atlasName + <span class="string">".spriteatlas"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (File.Exists(spriteDataPath))</span><br><span class="line">        File.Delete(spriteDataPath);</span><br><span class="line"></span><br><span class="line">    FileInfo[] files = dInfo.GetFiles();</span><br><span class="line">    <span class="keyword">if</span> (files.Length &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//create atlas</span></span><br><span class="line">    SpriteAtlas atlas = <span class="keyword">new</span> SpriteAtlas();</span><br><span class="line">    atlas.SetIncludeInBuild(<span class="literal">true</span>);</span><br><span class="line">    <span class="comment">// atlas.SetMasterAtlas(atlas);//如果需要设置多个清晰度图集需要设置这个 并将type改为 Variant</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//默认禁用旋转 不以图片的轮廓打包而是矩形防止出现图片叠加</span></span><br><span class="line">    SpriteAtlasPackingSettings packSet = <span class="keyword">new</span> SpriteAtlasPackingSettings()</span><br><span class="line">    &#123;</span><br><span class="line">        blockOffset = <span class="number">1</span>,</span><br><span class="line">        enableRotation = <span class="literal">false</span>,</span><br><span class="line">        enableTightPacking = <span class="literal">false</span>,</span><br><span class="line">        padding = <span class="number">4</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    atlas.SetPackingSettings(packSet);</span><br><span class="line"></span><br><span class="line">    TextureImporterPlatformSettings platform = <span class="keyword">new</span> TextureImporterPlatformSettings()</span><br><span class="line">    &#123;</span><br><span class="line">        maxTextureSize = <span class="number">2048</span>,</span><br><span class="line">        format = TextureImporterFormat.Automatic,</span><br><span class="line">        compressionQuality = <span class="number">50</span>,</span><br><span class="line">        crunchedCompression = <span class="literal">true</span>,</span><br><span class="line">        textureCompression = TextureImporterCompression.Compressed,</span><br><span class="line">    &#125;;</span><br><span class="line">    atlas.SetPlatformSettings(platform);</span><br><span class="line"></span><br><span class="line">    AssetDatabase.CreateAsset(atlas, spriteDataPath);</span><br><span class="line">    <span class="keyword">var</span> targetPath = folderPath.Replace(Application.dataPath, <span class="string">"Assets"</span>);</span><br><span class="line">    Object loadDirObject = AssetDatabase.LoadAssetAtPath(targetPath, <span class="keyword">typeof</span>(UnityEngine.Object));</span><br><span class="line">    atlas.Add(<span class="keyword">new</span> UnityEngine.Object[] &#123; loadDirObject &#125;);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    AssetDatabase.SaveAssets();</span><br><span class="line">    AssetDatabase.Refresh();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/12/Unity/%E6%89%93%E5%8C%85/%E5%9B%BE%E9%9B%86%E5%B1%9E%E6%80%A7%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/框架/package/package创建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/11/Unity/%E6%A1%86%E6%9E%B6/package/package%E5%88%9B%E5%BB%BA/">流程化工具</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/11/Unity/%E6%A1%86%E6%9E%B6/package/package%E5%88%9B%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2023-12-11T02:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-11</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：260字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>package主要是方便项目的搬移和简洁开发文档界面 从根源上就直接与项目解耦 随插随用十分好用 就注定了开发工具的时候要注意解耦 同时也带来了一个问题 就是团队内同步的时候需要跟伙伴们沟通一下(貌似不是什么大问题)</p>
+<p>Unity官方已经出了一个插件 可以快速的创建一个package的demo 只需要在packmanager中添加 <code>com.unity.upm.develop</code> 目前还是预览版所以需要手动添加</p>
+<p>然后将创建的文件推到git仓库然后打上tag就行了<br>之后在packagewindow中用url来下载就可以正常拉取到包了</p>
+<p>package更新 不仅要更新tag 还要修改package文件中Version 与tag对应<br>如果新加tag没有升级 删除旧的tag试一下 不是根据tag时的修改来更新的 而是最新的修改都在这 所以不要随意推上分支</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://docs.unity.cn/cn/2019.4/Manual/upm-assets.html" target="_blank" rel="noopener">获取包内资源</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">package</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/11/Unity/%E6%A1%86%E6%9E%B6/package/package%E5%88%9B%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-c#/dynamic使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -680,390 +1052,6 @@
 
 
   
-    <article id="post-c#/日期处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/01/c#/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/">c# 日期处理</a>
-    </h1>
-  
-
-        
-        <a href="/2023/12/01/c#/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2023-12-01T07:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-01</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：204字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>关于周的处理 因为不同的日历的每周第一天都不一样 所以c#有很多的本地化日历</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetWeekOfYear</span>(<span class="params"><span class="keyword">this</span> DateTime date, CultureInfo culture = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    culture ??= <span class="keyword">new</span> CultureInfo(<span class="string">"en-US"</span>); <span class="comment">//默认美国日历 并且以星期一为一周的第一天</span></span><br><span class="line">    DayOfWeek cultureFirstDay = DayOfWeek.Monday;</span><br><span class="line">    <span class="keyword">return</span> culture.Calendar.GetWeekOfYear(date, culture.DateTimeFormat.CalendarWeekRule, cultureFirstDay);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetDayOfWeek</span>(<span class="params"><span class="keyword">this</span> DateTime date, DayOfWeek firstDayOfWeek = DayOfWeek.Monday</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dayOfWeek = (<span class="keyword">int</span>)date.DayOfWeek;    </span><br><span class="line">    <span class="keyword">var</span> firstDay = (<span class="keyword">int</span>)firstDayOfWeek;</span><br><span class="line">    <span class="keyword">return</span> (dayOfWeek - firstDay + <span class="number">7</span>) % <span class="number">7</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">IsInSameWeek</span>(<span class="params">DateTime firstDate, DateTime secondDate</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> daySpan = (secondDate - firstDate).TotalDays;</span><br><span class="line">    <span class="keyword">var</span> firstDayOfWeek = firstDate.GetDayOfWeek();</span><br><span class="line">    <span class="keyword">var</span> secondDayOfWeek = secondDate.GetDayOfWeek();</span><br><span class="line">    <span class="keyword">return</span> (daySpan &gt;= <span class="number">0</span>) ^ (firstDayOfWeek &gt;= secondDayOfWeek);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 获取激励周末剩余的日期 一周的第一天为周一</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="time"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetLeftDayOfWeek</span>(<span class="params">DateTime time</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (time.DayOfWeek == DayOfWeek.Sunday)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> DayOfWeek.Saturday - time.DayOfWeek + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/12/01/c#/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/工具/luban配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/21/Unity/%E5%B7%A5%E5%85%B7/luban%E9%85%8D%E7%BD%AE/">unity配置luban</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/21/Unity/%E5%B7%A5%E5%85%B7/luban%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2023-11-21T07:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-21</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：723字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前的项目内的导表工具都是转成静态类 想看看luban有什么好的优化 拿来用用</p>
-<p>因为luban迭代 之前的网上很多教程都不是很新了 跟官方文档一结合就让人一头雾水 简直了</p>
-<p>先上<a href="https://luban.doc.code-philosophy.com/docs/beginner/quickstart" target="_blank" rel="noopener">官方文档</a></p>
-<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p>(unity之外的配置 生成json或者c#代码)</p>
-<ol>
-<li><p>装dotnet sdk 7.0 或以上 (一般这个unity没有不装的吧) mac和win的指令一样<br><a href="https://learn.microsoft.com/zh-cn/dotnet/core/install/how-to-detect-installed-versions?pivots=os-macos" target="_blank" rel="noopener">查看安装的dotnet版本</a><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/luban/0.png" alt="查看版本"></p>
-</li>
-<li><p><a href="https://github.com/focus-creative-games/luban_examples" target="_blank" rel="noopener">示例项目下载</a> (分隔符) <a href="https://github.com/focus-creative-games/luban/releases" target="_blank" rel="noopener">luban.dll下载</a> 注意如果如果你是新版luban 下载的示例项目里面是没有这个dll的需要自己下载 如果没有下载或者路径不对都会报错 (项目很多文件夹 你一定有很多疑问 但你先别疑问)</p>
-</li>
-</ol>
-<p>(unity内的配置)</p>
-<ol>
-<li><strong>[重要]</strong> 之前旧版的lubanlib很多直接是从示例项目复制粘贴过来的 这里官方直接改成了pack了 在unity的pack中下载就行了 官方文档也提到 并且项目需要打开 unsafe设置 大概是项目用到指针了 packeUrl:<code>https://github.com/focus-creative-games/luban_unity.git</code></li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/21/Unity/%E5%B7%A5%E5%85%B7/luban%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/编辑器/日志分层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/16/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%97%A5%E5%BF%97%E5%88%86%E5%B1%82/">日志分层</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/16/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%97%A5%E5%BF%97%E5%88%86%E5%B1%82/" class="archive-article-date">
-  	<time datetime="2023-11-16T09:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-16</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：2.3k字 | 预计阅读时长：12分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前参考了Tengine的框架 把日志宏搬过来了 发现并不好用 因为每次修改就得编译一次太慢了 这种适合分不同平台来进行打包测试专门使用<br>所以想用一个更轻量级的分层来用来日常调试使用</p>
-<p>那就直接用一个枚举值来判断值的开启就好了<br>这里用了<code>Flags</code>特性 借助枚举来完成多个值的权限开启</p>
-<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果你想将值保存下来 方法很多 什么文本格式 还是unity支持的 ScriptableObject或者PlayerPrefs<br>当然这里更推荐ScriptableObject 因为你将可以更方便的在inspector面板选择 而其他的就需要自己做一个编辑器界面了 但是你就<strong>不能用<code>ulong</code>类型</strong><br>因为unity不支持</p>
-<h2 id="使用界面"><a href="#使用界面" class="headerlink" title="使用界面"></a>使用界面</h2><p><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/log/0.png" alt="inspector"><br>编辑面板其实作用就只有两个按钮 快捷设置自己平时的喜欢 上面的其实没啥卵用 <em>(因为我之前不知道unity自带的面板这么好用)</em><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/log/1.png" alt="编辑器面板"><br>关于宏的面板使用 目前没用太繁琐了 但是测试还是可以用的<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/log/3.png" alt="宏"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/16/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%97%A5%E5%BF%97%E5%88%86%E5%B1%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-c#/计算机内存结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/16/c#/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">字 字节和位</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/16/c#/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2023-11-16T02:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-16</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：505字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近发现大学学的计算机基础还是太薄弱了 连数值的位数和范围都记不清楚 在这里巩固一下</p>
-<p>字、字节和位都是计算机存储容量的单位，它们之间有以下区别：</p>
-<ol>
-<li><p>字（Word）：字是计算机中最基本的存储单位，它表示计算机一次能处理的数据位数。不同计算机体系结构中，字的长度可以不同。例如，一些计算机体系结构中的字长度是16位，就是指每次能处理16位的数据。字通常用来表示整数、浮点数等数据类型。</p>
-</li>
-<li><p>字节（Byte）：字节是计算机存储单位，它由8个二进制位组成，表示计算机中最小的可寻址存储单元。字节是计算机中数据的基本存储单位，用来表示字符、整数、浮点数等各种数据类型。在计算机存储器、硬盘、光盘等介质中，数据的存储和传输都是以字节为基本单位的。</p>
-</li>
-<li><p>位（Bit）：位是计算机存储或传输信息的最小单位，它只能表示两个状态：0或1。位被用来表示计算机中的布尔型数据，即逻辑真（1）和逻辑假（0）。在计算机中，所有的数据最终都是以二进制的形式表示，而位就是二进制数据的基本单元。</p>
-</li>
-</ol>
-<p>综上所述，字是计算机中一次能处理的数据位数，字节是计算机中的最小可寻址存储单元，而位是计算机存储和传输信息的最小单位。</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th align="center">长度</th>
-<th align="center">存储范围</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>sbyte</td>
-<td align="center">8位</td>
-<td align="center">-128 到 127</td>
-</tr>
-<tr>
-<td>byte</td>
-<td align="center">8位</td>
-<td align="center">0到255</td>
-</tr>
-<tr>
-<td>short</td>
-<td align="center">16位</td>
-<td align="center">-32,768 到 32,767</td>
-</tr>
-<tr>
-<td>ushort</td>
-<td align="center">16位</td>
-<td align="center">0 到 65,535</td>
-</tr>
-<tr>
-<td>int</td>
-<td align="center">32位</td>
-<td align="center">-2,147,483,648 到 2,147,483,647</td>
-</tr>
-<tr>
-<td>uint</td>
-<td align="center">32位</td>
-<td align="center">0 到 4,294,967,295</td>
-</tr>
-<tr>
-<td>long</td>
-<td align="center">64位</td>
-<td align="center">-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
-</tr>
-<tr>
-<td>ulong</td>
-<td align="center">64位</td>
-<td align="center">0 到 18,446,744,073,709,551,615</td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/16/c#/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1173,14 +1161,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1189,7 +1169,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,11 +1205,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,11 +1217,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,19 +1245,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,6 +1262,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1309,15 +1297,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1325,11 +1309,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

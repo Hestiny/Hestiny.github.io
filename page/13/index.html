@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 183
+            总文章数 187
         </nav>
 		<nav>
-            总字数 <span class="post-count">111.5k</span>
+            总字数 <span class="post-count">112.7k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,376 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/编辑器/Odin调用ScriptableObject报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/27/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Odin%E8%B0%83%E7%94%A8ScriptableObject%E6%8A%A5%E9%94%99/">Odin调用ScriptableObject报错</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/27/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Odin%E8%B0%83%E7%94%A8ScriptableObject%E6%8A%A5%E9%94%99/" class="archive-article-date">
+  	<time datetime="2023-05-27T08:05:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-27</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：168字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h2><p>Load is not allowed to be called from a ScriptableObject constructor (or instance field initializer), call it in OnEnable instead.</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>网上找了一些方法 无非是ScriptableObject的构建有问题 用了new 应该用CreateInstance的方法</p>
+<p>不过这不是我的问题 这是在odin的特性使用时候直接调用时候报错的 和直接使用unity相关变量很像 所以就直接换一个变量来承接而不是直接使用该变量</p>
+<p>还是不行就重启unity</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>AppConfig 是一个ScriptableObject</p>
+<p>报错:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Title(<span class="meta-string">"App Config"</span>)</span>] [VerticalGroup(<span class="string">"config"</span>)]</span><br><span class="line"><span class="keyword">public</span> AppConfig.APP_MODE appMode = AppConfig.S.appMode;</span><br></pre></td></tr></table></figure>
+
+<p>正常:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> AppConfig.APP_MODE _appMode = AppConfig.S.appMode;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Title(<span class="meta-string">"App Config"</span>)</span>] [VerticalGroup(<span class="string">"config"</span>)]</span><br><span class="line"><span class="keyword">public</span> AppConfig.APP_MODE appMode = _appMode;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/27/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Odin%E8%B0%83%E7%94%A8ScriptableObject%E6%8A%A5%E9%94%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c#/Flag特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/26/c#/Flag%E7%89%B9%E6%80%A7/">c# 枚举 Flags特性</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/26/c#/Flag%E7%89%B9%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：420字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/BluceLee/p/8989479.html" target="_blank" rel="noopener">枚举文档参考</a><br><a href="https://learn.microsoft.com/zh-cn/dotnet/api/system.flagsattribute?view=net-7.0" target="_blank" rel="noopener">Flags官方文档</a><br><a href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/builtin-types/enum" target="_blank" rel="noopener">枚举官方文档</a><br><a href="https://learn.microsoft.com/zh-cn/dotnet/csharp/language-reference/builtin-types/integral-numeric-types" target="_blank" rel="noopener">文本类型值官方文档</a></p>
+<p>C#中的Flags特性（也称为枚举标志）是一个可以应用于枚举类型的特性。Flags特性允许将枚举值组合起来，以表示多个选项的组合。这使得在表示一组选项时更加灵活和便捷。</p>
+<p>要使用Flags特性，需要完成以下步骤：</p>
+<ol>
+<li><p>声明一个枚举类型，并为每个选项指定一个唯一的位标志。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Flags</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> MyOptions</span><br><span class="line">&#123;</span><br><span class="line">    None =  <span class="number">0b</span>_0000_0000,<span class="comment">//0</span></span><br><span class="line">    Option1 = <span class="number">0b</span>_0000_0001,<span class="comment">//1</span></span><br><span class="line">    Option2 = <span class="number">2</span>,</span><br><span class="line">    Option3 = <span class="number">4</span>,</span><br><span class="line">    Option4 = <span class="number">8</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 在上述示例中，我们声明了一个名为MyOptions的枚举类型，并为每个选项分配了一个位标志，以便可以将它们组合在一起。</p>
+</li>
+<li><p>在使用枚举值时，可以通过按位或（|）操作符将多个选项组合在一起。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MyOptions options = MyOptions.Option1 | MyOptions.Option3;</span><br></pre></td></tr></table></figure>
+
+<p> 在上述示例中，我们将Option1和Option3的值组合为options变量。</p>
+</li>
+<li><p>可以使用位运算符（如按位与（&amp;），按位或（|）和按位异或（^））对组合的枚举值进行操作。</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> hasOption1 = (options &amp; MyOptions.Option1) != <span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> hasOption2 = (options &amp; MyOptions.Option2) != <span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> hasOption3 = (options &amp; MyOptions.Option3) != <span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> hasOption4 = (options &amp; MyOptions.Option4) != <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>在上述示例中，我们使用按位与运算符检查每个选项是否存在于组合值中。</p>
+<p>Flags特性使得使用枚举表示选项组合更加清晰和方便。它允许通过使用按位操作符对选项进行检查和组合，从而简化了代码和逻辑。请注意，必须为枚举类型应用[Flags]特性才能使其支持标志行为。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/26/c#/Flag%E7%89%B9%E6%80%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c#/c#填坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/26/c#/c#%E5%A1%AB%E5%9D%91/">c#填坑</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/26/c#/c#%E5%A1%AB%E5%9D%91/" class="archive-article-date">
+  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：483字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="细碎知识"><a href="#细碎知识" class="headerlink" title="细碎知识"></a>细碎知识</h2><ol>
+<li><p>知道了Type，如何将object转换类型是该Type对象的实例<br> 你不可能将object按照Type对象转换成对应的类型对象。因为Type做为类型的模板，它本身可以通过InvokeMember方法（除此之外，还有其他多种反射创建实例的方法）来构造这种类型的实例对象并以object返回（为什么返回object？因为其一：虽然Type对象知道它描述的是哪种类型，但是方法返回却不可能指定为某一种类型，必然为所有类型的超集。其二：反射能够反射编译后的程序元数据文件中（元数据定义表），却不能访问（元数据引用表），所以你虽然知道是哪种类型，却不能找到类型指令，导致编译器无法调用类型指令（VS代码编辑器中的关键字以及类型名都属于编译器指令））。 虽然返回的是object，但是实际引用一直是Type对象所描述的类型对象。故在属性赋值时，只要object的实际引用的类型和属性的类型兼容（as 转换可成功，或者实现了转换重载等），必然会赋值成功。 实际上，你只需要<code>System.Activator.CreateInstance(p.PropertyType)</code>,这样保证你赋值成功，记住，就目前来说，除非微软更新，否则永远不要考虑题目中的问题。</p>
+<p><code>System.Activator.CreateInstance(p.PropertyType)</code></p>
+</li>
+<li><p>unity FastMode</p>
+<ol>
+<li>Unity的fastMode 模式会将域重载禁用 即静态变量不会被清除 可能会出现事件监听两次的情况 有两种方法可以处理<ul>
+<li><code>[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]</code>使方法内静态变量明确初始化</li>
+<li>用代码自行初始化</li>
+</ul>
+</li>
+<li>编辑器脚本与运行脚本区别<ul>
+<li><code>[InitializeOnEnterPlayMode]</code>编辑器使用该特性</li>
+<li>运行脚本使用 <code>[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Ctrl +R ,E</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/26/c#/c#%E5%A1%AB%E5%9D%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c#/库和程序集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/05/26/c#/%E5%BA%93%E5%92%8C%E7%A8%8B%E5%BA%8F%E9%9B%86/">库和程序集</a>
+    </h1>
+  
+
+        
+        <a href="/2023/05/26/c#/%E5%BA%93%E5%92%8C%E7%A8%8B%E5%BA%8F%E9%9B%86/" class="archive-article-date">
+  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：273字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-编译原理"><a href="#C-编译原理" class="headerlink" title="C++编译原理"></a>C++编译原理</h2><p>网上c++的编译原理文档写的很详细,这里并不仔细再费时间介绍,总的过程就是预编译(将代码文件的宏定义等处理)&gt;编译(将预编译的文件编译成汇编代码)&gt;汇编(将汇编代码编译成机器代码)&gt;链接(链接成一个完整的可执行程序（或者静态库、动态库）)<a href="https://blog.csdn.net/z164470/article/details/126349684" target="_blank" rel="noopener">编译原理</a></p>
+<h2 id="G-编译过程"><a href="#G-编译过程" class="headerlink" title="G++编译过程"></a>G++编译过程</h2><p><a href="https://www.bilibili.com/video/BV188411L7d2/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=f74f53359bcb74d1b11824aef4f0ae8b" target="_blank" rel="noopener">Makefile</a><br>主要分几步:</p>
+<ol>
+<li>g++ -c 文件 输出编译文件.obj</li>
+<li>g++ -0 目标 关联文件<br>Makefile和Cmake<br>这两个工具都是调用g++的编译器而已,他们出现的原因就是当文件过多难以人工维护的时候就派上用场了,他们会自动执行,并且优化编译的流程,避免一些不需要编译的文件</li>
+</ol>
+<h2 id="C-程序集"><a href="#C-程序集" class="headerlink" title="C#程序集"></a>C#程序集</h2><p><a href="https://blog.csdn.net/qq_39941918/article/details/121266553" target="_blank" rel="noopener">程序集</a></p>
+<ul>
+<li>可执行文件（.exe文件）和 类库文件（.dll文件）。</li>
+<li>在VS开发环境中，一个解决方案可以包含多个项目，而每个项目就是一个程序集。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/05/26/c#/%E5%BA%93%E5%92%8C%E7%A8%8B%E5%BA%8F%E9%9B%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/打包/AssetBundle入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -501,91 +871,6 @@
 
 
   
-    <article id="post-Unity/UI/UIGUI案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/">UIGUI案例</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：4k字 | 预计阅读时长：14分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="UI与3d为物体的响应"><a href="#UI与3d为物体的响应" class="headerlink" title="UI与3d为物体的响应"></a>UI与3d为物体的响应</h2><ol>
-<li>如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。<br>3d物体可以通过onMouseDown方法触发点击事件<br>而UI需要继承IPointerClickHandler接口  </li>
-<li>如果3d物体和UI同时继承自接口，但想让它们能够同时触发<ul>
-<li>通过EventSystem.current.RaycastAll()方法，获取全部的触发物体</li>
-<li>遍历物体，并通过ExecuteEvents.Execute方法激活其相应的事件</li>
-</ul>
-</li>
-<li>通过GraphicRaycaster.Raycast方法获取碰撞的物体，包含挂在collider组件的2d和3d物体.可以通过此方法来实现一些较为复杂的UI场景与鼠标事件交互</li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Unity/UI/UnityUI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -681,281 +966,39 @@
 
 
   
-    <article id="post-Unity/开发/Quaternion的简单应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/UI/UIGUI案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Quaternion%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">Quaternion的简单应用</a>
+      <a class="article-title" href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/">UIGUI案例</a>
     </h1>
   
 
         
-        <a href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Quaternion%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/" class="archive-article-date">
+        <a href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/" class="archive-article-date">
   	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：158字 | 预计阅读时长：1分钟
+          字数：4k字 | 预计阅读时长：14分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Quaternion是Unity里的四元数"><a href="#Quaternion是Unity里的四元数" class="headerlink" title="Quaternion是Unity里的四元数"></a>Quaternion是Unity里的四元数</h2><p>用来调整物体的方向，在Unity中transform属性面板中的值为欧拉值，但是在脚本控制调整中需要用四元数来进行转换。</p>
-<h2 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h2><p>背景：将物体移到到斜道上时，旋转物体到斜道角度  </p>
-<p>采用方法FromToRotation（from，to）：函数返回的是旋转角度的量，而不是直接将from的值转成to的值，所以需要乘上自身的旋转值，实际用法如下：<br>    <code>transform.rotation = Quaternion.FromToRotation(transform.up, normalTarget) * transform.rotation;</code></p>
-<h2 id="与SetFromToRotation的区别"><a href="#与SetFromToRotation的区别" class="headerlink" title="与SetFromToRotation的区别"></a>与SetFromToRotation的区别</h2><p>两个方法其实相同，都是返回旋转的增量值</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Quaternion%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/Unity中Camera学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">Unity中Camera学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：136字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Unity中关于Camera有两个调整方法"><a href="#Unity中关于Camera有两个调整方法" class="headerlink" title="Unity中关于Camera有两个调整方法"></a>Unity中关于Camera有两个调整方法</h2><ul>
-<li>下载官方的Cinemachine包，并创建虚拟camera</li>
-<li>创建camera组件，并用代码调整</li>
+        <h2 id="UI与3d为物体的响应"><a href="#UI与3d为物体的响应" class="headerlink" title="UI与3d为物体的响应"></a>UI与3d为物体的响应</h2><ol>
+<li>如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。<br>3d物体可以通过onMouseDown方法触发点击事件<br>而UI需要继承IPointerClickHandler接口  </li>
+<li>如果3d物体和UI同时继承自接口，但想让它们能够同时触发<ul>
+<li>通过EventSystem.current.RaycastAll()方法，获取全部的触发物体</li>
+<li>遍历物体，并通过ExecuteEvents.Execute方法激活其相应的事件</li>
 </ul>
-<h3 id="Cinemachine"><a href="#Cinemachine" class="headerlink" title="Cinemachine"></a>Cinemachine</h3><p>不需要多余的代码调整，可以直接调整相关的参数，可以实现跟随的摄像效果，需要注意镜头抖动的问题，可以在主摄像头中调整刷新的方式来寻求解决。</p>
-<h3 id="创建camera"><a href="#创建camera" class="headerlink" title="创建camera"></a>创建camera</h3><p>实现逻辑代码，来完成自己需要的功能，相比官方的包，自己需要实现的功能比较多。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/Unity开发学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">Unity开发学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：160字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="游戏对象的创建"><a href="#游戏对象的创建" class="headerlink" title="游戏对象的创建"></a>游戏对象的创建</h2><ul>
-<li>一个游戏对象会包含很多的obj，类似于一个类。可以通过创建一个emptyObject来挂载所有对象。</li>
-<li>对象中设计到模型和碰撞体积的位置问题，这里会有世界坐标和相对坐标的转换问题（3dmax中默认为世界坐标，如果想要调整相对坐标需要在坐标表中调整），每个对象的transform都是相对于父对象的。</li>
-</ul>
-<h3 id="放在同一个obj下，模型和碰撞体并不会同步移动"><a href="#放在同一个obj下，模型和碰撞体并不会同步移动" class="headerlink" title="放在同一个obj下，模型和碰撞体并不会同步移动"></a>放在同一个obj下，模型和碰撞体并不会同步移动</h3><ul>
-<li>不要将带有Collider和Rigidbody互有碰撞，否则将会触发碰撞。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/Unity音频学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">Unity音频学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：110字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h2><p>简单的实现赛车的引擎声，打滑声和物体碰撞声</p>
-<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><ol>
-<li>确定资源放置的物体<br> 这三个声音都可以放在赛车上，如果一些背景声音可以利用audioListen来拾取</li>
-<li>增加声音的生动性<br> 可以跟随速度来调整声音的pitch，来模拟高速和低速的一些情况</li>
-<li>创建混合器来输出声音</li>
+</li>
+<li>通过GraphicRaycaster.Raycast方法获取碰撞的物体，包含挂在collider组件的2d和3d物体.可以通过此方法来实现一些较为复杂的UI场景与鼠标事件交互</li>
 </ol>
-
+        
       
 
       
@@ -978,7 +1021,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/">展开全文 >></a>
         </p>
       
 
@@ -1117,14 +1160,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1133,7 +1168,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1161,11 +1204,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1173,11 +1216,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,19 +1244,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1222,6 +1261,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1253,15 +1296,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1269,11 +1308,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

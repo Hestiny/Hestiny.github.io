@@ -359,91 +359,6 @@
 
 
   
-    <article id="post-code/uwp/UWP修改textbox颜色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/code/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/">UWP修改textbox颜色</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/30/code/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：302字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="实现实时修改textbox颜色"><a href="#实现实时修改textbox颜色" class="headerlink" title="实现实时修改textbox颜色"></a>实现实时修改textbox颜色</h2><h2 id="通过Foreground属性直接绑定到修改的数据源"><a href="#通过Foreground属性直接绑定到修改的数据源" class="headerlink" title="通过Foreground属性直接绑定到修改的数据源"></a>通过Foreground属性直接绑定到修改的数据源</h2><p>通过颜色拾取器或者自定义颜色赋值，可以实现令textbox修改颜色。<br>但是，当想利用滑动条来修改透明度的时候，即只修改前两个十六进制值。将起不到效果。</p>
-<h2 id="没有效果是因为textbox没有进行刷新"><a href="#没有效果是因为textbox没有进行刷新" class="headerlink" title="没有效果是因为textbox没有进行刷新"></a>没有效果是因为textbox没有进行刷新</h2><p>可以通过切换textbox状态来实现刷新颜色，切换状态需要延时，否则同样没有效果</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="xaml文件"><a href="#xaml文件" class="headerlink" title="xaml文件"></a>xaml文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextBox</span> <span class="attr">x:Name</span>=<span class="string">"box"</span> <span class="attr">Text</span>=<span class="string">"67676"</span> <span class="attr">Width</span>=<span class="string">"300"</span> <span class="attr">Height</span>=<span class="string">"55"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">Foreground</span>=<span class="string">"&#123;x:Bind employee.Color,Mode=OneWay&#125;"</span>   </span></span><br><span class="line"><span class="tag">                 <span class="attr">TextWrapping</span>=<span class="string">"Wrap"</span> <span class="attr">AcceptsReturn</span>=<span class="string">"True"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">SelectionHighlightColor</span>=<span class="string">"#402572AC"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">IsHitTestVisible</span>=<span class="string">"False"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">TextBox</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">Slider</span> <span class="attr">Width</span>=<span class="string">"300"</span> <span class="attr">Height</span>=<span class="string">"50"</span> <span class="attr">Margin</span>=<span class="string">"0 200 0 0"</span> <span class="attr">ValueChanged</span>=<span class="string">"Slider_ValueChanged"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="cs文件"><a href="#cs文件" class="headerlink" title="cs文件"></a>cs文件</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据模板类</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">Employee</span> : <span class="title">INotifyPropertyChanged</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">string</span> color;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Color</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> color; &#125;</span><br><span class="line">            <span class="keyword">set</span></span><br><span class="line">            &#123;</span><br><span class="line">                color = <span class="keyword">value</span>;</span><br><span class="line">               RaisePropertyChanged(<span class="string">"Color"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">event</span> PropertyChangedEventHandler PropertyChanged;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">RaisePropertyChanged</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (PropertyChanged != <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                PropertyChanged(<span class="keyword">this</span>, <span class="keyword">new</span> PropertyChangedEventArgs(name));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//滑动条事件</span></span><br><span class="line"><span class="function"><span class="keyword">private</span>  <span class="keyword">void</span> <span class="title">Slider_ValueChanged</span>(<span class="params"><span class="keyword">object</span> sender, RangeBaseValueChangedEventArgs e</span>)  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    employee.Color= <span class="string">"#"</span> + ((<span class="keyword">int</span>)((e.NewValue / <span class="number">100</span>) * <span class="number">255</span>)).ToString(<span class="string">"X2"</span>) + employee.Color.Substring(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">var</span> m = box.Foreground;</span><br><span class="line">    box.Foreground.Opacity= e.NewValue / <span class="number">100</span>;</span><br><span class="line">    box.IsHitTestVisible = <span class="literal">true</span>; </span><br><span class="line">    VisualStateManager.GoToState(box, <span class="string">"PointerOver"</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    wite();</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">wite</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">await</span> Task.Delay(<span class="number">10</span>);</span><br><span class="line">    VisualStateManager.GoToState(box, <span class="string">"Normal"</span>, <span class="literal">true</span>);</span><br><span class="line">    box.IsHitTestVisible = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">TextBox</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-code/uwp/UWP主题切换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -521,35 +436,35 @@
 
 
   
-    <article id="post-code/uwp/UWP阴影" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-code/uwp/UWP修改textbox颜色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/">UWP阴影</a>
+      <a class="article-title" href="/2021/11/30/code/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/">UWP修改textbox颜色</a>
     </h1>
   
 
         
-        <a href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/" class="archive-article-date">
+        <a href="/2021/11/30/code/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/" class="archive-article-date">
   	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：241字 | 预计阅读时长：1分钟
+          字数：302字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h2><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
-<h2 id="利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><a href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel" class="headerlink" title="利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel"></a>利用<code>Microsoft.Toolkit.Uwp.UI.Controls</code>中的<code>DropShadowPanel</code></h2><h3 id="DropShadowPanel必须有内部控件"><a href="#DropShadowPanel必须有内部控件" class="headerlink" title="DropShadowPanel必须有内部控件"></a>DropShadowPanel必须有内部控件</h3><p>DropShadowPanel跟border并不一样,border可以设置大小,但是DropShadowPanel是严格依靠内部控件的,毕竟没有实物哪来的影子,</p>
-<h3 id="DropShadowPanel的内部控件颜色不能为空"><a href="#DropShadowPanel的内部控件颜色不能为空" class="headerlink" title="DropShadowPanel的内部控件颜色不能为空"></a>DropShadowPanel的内部控件颜色不能为空</h3><p>控件不能透明,哪怕在DropShadowPanel中设置颜色也不行.</p>
-<h3 id="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><a href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch" class="headerlink" title="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"></a><code>DropShadowPanel</code>的<code>HorizontalContentAlignment</code>属性设置为<code>Stretch</code></h3><p>只有填充阴影才有效果</p>
-<h3 id="DropShadowPanel控件层级应低于内部控件"><a href="#DropShadowPanel控件层级应低于内部控件" class="headerlink" title="DropShadowPanel控件层级应低于内部控件"></a>DropShadowPanel控件层级应低于内部控件</h3><p>DropShadowPanel应单独组成阴影边框,内部由主要控件覆盖  </p>
-        
+        <h2 id="实现实时修改textbox颜色"><a href="#实现实时修改textbox颜色" class="headerlink" title="实现实时修改textbox颜色"></a>实现实时修改textbox颜色</h2><h2 id="通过Foreground属性直接绑定到修改的数据源"><a href="#通过Foreground属性直接绑定到修改的数据源" class="headerlink" title="通过Foreground属性直接绑定到修改的数据源"></a>通过Foreground属性直接绑定到修改的数据源</h2><p>通过颜色拾取器或者自定义颜色赋值，可以实现令textbox修改颜色。<br>但是，当想利用滑动条来修改透明度的时候，即只修改前两个十六进制值。将起不到效果。</p>
+<h2 id="没有效果是因为textbox没有进行刷新"><a href="#没有效果是因为textbox没有进行刷新" class="headerlink" title="没有效果是因为textbox没有进行刷新"></a>没有效果是因为textbox没有进行刷新</h2><p>可以通过切换textbox状态来实现刷新颜色，切换状态需要延时，否则同样没有效果</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="xaml文件"><a href="#xaml文件" class="headerlink" title="xaml文件"></a>xaml文件</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextBox</span> <span class="attr">x:Name</span>=<span class="string">"box"</span> <span class="attr">Text</span>=<span class="string">"67676"</span> <span class="attr">Width</span>=<span class="string">"300"</span> <span class="attr">Height</span>=<span class="string">"55"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">Foreground</span>=<span class="string">"&#123;x:Bind employee.Color,Mode=OneWay&#125;"</span>   </span></span><br><span class="line"><span class="tag">                 <span class="attr">TextWrapping</span>=<span class="string">"Wrap"</span> <span class="attr">AcceptsReturn</span>=<span class="string">"True"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">SelectionHighlightColor</span>=<span class="string">"#402572AC"</span> </span></span><br><span class="line"><span class="tag">                 <span class="attr">IsHitTestVisible</span>=<span class="string">"False"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">TextBox</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">Slider</span> <span class="attr">Width</span>=<span class="string">"300"</span> <span class="attr">Height</span>=<span class="string">"50"</span> <span class="attr">Margin</span>=<span class="string">"0 200 0 0"</span> <span class="attr">ValueChanged</span>=<span class="string">"Slider_ValueChanged"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="cs文件"><a href="#cs文件" class="headerlink" title="cs文件"></a>cs文件</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数据模板类</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">Employee</span> : <span class="title">INotifyPropertyChanged</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">string</span> color;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Color</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span> &#123; <span class="keyword">return</span> color; &#125;</span><br><span class="line">            <span class="keyword">set</span></span><br><span class="line">            &#123;</span><br><span class="line">                color = <span class="keyword">value</span>;</span><br><span class="line">               RaisePropertyChanged(<span class="string">"Color"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">event</span> PropertyChangedEventHandler PropertyChanged;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">RaisePropertyChanged</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (PropertyChanged != <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                PropertyChanged(<span class="keyword">this</span>, <span class="keyword">new</span> PropertyChangedEventArgs(name));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//滑动条事件</span></span><br><span class="line"><span class="function"><span class="keyword">private</span>  <span class="keyword">void</span> <span class="title">Slider_ValueChanged</span>(<span class="params"><span class="keyword">object</span> sender, RangeBaseValueChangedEventArgs e</span>)  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    employee.Color= <span class="string">"#"</span> + ((<span class="keyword">int</span>)((e.NewValue / <span class="number">100</span>) * <span class="number">255</span>)).ToString(<span class="string">"X2"</span>) + employee.Color.Substring(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">var</span> m = box.Foreground;</span><br><span class="line">    box.Foreground.Opacity= e.NewValue / <span class="number">100</span>;</span><br><span class="line">    box.IsHitTestVisible = <span class="literal">true</span>; </span><br><span class="line">    VisualStateManager.GoToState(box, <span class="string">"PointerOver"</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    wite();</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">wite</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">await</span> Task.Delay(<span class="number">10</span>);</span><br><span class="line">    VisualStateManager.GoToState(box, <span class="string">"Normal"</span>, <span class="literal">true</span>);</span><br><span class="line">    box.IsHitTestVisible = <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -566,7 +481,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DropShadowPanel</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">TextBox</a>
         		</li>
       		
 		</ul>
@@ -576,7 +491,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/">展开全文 >></a>
         </p>
       
 
@@ -669,6 +584,91 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-code/uwp/UWP阴影" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/">UWP阴影</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/" class="archive-article-date">
+  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：241字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h2><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
+<h2 id="利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><a href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel" class="headerlink" title="利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel"></a>利用<code>Microsoft.Toolkit.Uwp.UI.Controls</code>中的<code>DropShadowPanel</code></h2><h3 id="DropShadowPanel必须有内部控件"><a href="#DropShadowPanel必须有内部控件" class="headerlink" title="DropShadowPanel必须有内部控件"></a>DropShadowPanel必须有内部控件</h3><p>DropShadowPanel跟border并不一样,border可以设置大小,但是DropShadowPanel是严格依靠内部控件的,毕竟没有实物哪来的影子,</p>
+<h3 id="DropShadowPanel的内部控件颜色不能为空"><a href="#DropShadowPanel的内部控件颜色不能为空" class="headerlink" title="DropShadowPanel的内部控件颜色不能为空"></a>DropShadowPanel的内部控件颜色不能为空</h3><p>控件不能透明,哪怕在DropShadowPanel中设置颜色也不行.</p>
+<h3 id="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><a href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch" class="headerlink" title="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"></a><code>DropShadowPanel</code>的<code>HorizontalContentAlignment</code>属性设置为<code>Stretch</code></h3><p>只有填充阴影才有效果</p>
+<h3 id="DropShadowPanel控件层级应低于内部控件"><a href="#DropShadowPanel控件层级应低于内部控件" class="headerlink" title="DropShadowPanel控件层级应低于内部控件"></a>DropShadowPanel控件层级应低于内部控件</h3><p>DropShadowPanel应单独组成阴影边框,内部由主要控件覆盖  </p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DropShadowPanel</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/">展开全文 >></a>
         </p>
       
 
@@ -954,30 +954,32 @@
 
 
   
-    <article id="post-code/c++/pdfium入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-code/c++/vscode简单配置c,c++" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/28/code/c++/pdfium%E5%85%A5%E9%97%A8/">pdfium入门</a>
+      <a class="article-title" href="/2021/11/28/code/c++/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">vscode简单配置c/c++思路</a>
     </h1>
   
 
         
-        <a href="/2021/11/28/code/c++/pdfium%E5%85%A5%E9%97%A8/" class="archive-article-date">
+        <a href="/2021/11/28/code/c++/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/" class="archive-article-date">
   	<time datetime="2021-11-28T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：601字 | 预计阅读时长：2分钟
+          字数：128字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="pdfium编译"><a href="#pdfium编译" class="headerlink" title="pdfium编译"></a>pdfium编译</h2><p>具体的顺序按照下面的博客操作：[bolg]<a href="https://www.cnblogs.com/purehol/p/11734015.html" target="_blank" rel="noopener">https://www.cnblogs.com/purehol/p/11734015.html</a><br>记下几个可能出的问题：<br>    1. depot工具的安装：将depot的下载路径放在系统变量中；在depot的路径下执行<code>gclient</code>命令；注：如果提示python是外部指令，那么应该就是没有执行该命令。如果你自己安装python3在编译时会需要python2，安装完2发现前面又出问题了，关于何时调用哪个python最简单的就是将环境变量移动到前面去。<br>    2.depot安装完了之后基本上就万事大吉了，原博客中<code>ninja -C out\Release32 pdfium</code>release32应该改成64。<br>    3.要在cmd下执行命令，就是打开cmd窗口然后输入<code>cmd</code>指令（具体我也不懂为什么）<br>    4.复制args.gn文件时注意复制过去的字符不能是中文</p>
+        <h2 id="关于vscode"><a href="#关于vscode" class="headerlink" title="关于vscode"></a>关于vscode</h2><pre><code>vscode是一个文本编辑器，所以想要执行代码，需要安装相关代码的环境。  
+
+如果只是当文本编辑器，还是有其他的更轻巧。别用自带记事本就是了。  </code></pre>
         
       
 
@@ -991,7 +993,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pdfium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
         		</li>
       		
 		</ul>
@@ -1001,7 +1003,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/28/code/c++/pdfium%E5%85%A5%E9%97%A8/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/11/28/code/c++/vscode%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AEc,c++/">展开全文 >></a>
         </p>
       
 
@@ -1164,11 +1166,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
+                <a href="javascript:void(0)" class="js-tag color2">shader</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shader</a>
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1184,27 +1186,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1220,15 +1214,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1240,15 +1242,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1260,7 +1262,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,15 +1282,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1288,11 +1290,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1300,7 +1302,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">

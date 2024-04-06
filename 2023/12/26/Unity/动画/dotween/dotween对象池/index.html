@@ -16,7 +16,7 @@
 <meta property="og:description" content="If you want to reuse the same tween, just set its autoKill behaviour to FALSE (either by changing the global autoKill settings for all tweens, or by chaining SetAutoKill(false) to your tween).这个为手动复用即">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-26T09:58:42.000Z">
-<meta property="article:modified_time" content="2024-03-21T12:35:53.828Z">
+<meta property="article:modified_time" content="2024-04-04T11:18:49.241Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="unity">
 <meta property="article:tag" content="dotween">
@@ -64,10 +64,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 187
+            总文章数 192
         </nav>
 		<nav>
-            总字数 <span class="post-count">112.7k</span>
+            总字数 <span class="post-count">115.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -180,7 +180,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：382字 | 预计阅读时长：1分钟
+          字数：620字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -202,6 +202,13 @@
 <li>在创建 tween 时，使用 SetId 方法为每个 tween 设置一个唯一的标识符，然后使用 DOTween.TweensById 方法获取所有具有相同标识符的 tween 的列表。例如：</li>
 </ul>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DG.Tweening; <span class="comment">// 引入命名空间</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DOTweenTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 创建一个 tween，并为其设置 ID</span></span><br><span class="line">        <span class="keyword">var</span> tween1 = transform.DOMoveX(<span class="number">10</span>, <span class="number">1</span>).SetId(<span class="string">"tween1"</span>);</span><br><span class="line">        <span class="comment">// 创建另一个 tween，并为其设置 ID</span></span><br><span class="line">        <span class="keyword">var</span> tween2 = transform.DOMoveY(<span class="number">5</span>, <span class="number">0.5</span>).SetId(<span class="string">"tween2"</span>);</span><br><span class="line">        <span class="comment">// 将这些 tween 添加到 Sequence 中</span></span><br><span class="line">        <span class="keyword">var</span> sequence = DOTween.Sequence();</span><br><span class="line">        sequence.Append(tween1);</span><br><span class="line">        sequence.Append(tween2);</span><br><span class="line">        <span class="comment">// 获取所有的 tween</span></span><br><span class="line">        <span class="keyword">var</span> allTweens = DOTween.TweensById(<span class="string">"tween1"</span>, <span class="string">"tween2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用 DOTween 的 <code>SetRecyclable</code> 方法时，如果设置为 <code>true</code>，这意味着当 tween 被“杀死”或完成时，它不会被销毁，而是会被放入一个池中以便重用。这样做可以避免因创建新的 tweens 而产生的垃圾回收（GC）分配。</p>
+<p>然而，即使设置了 <code>SetRecyclable(true)</code>，如果 tween 的 <code>GameObject</code> 被销毁，tween 仍然会被杀死。这是因为 DOTween 的 <code>LinkBehaviour.KillOnDestroy</code> 设置，它默认会在关联的 <code>GameObject</code> 被销毁时杀死 tween。</p>
+<p>所以，<code>SetRecyclable</code> 的作用是允许 tween 被重用，从而提高性能和减少内存分配，但它不会防止 <code>GameObject</code> 被销毁时的 tween 被杀死。如果你想确保你的 tween 引用在 tween 被杀死时自动设置为 <code>null</code>，你可以使用 <code>OnKill</code> 回调来实现这一点：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myTween.OnKill(() =&gt; myTween = <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样，当 tween 被杀死时，你的 tween 引用就会被设置为 <code>null</code>，从而避免了潜在的引用错误。</p>
 
       
 
@@ -320,7 +327,7 @@
     </a>
   
   
-    <a href="/2023/12/26/c#/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/12/26/c#/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">初始化时间</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -524,15 +531,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,14 +556,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,14 +575,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
@@ -584,7 +583,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,7 +595,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -609,6 +612,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">

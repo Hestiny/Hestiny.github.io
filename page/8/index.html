@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 187
+            总文章数 192
         </nav>
 		<nav>
-            总字数 <span class="post-count">112.7k</span>
+            总字数 <span class="post-count">115.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,425 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/动画/Spine/关于spineUI使用混合模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/11/Unity/%E5%8A%A8%E7%94%BB/Spine/%E5%85%B3%E4%BA%8EspineUI%E4%BD%BF%E7%94%A8%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/">Unity混合模式</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/11/Unity/%E5%8A%A8%E7%94%BB/Spine/%E5%85%B3%E4%BA%8EspineUI%E4%BD%BF%E7%94%A8%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2023-11-11T06:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-11</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：75字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://zh.esotericsoftware.com/forum/d/17799-ugui%E4%B8%8B%E7%9A%84skeletongraphic%E6%95%88%E6%9E%9C%E4%B8%8D%E6%AD%A3%E7%A1%AE%E4%B8%94%E6%9C%89%E9%97%AA%E7%83%81%E5%AF%B9%E6%AF%94unity2d" target="_blank" rel="noopener">类似问题参考</a><br><a href="https://blog.csdn.net/shaobing32/article/details/122588673" target="_blank" rel="noopener">UI使用多个canvas</a><br><a href="http://zh.esotericsoftware.com/spine-unity/#%E9%AB%98%E7%BA%A7---Premultiplied-%E5%92%8C-Straight-Alpha-%E5%AF%BC%E5%85%A5" target="_blank" rel="noopener">官方文档</a></p>
+<p>简单来说就是如果ui上无法显示但是animation可以正常显示那么就是混合模式有问题 按照官方文档修改一下材质就好了 然后重新导入一下动画资源</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spine</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/11/Unity/%E5%8A%A8%E7%94%BB/Spine/%E5%85%B3%E4%BA%8EspineUI%E4%BD%BF%E7%94%A8%E6%B7%B7%E5%90%88%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/坑/奇怪报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/09/Unity/%E5%9D%91/%E5%A5%87%E6%80%AA%E6%8A%A5%E9%94%99/">奇奇怪怪的报错</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/09/Unity/%E5%9D%91/%E5%A5%87%E6%80%AA%E6%8A%A5%E9%94%99/" class="archive-article-date">
+  	<time datetime="2023-11-09T08:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-09</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：382字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>Release of invalid GC handle. The handle is from a previous domain. The release operation is skipped.</code></p>
+<p>这个错误通常是由于在使用资源后没有正确释放或清理资源导致的。这种情况下，可能是由于在加载资源后，资源所属的域已被卸载，但仍然存在对该资源句柄的引用，导致释放句柄时出现错误。</p>
+<p>要解决这个问题，可以采取以下几个步骤：</p>
+<ol>
+<li><p>确保在使用完资源后，及时调用资源的释放方法或清理操作。例如，对于字体资源，在不再需要时调用<code>Resources.UnloadUnusedAssets()</code>方法来释放未使用的资源。</p>
+</li>
+<li><p>检查代码中是否存在资源未正确释放的情况。例如，在调用加载资源的方法之前，先检查是否已经有其他的资源被加载，如果有，则先释放之前的资源再加载新的资源。</p>
+</li>
+<li><p>如果使用了多个域或加载了多个场景，确保在切换域或场景时正确释放先前的资源。可以使用<code>UnloadUnusedAssets()</code>方法来卸载不再使用的资源。</p>
+</li>
+<li><p>检查是否存在跨域或跨场景的资源引用问题。确保在使用资源后，将其引用置为null，以便垃圾回收器可以正确清理。</p>
+</li>
+</ol>
+<p>如果通过上述步骤仍然无法解决问题，可能需要仔细检查代码并进行调试，以确定在哪个具体的位置引发了错误。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/09/Unity/%E5%9D%91/%E5%A5%87%E6%80%AA%E6%8A%A5%E9%94%99/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/unity编辑器加载资源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E7%BC%96%E8%BE%91%E5%99%A8%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90/">unity加载资源</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E7%BC%96%E8%BE%91%E5%99%A8%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90/" class="archive-article-date">
+  	<time datetime="2023-11-08T09:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-08</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：319字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Unity编辑器模式下加载非”Resources”文件夹下的资源，可以使用<code>AssetDatabase</code>类的<code>LoadAssetAtPath</code>方法。以下是一个示例代码，演示了如何在编辑器模式下加载非”Resources”文件夹中的字体资源：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> fontPath; <span class="comment">// 字体在非"Resources"文件夹中的路径</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> UNITY_EDITOR</span></span><br><span class="line">        <span class="comment">// 加载字体资源</span></span><br><span class="line">        Font font = AssetDatabase.LoadAssetAtPath&lt;Font&gt;(fontPath);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (font != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字体加载成功</span></span><br><span class="line">            <span class="comment">// 使用字体...</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 字体加载失败</span></span><br><span class="line">            Debug.LogError(<span class="string">"Failed to load font!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">        Debug.LogError(<span class="string">"Asset loading only works in editor mode!"</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，我们使用<code>AssetDatabase.LoadAssetAtPath</code>方法在编辑器模式下加载非”Resources”文件夹中的字体资源。将路径<code>fontPath</code>作为参数传递给<code>LoadAssetAtPath</code>方法，并指定要加载的资源类型<code>&lt;Font&gt;</code>。然后，将加载的字体对象赋值给<code>font</code>变量。</p>
+<p>需要注意的是，<code>AssetDatabase</code>类只在Unity编辑器模式下可用，因此在实际运行游戏时，需要将加载资源的代码放置在<code>#if UNITY_EDITOR</code>和<code>#endif</code>之间，以避免运行时错误。</p>
+<p>请确保将<code>fontPath</code>设置为非”Resources”文件夹中字体的正确路径，并确保在编辑器中正确导入了字体资源。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E7%BC%96%E8%BE%91%E5%99%A8%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/拓展Text面板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/">unity拓展面板</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/" class="archive-article-date">
+  	<time datetime="2023-11-08T09:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-08</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：199字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在修改text自定义面板的时候冒出来一堆坑</p>
+<p>首先继承<code>UnityEditor.UI.TextEditor</code>类 继承错了继承了<code>UnityEngine.TextEditor</code> 怎么也没有重新方法 一时间给我整懵了<br>后面改了之后 整了个报错出来<code>SerializedObjectNotCreatableException: Object at index 0 is null</code><br>这个错误有个文档<a href="https://blog.csdn.net/qq_51026638/article/details/122494609" target="_blank" rel="noopener">参考</a> 在里面学了一个方法<strong>使用DrawDefaultInspector()替代base.OnInspectorGUI();</strong> <code>DrawDefaultInspector</code>方法确实不报错了 也可以修改了 但是东西太多了不方便 是debug版的面板 不好用</p>
+<p>最后怎么解决呢<br><strong>重启untiy</strong> 没错 本来在网站上人家都说是开了两个inspector的锅 然后我就重启一遍呗 还真好了 日<br>然后就是没有保存的问题<br><code>serializedObject.ApplyModifiedProperties();</code><br>这个方法没有调用</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/unity宏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/">Unity宏</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/" class="archive-article-date">
+  	<time datetime="2023-11-06T10:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：464字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Unity的宏一般可以分平台等一些操作 在日志输出的时候也可以进行控制<br>通过控制宏来开启和关闭某些日志的输出</p>
+<p>虽然可以通过面板来控制宏 不过还是用脚本调用更方便</p>
+<p>Unity SetScriptingDefineSymbolsForGroup是一个用于为给定构建目标组设置用户指定的脚本编译符号的函数。它是PlayerSettings类的一个静态方法，需要传入以下参数：</p>
+<ul>
+<li>targetGroup: 构建目标组，如BuildTargetGroup.Android</li>
+<li>defines: 预处理器值的字符串，如”UNITY_DEBUG;SOME_DEFINES”</li>
+</ul>
+<p>这个函数可以用于在不同的平台或配置下，启用或禁用一些代码段。例如，你可以使用#if和#endif指令来包裹一些只在特定条件下执行的代码。你可以在<a href="https://forum.unity.com/threads/set-scripting-define-symbols-for-group.1113982/" target="_blank" rel="noopener">这里</a>查看完整的构建目标组列表。</p>
+<p>示例代码:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 设置指定平台的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要设置脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="scriptingDefineSymbols"&gt;</span>要设置的脚本宏定义。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetScriptingDefineSymbols</span>(<span class="params">BuildTargetGroup buildTargetGroup, <span class="keyword">string</span>[] scriptingDefineSymbols</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, <span class="keyword">string</span>.Join(<span class="string">";"</span>, scriptingDefineSymbols));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 获取指定平台的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要获取脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>平台的脚本宏定义。<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span>[] <span class="title">GetScriptingDefineSymbols</span>(<span class="params">BuildTargetGroup buildTargetGroup</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup).Split(<span class="string">';'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 为指定平台移除指定的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要移除脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="scriptingDefineSymbol"&gt;</span>要移除的脚本宏定义。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">RemoveScriptingDefineSymbol</span>(<span class="params">BuildTargetGroup buildTargetGroup, <span class="keyword">string</span> scriptingDefineSymbol</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!HasScriptingDefineSymbol(buildTargetGroup, scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;<span class="keyword">string</span>&gt; scriptingDefineSymbols = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;(GetScriptingDefineSymbols(buildTargetGroup));</span><br><span class="line">    <span class="keyword">while</span> (scriptingDefineSymbols.Contains(scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        scriptingDefineSymbols.Remove(scriptingDefineSymbol);</span><br><span class="line">    &#125;</span><br><span class="line">    SetScriptingDefineSymbols(buildTargetGroup, scriptingDefineSymbols.ToArray());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/UI/图片平铺" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -606,446 +1025,9 @@
 
 
   
-    <article id="post-c#/特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/01/c#/%E7%89%B9%E6%80%A7/">特性</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/01/c#/%E7%89%B9%E6%80%A7/" class="archive-article-date">
-  	<time datetime="2023-11-01T06:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-01</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：142字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在C#中，Attribute（特性）是在运行时初始化的。当代码中的特性被使用时，它们会在运行时被实例化和初始化。这意味着特性的构造函数和属性访问器会在代码执行期间被调用，并且可以使用反射来访问特性的信息。特性可以应用于类型、方法、属性、字段等成员上，并且可以在运行时通过反射来查询和使用它们。</p>
-<p>当被检索时初始化。比如：<br>Type t=typeof(Person);<br>Attribute[] atts=t.GetCustomAttributes();</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/01/c#/%E7%89%B9%E6%80%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/shader/描边影印shader" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/31/Unity/shader/%E6%8F%8F%E8%BE%B9%E5%BD%B1%E5%8D%B0shader/">Unity/shader/描边影印shader</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/31/Unity/shader/%E6%8F%8F%E8%BE%B9%E5%BD%B1%E5%8D%B0shader/" class="archive-article-date">
-  	<time datetime="2023-10-31T10:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-31</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：517字 | 预计阅读时长：3分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>描边<br><a href="https://zhuanlan.zhihu.com/p/133439889" target="_blank" rel="noopener">描边文档</a><br><a href="https://www.jianshu.com/p/c68a730e9a8b" target="_blank" rel="noopener">描边文档参考</a><br><a href="https://blog.csdn.net/aaa27987/article/details/131223197" target="_blank" rel="noopener">参考文档</a></p>
-<p>阴影<br><a href="https://blog.csdn.net/Vitens/article/details/84927440" target="_blank" rel="noopener">参考文档</a></p>
-<p>shader</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">Shader &quot;Custom&#x2F;UI&#x2F;OutLine&quot;</span><br><span class="line">&#123;</span><br><span class="line">    Properties</span><br><span class="line">    &#123;</span><br><span class="line">        _TextureColor(&quot;图片颜色&quot;,Color)&#x3D;(1,1,1,1)</span><br><span class="line">        _MainTex (&quot;Sprite Texture&quot;, 2D) &#x3D; &quot;white&quot; &#123;&#125;</span><br><span class="line">        _OutlineWidth (&quot;Outline Width&quot;, float) &#x3D; 1</span><br><span class="line">        _OutlineColor (&quot;Outline Color&quot;, Color) &#x3D; (1,1,1,1)</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; ---------------------------【子着色器】---------------------------</span><br><span class="line">    SubShader</span><br><span class="line">    &#123;</span><br><span class="line">        Blend SrcAlpha OneMinusSrcAlpha</span><br><span class="line">        Pass</span><br><span class="line">        &#123;</span><br><span class="line">            CGPROGRAM</span><br><span class="line">            #pragma vertex vert</span><br><span class="line">            #pragma fragment frag</span><br><span class="line">            #include &quot;UnityCG.cginc&quot;</span><br><span class="line"></span><br><span class="line">            float4 _TextureColor;</span><br><span class="line">            sampler2D _MainTex;</span><br><span class="line">            float4 _MainTex_ST;</span><br><span class="line">            half4 _MainTex_TexelSize;</span><br><span class="line">            float _OutlineWidth;</span><br><span class="line">            float4 _OutlineColor;</span><br><span class="line"></span><br><span class="line">            struct appdata</span><br><span class="line">            &#123;</span><br><span class="line">                float4 vertex : POSITION;</span><br><span class="line">                float2 uv : TEXCOORD0;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            struct v2f</span><br><span class="line">            &#123;</span><br><span class="line">                float4 vertex : SV_POSITION;</span><br><span class="line">                half2 uv : TEXCOORD0;</span><br><span class="line">                half2 left : TEXCOORD1;</span><br><span class="line">                half2 right : TEXCOORD2;</span><br><span class="line">                half2 up : TEXCOORD3;</span><br><span class="line">                half2 down : TEXCOORD5;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">            v2f vert(appdata i)</span><br><span class="line">            &#123;</span><br><span class="line">                v2f o;</span><br><span class="line">                o.vertex &#x3D; UnityObjectToClipPos(i.vertex);</span><br><span class="line">                o.uv &#x3D; TRANSFORM_TEX(i.uv, _MainTex);</span><br><span class="line">                o.left &#x3D; o.uv + half2(-1, 0) * _MainTex_TexelSize.xy * _OutlineWidth;</span><br><span class="line">                o.right &#x3D; o.uv + half2(1, 0) * _MainTex_TexelSize.xy * _OutlineWidth;</span><br><span class="line">                o.up &#x3D; o.uv + half2(0, 1) * _MainTex_TexelSize.xy * _OutlineWidth;</span><br><span class="line">                o.down &#x3D; o.uv + half2(0, -1) * _MainTex_TexelSize.xy * _OutlineWidth;</span><br><span class="line">                return o;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            fixed4 frag(v2f i) : SV_Target</span><br><span class="line">            &#123;</span><br><span class="line">                fixed4 c &#x3D; tex2D(_MainTex, i.uv);</span><br><span class="line">                c.rgb&#x3D;_TextureColor;</span><br><span class="line">                float transparent &#x3D; tex2D(_MainTex, i.left).a * tex2D(_MainTex, i.right).a * tex2D(_MainTex, i.up).a * tex2D(_MainTex, i.down).a;</span><br><span class="line">                c.rgb &#x3D; lerp(_OutlineColor.rgb, c.rgb, transparent);</span><br><span class="line"></span><br><span class="line">                return c;</span><br><span class="line">            &#125;</span><br><span class="line">            ENDCG</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>阴影</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">Shader &quot;Custom&#x2F;ImageShadow&quot;</span><br><span class="line">&#123;</span><br><span class="line"> Properties</span><br><span class="line"> &#123;</span><br><span class="line">  _MainTex (&quot;Texture&quot;, 2D) &#x3D; &quot;white&quot; &#123;&#125;</span><br><span class="line"> </span><br><span class="line">  _OffsetX (&quot;Offset X&quot;, range(-0.2,0.2)) &#x3D; 0 </span><br><span class="line">  _OffsetY (&quot;Offset Y&quot;, range(-0.2,0.2)) &#x3D; 0 </span><br><span class="line">  _ShadowColor (&quot;Shadow Color&quot;, COLOR) &#x3D; (0,0,0,1)</span><br><span class="line">  _ThresholdAlpha(&quot;Threshold Alpha&quot;, Range(0,0.5)) &#x3D; 0.1</span><br><span class="line"> &#125;</span><br><span class="line"> SubShader</span><br><span class="line"> &#123;</span><br><span class="line">  Tags</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;Queue&quot;&#x3D;&quot;Transparent&quot;</span><br><span class="line">            &quot;IgnoreProjector&quot;&#x3D;&quot;True&quot;</span><br><span class="line">            &quot;RenderType&quot;&#x3D;&quot;Transparent&quot;</span><br><span class="line">            &quot;PreviewType&quot;&#x3D;&quot;Plane&quot;</span><br><span class="line">            &quot;CanUseSpriteAtlas&quot;&#x3D;&quot;True&quot;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">  Cull Off</span><br><span class="line">        Lighting Off</span><br><span class="line">        ZWrite Off</span><br><span class="line">        Blend SrcAlpha OneMinusSrcAlpha</span><br><span class="line"> </span><br><span class="line">  Pass</span><br><span class="line">  &#123;</span><br><span class="line">   CGPROGRAM</span><br><span class="line">   #pragma vertex vert</span><br><span class="line">   #pragma fragment frag</span><br><span class="line">   </span><br><span class="line">   #include &quot;UnityCG.cginc&quot;</span><br><span class="line"> </span><br><span class="line">   struct appdata</span><br><span class="line">   &#123;</span><br><span class="line">    float4 vertex : POSITION;</span><br><span class="line">    float2 uv : TEXCOORD0;</span><br><span class="line">   &#125;;</span><br><span class="line"> </span><br><span class="line">   struct v2f</span><br><span class="line">   &#123;</span><br><span class="line">    float2 uv : TEXCOORD0;</span><br><span class="line">    float4 vertex : SV_POSITION;</span><br><span class="line">   &#125;;</span><br><span class="line"> </span><br><span class="line">   sampler2D _MainTex;</span><br><span class="line">   float4 _MainTex_ST;</span><br><span class="line"> </span><br><span class="line">   half _OffsetX;</span><br><span class="line">   half _OffsetY;</span><br><span class="line">   fixed4 _ShadowColor;</span><br><span class="line">   half _ThresholdAlpha;</span><br><span class="line">   </span><br><span class="line">   v2f vert (appdata v)</span><br><span class="line">   &#123;</span><br><span class="line">    v2f o;</span><br><span class="line">    o.vertex &#x3D; UnityObjectToClipPos(v.vertex);</span><br><span class="line">    o.uv &#x3D; TRANSFORM_TEX(v.uv, _MainTex);</span><br><span class="line">    return o;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   fixed4 frag (v2f i) : SV_Target</span><br><span class="line">   &#123;</span><br><span class="line">    fixed4 col &#x3D; tex2D(_MainTex, i.uv);</span><br><span class="line">    </span><br><span class="line">    fixed shadowAlpha &#x3D; tex2D(_MainTex, i.uv + half2(_OffsetX,_OffsetY)).a;</span><br><span class="line"> </span><br><span class="line">    fixed4 shadowColor &#x3D; fixed4(_ShadowColor.rgb, _ShadowColor.a * shadowAlpha);</span><br><span class="line"> </span><br><span class="line">    fixed4 finalColor &#x3D; shadowColor;</span><br><span class="line"> </span><br><span class="line">    fixed stepVal &#x3D; step(_ThresholdAlpha, col.a);</span><br><span class="line">    finalColor &#x3D; stepVal * col + (1 - stepVal) * shadowColor;</span><br><span class="line"> </span><br><span class="line">    return finalColor;</span><br><span class="line">   &#125;</span><br><span class="line">   ENDCG</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">shader</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/31/Unity/shader/%E6%8F%8F%E8%BE%B9%E5%BD%B1%E5%8D%B0shader/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/编辑器/unity导出资源名" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/28/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AF%BC%E5%87%BA%E8%B5%84%E6%BA%90%E5%90%8D/">unity导出资源名</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/28/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AF%BC%E5%87%BA%E8%B5%84%E6%BA%90%E5%90%8D/" class="archive-article-date">
-  	<time datetime="2023-10-28T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：447字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>游戏预制和资源的实例化很多都是直接通过名字和路径来获取的 如果直接用字符串 很容易在unity中修改名字之后 代码就没有更新而导致报错<br>将资源文件夹下指定类型的文件导出到定义脚本就可以很容易知道哪个被换名字了</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Export</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExportAssetsPath</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> _fileTemplate = <span class="string">"##fileName##"</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> _functionTemplate = <span class="string">"##function##"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> _declarationTemplate = <span class="string">@" public const string ##fileName## = ""##fileName##"";</span></span><br><span class="line"><span class="string">"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keyword">string</span> _classTemplate = <span class="string">@"namespace Define</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    public class AssetsPathDefine</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    ##function##</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 需要输出的文件夹</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">string</span>[] AssetsFolderPath = <span class="keyword">new</span>[]</span><br><span class="line">        &#123;</span><br><span class="line">            Application.dataPath + <span class="string">"/Res"</span>,</span><br><span class="line">            Application.dataPath + <span class="string">"/Resources"</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">          <span class="comment"><span class="doctag">///</span> 屏蔽的文件夹</span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> List&lt;<span class="keyword">string</span>&gt; _unExportFolder = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Application.dataPath + <span class="string">"/Res/FolderMode/Spine"</span>,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> StringBuilder _pathCache;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 导出定义的文件路径</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">string</span> AssetsPathDefineTargetPath = <span class="string">"Assets/GameScripts/Data/AssetsPathDefine.cs"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 查找的文件夹后缀</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> List&lt;<span class="keyword">string</span>&gt; SearchPattern = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;()</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">".jpg"</span>,</span><br><span class="line">            <span class="string">".json"</span>,</span><br><span class="line">            <span class="string">".png"</span>,</span><br><span class="line">            <span class="string">".ogg"</span>,</span><br><span class="line">            <span class="string">".mp3"</span>,</span><br><span class="line">            <span class="string">".mat"</span>,</span><br><span class="line">            <span class="string">".prefab"</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        [<span class="meta">MenuItem(<span class="meta-string">"配置/导入资源定义"</span>)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ExportAssetsPathDefine</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            _pathCache= <span class="keyword">new</span> StringBuilder();</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">var</span> folderPath <span class="keyword">in</span> AssetsFolderPath)</span><br><span class="line">            &#123;</span><br><span class="line">                ExportFolderDefine(folderPath);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> content = _classTemplate.Replace(_functionTemplate, _pathCache.ToString());</span><br><span class="line">            CreateFile(AssetsPathDefineTargetPath, content);</span><br><span class="line"></span><br><span class="line">            AssetDatabase.SaveAssets();</span><br><span class="line">            AssetDatabase.Refresh();</span><br><span class="line">            DebugCtrl.Log(<span class="string">"====导出资源完成===="</span>, Color.green);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ExportFolderDefine</span>(<span class="params"><span class="keyword">string</span> folderPath</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (_unExportFolder.Contains(folderPath))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!Directory.Exists(folderPath))</span><br><span class="line">            &#123;</span><br><span class="line">                DebugCtrl.Log(<span class="string">$"不存在文件夹<span class="subst">&#123;folderPath&#125;</span>"</span>, Color.magenta);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            DirectoryInfo root = <span class="keyword">new</span> DirectoryInfo(folderPath);</span><br><span class="line">            ExportFilesDefine(root);</span><br><span class="line"></span><br><span class="line">            DirectoryInfo[] dirs = root.GetDirectories();</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">var</span> path <span class="keyword">in</span> dirs)</span><br><span class="line">            &#123;</span><br><span class="line">                ExportFolderDefine(path.FullName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ExportFilesDefine</span>(<span class="params">DirectoryInfo folderPath</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">if</span> (folderPath == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            FileInfo[] tablePaths = folderPath.GetFiles();</span><br><span class="line">            <span class="keyword">foreach</span> (<span class="keyword">var</span> file <span class="keyword">in</span> tablePaths)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">var</span> et = file.Extension.ToLower();</span><br><span class="line">                <span class="keyword">if</span> (SearchPattern.Contains(et))</span><br><span class="line">                &#123;</span><br><span class="line">                    _pathCache.Append(_declarationTemplate.Replace(_fileTemplate, Path.GetFileNameWithoutExtension(file.FullName)));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CreateFile</span>(<span class="params"><span class="keyword">string</span> fileName, <span class="keyword">string</span> content</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">            <span class="keyword">string</span> saveFullPath = fileName;</span><br><span class="line">            <span class="keyword">if</span> (File.Exists(saveFullPath))</span><br><span class="line">            &#123;</span><br><span class="line">                File.WriteAllText(saveFullPath, content);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">using</span> StreamWriter sw = <span class="keyword">new</span> StreamWriter(File.Create(saveFullPath));</span><br><span class="line">                sw.Write(content);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/28/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AF%BC%E5%87%BA%E8%B5%84%E6%BA%90%E5%90%8D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/性能优化/unity内存泄漏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/27/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unity%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">unity内存泄漏</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/27/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unity%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-10-27T01:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-27</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：499字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.bilibili.com/video/BV1Y34y1u7nX/?buvid=XXB3EAEBCFC84606538F21DA99FEF65886844&is_story_h5=false&mid=yFk3qFkBRMU44urofPjI5Q%3D%3D&p=1&plat_id=116&share_from=ugc&share_medium=android&share_plat=android&share_session_id=40a4fddd-6c55-4c54-a0f5-10843a12ed2b&share_source=QQ&share_tag=s_i&timestamp=1698334761&unique_k=a2ltUpx&up_id=10834298" target="_blank" rel="noopener">b站视频</a></p>
-<p><a href="https://docs.unity3d.com/Packages/com.unity.memoryprofiler@1.0/manual/index.html" target="_blank" rel="noopener">Unity memory profiler</a></p>
-<p><a href="https://blog.uwa4d.com/archives/optimzation_memory_1.html" target="_blank" rel="noopener">参考文档</a></p>
-<p>Unity的managedHeap.usedSize是Unity编辑器提供的API之一，用于获取当前Unity应用程序的托管堆使用大小（以字节为单位）。</p>
-<p>如果你发现managedHeap.usedSize一直在增加，可能有几个原因：</p>
-<ol>
-<li><p>内存泄漏：可能存在未被正确释放的对象或资源，导致内存占用不断增加。这可能是由于没有正确管理和销毁游戏对象、未注册的事件、未释放的资源等问题引起的。<br>解决方法：检查是否存在未释放的对象或资源，并确保在不再需要时正确释放它们。</p>
-</li>
-<li><p>频繁的对象实例化和销毁：如果频繁地创建和销毁大量的对象，将导致managedHeap.usedSize不断增加。这可能是由于重复实例化对象、不合理的对象池管理等问题引起的。<br>解决方法：考虑使用对象池或重用已经存在的对象，避免频繁的对象实例化和销毁。</p>
-</li>
-<li><p>资源加载和卸载问题：如果频繁地加载和卸载资源，会导致managedHeap.usedSize不断增加。这可能是由于资源加载后没有正确卸载，或者重复加载相同的资源等问题引起的。<br>解决方法：确保在不再需要时正确卸载资源，避免重复加载相同的资源。</p>
-</li>
-<li><p>不合理的代码逻辑或算法：某些代码逻辑或算法可能存在效率低下或者内存使用不当的问题，导致managedHeap.usedSize持续增加。<br>解决方法：优化代码逻辑或算法，减少对内存的占用，提高内存使用效率。</p>
-</li>
-</ol>
-<p>总之，如果你发现managedHeap.usedSize一直在增加，需要仔细检查代码，排查可能的内存泄漏、对象实例化销毁、资源加载卸载以及代码逻辑算法等问题，并采取相应的解决方法。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/27/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unity%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/工具/Unity序列化工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7/">Unity序列化工具</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7/" class="archive-article-date">
-  	<time datetime="2023-10-25T09:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-25</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：1.6k字 | 预计阅读时长：5分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>序列化工具很多的 找两个比较常用的<br><a href="https://github.com/jacobdufault/fullserializer" target="_blank" rel="noopener">fullserializer</a><br>比unity自带的json序列化工具要强上很多 支持字典list和日期 但是需要注意枚举的存储是用的字符串而不是数字</p>
-<p><a href="https://www.newtonsoft.com/json/help/html/SerializingJSON.htm" target="_blank" rel="noopener">Newtonsoft</a>就是比较知名的.net的序列化工具了 不过并不是很适应Unity 不过也能用就是了 不支持datetime存储</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>Newtonsoft Json 和 Full Serializer 都是 C# 中用于 JSON 序列化和反序列化的库，它们都遵循 JSON 格式的标准语法，如使用双引号、逗号、方括号、花括号等。因此，它们生成的 JSON 字符串在格式上是通用的，可以相互转换。</p>
-<p>但是，它们也有一些不同的特性和设置，如对枚举、空值、私有变量、日期等数据类型的处理，以及对序列化和反序列化的选项和设置。这些特性和设置可能会影响 JSON 字符串的内容和格式，从而影响不同的 JSON 序列化文件的通用性。例如，Newtonsoft Json 默认会将枚举类型转换为数字，而 Full Serializer 默认会将枚举类型转换为字符串。如果不进行相应的转换器或设置的调整，这两个库就无法正确地反序列化对方的 JSON 字符串。</p>
-<h2 id="不同json的标准"><a href="#不同json的标准" class="headerlink" title="不同json的标准"></a>不同json的标准</h2><p>JSON 序列化是将对象转换为 JSON 格式的字符串的过程，反序列化是将 JSON 格式的字符串转换为对象的过程。不同的 JSON 序列化文件指的是使用不同的语言或库进行 JSON 序列化的文件，例如 Python 的 json 模块，C# 的 Newtonsoft Json 库，Java 的 Gson 库等。</p>
-<p>不同的 JSON 序列化文件序列化的 JSON 能否通用，取决于以下几个因素：</p>
-<ul>
-<li>JSON 格式的标准和兼容性。JSON 格式是一种通用的数据交换格式，它有一套规范的语法，如使用双引号包围键和值，使用逗号分隔键值对，使用方括号表示数组，使用花括号表示对象等。只要遵循这些规范，不同的 JSON 序列化文件就可以生成相同的 JSON 格式的字符串，从而实现通用性。但是，有些语言或库可能会对 JSON 格式进行扩展或修改，如使用单引号，添加注释，支持二进制数据等，这些非标准的 JSON 格式可能会导致不同的 JSON 序列化文件无法通用。因此，为了保证通用性，建议使用标准的 JSON 格式，并避免使用非标准的特性。</li>
-<li>对象的结构和类型。JSON 格式支持的数据类型有字符串、数字、布尔值、数组、对象和 null。但是，不同的语言或库可能会有更多的数据类型，如日期、枚举、元组、集合等。当这些数据类型被序列化为 JSON 格式时，可能会丢失一些信息，或者需要一些额外的信息来表示。例如，Python 的 datetime 对象被序列化为 JSON 格式时，可能会使用一个字符串来表示，如 “2024-01-09T02:38:49”，但是这个字符串并不能完全反映出 datetime 对象的所有属性，如时区、微秒等。另一个例子是，C# 的枚举类型被序列化为 JSON 格式时，可能会使用一个数字或一个字符串来表示，如 0 或 “Red”，但是这些数字或字符串并不能完全反映出枚举类型的所有信息，如名称、基类型等。因此，为了保证通用性，建议使用 JSON 格式支持的数据类型，并避免使用复杂的数据类型，或者提供一些自定义的转换器来处理这些数据类型。</li>
-<li>序列化和反序列化的选项和设置。不同的语言或库可能会提供一些选项和设置来控制 JSON 序列化和反序列化的过程，如缩进、排序、忽略、默认值、验证等。这些选项和设置可能会影响 JSON 格式的字符串的内容和格式，从而影响不同的 JSON 序列化文件的通用性。例如，Python 的 json 模块提供了一个 indent 参数来控制 JSON 格式的字符串的缩进，如果设置为 None，那么 JSON 格式的字符串就会被压缩为一行，如果设置为一个正整数，那么 JSON 格式的字符串就会被格式化为多行，每一层缩进的空格数为该整数。这样，不同的 indent 参数的值就会导致不同的 JSON 序列化文件的格式不同，从而影响通用性。因此，为了保证通用性，建议使用相同的选项和设置来进行 JSON 序列化和反序列化，或者在不同的选项和设置之间进行转换。</li>
-</ul>
-<h2 id="json序列化"><a href="#json序列化" class="headerlink" title="json序列化"></a>json序列化</h2><p>Newtonsoft.Json 是一个用于 JSON 序列化和反序列化的库，它可以将 C# 的对象转换为 JSON 格式的字符串，或者将 JSON 格式的字符串转换为 C# 的对象。它提供了一些灵活的设置和选项，来控制序列化和反序列化的过程。</p>
-<p>如果在类中删除一个字段，再利用 Newtonsoft.Json 解析 JSON 并序列化为类时，会发生以下情况：</p>
-<ul>
-<li>如果使用的是默认的设置，那么 Newtonsoft.Json 会忽略 JSON 中多余的字段，不会抛出异常，也不会给出警告。例如，如果有一个 Person 类，包含了 Name 和 Age 两个字段，然后将一个 Person 对象序列化为 JSON，得到如下字符串：</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"Name"</span>: <span class="string">"Alice"</span>,</span><br><span class="line">  <span class="attr">"Age"</span>: <span class="number">20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后，在 Person 类中删除了 Age 字段，再将上面的 JSON 字符串反序列化为 Person 对象，得到如下结果：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person person = <span class="keyword">new</span> Person();</span><br><span class="line">person.Name = <span class="string">"Alice"</span>;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，JSON 中的 Age 字段被忽略了，没有影响反序列化的结果。</p>
-<ul>
-<li>如果想要在反序列化时检测 JSON 中的多余字段，可以使用 MissingMemberHandling 设置，将其值设为 MissingMemberHandling.Error。这样，如果 JSON 中有类中不存在的字段，Newtonsoft.Json 会抛出 JsonSerializationException 异常，提示 JSON 中的字段与类中的字段不匹配。例如，如果在上面的例子中使用了这个设置，会得到如下的异常信息：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Newtonsoft.Json.JsonSerializationException: &#39;Could not find member &#39;Age&#39; on object of type &#39;Person&#39;. Path &#39;Age&#39;, line 3, position 9.&#39;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1204,15 +1186,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1221,14 +1211,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1248,14 +1230,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
@@ -1264,7 +1238,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,7 +1250,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1289,6 +1267,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">

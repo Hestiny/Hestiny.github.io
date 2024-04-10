@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 192
+            总文章数 195
         </nav>
 		<nav>
-            总字数 <span class="post-count">115.5k</span>
+            总字数 <span class="post-count">116.3k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,278 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/打包/unity打包流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/06/Unity/%E6%89%93%E5%8C%85/unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/">Unity Sbp</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/06/Unity/%E6%89%93%E5%8C%85/unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2023-11-06T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：848字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Unity sbp是Scriptable Build Pipeline（可编程构建管线）的缩写，它是Unity提供的一个新的构建系统，可以让您通过C#脚本来控制Unity如何构建内容¹²。它与传统的UnityEditor.BuildPipeline有以下几个主要区别：</p>
+<ul>
+<li>Unity sbp将一些常用的构建类和接口从C++层移动到了C#层，提高了可扩展性和可维护性²⁴。</li>
+<li>Unity sbp在构建时并不会生成manifest，而是会在library下生成缓存，实现了增量构建，加快了构建速度，不同构建机之间可以共享同一份BuildCache²⁴。</li>
+<li>Unity sbp为构建并行化做了准备，将构建任务粒度拆分更细，例如压缩、打图集、编译脚本，文件系列化等²⁴。</li>
+<li>Unity sbp提供了更灵活的接口，可以自定义构建流程和选项，例如按bundle名来选取压缩算法，深度定制AB包构建内容，指定单个Ab包压缩格式，依赖查找回调等¹²⁴。</li>
+<li>Unity sbp构建完成后会输出构建步骤的耗时的详细信息和耗时日志，可以用Trace Event Profiling Tool⁷打开，方便profiler不同的构建步骤²⁴。</li>
+</ul>
+<p>当然，Unity sbp也有一些缺点，例如：</p>
+<ul>
+<li><p>大部分任务并不支持并行化，自定义task的可行性比较低²⁴。</p>
+</li>
+<li><p>增量构建不完善，依然有bug，使用buildcache后bug会传播到其它构建线²⁴。</p>
+</li>
+<li><p>过度的设计，看似提供了更灵活的接口，实则很难正确的实现这些接口，比如看似可以通过IBundleBuildContent的BundleLayout来控制每个ab包的内容，但由于unity的依赖关系很难从上层应用通过Unity提供的接口计算正确，所以从上层来控制每个ab包的内容基本上不可能²⁴。</p>
+</li>
+<li><p>单个ab包的压缩格式通过回调来指定的做法比较不合理，这样做需要用字典来存储每个ab包压缩格式，增加了额外内存和构建时长，同时这样的代码写起来也比较麻烦²⁴。</p>
+</li>
+<li><p>Build Cache在Library下占用硬盘空间较大²⁴。</p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/369264807" target="_blank" rel="noopener">【Unity】SBP - Scriptable Build Pipeline - 知乎专栏</a>：这是一篇详细介绍Unity sbp的原理和用法的文章，包含了代码示例和截图</p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/366780685" target="_blank" rel="noopener">Unity Scriptable Build Pipeline | Scriptable Build Pipeline | 1.5.10</a>：这是Unity官方文档关于Unity sbp的页面，提供了基本概念和使用指南</p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/133708517" target="_blank" rel="noopener">谈一谈Unity 的 Scriptable Build Pipeline - 知乎专栏</a>：这是一篇总结Unity sbp的优点和缺点的文章，包含了一些个人观点和经验</p>
+</li>
+<li><p><a href="https://www.chromium.org/developers/how-tos/trace-event-profiling-tool" target="_blank" rel="noopener">深入了解 Unity DOTS Sample (七): Build 系统 - 知乎专栏</a>：这是一篇介绍Unity sbp在Unity DOTS Sample中的应用的文章，包含了一些构建配置和优化的技巧</p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/369264807" target="_blank" rel="noopener">Unity Plus(加强版)/Unity Pro(专业版)和Unity个人版的区别 - 知乎</a>：这是一篇比较Unity不同版本的功能和价格的文章，可以帮助您选择适合您的Unity版本</p>
+</li>
+<li><p><a href="https://zhuanlan.zhihu.com/p/366780685" target="_blank" rel="noopener">Unity URP/SRP 渲染管线浅入深出【匠】 - 知乎专栏</a>：这是一篇介绍Unity SRP（Scriptable Render Pipeline，可编程渲染管线）的文章，SRP是Unity sbp的一个应用场景，可以让您自定义渲染流程和效果</p>
+</li>
+<li><p><a href="https://bing.com/search?q=Unity+sbp%e5%92%8c%e5%85%b6%e4%bb%96%e6%9e%84%e5%bb%ba%e7%b3%bb%e7%bb%9f%e6%9c%89%e4%bb%80%e4%b9%88%e5%8c%ba%e5%88%ab%ef%bc%9f" target="_blank" rel="noopener">Trace Event Profiling Tool</a>：这是一个用于分析Unity sbp构建日志的工具，可以帮助您找出构建过程中的性能瓶颈</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/06/Unity/%E6%89%93%E5%8C%85/unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/打包/图集加载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/06/Unity/%E6%89%93%E5%8C%85/%E5%9B%BE%E9%9B%86%E5%8A%A0%E8%BD%BD/">Unity 图集加载</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/06/Unity/%E6%89%93%E5%8C%85/%E5%9B%BE%E9%9B%86%E5%8A%A0%E8%BD%BD/" class="archive-article-date">
+  	<time datetime="2023-11-06T03:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：368字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Unity中，如果你使用的是图集（Spritesheet），每个Sprite在图集中都可能有自己的border属性。然而，默认情况下，Unity在加载图集时并不会保留这些border属性。</p>
+<p>要加载图集中的Sprite并保留其border属性，你可以使用SpriteMetaData类以及AssetImporter类来实现。以下是一个示例代码，演示了如何加载图集中的Sprite并获取其border属性：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> SpriteRenderer spriteRenderer;</span><br><span class="line">    <span class="keyword">public</span> Texture2D spriteSheet; <span class="comment">// 图集的纹理</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> spriteName; <span class="comment">// Sprite的名称</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 加载Sprite</span></span><br><span class="line">        LoadSprite();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">LoadSprite</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 获取图集的导入器</span></span><br><span class="line">        <span class="keyword">string</span> spriteSheetPath = AssetDatabase.GetAssetPath(spriteSheet);</span><br><span class="line">        TextureImporter textureImporter = AssetImporter.GetAtPath(spriteSheetPath) <span class="keyword">as</span> TextureImporter;</span><br><span class="line">        SpriteMetaData[] spritesheetData = textureImporter.spritesheet;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 查找指定名称的Sprite</span></span><br><span class="line">        <span class="keyword">foreach</span> (SpriteMetaData metaData <span class="keyword">in</span> spritesheetData)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (metaData.name == spriteName)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 设置SpriteRenderer的Sprite</span></span><br><span class="line">                spriteRenderer.sprite = Sprite.Create(spriteSheet, metaData.rect, metaData.pivot, textureImporter.spritePixelsPerUnit, <span class="number">0</span>, SpriteMeshType.Tight, metaData.border);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 输出border属性</span></span><br><span class="line">                Debug.Log(<span class="string">"Sprite Border: "</span> + spriteRenderer.sprite.border);</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，我们首先通过<code>AssetDatabase.GetAssetPath</code>获取图集纹理的路径，并使用<code>AssetImporter.GetAtPath</code>获取图集的导入器。然后，可以通过<code>textureImporter.spritesheet</code>获取图集中所有Sprite的元数据。接下来，遍历元数据，找到指定名称的Sprite，然后使用<code>Sprite.Create</code>方法创建包含border属性的新Sprite，并将其赋值给SpriteRenderer的sprite属性。最后，通过<code>Debug.Log</code>将border属性输出到控制台。</p>
+<p>请确保将<code>spriteRenderer</code>设置为对应的GameObject，<code>spriteSheet</code>设置为图集的纹理，<code>spriteName</code>设置为要加载的Sprite名称。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/06/Unity/%E6%89%93%E5%8C%85/%E5%9B%BE%E9%9B%86%E5%8A%A0%E8%BD%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csharp/字符串转hash值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/01/csharp/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AChash%E5%80%BC/">c#字符串转hash值</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/01/csharp/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AChash%E5%80%BC/" class="archive-article-date">
+  	<time datetime="2023-11-01T07:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-01</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：17字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://learn.microsoft.com/zh-cn/dotnet/api/system.string.gethashcode?view=net-7.0" target="_blank" rel="noopener">官方文档</a><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/hash/0.png" alt="重要"></p>
+<p><a href="https://www.cnblogs.com/dunnice/archive/2011/07/17/2108622.html" target="_blank" rel="noopener">guid方案</a></p>
+<p>还有根据日期来生成的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/01/csharp/%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AChash%E5%80%BC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-csharp/特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -783,264 +1055,6 @@
 
 
   
-    <article id="post-csharp/c#日期解析和输出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/21/csharp/c#%E6%97%A5%E6%9C%9F%E8%A7%A3%E6%9E%90%E5%92%8C%E8%BE%93%E5%87%BA/">c#日期解析和输出</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/21/csharp/c#%E6%97%A5%E6%9C%9F%E8%A7%A3%E6%9E%90%E5%92%8C%E8%BE%93%E5%87%BA/" class="archive-article-date">
-  	<time datetime="2023-10-21T02:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-21</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：117字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://learn.microsoft.com/zh-cn/dotnet/api/system.datetime?view=net-7.0#initialization-01" target="_blank" rel="noopener">官方文档</a><br>代码示例</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DebugCtrl.Log(<span class="string">$"MMMM: <span class="subst">&#123;month.ToString(<span class="string">"MMMM"</span>, CultureInfo.GetCultureInfo(<span class="string">"en-US"</span>))&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$"MMM: <span class="subst">&#123;month:MMM&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$"MM: <span class="subst">&#123;month:MM&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$"M: <span class="subst">&#123;month:M&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$"mm: <span class="subst">&#123;month:mm&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$"m: <span class="subst">&#123;month:m&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$"MMM d: <span class="subst">&#123;month.ToString(<span class="string">"MMM d"</span>, CultureInfo.GetCultureInfo(<span class="string">"en-US"</span>))&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$"yyyy_M_d: <span class="subst">&#123;DateTime.Now.Date.ToString(<span class="string">"yyyy_M_d"</span>, CultureInfo.GetCultureInfo(<span class="string">"en-US"</span>))&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$" : <span class="subst">&#123;DateTime.Now.Date.ToString(CultureInfo.GetCultureInfo(<span class="string">"en-US"</span>))&#125;</span>"</span>, color);</span><br><span class="line">DebugCtrl.Log(<span class="string">$" : <span class="subst">&#123;DateTime.Parse(<span class="string">"2023-8-1"</span>).ToString()&#125;</span>"</span>, color);</span><br></pre></td></tr></table></figure>
-
-<p>输出<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/date/0.png" alt="图片"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/21/csharp/c#%E6%97%A5%E6%9C%9F%E8%A7%A3%E6%9E%90%E5%92%8C%E8%BE%93%E5%87%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-csharp/类深拷贝" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/21/csharp/%E7%B1%BB%E6%B7%B1%E6%8B%B7%E8%B4%9D/">c# 类深拷贝</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/21/csharp/%E7%B1%BB%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  	<time datetime="2023-10-21T02:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-21</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：317字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C#类的深拷贝是指创建一个新对象，并将原对象的所有属性值都复制给新对象。这样，新对象和原对象就是两个相互独立的对象，对其中一个对象的修改不会影响另一个对象。</p>
-<p>以下是在C#中实现类的深拷贝的一种常见方法：</p>
-<ol>
-<li>在要进行深拷贝的类中，实现ICloneable接口。这个接口中有一个Clone()方法，用于创建当前对象的副本。</li>
-</ol>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span> : <span class="title">ICloneable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> MyProperty &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">object</span> <span class="title">Clone</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        MyClass copy = <span class="keyword">new</span> MyClass();</span><br><span class="line">        copy.MyProperty = <span class="keyword">this</span>.MyProperty;</span><br><span class="line">        <span class="keyword">return</span> copy;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>在需要进行深拷贝的地方，调用对象的Clone()方法来创建副本。</li>
-</ol>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MyClass original = <span class="keyword">new</span> MyClass();</span><br><span class="line">original.MyProperty = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">MyClass copy = (MyClass)original.Clone();</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>现在，original和copy是两个相互独立的对象，对其中一个对象的修改不会影响另一个对象。</li>
-</ol>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">original.MyProperty = <span class="number">20</span>;</span><br><span class="line">Console.WriteLine(copy.MyProperty); <span class="comment">// 输出10</span></span><br></pre></td></tr></table></figure>
-
-<p>注意：上述方法实现的是浅拷贝，即当类中有引用类型的属性时，只会拷贝引用而不是创建新的对象。如果想要实现对引用类型的属性进行深拷贝，需要在Clone()方法中对引用类型的属性进行递归拷贝。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/21/csharp/%E7%B1%BB%E6%B7%B1%E6%8B%B7%E8%B4%9D/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/动画/UnityanimationClip和State的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/21/Unity/%E5%8A%A8%E7%94%BB/UnityanimationClip%E5%92%8CState%E7%9A%84%E5%8C%BA%E5%88%AB/">Unity AnimationClip 和 AnimationState的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/21/Unity/%E5%8A%A8%E7%94%BB/UnityanimationClip%E5%92%8CState%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2023-10-21T02:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-21</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：270字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>AnimationClip和AnimationState是Unity中与动画相关的两个类，它们的区别如下：</p>
-<ol>
-<li><p>AnimationClip（动画片段）：AnimationClip是一个独立的动画资源，它包含了动画的关键帧信息、曲线信息以及其他的动画属性。通过AnimationClip，我们可以定义一个完整的动画序列，比如角色行走、跳跃、攻击等动作。AnimationClip只是动画的描述信息，并不保存动画的实际状态。</p>
-</li>
-<li><p>AnimationState（动画状态）：AnimationState是用于控制动画播放的一个动画状态对象。它是通过将AnimationClip与具体的动画控制器（Animator）关联在一起而创建的。AnimationState包含了动画的播放信息，比如播放速度、播放位置、混合权重等。通过AnimationState，我们可以控制动画的播放状态，比如开始、停止、暂停、设置播放速度等操作。</p>
-</li>
-</ol>
-<p>简而言之，AnimationClip是动画的描述信息，而AnimationState是动画的播放控制器。AnimationClip用于定义动画的帧信息，而AnimationState用于控制动画的播放与状态。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/21/Unity/%E5%8A%A8%E7%94%BB/UnityanimationClip%E5%92%8CState%E7%9A%84%E5%8C%BA%E5%88%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
@@ -1142,6 +1156,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1150,23 +1176,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1194,23 +1208,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1218,11 +1220,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1239,10 +1253,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1266,11 +1276,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,15 +1296,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1302,11 +1312,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

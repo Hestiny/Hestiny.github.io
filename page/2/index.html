@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 192
+            总文章数 195
         </nav>
 		<nav>
-            总字数 <span class="post-count">115.5k</span>
+            总字数 <span class="post-count">116.3k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,245 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/肉鸽/角色的层级" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E8%A7%92%E8%89%B2%E7%9A%84%E5%B1%82%E7%BA%A7/">角色层级</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E8%A7%92%E8%89%B2%E7%9A%84%E5%B1%82%E7%BA%A7/" class="archive-article-date">
+  	<time datetime="2024-03-21T07:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-21</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：67字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个角色需要包含collider和动画 同时需要注意中心点 中心点将觉得角色的遮挡关系问题<br>这里将collider和动画放在两个节点上 中心点定在脚上这个要跟动画沟通清楚</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E8%A7%92%E8%89%B2%E7%9A%84%E5%B1%82%E7%BA%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/开发/随机list" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/21/Unity/%E5%BC%80%E5%8F%91/%E9%9A%8F%E6%9C%BAlist/">随机排序list</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/21/Unity/%E5%BC%80%E5%8F%91/%E9%9A%8F%E6%9C%BAlist/" class="archive-article-date">
+  	<time datetime="2024-03-21T03:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-21</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：115字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：使用 Guid</span></span><br><span class="line">list = list.OrderBy(i =&gt; Guid.NewGuid()).ToList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二：自定义方法进行随机排序</span></span><br><span class="line"><span class="keyword">public</span> List&lt;T&gt; RandomSortList&lt;T&gt;(List&lt;T&gt; ListT)</span><br><span class="line">&#123;</span><br><span class="line">    Random random = <span class="keyword">new</span> Random();</span><br><span class="line">    List&lt;T&gt; newList = <span class="keyword">new</span> List&lt;T&gt;();</span><br><span class="line">    <span class="keyword">foreach</span> (T item <span class="keyword">in</span> ListT)</span><br><span class="line">    &#123;</span><br><span class="line">        newList.Insert(random.Next(newList.Count + <span class="number">1</span>), item);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方法二进行随机排序</span></span><br><span class="line">List&lt;<span class="keyword">int</span>&gt; list = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    list.Add(i);</span><br><span class="line">&#125;</span><br><span class="line">list = RandomSortList&lt;<span class="keyword">int</span>&gt;(list);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/21/Unity/%E5%BC%80%E5%8F%91/%E9%9A%8F%E6%9C%BAlist/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/vscode.net环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/19/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vscode.net%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">Unity配vscode环境</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/19/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vscode.net%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2024-03-19T02:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-19</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：279字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>该项配置具有很强的时限性 会随着官方bug的fix而消失(最好不过)</p>
+<p>问题如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An error occurred while installing .NET (7.0): .NET Acquisition Failed: Installation failed: Error: .NET install timed out. You should change the timeout if you have a slow connection. See: https:&#x2F;&#x2F;github.com&#x2F;dotnet&#x2F;vscode-dotnet-runtime&#x2F;blob&#x2F;main&#x2F;Documentation&#x2F;troubleshooting-runtime.md#install-script-timeouts. Our CDN may be blocked in China or experience significant slowdown, in which case you should install .NET manually.</span><br></pre></td></tr></table></figure>
+
+<p>本来之前是一直在下.NET8.0<br>在指定dotnet和sdk路径之后修复了这个问题 不过它又开始下7.0<br>settings文件新加项如下(mac .net默认的安装位置)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"omnisharp.monoPath": "/usr/local/share/dotnet/sdk/8.0.203",</span><br><span class="line">"dotnet.dotnetPath": "/usr/local/share/dotnet",</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/dotnet/vscode-csharp/issues/6004" target="_blank" rel="noopener">官方issues</a><br>又开始下7.0的问题 看别人说估计是因为Unity插件影响的<br>需要再增加一项设置 路径是安装的dotnet路径<br>如果不清楚 直接在环境中运行指令 where dotnet 然后复制粘贴就行了</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">"dotnetAcquisitionExtension.existingDotnetPath": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"ms-dotnettools.csharp"</span>,</span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"ms-dotnettools.csdevkit"</span>, </span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"visualstudiotoolsforunity.vstuc"</span>, </span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/19/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vscode.net%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-csharp/new 用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -744,246 +983,6 @@
 
 
   
-    <article id="post-Unity/动画/dotween/dotween计时器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/">dotween计时器</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2024-03-08T07:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-08</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：315字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一些dotween 使用悉知 动画链接之间最好不要有任何逻辑操作 可能会打断链接</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a transform tween and set its ease, loops and OnComplete callback</span></span><br><span class="line">transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>).SetEase(Ease.OutQuint).SetLoops(<span class="number">4</span>).OnComplete(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Same as above but using line breaks to make it more readable</span></span><br><span class="line">transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>)</span><br><span class="line">  .SetEase(Ease.OutQuint)</span><br><span class="line">  .SetLoops(<span class="number">4</span>)</span><br><span class="line">  .OnComplete(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Same as above but storing the tween and applying settings without chaining</span></span><br><span class="line">Tween myTween = transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>);</span><br><span class="line">myTween.SetEase(Ease.OutQuint);</span><br><span class="line">myTween.SetLoops(<span class="number">4</span>);</span><br><span class="line">myTween.OnComplete(myFunction);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tweener <span class="title">Delay</span>(<span class="params"><span class="keyword">float</span> time, Action call, GameObject link = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, time).SetRecyclable(<span class="literal">true</span>).OnComplete(() =&gt; &#123; call?.Invoke(); &#125;).SetAutoKill();</span><br><span class="line">    <span class="keyword">if</span> (link != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        tween.SetLink(link);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 默认为可复用tween</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="loop"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="intervalTime"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="call"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="link"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="isImmeExecute"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tweener <span class="title">AddTimer</span>(<span class="params"><span class="keyword">int</span> loop, <span class="keyword">float</span> intervalTime, Action call, GameObject link = <span class="literal">null</span>, <span class="keyword">bool</span> isImmeExecute = <span class="literal">true</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isImmeExecute)</span><br><span class="line">    &#123;</span><br><span class="line">        call?.Invoke();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">    Tweener tween = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (!link)</span><br><span class="line">    &#123;</span><br><span class="line">        tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, intervalTime);</span><br><span class="line">        tween.OnStepComplete(() =&gt; &#123; call?.Invoke(); &#125;);</span><br><span class="line">        tween.SetUpdate(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLoops(loop).SetRecyclable(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLink(link);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, intervalTime);</span><br><span class="line">        tween.OnStepComplete(() =&gt; &#123; call?.Invoke(); &#125;);</span><br><span class="line">        tween.SetUpdate(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLoops(loop).SetRecyclable(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tween;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">unity</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dotween</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/scrollView优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/02/28/Unity/%E5%BC%80%E5%8F%91/scrollView%E4%BC%98%E5%8C%96/">unity scrollRect优化</a>
-    </h1>
-  
-
-        
-        <a href="/2024/02/28/Unity/%E5%BC%80%E5%8F%91/scrollView%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2024-02-28T10:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-28</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：146字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>scrollrect的优化无非就是只显示视图中的几个选项 通过调整位置和刷新item 来实现滑动<br>这里面又有两种方式 一直是Content长度为真实长度 一种为真实存在的item的总长<br>这两个的区别是 第一种方式只需要挑item的位置即可 第二方式需要连Content的位置也更新<br>第一的便利点在于 如果哪个动画有跨item联动的就更方便实现 而第二种则需要根据Content的位置来实时变化</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/02/28/Unity/%E5%BC%80%E5%8F%91/scrollView%E4%BC%98%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/transform" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/02/26/Unity/%E5%BC%80%E5%8F%91/transform/">transform</a>
-    </h1>
-  
-
-        
-        <a href="/2024/02/26/Unity/%E5%BC%80%E5%8F%91/transform/" class="archive-article-date">
-  	<time datetime="2024-02-26T06:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：279字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>GetWorldCorners 是 RectTransform 类的一个实例方法，它用于获取计算的矩形在世界空间中的各个角。它需要一个 Vector3 类型的数组作为参数，它会将矩形的四个角的世界坐标填充到该数组中。返回的数组是顺时针的，从左下开始，旋转到左上，然后到右上，最后到右下。</p>
-<p>GetWorldCorners 方法的一个常见的应用场景是获取 UI 元素的屏幕坐标，以便进行一些交互或特效的处理。可以使用以下的代码来获取一个 UI 元素的屏幕坐标：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 UI 元素的 RectTransform 组件</span></span><br><span class="line">RectTransform rt = GetComponent&lt;RectTransform&gt;();</span><br><span class="line"><span class="comment">// 创建一个 Vector3 类型的数组</span></span><br><span class="line">Vector3[] corners = <span class="keyword">new</span> Vector3[<span class="number">4</span>];</span><br><span class="line"><span class="comment">// 调用 GetWorldCorners 方法，将矩形的四个角的世界坐标填充到数组中</span></span><br><span class="line">rt.GetWorldCorners(corners);</span><br><span class="line"><span class="comment">// 遍历数组，将世界坐标转换为屏幕坐标</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 使用 Camera.main.WorldToScreenPoint 方法，将世界坐标转换为屏幕坐标</span></span><br><span class="line">    corners[i] = Camera.main.WorldToScreenPoint(corners[i]);</span><br><span class="line">    <span class="comment">// 打印屏幕坐标</span></span><br><span class="line">    Debug.Log(<span class="string">"Screen Corner "</span> + i + <span class="string">" : "</span> + corners[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/02/26/Unity/%E5%BC%80%E5%8F%91/transform/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1085,6 +1084,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1093,23 +1104,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1137,23 +1136,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1161,11 +1148,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1182,10 +1181,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1209,11 +1204,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,15 +1224,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,11 +1240,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

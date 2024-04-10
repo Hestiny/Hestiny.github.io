@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 192
+            总文章数 195
         </nav>
 		<nav>
-            总字数 <span class="post-count">115.5k</span>
+            总字数 <span class="post-count">116.3k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,272 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/开发/Unity序列化特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/12/Unity/%E5%BC%80%E5%8F%91/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E7%89%B9%E6%80%A7/">unity SerializeField和Serialize Serializable的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/12/Unity/%E5%BC%80%E5%8F%91/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E7%89%B9%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2023-10-12T06:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-12</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：1.2k字 | 预计阅读时长：4分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SerializeField和Serializable是Unity中用于序列化的两个不同的特性，它们用于不同的场景和目的。</p>
+<ol>
+<li><p>SerializeField：SerializeField是Unity的一个特性，用于将私有变量或字段序列化。通过在私有变量上添加SerializeField特性，可以使该变量在Inspector面板中显示和编辑。这使得我们可以在运行时保持变量的可见性，同时又能够在编辑器中进行编辑。SerializeField只能用于非公开的变量或字段。</p>
+<p> 示例：</p>
+ <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyScript</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">SerializeField</span>]</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> myVariable;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Serializable：Serializable是.NET的一个特性，用于标记类，表示该类可以进行序列化。在Unity中，如果我们想要将某个类的实例序列化，我们需要将该类标记为Serializable。这样，该类的实例就可以在场景之间进行保存和加载，也可以在网络传输中使用。</p>
+<p> 示例：</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">System.Serializable</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyData</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> myVariable;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 在上面的示例中，MyData类被标记为Serializable，这意味着我们可以将MyData的实例保存到文件中或在不同的场景之间传递。</p>
+</li>
+</ol>
+<p>总结：<br>SerializeField用于序列化私有变量或字段，使其在Inspector面板中可见和编辑。Serializable用于标记类，表示该类可以进行序列化，使其实例可以在场景之间保存和加载。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/12/Unity/%E5%BC%80%E5%8F%91/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E7%89%B9%E6%80%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/Unity通过反射查看属性是否有某特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/11/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Unity%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9F%A5%E7%9C%8B%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E6%9C%89%E6%9F%90%E7%89%B9%E6%80%A7/">Unity中通过反射查看是否有某特性</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/11/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Unity%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9F%A5%E7%9C%8B%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E6%9C%89%E6%9F%90%E7%89%B9%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2023-10-11T09:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-11</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：236字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Unity中，可以使用反射来检查属性是否被标记为SerializeField。</p>
+<p>以下是一种常见的方法：</p>
+<ol>
+<li><p>首先，获取要检查的类型的Type对象，例如：</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Type type = <span class="keyword">typeof</span>(MyClass);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后，使用Type对象的GetField或GetProperty方法获取属性的FieldInfo或PropertyInfo对象，例如：</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FieldInfo field = type.GetField(<span class="string">"myField"</span>, BindingFlags.NonPublic | BindingFlags.Instance);</span><br></pre></td></tr></table></figure>
+
+<p> 或者</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PropertyInfo property = type.GetProperty(<span class="string">"myProperty"</span>, BindingFlags.Public | BindingFlags.Instance);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后，使用FieldInfo或PropertyInfo对象的IsDefined方法检查属性是否被标记为SerializeField，例如：</p>
+</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> isSerialized = field.IsDefined(<span class="keyword">typeof</span>(SerializeField), <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> isSerialized = property.IsDefined(<span class="keyword">typeof</span>(SerializeField), <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>其中，第二个参数<code>true</code>表示是否搜索继承链上的自定义特性。如果属性被标记为SerializeField，<code>isSerialized</code>将为true；否则，为false。</p>
+<p>需要注意的是，上述示例中的”myField”和”myProperty”应替换为要检查的实际属性名称。同时，字段和属性可能具有不同的访问修饰符和绑定标志，需要根据实际情况进行调整。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/11/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Unity%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E6%9F%A5%E7%9C%8B%E5%B1%9E%E6%80%A7%E6%98%AF%E5%90%A6%E6%9C%89%E6%9F%90%E7%89%B9%E6%80%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/unityUI拓展" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/10/11/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityUI%E6%8B%93%E5%B1%95/">Unity中UI拓展常识</a>
+    </h1>
+  
+
+        
+        <a href="/2023/10/11/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityUI%E6%8B%93%E5%B1%95/" class="archive-article-date">
+  	<time datetime="2023-10-11T09:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-11</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：1.1k字 | 预计阅读时长：6分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="常拓展的组件"><a href="#常拓展的组件" class="headerlink" title="常拓展的组件"></a>常拓展的组件</h2><p>button text</p>
+<h2 id="拓展的好处"><a href="#拓展的好处" class="headerlink" title="拓展的好处"></a>拓展的好处</h2><p>在项目中 按钮经常会新增一些功能 比如音效 震动 特定动画等 如果要在原本的button上用时 就不的不考虑新写组件 然后在每次增加相应组件时就绑定相应的组件<br>这会带来巨大的操作成本 而且一旦要修改 就十分麻烦<br>在正常的项目中是一定不会直接使用原本会经常使用的组件的 而是封装一层 以供满足自己的需求<br>比如text中创建的时候就修改字体和多语言适配等</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/10/11/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityUI%E6%8B%93%E5%B1%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-code/git/github压缩提交" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -318,19 +584,19 @@
 
 
   
-    <article id="post-Unity/UI/CanEditMultipleObjects" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/编辑器/CanEditMultipleObjects" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/10/Unity/UI/CanEditMultipleObjects/">Unity CanEditMultipleObjects特性</a>
+      <a class="article-title" href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/CanEditMultipleObjects/">Unity CanEditMultipleObjects特性</a>
     </h1>
   
 
         
-        <a href="/2023/10/10/Unity/UI/CanEditMultipleObjects/" class="archive-article-date">
+        <a href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/CanEditMultipleObjects/" class="archive-article-date">
   	<time datetime="2023-10-10T07:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
 </a>
         
@@ -372,7 +638,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/10/Unity/UI/CanEditMultipleObjects/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/CanEditMultipleObjects/">展开全文 >></a>
         </p>
       
 
@@ -402,19 +668,19 @@
 
 
   
-    <article id="post-Unity/UI/CustomEditor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/编辑器/CustomEditor" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/10/Unity/UI/CustomEditor/">Unity CustomEditor特性</a>
+      <a class="article-title" href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/CustomEditor/">Unity CustomEditor特性</a>
     </h1>
   
 
         
-        <a href="/2023/10/10/Unity/UI/CustomEditor/" class="archive-article-date">
+        <a href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/CustomEditor/" class="archive-article-date">
   	<time datetime="2023-10-10T07:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
 </a>
         
@@ -456,7 +722,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/10/Unity/UI/CustomEditor/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/CustomEditor/">展开全文 >></a>
         </p>
       
 
@@ -486,19 +752,19 @@
 
 
   
-    <article id="post-Unity/UI/Unity拓展button面板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Unity/编辑器/Unity拓展button面板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/10/Unity/UI/Unity%E6%8B%93%E5%B1%95button%E9%9D%A2%E6%9D%BF/">Unity拓展button的属性面板</a>
+      <a class="article-title" href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Unity%E6%8B%93%E5%B1%95button%E9%9D%A2%E6%9D%BF/">Unity拓展button的属性面板</a>
     </h1>
   
 
         
-        <a href="/2023/10/10/Unity/UI/Unity%E6%8B%93%E5%B1%95button%E9%9D%A2%E6%9D%BF/" class="archive-article-date">
+        <a href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Unity%E6%8B%93%E5%B1%95button%E9%9D%A2%E6%9D%BF/" class="archive-article-date">
   	<time datetime="2023-10-10T07:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
 </a>
         
@@ -539,7 +805,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/10/Unity/UI/Unity%E6%8B%93%E5%B1%95button%E9%9D%A2%E6%9D%BF/">展开全文 >></a>
+          <a class="article-more-a" href="/2023/10/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/Unity%E6%8B%93%E5%B1%95button%E9%9D%A2%E6%9D%BF/">展开全文 >></a>
         </p>
       
 
@@ -742,249 +1008,6 @@
 
 
   
-    <article id="post-Unity/坑/Package" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/27/Unity/%E5%9D%91/Package/">newtonsoft</a>
-    </h1>
-  
-
-        
-        <a href="/2023/09/27/Unity/%E5%9D%91/Package/" class="archive-article-date">
-  	<time datetime="2023-09-27T04:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-27</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：52字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>新建项目的时候想导入newtonsoft 但是发现unity Package里面搜不到 添加nuget包更不可能有效果 然后找半天官方的url 重要找到了 emmm<br><code>com.unity.nuget.newtonsoft-json</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/09/27/Unity/%E5%9D%91/Package/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/坑/Unity关于点击事件的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/27/Unity/%E5%9D%91/Unity%E5%85%B3%E4%BA%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%9D%91/">unity中关于点击事件Execute的坑</a>
-    </h1>
-  
-
-        
-        <a href="/2023/09/27/Unity/%E5%9D%91/Unity%E5%85%B3%E4%BA%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%9D%91/" class="archive-article-date">
-  	<time datetime="2023-09-27T04:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-27</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：483字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>因为部分弹窗需要点击任何地方关闭 所有想着用事件穿透来处理</p>
-<p>代码:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ClickPass</span> : <span class="title">MonoBehaviour</span>, <span class="title">IPointerClickHandler</span></span><br><span class="line"> &#123;</span><br><span class="line">     <span class="keyword">public</span> UnityEvent callAction = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnPointerClick</span>(<span class="params">PointerEventData eventData</span>)</span></span><br><span class="line"><span class="function"></span>     &#123;</span><br><span class="line">         callAction?.Invoke();</span><br><span class="line">         PassEvent(eventData, ExecuteEvents.pointerClickHandler);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">public</span> <span class="keyword">void</span> PassEvent&lt;T&gt;(PointerEventData data, ExecuteEvents.EventFunction&lt;T&gt; function)</span><br><span class="line">         <span class="keyword">where</span> T : IEventSystemHandler</span><br><span class="line">     &#123;</span><br><span class="line">         List&lt;RaycastResult&gt; results = <span class="keyword">new</span> List&lt;RaycastResult&gt;();</span><br><span class="line">         EventSystem.current.RaycastAll(data, results);</span><br><span class="line">         GameObject current = data.pointerCurrentRaycast.gameObject;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; results.Count; i++)</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="keyword">if</span> (current != results[i].gameObject)</span><br><span class="line">             &#123;</span><br><span class="line">                 ExecuteEvents.Execute(results[i].gameObject, data, function);</span><br><span class="line">                 <span class="keyword">return</span>;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>基本上都是可以正常触发按钮的 但是出现了部分不正常的情况</p>
-<p>Unity的事件代码</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> Execute&lt;T&gt;(GameObject target, BaseEventData eventData, EventFunction&lt;T&gt; functor) <span class="keyword">where</span> T : IEventSystemHandler</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> internalHandlers = ListPool&lt;IEventSystemHandler&gt;.Get();</span><br><span class="line">    GetEventList&lt;T&gt;(target, internalHandlers);</span><br><span class="line">    <span class="comment">//  if (s_InternalHandlers.Count &gt; 0)</span></span><br><span class="line">    <span class="comment">//      Debug.Log("Executinng " + typeof (T) + " on " + target);</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> internalHandlersCount = internalHandlers.Count;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; internalHandlersCount; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        T arg;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            arg = (T)internalHandlers[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> temp = internalHandlers[i];</span><br><span class="line">            Debug.LogException(<span class="keyword">new</span> Exception(<span class="keyword">string</span>.Format(<span class="string">"Type &#123;0&#125; expected &#123;1&#125; received."</span>, <span class="keyword">typeof</span>(T).Name, temp.GetType().Name), e));</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            functor(arg, eventData);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.LogException(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> handlerCount = internalHandlers.Count;</span><br><span class="line">    ListPool&lt;IEventSystemHandler&gt;.Release(internalHandlers);</span><br><span class="line">    <span class="keyword">return</span> handlerCount &gt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>正常的透传会在  <code>GetEventList&lt;T&gt;(target, internalHandlers);</code>方法之后获取到数量的 但是不正常的情况是获取到了检测的物体 但是获取不到事件</p>
-<ul>
-<li>添加的tmp拦截了button的点击(表现上是这样的 实际上tmp的检测是关掉的 所以十分诡异) 一旦隐藏tmp就正常了 不过这还不是最坑的 因为这个tmp重新建一个就又正常了 属实离谱这个暂时没有找到解决方法 实际上是没找到问题点</li>
-<li>button上挂在image 只是在其子物体上挂image 依旧会获取不到事件 只能检测到点击到了物体 但是无法获取事件 必须在btn自身挂上image才可以获取到</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/09/27/Unity/%E5%9D%91/Unity%E5%85%B3%E4%BA%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%9D%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/坑/UnitySetParent" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/27/Unity/%E5%9D%91/UnitySetParent/">unity中setParent需要注意的问题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/09/27/Unity/%E5%9D%91/UnitySetParent/" class="archive-article-date">
-  	<time datetime="2023-09-27T04:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-27</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：115字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于SetParent可能引发的问题"><a href="#关于SetParent可能引发的问题" class="headerlink" title="关于SetParent可能引发的问题"></a>关于SetParent可能引发的问题</h2><p>一般在创建obj的时候我们都会习惯的归一化所有的属性 避免出现问题<br>但是在修改父节点之后依旧可能会出现问题 所以需要重新修改<br>不然在手机上如果不同屏幕出现适配不同的时候就会将缩放调整 或者位置调整 发生一些编辑器上没有出现的问题</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/09/27/Unity/%E5%9D%91/UnitySetParent/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/12/">Next &amp;raquo;</a>
@@ -1086,6 +1109,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1094,23 +1129,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1138,23 +1161,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1162,11 +1173,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1183,10 +1206,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,11 +1229,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1230,15 +1249,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1246,11 +1265,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

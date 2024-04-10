@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Unity CanEditMultipleObjects特性 | 诗酒趁年华</title>
+  <title>多个接口重名方法 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单来说就是 在面板中选中多个是否支持一起编辑和现实 Unity的CanEditMultipleObjects属性是用于指定一个自定义编辑器是否支持多个对象同时编辑的特性。当脚本挂载到多个对象上时，CanEditMultipleObjects属性可以控制是否使用相同的自定义编辑器来编辑这些对象。 要使用CanEditMultipleObjects属性，首先需要将CustomEditor属性与脚本一">
+  <meta name="description" content="在C#中，如果一个类继承了两个定义了相同方法名的接口，你可以通过显式接口实现来解决潜在的冲突。这意味着你可以为每个接口的方法提供单独的实现。例如： 12345678910111213141516171819202122public interface IFirstInterface&amp;#123;    void MyMethod();&amp;#125;public interface ISecondInt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity CanEditMultipleObjects特性">
-<meta property="og:url" content="http://yoursite.com/2023/10/10/Unity/UI/CanEditMultipleObjects/index.html">
+<meta property="og:title" content="多个接口重名方法">
+<meta property="og:url" content="http://yoursite.com/2024/04/10/csharp/%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="简单来说就是 在面板中选中多个是否支持一起编辑和现实 Unity的CanEditMultipleObjects属性是用于指定一个自定义编辑器是否支持多个对象同时编辑的特性。当脚本挂载到多个对象上时，CanEditMultipleObjects属性可以控制是否使用相同的自定义编辑器来编辑这些对象。 要使用CanEditMultipleObjects属性，首先需要将CustomEditor属性与脚本一">
+<meta property="og:description" content="在C#中，如果一个类继承了两个定义了相同方法名的接口，你可以通过显式接口实现来解决潜在的冲突。这意味着你可以为每个接口的方法提供单独的实现。例如： 12345678910111213141516171819202122public interface IFirstInterface&amp;#123;    void MyMethod();&amp;#125;public interface ISecondInt">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-10-10T07:16:00.000Z">
-<meta property="article:modified_time" content="2024-03-21T12:42:12.276Z">
+<meta property="article:published_time" content="2024-04-10T08:23:00.000Z">
+<meta property="article:modified_time" content="2024-04-10T12:34:19.798Z">
 <meta property="article:author" content="Fortune">
-<meta property="article:tag" content="Unity">
+<meta property="article:tag" content="c#">
 <meta name="twitter:card" content="summary">
   
   
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 192
+            总文章数 195
         </nav>
 		<nav>
-            总字数 <span class="post-count">115.5k</span>
+            总字数 <span class="post-count">116.3k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -161,37 +161,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Unity/UI/CanEditMultipleObjects" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-csharp/多个接口继承" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Unity CanEditMultipleObjects特性
+      多个接口重名方法
     </h1>
   
 
         
-        <a href="/2023/10/10/Unity/UI/CanEditMultipleObjects/" class="archive-article-date">
-  	<time datetime="2023-10-10T07:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-10</time>
+        <a href="/2024/04/10/csharp/%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF/" class="archive-article-date">
+  	<time datetime="2024-04-10T08:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-10</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：397字 | 预计阅读时长：1分钟
+          字数：288字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简单来说就是 在面板中选中多个是否支持一起编辑和现实</p>
-<p>Unity的CanEditMultipleObjects属性是用于指定一个自定义编辑器是否支持多个对象同时编辑的特性。当脚本挂载到多个对象上时，CanEditMultipleObjects属性可以控制是否使用相同的自定义编辑器来编辑这些对象。</p>
-<p>要使用CanEditMultipleObjects属性，首先需要将CustomEditor属性与脚本一起使用，指定使用的自定义编辑器。然后在自定义编辑器类中，添加CanEditMultipleObjects属性并设置为true，表示支持多个对象同时编辑。</p>
-<p>以下是一个示例，展示了如何使用CanEditMultipleObjects属性：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEditor;</span><br><span class="line"></span><br><span class="line">[<span class="meta">CustomEditor(typeof(MyScript))</span>]</span><br><span class="line">[<span class="meta">CanEditMultipleObjects</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyScriptEditor</span> : <span class="title">Editor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInspectorGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// Custom inspector GUI code goes here</span></span><br><span class="line">        <span class="comment">// You can use EditorGUILayout, EditorGUI, and other GUI functions provided by Unity's editor API</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>在C#中，如果一个类继承了两个定义了相同方法名的接口，你可以通过显式接口实现来解决潜在的冲突。这意味着你可以为每个接口的方法提供单独的实现。例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IFirstInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ISecondInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span> : <span class="title">IFirstInterface</span>, <span class="title">ISecondInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">void</span> IFirstInterface.MyMethod()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 实现第一个接口的方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> ISecondInterface.MyMethod()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 实现第二个接口的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在上面的示例中，[CanEditMultipleObjects] 属性被添加到 MyScriptEditor 类上，表示该自定义编辑器支持多个对象同时编辑。因此，当多个对象挂载了 MyScript 脚本时，它们将共享同一个自定义编辑器来进行编辑。</p>
-<p>要使用自定义编辑器，只需将 MyScript 脚本挂载到 Unity 编辑器中的一个或多个 GameObject 上。然后，选择这些 GameObject，在 Inspector 窗口中将会显示自定义的编辑器界面，可以对这些对象进行编辑。如果这些对象上的 MyScript 组件之间具有相同的属性，它们将在自定义编辑器中共享相同的属性设置和布局。</p>
+<p>在C#中，如果你没有显式地指定接口，类将会使用隐式实现。这意味着类中的方法将作为所有接口中具有相同签名方法的默认实现。例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IFirstInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ISecondInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span> : <span class="title">IFirstInterface</span>, <span class="title">ISecondInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 这个方法将作为 IFirstInterface 和 ISecondInterface 的 MyMethod 的默认实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>MyClass</code>提供了一个<code>MyMethod</code>的实现，它将作为<code>IFirstInterface</code>和<code>ISecondInterface</code>的默认实现。当你通过类的实例调用<code>MyMethod</code>时，将会执行这个默认实现。如果你需要区分接口的实现，你应该使用显式接口实现。</p>
 
       
 
@@ -226,7 +225,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
         		</li>
       		
 		</ul>
@@ -282,7 +281,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2023/10/10/Unity/UI/CanEditMultipleObjects/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2024/04/10/csharp/%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +295,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/10/10/code/godot/godot%E5%9C%A8mac%E4%B8%AD%E6%89%93%E5%BC%80rider%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/04/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E9%9D%A2%E6%9D%BF%E6%8B%93%E5%B1%95%E6%B5%8B%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          godot删除atlas文件并复原原本文件
+          测试面板
         
       </div>
     </a>
   
   
-    <a href="/2023/10/10/Unity/UI/CustomEditor/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Unity CustomEditor特性</div>
+    <a href="/2024/04/06/csharp/visualStudio/vs%E6%8B%93%E5%B1%95%E5%BC%80%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vs拓展开发</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -450,6 +449,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -458,23 +469,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,23 +501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,11 +513,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,10 +546,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,11 +569,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,15 +589,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,11 +605,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

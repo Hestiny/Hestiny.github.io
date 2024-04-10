@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 192
+            总文章数 195
         </nav>
 		<nav>
-            总字数 <span class="post-count">115.5k</span>
+            总字数 <span class="post-count">116.3k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,246 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/动画/dotween/dotween计时器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/">dotween计时器</a>
+    </h1>
+  
+
+        
+        <a href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2024-03-08T07:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-08</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：315字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一些dotween 使用悉知 动画链接之间最好不要有任何逻辑操作 可能会打断链接</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a transform tween and set its ease, loops and OnComplete callback</span></span><br><span class="line">transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>).SetEase(Ease.OutQuint).SetLoops(<span class="number">4</span>).OnComplete(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Same as above but using line breaks to make it more readable</span></span><br><span class="line">transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>)</span><br><span class="line">  .SetEase(Ease.OutQuint)</span><br><span class="line">  .SetLoops(<span class="number">4</span>)</span><br><span class="line">  .OnComplete(myFunction);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Same as above but storing the tween and applying settings without chaining</span></span><br><span class="line">Tween myTween = transform.DOMove(<span class="keyword">new</span> Vector3(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>), <span class="number">2</span>);</span><br><span class="line">myTween.SetEase(Ease.OutQuint);</span><br><span class="line">myTween.SetLoops(<span class="number">4</span>);</span><br><span class="line">myTween.OnComplete(myFunction);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tweener <span class="title">Delay</span>(<span class="params"><span class="keyword">float</span> time, Action call, GameObject link = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, time).SetRecyclable(<span class="literal">true</span>).OnComplete(() =&gt; &#123; call?.Invoke(); &#125;).SetAutoKill();</span><br><span class="line">    <span class="keyword">if</span> (link != <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        tween.SetLink(link);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tween;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 默认为可复用tween</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="loop"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="intervalTime"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="call"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="link"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="isImmeExecute"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Tweener <span class="title">AddTimer</span>(<span class="params"><span class="keyword">int</span> loop, <span class="keyword">float</span> intervalTime, Action call, GameObject link = <span class="literal">null</span>, <span class="keyword">bool</span> isImmeExecute = <span class="literal">true</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (isImmeExecute)</span><br><span class="line">    &#123;</span><br><span class="line">        call?.Invoke();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">float</span> <span class="keyword">value</span> = <span class="number">0</span>;</span><br><span class="line">    Tweener tween = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (!link)</span><br><span class="line">    &#123;</span><br><span class="line">        tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, intervalTime);</span><br><span class="line">        tween.OnStepComplete(() =&gt; &#123; call?.Invoke(); &#125;);</span><br><span class="line">        tween.SetUpdate(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLoops(loop).SetRecyclable(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLink(link);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        tween = DOTween.To(() =&gt; <span class="keyword">value</span>, (x) =&gt; <span class="keyword">value</span> = x, <span class="number">1</span>, intervalTime);</span><br><span class="line">        tween.OnStepComplete(() =&gt; &#123; call?.Invoke(); &#125;);</span><br><span class="line">        tween.SetUpdate(<span class="literal">true</span>);</span><br><span class="line">        tween.SetLoops(loop).SetRecyclable(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> tween;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dotween</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/03/08/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E8%AE%A1%E6%97%B6%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/开发/scrollView优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/02/28/Unity/%E5%BC%80%E5%8F%91/scrollView%E4%BC%98%E5%8C%96/">unity scrollRect优化</a>
+    </h1>
+  
+
+        
+        <a href="/2024/02/28/Unity/%E5%BC%80%E5%8F%91/scrollView%E4%BC%98%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2024-02-28T10:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-28</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：146字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>scrollrect的优化无非就是只显示视图中的几个选项 通过调整位置和刷新item 来实现滑动<br>这里面又有两种方式 一直是Content长度为真实长度 一种为真实存在的item的总长<br>这两个的区别是 第一种方式只需要挑item的位置即可 第二方式需要连Content的位置也更新<br>第一的便利点在于 如果哪个动画有跨item联动的就更方便实现 而第二种则需要根据Content的位置来实时变化</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/02/28/Unity/%E5%BC%80%E5%8F%91/scrollView%E4%BC%98%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/开发/transform" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/02/26/Unity/%E5%BC%80%E5%8F%91/transform/">transform</a>
+    </h1>
+  
+
+        
+        <a href="/2024/02/26/Unity/%E5%BC%80%E5%8F%91/transform/" class="archive-article-date">
+  	<time datetime="2024-02-26T06:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-02-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：279字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>GetWorldCorners 是 RectTransform 类的一个实例方法，它用于获取计算的矩形在世界空间中的各个角。它需要一个 Vector3 类型的数组作为参数，它会将矩形的四个角的世界坐标填充到该数组中。返回的数组是顺时针的，从左下开始，旋转到左上，然后到右上，最后到右下。</p>
+<p>GetWorldCorners 方法的一个常见的应用场景是获取 UI 元素的屏幕坐标，以便进行一些交互或特效的处理。可以使用以下的代码来获取一个 UI 元素的屏幕坐标：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 UI 元素的 RectTransform 组件</span></span><br><span class="line">RectTransform rt = GetComponent&lt;RectTransform&gt;();</span><br><span class="line"><span class="comment">// 创建一个 Vector3 类型的数组</span></span><br><span class="line">Vector3[] corners = <span class="keyword">new</span> Vector3[<span class="number">4</span>];</span><br><span class="line"><span class="comment">// 调用 GetWorldCorners 方法，将矩形的四个角的世界坐标填充到数组中</span></span><br><span class="line">rt.GetWorldCorners(corners);</span><br><span class="line"><span class="comment">// 遍历数组，将世界坐标转换为屏幕坐标</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 使用 Camera.main.WorldToScreenPoint 方法，将世界坐标转换为屏幕坐标</span></span><br><span class="line">    corners[i] = Camera.main.WorldToScreenPoint(corners[i]);</span><br><span class="line">    <span class="comment">// 打印屏幕坐标</span></span><br><span class="line">    Debug.Log(<span class="string">"Screen Corner "</span> + i + <span class="string">" : "</span> + corners[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/02/26/Unity/%E5%BC%80%E5%8F%91/transform/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-线性代数/线性代数常用概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -746,319 +986,6 @@
 
 
   
-    <article id="post-Unity/编辑器/unityEditorWindow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/15/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityEditorWindow/">Unity EidtorWindow常用方法</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/15/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityEditorWindow/" class="archive-article-date">
-  	<time datetime="2024-01-15T03:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-15</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：992字 | 预计阅读时长：3分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://blog.csdn.net/yhx956058885/article/details/107720758" target="_blank" rel="noopener">接口参考</a><br><a href="https://docs.unity3d.com/ScriptReference/EditorWindow.html" target="_blank" rel="noopener">官方文档</a><br><a href="https://docs.unity.cn/cn/current/ScriptReference/EditorGUILayout.TextField.html" target="_blank" rel="noopener">textfield</a></p>
-<h3 id="自定义TextField"><a href="#自定义TextField" class="headerlink" title="自定义TextField"></a>自定义TextField</h3><p>textField是一个用于输入文本的控件，你可以在EditorWindow中使用EditorGUILayout.TextField或EditorGUI.TextField来创建一个textField。可以通过传递一个GUILayoutOption类型的参数来设置textField的宽度，例如：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用EditorGUILayout.TextField，自动布局</span></span><br><span class="line"><span class="keyword">string</span> text = EditorGUILayout.TextField(<span class="string">"Label"</span>, text, GUILayout.Width(<span class="number">100</span>)); <span class="comment">// 设置宽度为100</span></span><br><span class="line"><span class="comment">// 使用EditorGUI.TextField，手动布局</span></span><br><span class="line"><span class="keyword">string</span> text = EditorGUI.TextField(<span class="keyword">new</span> Rect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">20</span>), <span class="string">"Label"</span>, text); <span class="comment">// 设置宽度为100</span></span><br></pre></td></tr></table></figure>
-
-<p>也可以使用GUILayout.ExpandWidth来让textField自动适应窗口的宽度，例如：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用EditorGUILayout.TextField，自动布局</span></span><br><span class="line"><span class="keyword">string</span> text = EditorGUILayout.TextField(<span class="string">"Label"</span>, text, GUILayout.ExpandWidth(<span class="literal">true</span>)); <span class="comment">// 自动适应宽度</span></span><br><span class="line"><span class="comment">// 使用EditorGUI.TextField，手动布局</span></span><br><span class="line"><span class="keyword">string</span> text = EditorGUI.TextField(<span class="keyword">new</span> Rect(<span class="number">10</span>, <span class="number">10</span>, position.width - <span class="number">20</span>, <span class="number">20</span>), <span class="string">"Label"</span>, text); <span class="comment">// 自动适应宽度</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="不同类下的控件区别"><a href="#不同类下的控件区别" class="headerlink" title="不同类下的控件区别"></a>不同类下的控件区别</h3><p>Unity中EditorGUILayout、EditorGUI、GUILayout三个类的区别。<br>这三个类都是用来创建和绘制编辑器窗口中的控件，比如按钮、标签、文本框等。</p>
-<ul>
-<li>EditorGUILayout和GUILayout是自动布局的，它们会根据窗口的大小和控件的选项自动调整控件的位置和大小。EditorGUI是固定布局的，它需要手动指定控件的矩形区域。</li>
-<li>EditorGUILayout和EditorGUI属于UnityEditor命名空间，它们只能在编辑器模式下使用，不能在运行时使用。GUILayout属于UnityEngine命名空间，它可以在运行时使用，也可以在编辑器模式下使用。</li>
-<li>EditorGUILayout和EditorGUI提供了一些特定于编辑器的控件，比如颜色选择器、曲线编辑器、属性字段等。GUILayout没有这些控件，它只提供了一些通用的控件，比如按钮、标签、文本框等 。</li>
-</ul>
-<h3 id="控件居中"><a href="#控件居中" class="headerlink" title="控件居中"></a>控件居中</h3><p>让EditorWindow中的控件居中显示，使用GUILayout.FlexibleSpace方法来实现。这个方法会在水平或垂直布局中创建一个可伸缩的空间，使得两边的控件能够靠近边缘，而中间的控件能够居中。</p>
-<p>例如，如果想让一个按钮在EditorWindow中水平居中</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在OnGUI方法中</span></span><br><span class="line">GUILayout.BeginHorizontal(); <span class="comment">// 开始水平布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建左边的空间</span></span><br><span class="line"><span class="keyword">if</span> (GUILayout.Button(<span class="string">"居中的按钮"</span>)) <span class="comment">// 创建按钮</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 按钮的逻辑</span></span><br><span class="line">&#125;</span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建右边的空间</span></span><br><span class="line">GUILayout.EndHorizontal(); <span class="comment">// 结束水平布局</span></span><br></pre></td></tr></table></figure>
-
-<p>如果想让一个标签在EditorWindow中垂直居中</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在OnGUI方法中</span></span><br><span class="line">GUILayout.BeginVertical(); <span class="comment">// 开始垂直布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建上面的空间</span></span><br><span class="line">GUILayout.Label(<span class="string">"居中的标签"</span>); <span class="comment">// 创建标签</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建下面的空间</span></span><br><span class="line">GUILayout.EndVertical(); <span class="comment">// 结束垂直布局</span></span><br></pre></td></tr></table></figure>
-
-<p>如果想让一个控件在EditorWindow中水平和垂直都居中，可以嵌套使用水平和垂直布局，例如：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在OnGUI方法中</span></span><br><span class="line">GUILayout.BeginVertical(); <span class="comment">// 开始垂直布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建上面的空间</span></span><br><span class="line">GUILayout.BeginHorizontal(); <span class="comment">// 开始水平布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建左边的空间</span></span><br><span class="line">GUILayout.Label(<span class="string">"水平和垂直都居中的标签"</span>); <span class="comment">// 创建标签</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建右边的空间</span></span><br><span class="line">GUILayout.EndHorizontal(); <span class="comment">// 结束水平布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建下面的空间</span></span><br><span class="line">GUILayout.EndVertical(); <span class="comment">// 结束垂直布局</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="EndLayoutGroup-BeginLayoutGroup-must-be-called-first-报错"><a href="#EndLayoutGroup-BeginLayoutGroup-must-be-called-first-报错" class="headerlink" title="EndLayoutGroup: BeginLayoutGroup must be called first.报错"></a>EndLayoutGroup: BeginLayoutGroup must be called first.报错</h3><p>这个错误通常是因为在EditorWindow或者自定义编辑器中，使用了GUILayout.EndLayoutGroup方法，但是没有对应的GUILayout.BeginLayoutGroup方法。这两个方法需要成对出现，用来创建一个布局组，可以在其中放置控件。</p>
-<p>要解决这个错误 确保每个GUILayout.EndLayoutGroup方法之前都有一个GUILayout.BeginLayoutGroup方法，而且不要嵌套使用。如果不确定哪里出错了，可以注释掉一些代码，逐步排查。</p>
-<p>另外，如果EditorWindow或者自定义编辑器中，调用了一些会弹出窗口或者进度条的方法，比如EditorUtility.DisplayDialog或者BuildPipeline.BuildPlayer，你也可能会遇到这个错误。这是因为这些方法会中断GUI的绘制流程，导致布局组不匹配。要避免这个问题，你可以在调用这些方法后，加上一句GUIUtility.ExitGUI()，这样就可以退出GUI的绘制，不会产生错误</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/15/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityEditorWindow/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/性能优化/canvas排序优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/14/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/canvas%E6%8E%92%E5%BA%8F%E4%BC%98%E5%8C%96/">多个同级canvas排序问题</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/14/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/canvas%E6%8E%92%E5%BA%8F%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2024-01-14T08:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-14</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：261字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>关于ui上的界面排序有很多方法<br>第一种是利用canvas中的渲染模式结合Camre来使用 不过这个级别只是设置根节点<br>第二就是ui上常用手段了 子物体的渲染顺序 canvas layer和order in layer设置 当然在sence中根据轴向和中心点决定渲染关系不适用于ui界面</p>
-<p>那么设置子物体顺序和设置order有没有什么区别 哪个性能更好一点 就需要考虑一下<br>其实网上很多都说了setsiblingIndex的方法性能消耗并不大 所以基本上是可以放心使用的 order也是如此<br>不过还是大概自己测了一下 毕竟眼见为实<br>大概写了1万次的循环测试<br>根据结果看的话 修改子物体顺序确实要比order的性能消耗要大一点的 不过看起来差别还没特别大 而且canvas在获取transform时还是多消耗了一些性能 大概20左右</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/14/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/canvas%E6%8E%92%E5%BA%8F%E4%BC%98%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/打包/ios环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/10/Unity/%E6%89%93%E5%8C%85/ios%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">unity iso老项目打包,cocoapods配置,踩坑全过程</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/10/Unity/%E6%89%93%E5%8C%85/ios%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2024-01-10T10:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-10</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：2k字 | 预计阅读时长：7分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="配置大致流程"><a href="#配置大致流程" class="headerlink" title="配置大致流程"></a>配置大致流程</h2><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>macOS Sonoma 14.2.1<br>芯片 Apple M2<br>Xcode 15.2<br>Unity 2021.3.22f1<br>Ruby 2.6.10(系统默认安装)</p>
-<h3 id="Unity-打包环境准备-就一个目的装cocoapods"><a href="#Unity-打包环境准备-就一个目的装cocoapods" class="headerlink" title="Unity 打包环境准备 就一个目的装cocoapods"></a>Unity 打包环境准备 就一个目的装cocoapods</h3><ol>
-<li>借助unity 自带ios resolver 在切换或者打开ios平台时 如果在默认路径下没有安装cocoapods会自动触发<br>unity ios resolver正常工作环境要求:<br>ruby版本要求高于2.7.0<br>如果你打算借助unity自动安装cocoapods的话 ruby需要满足高于2.7.0版本 最好直接升到最新版本</li>
-<li>尝试自己安装cocoapods<br>自带的ios resolver可能总是莫名奇妙出问题 那就尝试自己安装<br>这里首先推荐使用rbenv安装和更新ruby 而不是rvm<ol>
-<li>首先安装homebrew(这个一般没问题)</li>
-<li>然后使用brew 安装rbenv</li>
-<li>使用rbenv查看最新ruby 然后安装最新ruby(不一定非要最新 如果下一步卡住了并且不是网络问题 就尝试升级ruby 网上教程很多)</li>
-<li>切换ruby为最新 用ruby -v查看 或者用which ruby查看 如果路径为/usr/bin/ruby那就是没切换还是系统ruby</li>
-<li>然后执行sudo gem install -n /usr/local/bin cocoapods</li>
-</ol>
-</li>
-<li>其实Applovin里面有一个安装cocoapods的菜单 只是没尝试 自行尝试</li>
-</ol>
-<h3 id="Xcode-build"><a href="#Xcode-build" class="headerlink" title="Xcode build"></a>Xcode build</h3><p>如果没有问题就正常build了 最多设置一下组织和账号<br>如果出现了Unexpected failure报错 打开详细的信息报错 如果提示说什么sdk有问题 什么文件夹不是空<br>就把原来unity打包的文件夹直接全部删掉 新建文件夹来重新打包 如果出现一个弹窗问你是不是替换那就不行 必须重新建一个新的文件夹 直到成功</p>
-<h3 id="安卓项目转ios-同样卡在converting-managed-assemblies-to-C"><a href="#安卓项目转ios-同样卡在converting-managed-assemblies-to-C" class="headerlink" title="安卓项目转ios 同样卡在converting managed assemblies to C++"></a>安卓项目转ios 同样卡在converting managed assemblies to C++</h3><p>如果别的ios项目能正常打包 但是安卓项目转ios的打包卡在<code>converting managed assemblies to C++</code>了 那就排除是cocoapods的问题<br>重新导入GoogleMobileAds sdk</p>
-<ol>
-<li>删除原本的文件夹<code>GoogleMobileAds</code></li>
-<li>在<a href="https://developers.google.com/admob/unity/quick-start?hl=zh-cn" target="_blank" rel="noopener">官网</a>重新下包 导入</li>
-<li>填好软件id</li>
-<li>如果有firebase sdk还需要下相应的<code>GoogleService-Info.plist</code>文件</li>
-</ol>
-<h2 id="排查全过程"><a href="#排查全过程" class="headerlink" title="排查全过程"></a>排查全过程</h2><ol>
-<li><p>如果你的ios resolver 能够正常安装就万事大吉(不是)<br> 但是如果报错什么说drb版本不够 ruby要升到2.7.0以上 那就需要升级ruby</p>
-<p> <a href="https://blog.csdn.net/iningwei/article/details/123557898" target="_blank" rel="noopener">安装环境工具流程</a><br> <a href="https://idlevbook.com/posts/003/" target="_blank" rel="noopener">终端代理参考</a> 用clash 没有问题的话直接复制终端代理命令 (打开一次终端记得调用一次 不是永久保存的!!!)<br> 如果上面没有出现问题就万事大吉</p>
-</li>
-<li><p>如果你的非洲体质再次触发rvm怎么安装都是问题 最可笑的是 pod -v正常输出 rvm -v正常输出 gem -v正常输出 但是rvm install 就是安装不了</p>
-<p> 其实pod -v能显示就已经可以正常打ios包了 你可以在unity打完包之后 cd到项目根目录下 直接用<code>pod install</code> 等待安装依赖就行了 但是unity会一直弹ios resolver弹窗</p>
-<p> <a href="https://www.jiyik.com/tm/xwzj/prolan_4137.html" target="_blank" rel="noopener">使用rbenv安装ruby</a><br> 如果这个时候正常了 那就万事大吉 但是作为非洲体质 怎么可能就这么轻易结算呢</p>
-<p> <a href="https://blog.csdn.net/qq_39463598/article/details/124100188" target="_blank" rel="noopener">记录ruby环境变量</a><a href="https://zhuanlan.zhihu.com/p/632354286" target="_blank" rel="noopener">参考</a><br> 使用 <code>which ruby</code>命令<br> 如果发现输出<code>/usr/bin/ruby</code><br> 那就是切换版本失效 哪怕你使用rbenv version 输出的是正常的</p>
-<p> 尝试将下面的命令写到bash文件中<br> 或者 在shell中输入<code>rbenv init</code><br> 他怎么提示就怎么来就行</p>
- <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH="/Users/自己文件夹名称/.rbenv/shims:$PATH"</span><br><span class="line">export PATH="/Users/自己文件夹名称/.rbenv/bin:$PATH"</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>然后可能就没问题 当然可能还会继续有问题 因为我包还没打出来</strong></p>
-<p> 今天继续打包依旧失败 unity打包卡在了  “converting managed assemblies to C++” 表现就是进程管理器里面 Unity直接未响应 还有一个苹果服务也是(估计是因为Unity引起的 因为它在写文件 写着写着他噶了)<br> <a href="https://blog.csdn.net/iningwei/article/details/106769312" target="_blank" rel="noopener">原因还是cocoapods环境有问题 哪怕你pod能正常安装</a></p>
-<p><strong>那么继续折腾</strong><br> <code>which pod</code>看一下用的是哪个pod (我这边是brew安装的 好嘛 不是gem安装的就不行呗 卸载重来 卸载教程网上查查就行了)<br> 我开了代理 所以换不换gem源都无所谓 而且在换源时gem会提醒 新的源有没有指定文件 进一步确定了网站能不能联通</p>
-</li>
-<li><p>但是呢就是卡在了<code>sudo gem install -n /usr/local/bin cocoapods</code>一动也不动啊 气急败坏 又是查代理又是查源的 发现源我用浏览器都能打开 你不是开玩笑嘛 这下不了?<br> 继续谷歌-&gt;查到了 可能还是ruby版本太低了<br> 好! 继续更新!!!<br> <code>rbenv install --list</code><br> 直接撞上3.3.0<br> <code>rbenv install 3.3.0</code><br> 切版本<br> <code>rbenv global 3.3.0</code><br> 看一下是不是成功了<br> <code>rbenv versions</code><br> 他们说切完一定要调 我又不懂<br> <code>rbenv rehash</code></p>
-<p> 继续执行<code>sudo gem install -n /usr/local/bin cocoapods</code> 秒成功 真狗啊</p>
-</li>
-<li><p><strong>家人们谁懂啊 问题还有 环境还是有问题(不是这玩意问题怎么这么多啊)</strong><br> <a href="https://blog.csdn.net/iningwei/article/details/106769312" target="_blank" rel="noopener">还是卡在to c++ 并且报错iOS framework addition failed due to a CocoaPods installation failure.</a><br> 继续整吧<br> md 还行不是 整不明白了已经</p>
-</li>
-<li><p>又有说m1芯片的问题 指令前面加 arch -x86_64 (<strong>这个其实没用! 对我来说直接下一个</strong>) 重新装pod和更新 重新装没问题<br> 但是更新寄了又报错<code>arch: posix_spawnp: pod: Bad CPU type in executable</code> 又查说ffi有问题 再装还是寄</p>
-</li>
-<li><p>无语了 去装ios resolver settings <strong>这个其实也没啥用 没药乱求医罢了 直接下一步</strong><a href="https://medium.com/firebase-developers/how-to-manage-your-native-ios-and-android-dependencies-in-unity-like-firebase-921659843aef" target="_blank" rel="noopener">指导文档</a> / <a href="https://developers.google.com/unity/archive?hl=zh-cn#external_dependency_manager_for_unity" target="_blank" rel="noopener">下载地址</a> / <a href="https://www.jianshu.com/p/30f9214244a1" target="_blank" rel="noopener">修改配置参考</a></p>
-</li>
-<li><p>然后又查一遍m1 m2芯片安装pod教程 有个教程说让把终端和xcode的Rosetta选项打开 我只有终端有这个选项我就打开了<a href="https://www.cnblogs.com/SadicZhou/p/17508697.html" target="_blank" rel="noopener">参考</a><br>这次不卡在to c++了 证明pod正常工作了<br>但是又出新问题了 xcode build失败 报错<code>Unexpected failure</code><br>遂新建项目 接Googlesdk 接入测试id(主要是看cocoapods是不是正常)<br>打包然后xcod build 一切正常!</p>
-</li>
-</ol>
-<p><strong>证明了什么 证明了 这个项目实打实有问题!!!</strong><br>寄了 这次是一点办法没有了</p>
-<ol start="9">
-<li>最后在我城哥的帮助下 确定了问题可能是sdk版本和xcode版本有问题<br> 尝试装xcode13 结果macOS14装不了 装的xcode14 和xcode15一样的问题<br> 没办法 尝试升级sdk 然后成功了!!! 不过这里有个坑<br> <a href="https://github.com/AppLovin/AppLovin-MAX-SDK-iOS/issues/201" target="_blank" rel="noopener">相同问题参考</a><br> 我在github上找到了相似的问题 然后楼下有个人说 Clean build就解决问题了 我半信半疑 试一试<br> 直接新建文件夹打包 然后在xcode创建成功!可以 回头就给他点了个赞<br> 然后转念一下 那这个<strong>问题可能不是sdk问题 而是之前打包残留了bug文件导致的</strong> 然后我又撤回了sdk升级 再重新打包 果然又成功了</li>
-<li>至此这个问题终于解决了 总结一下就是<ul>
-<li>确认pod有没有安装正确 unity用的路径是/usr/local/bin/pod 不正常的表现就是unity打包卡在to C++(如果有问题参考上面解决思路)</li>
-<li>用xcode正常build 如果不正常报什么sdk错误 或者什么不是空文件夹 直接删除所有缓存从新打包 <strong>特别是一些刚拉下来没跑通的老项目</strong> 这里每次打包都新建一个文件夹 避免被上次的错误打包影响 直到正常打包</li>
-</ul>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/10/Unity/%E6%89%93%E5%8C%85/ios%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1160,6 +1087,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1168,23 +1107,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1212,23 +1139,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1236,11 +1151,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,10 +1184,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1284,11 +1207,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1304,15 +1227,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1320,11 +1243,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 192
+            总文章数 195
         </nav>
 		<nav>
-            总字数 <span class="post-count">115.5k</span>
+            总字数 <span class="post-count">116.3k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,273 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/开发/unity程序集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/06/Unity/%E5%BC%80%E5%8F%91/unity%E7%A8%8B%E5%BA%8F%E9%9B%86/">unity程序集使用</a>
+    </h1>
+  
+
+        
+        <a href="/2023/09/06/Unity/%E5%BC%80%E5%8F%91/unity%E7%A8%8B%E5%BA%8F%E9%9B%86/" class="archive-article-date">
+  	<time datetime="2023-09-06T06:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：365字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="程序集的作用"><a href="#程序集的作用" class="headerlink" title="程序集的作用"></a>程序集的作用</h2><p><a href="https://docs.unity3d.com/cn/2021.3/Manual/ScriptCompilationAssemblyDefinitionFiles.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>unity中默认创建的脚步都在默认的程序集中 除非你在assets目录下重新创建了程序集<br>通过程序集可以降低编译时间 封装模块随时迁移到别的项目 和你用编译器生成c#类库是相似的</p>
+<h2 id="在unity中创建和使用程序集"><a href="#在unity中创建和使用程序集" class="headerlink" title="在unity中创建和使用程序集"></a>在unity中创建和使用程序集</h2><p>文件夹右键创建 assembly definition<br>那么该文件夹下的所有脚本都会编译到该程序集中</p>
+<p>那么如果想在别的文件夹下也编译到该程序集中怎么办</p>
+<ul>
+<li>创建 assembly definition references</li>
+<li>在 assembly definition references中 将assembly definition 选为想要的程序集</li>
+</ul>
+<p>基本上可以正常使用了</p>
+<h2 id="常用用法"><a href="#常用用法" class="headerlink" title="常用用法"></a>常用用法</h2><p>这里就不跟着程序集下面的选项来跟着讲了 官方文档和很多博客都是这样的 没必要复述一遍 这里我就按实际需求然后来修改不同选项</p>
+<ol>
+<li>想在unity的默认程序集中调用 或者不想关心程序集之间引用关系<br>直接勾选auto references(默认勾选)</li>
+<li>该程序集并不直接为unity服务 而是为中间件类库负责<ul>
+<li>取消勾选auto references</li>
+<li>在中间件类库勾选override references</li>
+<li>在中间件类库中assembly references中添加该程序集</li>
+</ul>
+</li>
+<li>只想在编辑器模式下编译(具体用法查看官方文档的define constraints)<ul>
+<li>在define constraints中添加</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/09/06/Unity/%E5%BC%80%E5%8F%91/unity%E7%A8%8B%E5%BA%8F%E9%9B%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/测试/unity测试用例和profile相关探索" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/09/05/Unity/%E6%B5%8B%E8%AF%95/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/">unity测试用例和profile工具相关探索</a>
+    </h1>
+  
+
+        
+        <a href="/2023/09/05/Unity/%E6%B5%8B%E8%AF%95/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/" class="archive-article-date">
+  	<time datetime="2023-09-05T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-05</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：274字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p>起初研究测试用例完全是因为想在测试性能时候直接跑相关的方法 然后输出性能 然后跑去研究了一下 发现并不能满足我的需求<br>主要的局限在于你需要下载一个unity的内部集成的测试NUnit插件 然后需要新创建一个程序集来使用 并不能像我想的那样直接调用我想要的程序集 其实程序集这块还没搞太熟 先放这了</p>
+<h2 id="profile"><a href="#profile" class="headerlink" title="profile"></a>profile</h2><p>profile可以抓取很多的性能问题 然后向自己打上标记 方便观察和比较不同代码之间性能的问题其实就两句代码 巨简单封装可能都不太需要<br>记住一个<code>BeginSample</code> 对应一个<code>EndSample</code> 和大小括号一样<br>之前不知道看谁的文档两个begin一个end 给我都整懵了 还测试半天太误人子弟了</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Profiler.BeginSample(name); </span><br><span class="line"><span class="comment">//测试代码</span></span><br><span class="line">Profiler.EndSample();</span><br></pre></td></tr></table></figure>
+
+<h2 id="直接记录运行时间"><a href="#直接记录运行时间" class="headerlink" title="直接记录运行时间"></a>直接记录运行时间</h2><p>通过<code>Stopwatch</code>类来记录直接返回<code>stopwatch.ElapsedMilliseconds</code>就行了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/09/05/Unity/%E6%B5%8B%E8%AF%95/unity%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B%E5%92%8Cprofile%E7%9B%B8%E5%85%B3%E6%8E%A2%E7%B4%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-code/git/Githhub超时" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/08/30/code/git/Githhub%E8%B6%85%E6%97%B6/">github超时问题</a>
+    </h1>
+  
+
+        
+        <a href="/2023/08/30/code/git/Githhub%E8%B6%85%E6%97%B6/" class="archive-article-date">
+  	<time datetime="2023-08-30T07:06:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-30</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：263字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题复现"><a href="#问题复现" class="headerlink" title="问题复现"></a>问题复现</h2><p>简单复现一下当时问题环境</p>
+<ul>
+<li>VPN是连上的 谷歌正常访问 github网站也是正常访问的</li>
+<li>git无法push和clone 一直是超时提示</li>
+</ul>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p><a href="https://blog.csdn.net/qq_44985985/article/details/124178193" target="_blank" rel="noopener">解决方法</a><br>简而言之就是你现在的github ip地址解析出问题了 需要重新设置 可以看一下你的host是不是自己设置了<br>如果没有查一下github 连通性比较好的ip 这里有网站可以帮忙<a href="https://www.ipaddress.com" target="_blank" rel="noopener">查询ip</a></p>
+<p>如果说没有vpn可以试一下这个网站<a href="https://ping.chinaz.com/github.com" target="_blank" rel="noopener">国内网站ip连通性查询</a></p>
+<p>修改host文件</p>
+<p><strong>mac</strong><br>command+shift+g 输入<code>etc/host</code> 复制host文件出来 然后新增github ip 将复制的文件替换回去就行了</p>
+<p><strong>window</strong><br>直接用power工具 里面有改host的工具</p>
+<h2 id="网站使用方法"><a href="#网站使用方法" class="headerlink" title="网站使用方法"></a>网站使用方法</h2><p>国内的网址使用起来还是很简单的 毕竟都是中文<br>主要说一下ipaddress网站 其实只要点一下翻译一样很简单 或者仔细找一下 简单记录一下<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/1.png" alt="入口"><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/2.png" alt="入口"><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/other/github/3.png" alt="入口"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/08/30/code/git/Githhub%E8%B6%85%E6%97%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/工具/unity拾取文件插件UnityNativeFilePicker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -775,271 +1042,6 @@
 
 
   
-    <article id="post-csharp/c#填坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/26/csharp/c#%E5%A1%AB%E5%9D%91/">c#填坑</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/26/csharp/c#%E5%A1%AB%E5%9D%91/" class="archive-article-date">
-  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：483字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="细碎知识"><a href="#细碎知识" class="headerlink" title="细碎知识"></a>细碎知识</h2><ol>
-<li><p>知道了Type，如何将object转换类型是该Type对象的实例<br> 你不可能将object按照Type对象转换成对应的类型对象。因为Type做为类型的模板，它本身可以通过InvokeMember方法（除此之外，还有其他多种反射创建实例的方法）来构造这种类型的实例对象并以object返回（为什么返回object？因为其一：虽然Type对象知道它描述的是哪种类型，但是方法返回却不可能指定为某一种类型，必然为所有类型的超集。其二：反射能够反射编译后的程序元数据文件中（元数据定义表），却不能访问（元数据引用表），所以你虽然知道是哪种类型，却不能找到类型指令，导致编译器无法调用类型指令（VS代码编辑器中的关键字以及类型名都属于编译器指令））。 虽然返回的是object，但是实际引用一直是Type对象所描述的类型对象。故在属性赋值时，只要object的实际引用的类型和属性的类型兼容（as 转换可成功，或者实现了转换重载等），必然会赋值成功。 实际上，你只需要<code>System.Activator.CreateInstance(p.PropertyType)</code>,这样保证你赋值成功，记住，就目前来说，除非微软更新，否则永远不要考虑题目中的问题。</p>
-<p><code>System.Activator.CreateInstance(p.PropertyType)</code></p>
-</li>
-<li><p>unity FastMode</p>
-<ol>
-<li>Unity的fastMode 模式会将域重载禁用 即静态变量不会被清除 可能会出现事件监听两次的情况 有两种方法可以处理<ul>
-<li><code>[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]</code>使方法内静态变量明确初始化</li>
-<li>用代码自行初始化</li>
-</ul>
-</li>
-<li>编辑器脚本与运行脚本区别<ul>
-<li><code>[InitializeOnEnterPlayMode]</code>编辑器使用该特性</li>
-<li>运行脚本使用 <code>[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]</code></li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Ctrl +R ,E</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/05/26/csharp/c#%E5%A1%AB%E5%9D%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-csharp/库和程序集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/26/csharp/%E5%BA%93%E5%92%8C%E7%A8%8B%E5%BA%8F%E9%9B%86/">库和程序集</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/26/csharp/%E5%BA%93%E5%92%8C%E7%A8%8B%E5%BA%8F%E9%9B%86/" class="archive-article-date">
-  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：273字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="C-编译原理"><a href="#C-编译原理" class="headerlink" title="C++编译原理"></a>C++编译原理</h2><p>网上c++的编译原理文档写的很详细,这里并不仔细再费时间介绍,总的过程就是预编译(将代码文件的宏定义等处理)&gt;编译(将预编译的文件编译成汇编代码)&gt;汇编(将汇编代码编译成机器代码)&gt;链接(链接成一个完整的可执行程序（或者静态库、动态库）)<a href="https://blog.csdn.net/z164470/article/details/126349684" target="_blank" rel="noopener">编译原理</a></p>
-<h2 id="G-编译过程"><a href="#G-编译过程" class="headerlink" title="G++编译过程"></a>G++编译过程</h2><p><a href="https://www.bilibili.com/video/BV188411L7d2/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=f74f53359bcb74d1b11824aef4f0ae8b" target="_blank" rel="noopener">Makefile</a><br>主要分几步:</p>
-<ol>
-<li>g++ -c 文件 输出编译文件.obj</li>
-<li>g++ -0 目标 关联文件<br>Makefile和Cmake<br>这两个工具都是调用g++的编译器而已,他们出现的原因就是当文件过多难以人工维护的时候就派上用场了,他们会自动执行,并且优化编译的流程,避免一些不需要编译的文件</li>
-</ol>
-<h2 id="C-程序集"><a href="#C-程序集" class="headerlink" title="C#程序集"></a>C#程序集</h2><p><a href="https://blog.csdn.net/qq_39941918/article/details/121266553" target="_blank" rel="noopener">程序集</a></p>
-<ul>
-<li>可执行文件（.exe文件）和 类库文件（.dll文件）。</li>
-<li>在VS开发环境中，一个解决方案可以包含多个项目，而每个项目就是一个程序集。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/05/26/csharp/%E5%BA%93%E5%92%8C%E7%A8%8B%E5%BA%8F%E9%9B%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/打包/AssetBundle入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/05/26/Unity/%E6%89%93%E5%8C%85/AssetBundle%E5%85%A5%E9%97%A8/">AssetBundle入门</a>
-    </h1>
-  
-
-        
-        <a href="/2023/05/26/Unity/%E6%89%93%E5%8C%85/AssetBundle%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2023-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：868字 | 预计阅读时长：4分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="AssetBundle基本知识"><a href="#AssetBundle基本知识" class="headerlink" title="AssetBundle基本知识"></a>AssetBundle基本知识</h2><p>主要是将不同资源进行压缩打包的,然后在运行游戏时选择的进行加载,来避免内存压力,以及满足热更的前提条件,如果不用Asset Bundle那么就会全部打到一个resource下,只适合自己做demo用.后面unity升级的addressBundle其实是升级的asset bundle 增加了url 指定  </p>
-<p>assetBundle的主要结构为 被打的具体包,还有一个记录依赖关系的主包,主包的名称和文件夹同名</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/05/26/Unity/%E6%89%93%E5%8C%85/AssetBundle%E5%85%A5%E9%97%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/14/">Next &amp;raquo;</a>
@@ -1141,6 +1143,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">c#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1149,23 +1163,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">c#</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1193,23 +1195,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,11 +1207,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1238,10 +1240,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1265,11 +1263,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1285,15 +1283,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1301,11 +1299,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

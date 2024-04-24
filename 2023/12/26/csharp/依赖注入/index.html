@@ -15,11 +15,13 @@
 <meta property="og:site_name" content="诗酒趁年华">
 <meta property="og:description" content="依赖注入（Dependency Injection，简称 DI）是一种在 C# 中广泛使用的设计模式，它有助于创建松耦合的代码结构，从而提高代码的可维护性和可测试性。在依赖注入模式中，一个类的依赖项不是由类本身创建，而是从外部传入，这样做可以减少类之间的直接依赖关系。 依赖注入的核心概念是控制反转（Inversion of Control，简称 IoC），它将对象的创建和管理的责任转移给外部容器或">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/id/0.png">
 <meta property="article:published_time" content="2023-12-26T09:07:00.000Z">
-<meta property="article:modified_time" content="2024-04-04T11:18:49.241Z">
+<meta property="article:modified_time" content="2024-04-14T12:37:06.653Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="c#">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/id/0.png">
   
   
     <link rel="icon" href="/img/favicon.jpg">
@@ -63,10 +65,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 195
+            总文章数 198
         </nav>
 		<nav>
-            总字数 <span class="post-count">116.3k</span>
+            总字数 <span class="post-count">119.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,7 +181,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：488字 | 预计阅读时长：1分钟
+          字数：675字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -199,6 +201,10 @@
 <li><strong>增加灵活性和可扩展性</strong>：便于替换依赖项的实现或扩展应用程序，而无需大量代码修改。</li>
 </ul>
 <p>在 C# 中，你可以手动实现依赖注入，也可以使用依赖注入框架来简化这一过程。例如，.NET Core 内置了依赖注入支持，是 ASP.NET Core 框架的一部分，适用于 Web 应用程序。此外，还有一些流行的第三方依赖注入框架，如 Autofac 和 Ninject，它们以其灵活性和易用性而受到开发者的青睐。</p>
+<p><a href="https://dotnettutorials.net/lesson/dependency-injection-design-pattern-csharp/" target="_blank" rel="noopener">构造函数注入</a></p>
+<p>为了方便理解 被依赖类称为服务类 依赖称为客户端类 他们的关系类似如 客户端引用创建好的服务类然后调用服务类的方法</p>
+<p>简单来说 就是用接口规定被依赖类的方法 然后在构造函数的时候将被依赖的类传入 而依赖的类只存接口 和使用接口<br>这样就不用关心被依赖类如何实现 在接口中定义出依赖类需要的方法即可</p>
+<p>至于方法和属性都是一个意思 和构造函数一样 毕竟构造函数一样是方法 都是通过接口来传递需要的服务类<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/id/0.png" alt="0"></p>
 
       
 
@@ -473,15 +479,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,6 +507,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
@@ -509,11 +519,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,10 +540,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,6 +575,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
@@ -573,7 +587,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,11 +595,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,15 +615,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,7 +623,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">

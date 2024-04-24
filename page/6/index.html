@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 195
+            总文章数 198
         </nav>
 		<nav>
-            总字数 <span class="post-count">116.3k</span>
+            总字数 <span class="post-count">119.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,288 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/动画/dotween/dotween对象池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/26/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E5%AF%B9%E8%B1%A1%E6%B1%A0/">dotween对象池</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/26/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E5%AF%B9%E8%B1%A1%E6%B1%A0/" class="archive-article-date">
+  	<time datetime="2023-12-26T09:58:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：620字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://dotween.demigiant.com/getstarted.php" target="_blank" rel="noopener">If you want to reuse the same tween, just set its autoKill behaviour to FALSE (either by changing the global autoKill settings for all tweens, or by chaining SetAutoKill(false) to your tween).</a>这个为手动复用即不删除 自己手动kill 非dotween的对象池</p>
+<p>复用 tween 的好处是可以提高游戏的流畅度和效率，但是也要注意管理好 tween 的引用，避免出现混乱或错误的情况。</p>
+<p>复用 tween 的方法有以下几种：</p>
+<ul>
+<li>在初始化 DOTween 时，设置 recycleAllByDefault 参数为 true，这样所有新创建的 tween 都会默认为可复用的。例如：</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DG.Tweening; <span class="comment">// 引入命名空间</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DOTweenTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        DOTween.Init(recycleAllByDefault: <span class="literal">true</span>); <span class="comment">// 初始化 DOTween，设置所有 tween 为可复用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在创建 tween 时，使用 SetRecyclable 方法为每个 tween 单独设置是否可复用。例如：</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DG.Tweening; <span class="comment">// 引入命名空间</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DOTweenTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        transform.DOMoveX(<span class="number">10</span>, <span class="number">1</span>).SetRecyclable(<span class="literal">true</span>); <span class="comment">// 创建一个 tween，并设置为可复用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在创建 tween 时，使用 SetId 方法为每个 tween 设置一个唯一的标识符，然后使用 DOTween.TweensById 方法获取所有具有相同标识符的 tween 的列表。例如：</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DG.Tweening; <span class="comment">// 引入命名空间</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DOTweenTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 创建一个 tween，并为其设置 ID</span></span><br><span class="line">        <span class="keyword">var</span> tween1 = transform.DOMoveX(<span class="number">10</span>, <span class="number">1</span>).SetId(<span class="string">"tween1"</span>);</span><br><span class="line">        <span class="comment">// 创建另一个 tween，并为其设置 ID</span></span><br><span class="line">        <span class="keyword">var</span> tween2 = transform.DOMoveY(<span class="number">5</span>, <span class="number">0.5</span>).SetId(<span class="string">"tween2"</span>);</span><br><span class="line">        <span class="comment">// 将这些 tween 添加到 Sequence 中</span></span><br><span class="line">        <span class="keyword">var</span> sequence = DOTween.Sequence();</span><br><span class="line">        sequence.Append(tween1);</span><br><span class="line">        sequence.Append(tween2);</span><br><span class="line">        <span class="comment">// 获取所有的 tween</span></span><br><span class="line">        <span class="keyword">var</span> allTweens = DOTween.TweensById(<span class="string">"tween1"</span>, <span class="string">"tween2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用 DOTween 的 <code>SetRecyclable</code> 方法时，如果设置为 <code>true</code>，这意味着当 tween 被“杀死”或完成时，它不会被销毁，而是会被放入一个池中以便重用。这样做可以避免因创建新的 tweens 而产生的垃圾回收（GC）分配。</p>
+<p>然而，即使设置了 <code>SetRecyclable(true)</code>，如果 tween 的 <code>GameObject</code> 被销毁，tween 仍然会被杀死。这是因为 DOTween 的 <code>LinkBehaviour.KillOnDestroy</code> 设置，它默认会在关联的 <code>GameObject</code> 被销毁时杀死 tween。</p>
+<p>所以，<code>SetRecyclable</code> 的作用是允许 tween 被重用，从而提高性能和减少内存分配，但它不会防止 <code>GameObject</code> 被销毁时的 tween 被杀死。如果你想确保你的 tween 引用在 tween 被杀死时自动设置为 <code>null</code>，你可以使用 <code>OnKill</code> 回调来实现这一点：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myTween.OnKill(() =&gt; myTween = <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样，当 tween 被杀死时，你的 tween 引用就会被设置为 <code>null</code>，从而避免了潜在的引用错误。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dotween</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/26/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E5%AF%B9%E8%B1%A1%E6%B1%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csharp/依赖注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/26/csharp/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">初始化时间</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/26/csharp/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" class="archive-article-date">
+  	<time datetime="2023-12-26T09:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：675字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>依赖注入（Dependency Injection，简称 DI）是一种在 C# 中广泛使用的设计模式，它有助于创建松耦合的代码结构，从而提高代码的可维护性和可测试性。在依赖注入模式中，一个类的依赖项不是由类本身创建，而是从外部传入，这样做可以减少类之间的直接依赖关系。</p>
+<p>依赖注入的核心概念是控制反转（Inversion of Control，简称 IoC），它将对象的创建和管理的责任转移给外部容器或框架。在 C# 中，依赖注入通常通过以下三种方式实现：</p>
+<ol>
+<li><strong>构造函数注入</strong>（Constructor Injection）：这是最常见的依赖注入方式，依赖项通过类的构造函数传入。</li>
+<li><strong>属性注入</strong>（Property Injection）：依赖项通过类的属性设置，适用于可选依赖项。</li>
+<li><strong>方法注入</strong>（Method Injection）：依赖项通过方法参数传入，适用于特定场景。</li>
+</ol>
+<p>使用依赖注入的好处包括：</p>
+<ul>
+<li><strong>降低耦合</strong>：类不再直接依赖于具体的依赖实现，从而降低了耦合度。</li>
+<li><strong>提高可测试性</strong>：可以通过注入模拟的依赖项来更容易地对类进行单元测试。</li>
+<li><strong>改善代码维护</strong>：依赖项的变更对使用它们的类影响较小，使得代码库更易于维护。</li>
+<li><strong>增加灵活性和可扩展性</strong>：便于替换依赖项的实现或扩展应用程序，而无需大量代码修改。</li>
+</ul>
+<p>在 C# 中，你可以手动实现依赖注入，也可以使用依赖注入框架来简化这一过程。例如，.NET Core 内置了依赖注入支持，是 ASP.NET Core 框架的一部分，适用于 Web 应用程序。此外，还有一些流行的第三方依赖注入框架，如 Autofac 和 Ninject，它们以其灵活性和易用性而受到开发者的青睐。</p>
+<p><a href="https://dotnettutorials.net/lesson/dependency-injection-design-pattern-csharp/" target="_blank" rel="noopener">构造函数注入</a></p>
+<p>为了方便理解 被依赖类称为服务类 依赖称为客户端类 他们的关系类似如 客户端引用创建好的服务类然后调用服务类的方法</p>
+<p>简单来说 就是用接口规定被依赖类的方法 然后在构造函数的时候将被依赖的类传入 而依赖的类只存接口 和使用接口<br>这样就不用关心被依赖类如何实现 在接口中定义出依赖类需要的方法即可</p>
+<p>至于方法和属性都是一个意思 和构造函数一样 毕竟构造函数一样是方法 都是通过接口来传递需要的服务类<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/id/0.png" alt="0"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/26/csharp/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csharp/初始化时机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/26/csharp/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%9C%BA/">初始化时间</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/26/csharp/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%9C%BA/" class="archive-article-date">
+  	<time datetime="2023-12-26T09:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：392字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>C# 属性是一种成员，它提供了一种访问私有字段的方式，可以在 get 和 set 访问器中添加逻辑或验证代码。属性可以有不同的类型，例如具有支持字段的属性、表达式主体定义的属性和自动实现的属性。</p>
+<p>属性的初始化时机取决于属性的类型和访问器。一般来说，有以下几种情况：</p>
+<ul>
+<li>如果属性是具有支持字段的属性，那么属性的初始化时机与支持字段的初始化时机相同。支持字段的初始化时机又取决于字段是否是静态的或实例的。<strong>静态字段的初始化时机是在类加载时或静态构造函数执行前，实例字段的初始化时机是在实例构造函数执行前</strong></li>
+<li>如果属性是表达式主体定义的属性，那么属性的初始化时机与表达式的计算时机相同。表达式的计算时机是在属性被访问时。</li>
+<li>如果属性是自动实现的属性，那么属性的初始化时机与自动实现的支持字段的初始化时机相同。自动实现的支持字段的初始化时机也取决于字段是否是静态的或实例的。静态字段的初始化时机是在类加载时或静态构造函数执行前³，实例字段的初始化时机是在实例构造函数执行前。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/26/csharp/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%9C%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/框架/功能模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -818,274 +1100,6 @@
 
 
   
-    <article id="post-code/android/untiy和Android互调" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/19/code/android/untiy%E5%92%8CAndroid%E4%BA%92%E8%B0%83/">unity和安卓互调</a>
-    </h1>
-  
-
-        
-        <a href="/2023/12/19/code/android/untiy%E5%92%8CAndroid%E4%BA%92%E8%B0%83/" class="archive-article-date">
-  	<time datetime="2023-12-19T03:21:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-19</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：60字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>unity调用安卓是支持回调 返回参数的已经多个参数,但是安卓调用unity只能传一个string参数并且不支持返回参数<a href="http://blog.jcr.pub/2020/03/28/%E6%B5%85%E8%B0%88Unity%E4%B8%8EAndroid%E5%8E%9F%E7%94%9F%E7%9A%84%E6%A1%A5%E6%8E%A5/" target="_blank" rel="noopener">参考文档</a></p>
-<h2 id="安卓应用状态相关"><a href="#安卓应用状态相关" class="headerlink" title="安卓应用状态相关"></a>安卓应用状态相关</h2><p><a href="https://blog.csdn.net/qq_35427437/article/details/80889120" target="_blank" rel="noopener">参考文档</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/12/19/code/android/untiy%E5%92%8CAndroid%E4%BA%92%E8%B0%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-csharp/dictionary使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/18/csharp/dictionary%E4%BD%BF%E7%94%A8/">dictionary的线程问题 以及查询时修改问题</a>
-    </h1>
-  
-
-        
-        <a href="/2023/12/18/csharp/dictionary%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2023-12-18T06:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-18</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：967字 | 预计阅读时长：3分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="同步遍历"><a href="#同步遍历" class="headerlink" title="同步遍历"></a>同步遍历</h2><p><a href="https://zhuanlan.zhihu.com/p/638243227" target="_blank" rel="noopener">dictionary理解</a></p>
-<p>C# dictionary在被遍历时，不能使用foreach循环来修改字典中的值，编译会不通过。这是因为foreach循环使用了迭代器，而迭代器要求集合在遍历过程中不能被修改。</p>
-<p>如果想要在遍历时修改字典中的值，可以采用以下的一些方法：</p>
-<ul>
-<li>使用for循环，通过索引来访问和修改字典中的值。</li>
-<li>使用ToList方法，将字典转换为列表，然后使用foreach循环遍历列表，同时修改原字典中的值。</li>
-<li>使用ConcurrentDictionary类，它是一个线程安全的字典实现，它允许在遍历时修改字典中的值，而不会抛出异常。</li>
-</ul>
-<p>在dictionary中是有keys属性可以直接用于查询key的 我们都知道如果使用了字典的迭代器那么字典是一定不能修改的 否则迭代器将会报错 这个时候使用一定要慎重<br>写了一个简单的测试<br>keylist是会跟随字典的修改而改变的 所以如果在遍历keyList的时候会报错的如下图 大意就是在用迭代器时修改了字典值 字典值可能添加失败(测试代码中是添加成功了 但依旧会报错警示)<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/dic/1.png" alt="运行截图"></p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">DicTest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Dictionary&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; dictionary = <span class="keyword">new</span> Dictionary&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;()</span><br><span class="line">    &#123;</span><br><span class="line">        &#123; <span class="number">1</span>, <span class="number">1</span> &#125;, &#123; <span class="number">2</span>, <span class="number">2</span> &#125;, &#123; <span class="number">3</span>, <span class="number">3</span> &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> keyList = dictionary.Keys;</span><br><span class="line">    dictionary.Add(<span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">    dictionary.Remove(<span class="number">4</span>);</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> keyList)</span><br><span class="line">    &#123;</span><br><span class="line">        dictionary.TryAdd(<span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这时候再考虑多线程问题 dictionary是非线程安全的 lock又会增加性能消耗在 而需要考虑线程安全时候一定是因为需要频繁修改和查询 所以不建议使用lock<br>在多线程中Containskey的方法就可类比成遍历 次数修改数据就会出现问题 那么解决问题就考虑到一个问题 就是直接拍一个快照下来将此时的字典深拷贝下来 来供查询 其实拍一个快照下来的性能消耗未必比直接查询快 只是这样会最大程度上避免修改被打断 然后unity很多时候其实都是单线程的 需要考虑这种情况会比较少</p>
-<p>同时 字典的<code>Keys</code>属性是会增加gc的 能不用就不用 它会单独为键创建一个数组</p>
-<h2 id="多线程问题"><a href="#多线程问题" class="headerlink" title="多线程问题"></a>多线程问题</h2><p>注意unity目前大概是不支持除dictionary之外的容器</p>
-<p>C# dictionary是一个非线程安全的键值对集合，它在多线程环境中可能会出现数据损坏或异常的问题。如果需要对dictionary频繁查询，同时又需要修改其中的某些项，可以采用以下的一些方法来避免被查询打断：</p>
-<ul>
-<li>使用lock语句来同步对dictionary的访问，确保每次只有一个线程可以修改dictionary，而其他线程在查询时需要等待²。这种方法可以保证数据的一致性，但是会降低性能和并发性。</li>
-<li>使用ConcurrentDictionary类，它是一个线程安全的dictionary实现，它使用原子操作和锁机制来确保数据的一致性和完整性。ConcurrentDictionary还提供了一些特殊的方法，如AddOrUpdate和GetOrAdd，来方便地更新或获取值。这种方法可以提高性能和并发性，但是可能会导致数据的重复创建或丢弃⁴。</li>
-<li>使用ReadOnlyDictionary类，它是一个只读的dictionary包装器，它可以防止对dictionary的修改，但是允许对dictionary的读取。这种方法可以适用于只需要查询而不需要修改的场景，但是需要注意ReadOnlyDictionary本身不是线程安全的，如果底层的dictionary被修改，可能会引发异常。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/12/18/csharp/dictionary%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/框架/package/package依赖处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/15/Unity/%E6%A1%86%E6%9E%B6/package/package%E4%BE%9D%E8%B5%96%E5%A4%84%E7%90%86/">unity包依赖处理</a>
-    </h1>
-  
-
-        
-        <a href="/2023/12/15/Unity/%E6%A1%86%E6%9E%B6/package/package%E4%BE%9D%E8%B5%96%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2023-12-15T03:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-15</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：412字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>dependencies是一个JSON对象，它用来列出您的包所依赖的其他包的名称和版本。您可以在您的包的package.json文件中添加或修改dependencies字段¹。例如，如果您的包需要使用Unity内置的TextMesh Pro包和一个自定义的MyMath包，您可以这样填写：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"com.mycompany.mypackage"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"com.unity.textmeshpro"</span>: <span class="string">"2.1.1"</span>,</span><br><span class="line">    <span class="attr">"com.mycompany.mymath"</span>: <span class="string">"1.2.3"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>您可以使用Unity提供的包注册表，也可以使用本地文件夹、Git URL或tarball来指定依赖包的来源²。您可以使用语义版本号来指定依赖包的版本范围³。例如，如果您想要使用最新的TextMesh Pro包，您可以这样填写：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"com.mycompany.mypackage"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"com.unity.textmeshpro"</span>: <span class="string">"*"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果您想要使用一个特定的Git分支或标签，可以这样填写： 这个不能处理包里面的依赖 只能处理unity中的main依赖</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"com.mycompany.mypackage"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"com.mycompany.mymath"</span>: <span class="string">"https://github.com/mycompany/mymath.git#v1.2.3"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果您想要使用一个本地文件夹，您可以这样填写：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"com.mycompany.mypackage"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"com.mycompany.mymath"</span>: <span class="string">"file:../mymath"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>填写好dependencies后，您可以使用Package Manager窗口来安装或更新您的依赖包⁴。您也可以查看您的包的依赖关系和解析结果⁵。</p>
-<p>(1) <a href="https://docs.unity.cn/cn/2021.3/Manual/upm-dependencies.html." target="_blank" rel="noopener">依赖和解析 - Unity 手册.</a><br>(2) <a href="https://docs.unity.cn/cn/2019.4/Manual/CustomPackages.html." target="_blank" rel="noopener">创建自定义包 - Unity 手册.</a><br>(3) <a href="https://bing.com/search?q=unity+package%e4%b8%addependencied%e6%80%8e%e4%b9%88%e5%a1%ab." target="_blank" rel="noopener">Unity工具—制作与使用Package - 知乎.</a><br>(4) <a href="https://zhuanlan.zhihu.com/p/147975801." target="_blank" rel="noopener">Unity工具—制作与使用Package - 知乎.</a><br>(5) <a href="https://docs.unity.cn/cn/2019.4/Manual/upm-dependencies.html." target="_blank" rel="noopener">依赖关系 - Unity 手册.</a><br>(6) <a href="https://docs.unity.cn/cn/2021.1/Manual/class-PackageManager.html." target="_blank" rel="noopener">Package Manager - Unity 手册.</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">package</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/12/15/Unity/%E6%A1%86%E6%9E%B6/package/package%E4%BE%9D%E8%B5%96%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1203,15 +1217,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1231,6 +1245,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
@@ -1239,11 +1257,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1256,10 +1278,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1295,6 +1313,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
@@ -1303,7 +1325,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1311,11 +1333,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1327,15 +1353,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1343,7 +1361,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">

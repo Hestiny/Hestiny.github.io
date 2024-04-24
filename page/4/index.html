@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 195
+            总文章数 198
         </nav>
 		<nav>
-            总字数 <span class="post-count">116.3k</span>
+            总字数 <span class="post-count">119.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,269 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-csharp/linq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/23/csharp/linq/">c# Linq join用法</a>
+    </h1>
+  
+
+        
+        <a href="/2024/01/23/csharp/linq/" class="archive-article-date">
+  	<time datetime="2024-01-23T03:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-23</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：891字 | 预计阅读时长：4分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>LINQ join 操作可以让您将两个或多个数据源（集合）根据一个或多个键进行连接，并返回一个结果集合。LINQ join 操作有以下几种类型：</p>
+<ul>
+<li><strong>内连接</strong>：只返回两个数据源中匹配的元素，类似于 SQL 中的 inner join。</li>
+<li><strong>左外连接</strong>：返回第一个数据源中的所有元素，以及第二个数据源中与之匹配的元素，如果没有匹配的元素，则用默认值填充，类似于 SQL 中的 left outer join。</li>
+<li><strong>右外连接</strong>：返回第二个数据源中的所有元素，以及第一个数据源中与之匹配的元素，如果没有匹配的元素，则用默认值填充，类似于 SQL 中的 right outer join。</li>
+<li><strong>全外连接</strong>：返回两个数据源中的所有元素，如果有匹配的元素，则将它们连接起来，如果没有匹配的元素，则用默认值填充，类似于 SQL 中的 full outer join。</li>
+<li><strong>交叉连接</strong>：返回两个数据源中的所有可能的元素对，类似于 SQL 中的 cross join。</li>
+</ul>
+<p>要使用 LINQ join 操作，您可以使用查询语法或方法语法。查询语法使用 join 子句来指定连接的条件，方法语法使用 Join 或 GroupJoin 扩展方法来实现连接。以下是一些 LINQ join 操作的示例代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例数据类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Student</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> StudentID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> StudentName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> StandardID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Standard</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> StandardID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> StandardName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例数据源</span></span><br><span class="line">IList&lt;Student&gt; studentList = <span class="keyword">new</span> List&lt;Student&gt;() &#123;</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">1</span>, StudentName = <span class="string">"John"</span>, StandardID =<span class="number">1</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">2</span>, StudentName = <span class="string">"Moin"</span>, StandardID =<span class="number">1</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">3</span>, StudentName = <span class="string">"Bill"</span>, StandardID =<span class="number">2</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">4</span>, StudentName = <span class="string">"Ram"</span> , StandardID =<span class="number">2</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> Student() &#123; StudentID = <span class="number">5</span>, StudentName = <span class="string">"Ron"</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">IList&lt;Standard&gt; standardList = <span class="keyword">new</span> List&lt;Standard&gt;() &#123;</span><br><span class="line">    <span class="keyword">new</span> Standard()&#123; StandardID = <span class="number">1</span>, StandardName=<span class="string">"Standard 1"</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Standard()&#123; StandardID = <span class="number">2</span>, StandardName=<span class="string">"Standard 2"</span>&#125;,</span><br><span class="line">    <span class="keyword">new</span> Standard()&#123; StandardID = <span class="number">3</span>, StandardName=<span class="string">"Standard 3"</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 内连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> innerJoinQuery = <span class="keyword">from</span> s <span class="keyword">in</span> studentList <span class="comment">// outer sequence</span></span><br><span class="line">                     <span class="keyword">join</span> st <span class="keyword">in</span> standardList <span class="comment">// inner sequence </span></span><br><span class="line">                     <span class="keyword">on</span> s.StandardID <span class="keyword">equals</span> st.StandardID <span class="comment">// key selector</span></span><br><span class="line">                     <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">                     &#123;</span><br><span class="line">                         StudentName = s.StudentName,</span><br><span class="line">                         StandardName = st.StandardName</span><br><span class="line">                     &#125;; <span class="comment">// result selector</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> innerJoinMethod = studentList.Join(standardList, <span class="comment">// inner sequence</span></span><br><span class="line">                                       s =&gt; s.StandardID, <span class="comment">// outer key selector</span></span><br><span class="line">                                       st =&gt; st.StandardID, <span class="comment">// inner key selector</span></span><br><span class="line">                                       (s, st) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                       &#123;</span><br><span class="line">                                           StudentName = s.StudentName,</span><br><span class="line">                                           StandardName = st.StandardName</span><br><span class="line">                                       &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 左外连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> leftOuterJoinQuery = <span class="keyword">from</span> s <span class="keyword">in</span> studentList</span><br><span class="line">                         <span class="keyword">join</span> st <span class="keyword">in</span> standardList</span><br><span class="line">                         <span class="keyword">on</span> s.StandardID <span class="keyword">equals</span> st.StandardID</span><br><span class="line">                         <span class="keyword">into</span> studentGroup</span><br><span class="line">                         <span class="keyword">from</span> std <span class="keyword">in</span> studentGroup.DefaultIfEmpty()</span><br><span class="line">                         <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">                         &#123;</span><br><span class="line">                             StudentName = s.StudentName,</span><br><span class="line">                             StandardName = std == <span class="literal">null</span> ? <span class="string">"No Standard"</span> : std.StandardName</span><br><span class="line">                         &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> leftOuterJoinMethod = studentList.GroupJoin(standardList, <span class="comment">// inner sequence</span></span><br><span class="line">                                                s =&gt; s.StandardID, <span class="comment">// outer key selector</span></span><br><span class="line">                                                st =&gt; st.StandardID, <span class="comment">// inner key selector</span></span><br><span class="line">                                                (s, studentGroup) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                                &#123;</span><br><span class="line">                                                    Students = s,</span><br><span class="line">                                                    Standards = studentGroup</span><br><span class="line">                                                &#125;)</span><br><span class="line">                                      .SelectMany(x =&gt; x.Standards.DefaultIfEmpty(), <span class="comment">// collection selector</span></span><br><span class="line">                                                  (x, y) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                                  &#123;</span><br><span class="line">                                                      StudentName = x.Students.StudentName,</span><br><span class="line">                                                      StandardName = y == <span class="literal">null</span> ? <span class="string">"No Standard"</span> : y.StandardName</span><br><span class="line">                                                  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 右外连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> rightOuterJoinQuery = <span class="keyword">from</span> st <span class="keyword">in</span> standardList</span><br><span class="line">                          <span class="keyword">join</span> s <span class="keyword">in</span> studentList</span><br><span class="line">                          <span class="keyword">on</span> st.StandardID <span class="keyword">equals</span> s.StandardID</span><br><span class="line">                          <span class="keyword">into</span> standardGroup</span><br><span class="line">                          <span class="keyword">from</span> std <span class="keyword">in</span> standardGroup.DefaultIfEmpty()</span><br><span class="line">                          <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">                          &#123;</span><br><span class="line">                              StudentName = std == <span class="literal">null</span> ? <span class="string">"No Student"</span> : std.StudentName,</span><br><span class="line">                              StandardName = st.StandardName</span><br><span class="line">                          &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> rightOuterJoinMethod = standardList.GroupJoin(studentList, <span class="comment">// inner sequence</span></span><br><span class="line">                                                  st =&gt; st.StandardID, <span class="comment">// outer key selector</span></span><br><span class="line">                                                  s =&gt; s.StandardID, <span class="comment">// inner key selector</span></span><br><span class="line">                                                  (st, standardGroup) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                                  &#123;</span><br><span class="line">                                                      Standards = st,</span><br><span class="line">                                                      Students = standardGroup</span><br><span class="line">                                                  &#125;)</span><br><span class="line">                                       .SelectMany(x =&gt; x.Students.DefaultIfEmpty(), <span class="comment">// collection selector</span></span><br><span class="line">                                                   (x, y) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                                   &#123;</span><br><span class="line">                                                       StudentName = y == <span class="literal">null</span> ? <span class="string">"No Student"</span> : y.StudentName,</span><br><span class="line">                                                       StandardName = x.Standards.StandardName</span><br><span class="line">                                                   &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全外连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> fullOuterJoinQuery = leftOuterJoinQuery.Union(rightOuterJoinQuery);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> fullOuterJoinMethod = leftOuterJoinMethod.Union(rightOuterJoinMethod);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 交叉连接示例</span></span><br><span class="line"><span class="comment">// 查询语法</span></span><br><span class="line"><span class="keyword">var</span> crossJoinQuery = <span class="keyword">from</span> s <span class="keyword">in</span> studentList</span><br><span class="line">                     <span class="keyword">from</span> st <span class="keyword">in</span> standardList</span><br><span class="line">                     <span class="keyword">select</span> <span class="keyword">new</span></span><br><span class="line">                     &#123;</span><br><span class="line">                         StudentName = s.StudentName,</span><br><span class="line">                         StandardName = st.StandardName</span><br><span class="line">                     &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法语法</span></span><br><span class="line"><span class="keyword">var</span> crossJoinMethod = studentList.SelectMany(s =&gt; standardList, <span class="comment">// collection selector</span></span><br><span class="line">                                             (s, st) =&gt; <span class="keyword">new</span> <span class="comment">// result selector</span></span><br><span class="line">                                             &#123;</span><br><span class="line">                                                 StudentName = s.StudentName,</span><br><span class="line">                                                 StandardName = st.StandardName</span><br><span class="line">                                             &#125;);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/01/23/csharp/linq/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csharp/文件处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/23/csharp/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/">c#文件创建</a>
+    </h1>
+  
+
+        
+        <a href="/2024/01/23/csharp/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" class="archive-article-date">
+  	<time datetime="2024-01-23T03:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-23</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：348字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>C# 中</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">File.Create(path);</span><br><span class="line">File.WriteAllText(path, sb.ToString());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (StreamWriter sw = <span class="keyword">new</span> StreamWriter(File.Create(saveFullPath))) </span><br><span class="line">sw.Write(content);</span><br></pre></td></tr></table></figure>
+
+<p>这两段代码都是用来创建一个新文件并写入内容的，但是有以下几点不同：</p>
+<ul>
+<li>File.Create(path) 方法会返回一个 FileStream 对象，表示对文件的读写访问，如果不使用它，就需要关闭它，否则文件会被锁定，无法被其他操作。而 using 语句会自动释放 FileStream 对象，不需要手动关闭。</li>
+<li>File.WriteAllText(path, sb.ToString()) 方法会使用 UTF-8 编码（不带 BOM）来写入字符串到文件，并且在写入完成后关闭文件。而 StreamWriter 类可以指定不同的编码来写入字符到文件，并且提供了更多的方法和属性来控制写入的过程。</li>
+<li>File.WriteAllText(path, sb.ToString()) 方法会覆盖文件中已有的内容，如果想要追加内容，需要使用 File.AppendAllText(path, sb.ToString()) 方法。而 StreamWriter 类可以在构造函数中指定一个布尔值，表示是否追加内容，或者使用 AppendText 方法来追加内容。</li>
+</ul>
+<p>总的来说，File.WriteAllText(path, sb.ToString()) 方法比较简单方便，适合一次性写入少量的字符串到文件。而 StreamWriter 类比较灵活强大，适合多次写入大量的字符到文件，或者需要指定不同的编码和格式的情况。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/01/23/csharp/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/性能优化/帧率限制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/17/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%B8%A7%E7%8E%87%E9%99%90%E5%88%B6/">帧率限制</a>
+    </h1>
+  
+
+        
+        <a href="/2024/01/17/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%B8%A7%E7%8E%87%E9%99%90%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2024-01-17T07:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-17</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：414字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://docs.unity3d.com/ScriptReference/Application-targetFrameRate.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>如果想在 Unity 中限制最高帧率，可以使用以下方法：</p>
+<ul>
+<li>使用 <code>Application.targetFrameRate</code> 属性，它指示游戏尝试以指定的帧率渲染。您可以在脚本中设置这个属性的值，例如 <code>Application.targetFrameRate = 60;</code> 表示锁定最大帧率为 60 帧。但是，这个属性会受到 <code>QualitySettings.vSyncCount</code> 属性的影响，如果设置了垂直同步，那么游戏将根据屏幕的刷新率来确定目标帧率。您可以参考 [Application.targetFrameRate - Unity 脚本 API] 和 [QualitySettings.vSyncCount - Unity 脚本 API]了解更多信息。</li>
+<li>使用 <code>Time.maximumDeltaTime</code> 属性，它设置每帧更新期间处理物理系统和 FixedUpdate 调用所花费的最大时间。如果帧更新花费的时间超过这个属性的值，那么物理引擎将“让时间停止”并让帧处理赶上。</li>
+</ul>
+<p>如果不设置 Application.targetFrameRate 属性，那么 Unity 会使用平台的默认目标帧率来渲染游戏。这个默认帧率取决于平台的类型和性能。一般来说：</p>
+<ul>
+<li>在独立平台（如 Windows、Mac、Linux）上，默认帧率是可实现的最大帧率。</li>
+<li>在移动平台（如 Android、iOS）上，默认帧率通常是 30 帧每秒，以节省电池电量。移动平台的最大帧率受到屏幕的刷新率的限制，例如 60 Hz 的屏幕对应 60 帧每秒的最大帧率。</li>
+<li>在 WebGL 上，默认帧率由浏览器决定，以匹配其渲染循环时序，这通常会产生最平滑的效果。</li>
+<li>使用 VR 时，Unity 会使用 VR SDK 指定的目标帧率并忽略游戏指定的值。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/01/17/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/%E5%B8%A7%E7%8E%87%E9%99%90%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/编辑器/unityEditorWindow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -358,12 +621,13 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：2k字 | 预计阅读时长：7分钟
+          字数：2.7k字 | 预计阅读时长：10分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="配置大致流程"><a href="#配置大致流程" class="headerlink" title="配置大致流程"></a>配置大致流程</h2><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>macOS Sonoma 14.2.1<br>芯片 Apple M2<br>Xcode 15.2<br>Unity 2021.3.22f1<br>Ruby 2.6.10(系统默认安装)</p>
+<h3 id="问题参考"><a href="#问题参考" class="headerlink" title="问题参考"></a>问题参考</h3><p><a href="https://forum.unity.com/threads/cocoapods-installation-failure-when-building-for-ios.1167700/" target="_blank" rel="noopener">untiy论坛</a></p>
 <h3 id="Unity-打包环境准备-就一个目的装cocoapods"><a href="#Unity-打包环境准备-就一个目的装cocoapods" class="headerlink" title="Unity 打包环境准备 就一个目的装cocoapods"></a>Unity 打包环境准备 就一个目的装cocoapods</h3><ol>
 <li>借助unity 自带ios resolver 在切换或者打开ios平台时 如果在默认路径下没有安装cocoapods会自动触发<br>unity ios resolver正常工作环境要求:<br>ruby版本要求高于2.7.0<br>如果你打算借助unity自动安装cocoapods的话 ruby需要满足高于2.7.0版本 最好直接升到最新版本</li>
 <li>尝试自己安装cocoapods<br>自带的ios resolver可能总是莫名奇妙出问题 那就尝试自己安装<br>这里首先推荐使用rbenv安装和更新ruby 而不是rvm<ol>
@@ -384,6 +648,15 @@
 <li>填好软件id</li>
 <li>如果有firebase sdk还需要下相应的<code>GoogleService-Info.plist</code>文件</li>
 </ol>
+<h3 id="构建的项目没有生成-xcworkspace文件"><a href="#构建的项目没有生成-xcworkspace文件" class="headerlink" title="构建的项目没有生成.xcworkspace文件"></a>构建的项目没有生成.xcworkspace文件</h3><p>在项目的根目录下 使用 <code>pod update</code><br>或者尝试运行 <code>pod cache clean --all</code> 清理本地缓存，然后再次运行 <code>pod install</code>。</p>
+<p>如果提示什么仓库clone失败 运行一下 <code>pod repo update</code></p>
+<p>如果出现安装错误 这个错误通常是由于网络连接问题或资源链接不可用造成的。以下是一些可能的解决方案：</p>
+<ol>
+<li><strong>检查网络连接</strong>：确保您的网络连接稳定且能够访问 <code>developers.facebook.com</code>。</li>
+<li><strong>更新 CocoaPods</strong>：确保您的 CocoaPods 版本是最新的，因为旧版本可能不支持某些资源。</li>
+<li><strong>清理和安装</strong>：尝试运行 <code>pod cache clean --all</code> 清理本地缓存，然后再次运行 <code>pod install</code>。</li>
+<li><strong>使用命令行 VPN</strong>：如果在中国大陆，可能需要使用 VPN 来解决网络连接问题<a href="https://github.com/felix-cao/Blog/issues/81" target="_blank" rel="noopener">参考链接</a>。</li>
+</ol>
 <h2 id="排查全过程"><a href="#排查全过程" class="headerlink" title="排查全过程"></a>排查全过程</h2><ol>
 <li><p>如果你的ios resolver 能够正常安装就万事大吉(不是)<br> 但是如果报错什么说drb版本不够 ruby要升到2.7.0以上 那就需要升级ruby</p>
 <p> <a href="https://blog.csdn.net/iningwei/article/details/123557898" target="_blank" rel="noopener">安装环境工具流程</a><br> <a href="https://idlevbook.com/posts/003/" target="_blank" rel="noopener">终端代理参考</a> 用clash 没有问题的话直接复制终端代理命令 (打开一次终端记得调用一次 不是永久保存的!!!)<br> 如果上面没有出现问题就万事大吉</p>
@@ -401,6 +674,10 @@
 </li>
 <li><p>但是呢就是卡在了<code>sudo gem install -n /usr/local/bin cocoapods</code>一动也不动啊 气急败坏 又是查代理又是查源的 发现源我用浏览器都能打开 你不是开玩笑嘛 这下不了?<br> 继续谷歌-&gt;查到了 可能还是ruby版本太低了<br> 好! 继续更新!!!<br> <code>rbenv install --list</code><br> 直接撞上3.3.0<br> <code>rbenv install 3.3.0</code><br> 切版本<br> <code>rbenv global 3.3.0</code><br> 看一下是不是成功了<br> <code>rbenv versions</code><br> 他们说切完一定要调 我又不懂<br> <code>rbenv rehash</code></p>
 <p> 继续执行<code>sudo gem install -n /usr/local/bin cocoapods</code> 秒成功 真狗啊</p>
+<p> 如果rbenv已经设置了 但是ruby -v还是不一样 <a href="https://blog.csdn.net/qq_39463598/article/details/124100188" target="_blank" rel="noopener">尝试修改环境变量</a><br> .zshrc文件中输入</p>
+ <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export <span class="built_in">PATH</span>="/Users/自己文件夹名称/.rbenv/shims:$<span class="built_in">PATH</span>"</span><br><span class="line">export <span class="built_in">PATH</span>="/Users/自己文件夹名称/.rbenv/bin:$<span class="built_in">PATH</span>"</span><br></pre></td></tr></table></figure>
+
+<p> 执行环境变量<br> <code>echo $PATH</code><br> 再次输出<code>ruby -v</code><br> 成功</p>
 </li>
 <li><p><strong>家人们谁懂啊 问题还有 环境还是有问题(不是这玩意问题怎么这么多啊)</strong><br> <a href="https://blog.csdn.net/iningwei/article/details/106769312" target="_blank" rel="noopener">还是卡在to c++ 并且报错iOS framework addition failed due to a CocoaPods installation failure.</a><br> 继续整吧<br> md 还行不是 整不明白了已经</p>
 </li>
@@ -420,6 +697,31 @@
 </ul>
 </li>
 </ol>
+<h2 id="其他报错"><a href="#其他报错" class="headerlink" title="其他报错"></a>其他报错</h2><h3 id="pod-update"><a href="#pod-update" class="headerlink" title="pod update"></a>pod update</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[!] Error installing FBSDKCoreKit</span><br><span class="line">[!] &#x2F;usr&#x2F;bin&#x2F;git clone https:&#x2F;&#x2F;github.com&#x2F;facebook&#x2F;facebook-ios-sdk.git &#x2F;var&#x2F;folders&#x2F;hk&#x2F;7dk7748535dd076kf0283brm0000gn&#x2F;T&#x2F;d20240411-22845-djieja --template&#x3D; --single-branch --depth 1 --branch v11.2.1</span><br><span class="line"></span><br><span class="line">Cloning into &#39;&#x2F;var&#x2F;folders&#x2F;hk&#x2F;7dk7748535dd076kf0283brm0000gn&#x2F;T&#x2F;d20240411-22845-djieja&#39;...</span><br><span class="line">fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;facebook&#x2F;facebook-ios-sdk.git&#x2F;&#39;: Recv failure: Connection reset by peer</span><br></pre></td></tr></table></figure>
+
+<p>这个错误可能是由于网络问题导致的。不过，关于更新 Facebook SDK for iOS 的问题，我可以提供一些解决方案。</p>
+<p>首先，你可以尝试以下步骤：</p>
+<ol>
+<li><p><strong>更新 CocoaPods 仓库</strong>：运行以下命令来更新 CocoaPods 本地仓库：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>清除 Podfile.lock 文件</strong>：在项目的 iOS 文件夹中，删除 <code>Podfile.lock</code> 文件，然后再次运行 <code>pod install</code>。</p>
+</li>
+<li><p><strong>检查网络连接</strong>：确保你的网络连接正常，以便能够从 GitHub 克隆代码库。</p>
+</li>
+</ol>
+<p>如果上述步骤没有解决问题，你还可以尝试以下方法：</p>
+<ul>
+<li><p><strong>降级 FBSDKCoreKit 版本</strong>：在你的 <code>Podfile</code> 中，将 <code>FBSDKCoreKit</code> 的版本降级到一个较低的版本，例如：</p>
+  <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="string">'FBSDKCoreKit'</span>, <span class="string">'4.35.0'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>检查 GitHub 仓库是否存在</strong>：确保 <code>https://github.com/facebook/facebook-ios-sdk.git</code> 存在并且可访问。</p>
+</li>
+</ul>
+<p>如果你使用的是其他 Facebook SDK 组件（如 <code>FacebookLogin</code> 或 <code>FacebookShare</code>），请相应地更新它们的版本。</p>
+<p>如果问题仍然存在，请检查你的网络连接，确保你可以访问 GitHub，并且尝试使用其他网络环境。</p>
+<h3 id="xcode-构建成功-但是打开应用闪退"><a href="#xcode-构建成功-但是打开应用闪退" class="headerlink" title="xcode 构建成功 但是打开应用闪退"></a>xcode 构建成功 但是打开应用闪退</h3><p>保存类似如<br>UnityFramework 无法加载名为 MolocoCustomAdapter.framework 的库。</p>
+<p>解决:<br>手动添加需要的依赖<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/pack/0.png" alt="0"></p>
 
       
 
@@ -804,267 +1106,6 @@
 
 
   
-    <article id="post-Unity/动画/Spine/spine纹理工作流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/05/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%BA%B9%E7%90%86%E5%B7%A5%E4%BD%9C%E6%B5%81/">spine Premultiplied alpha和straight alpha的区别</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/05/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%BA%B9%E7%90%86%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="archive-article-date">
-  	<time datetime="2024-01-05T02:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-05</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：292字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://zhuanlan.zhihu.com/p/344751308" target="_blank" rel="noopener">Premultiplied文档</a><br><a href="https://segmentfault.com/a/1190000021493586" target="_blank" rel="noopener">alpha合成</a></p>
-<p>spine是一个用于制作2D动画的软件，它支持两种纹理导出的基本工作流：Premultiplied alpha（预乘alpha）和Straight alpha（直接alpha）。</p>
-<p>Premultiplied alpha是指图像中的RGB分量已经和alpha分量做了乘法，这样可以减少边缘的锯齿和过滤瑕疵，但是需要修改混合公式。Premultiplied alpha的混合公式是：</p>
-<p>$$<br>RGB_{result} = RGB_{src} + RGB_{dst} \times (1 - A_{src})<br>$$</p>
-<p>Straight alpha是指图像中的RGB分量仅表示像素的颜色，与alpha分量无关，这样可以保持颜色的纯度，但是容易出现边缘的半透明和过滤瑕疵。Straight alpha的混合公式是：</p>
-<p>$$<br>RGB_{result} = A_{src} \times RGB_{src} + RGB_{dst} \times (1 - A_{src})<br>$$</p>
-<p>两种工作流的选择取决于你的需求和喜好，一般来说，Premultiplied alpha更适合于有大量半透明效果的动画，而Straight alpha更适合于有纯色和锐利边缘的动画。你可以在spine的导出设置中选择你想要的工作流，也可以在Unity的纹理设置中选择Alpha Is Transparency选项来覆写全透明像素的RGB，使其和临近像素一致。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spine</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/05/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%BA%B9%E7%90%86%E5%B7%A5%E4%BD%9C%E6%B5%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/动画/dotween/dopath使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/04/Unity/%E5%8A%A8%E7%94%BB/dotween/dopath%E4%BD%BF%E7%94%A8/">dopath使用</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/04/Unity/%E5%8A%A8%E7%94%BB/dotween/dopath%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2024-01-04T02:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-04</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：160字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.karvan1230.com/entry/2020/09/01/223433" target="_blank" rel="noopener">setlookat参考</a><br><a href="https://blog.csdn.net/zcaixzy5211314/article/details/84988535" target="_blank" rel="noopener">api解释</a></p>
-<p>其中需要注意的</p>
-<p>在设置2d平面 PathMode.TopDown2D参数时 setlookat的forwardDirection和up与Full3D模式是不一样的<br>在TopDown2D中up才是路径的朝向 而forwardDirection才是上方向 而且此时默认的朝向路径方向为y轴<br>示例代码 y轴为正方向 沿着路径前进<br><code>go.DOPath(path, 3f, PathType.CubicBezier,PathMode.TopDown2D,5, Color.red).SetLookAt(0.1f, Vector3.forward, Vector3.right);</code></p>
-<p>如果发现在路径移动过场中疯狂抽搐 并且到终点莫名的调整方向 需要检查起始的位置坐标是否离场景中心过大 如果过大就会出现这个问题</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dotween</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/04/Unity/%E5%8A%A8%E7%94%BB/dotween/dopath%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/编辑器/gizmos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/03/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/gizmos/">gizmos</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/03/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/gizmos/" class="archive-article-date">
-  	<time datetime="2024-01-03T08:04:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-03</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：336字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Gizmos是一种在Scene视图中绘制线条和形状的功能，可以用于辅助调试和设计。您可以使用Gizmos来显示一些不可见的数据，例如碰撞器的范围，光线的方向，路径的轨迹等。</p>
-<p>要使用Gizmos，您需要在MonoBehaviour的子类中，实现OnDrawGizmos或OnDrawGizmosSelected方法。这两个方法的区别是，OnDrawGizmos会在每帧调用，而OnDrawGizmosSelected只会在物体被选中时调用。</p>
-<p>在这些方法中，您可以使用Gizmos类的各种静态方法来绘制不同的图形，例如：</p>
-<ul>
-<li>Gizmos.DrawCube：绘制一个立方体</li>
-<li>Gizmos.DrawWireCube：绘制一个线框立方体</li>
-<li>Gizmos.DrawSphere：绘制一个球体</li>
-<li>Gizmos.DrawWireSphere：绘制一个线框球体</li>
-<li>Gizmos.DrawLine：绘制一条线段</li>
-<li>Gizmos.DrawRay：绘制一条射线</li>
-<li>Gizmos.DrawIcon：绘制一个图标</li>
-<li>Gizmos.DrawFrustum：绘制一个视锥</li>
-<li>Gizmos.DrawMesh：绘制一个网格</li>
-<li>Gizmos.DrawGUITexture：绘制一个贴图</li>
-</ul>
-<p>您还可以使用Gizmos.color来设置绘制的颜色，以及Gizmos.matrix来设置绘制的矩阵变换。</p>
-<p>以下是一个简单的示例，绘制一个红色的线框立方体：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GizmosExample</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnDrawGizmos</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 设置绘制颜色为红色</span></span><br><span class="line">        Gizmos.color = Color.red;</span><br><span class="line">        <span class="comment">// 绘制一个线框立方体，中心为物体的位置，大小为10x10x10</span></span><br><span class="line">        Gizmos.DrawWireCube(transform.position, <span class="keyword">new</span> Vector3(<span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/03/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/gizmos/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1182,15 +1223,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,6 +1251,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
@@ -1218,11 +1263,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1235,10 +1284,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1274,6 +1319,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
@@ -1282,7 +1331,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1290,11 +1339,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1306,15 +1359,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1322,7 +1367,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>unity iso老项目打包,cocoapods配置,踩坑全过程 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="配置大致流程测试环境macOS Sonoma 14.2.1芯片 Apple M2Xcode 15.2Unity 2021.3.22f1Ruby 2.6.10(系统默认安装) Unity 打包环境准备 就一个目的装cocoapods 借助unity 自带ios resolver 在切换或者打开ios平台时 如果在默认路径下没有安装cocoapods会自动触发unity ios resolver正常工">
+  <meta name="description" content="配置大致流程测试环境macOS Sonoma 14.2.1芯片 Apple M2Xcode 15.2Unity 2021.3.22f1Ruby 2.6.10(系统默认安装) 问题参考untiy论坛 Unity 打包环境准备 就一个目的装cocoapods 借助unity 自带ios resolver 在切换或者打开ios平台时 如果在默认路径下没有安装cocoapods会自动触发unity ios">
 <meta property="og:type" content="article">
 <meta property="og:title" content="unity iso老项目打包,cocoapods配置,踩坑全过程">
 <meta property="og:url" content="http://yoursite.com/2024/01/10/Unity/%E6%89%93%E5%8C%85/ios%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="配置大致流程测试环境macOS Sonoma 14.2.1芯片 Apple M2Xcode 15.2Unity 2021.3.22f1Ruby 2.6.10(系统默认安装) Unity 打包环境准备 就一个目的装cocoapods 借助unity 自带ios resolver 在切换或者打开ios平台时 如果在默认路径下没有安装cocoapods会自动触发unity ios resolver正常工">
+<meta property="og:description" content="配置大致流程测试环境macOS Sonoma 14.2.1芯片 Apple M2Xcode 15.2Unity 2021.3.22f1Ruby 2.6.10(系统默认安装) 问题参考untiy论坛 Unity 打包环境准备 就一个目的装cocoapods 借助unity 自带ios resolver 在切换或者打开ios平台时 如果在默认路径下没有安装cocoapods会自动触发unity ios">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/pack/0.png">
 <meta property="article:published_time" content="2024-01-10T10:36:00.000Z">
-<meta property="article:modified_time" content="2024-03-21T12:35:53.829Z">
+<meta property="article:modified_time" content="2024-04-14T12:37:06.647Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/pack/0.png">
   
   
     <link rel="icon" href="/img/favicon.jpg">
@@ -63,10 +65,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 195
+            总文章数 198
         </nav>
 		<nav>
-            总字数 <span class="post-count">116.3k</span>
+            总字数 <span class="post-count">119.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,12 +181,13 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：2k字 | 预计阅读时长：7分钟
+          字数：2.7k字 | 预计阅读时长：10分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="配置大致流程"><a href="#配置大致流程" class="headerlink" title="配置大致流程"></a>配置大致流程</h2><h3 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h3><p>macOS Sonoma 14.2.1<br>芯片 Apple M2<br>Xcode 15.2<br>Unity 2021.3.22f1<br>Ruby 2.6.10(系统默认安装)</p>
+<h3 id="问题参考"><a href="#问题参考" class="headerlink" title="问题参考"></a>问题参考</h3><p><a href="https://forum.unity.com/threads/cocoapods-installation-failure-when-building-for-ios.1167700/" target="_blank" rel="noopener">untiy论坛</a></p>
 <h3 id="Unity-打包环境准备-就一个目的装cocoapods"><a href="#Unity-打包环境准备-就一个目的装cocoapods" class="headerlink" title="Unity 打包环境准备 就一个目的装cocoapods"></a>Unity 打包环境准备 就一个目的装cocoapods</h3><ol>
 <li>借助unity 自带ios resolver 在切换或者打开ios平台时 如果在默认路径下没有安装cocoapods会自动触发<br>unity ios resolver正常工作环境要求:<br>ruby版本要求高于2.7.0<br>如果你打算借助unity自动安装cocoapods的话 ruby需要满足高于2.7.0版本 最好直接升到最新版本</li>
 <li>尝试自己安装cocoapods<br>自带的ios resolver可能总是莫名奇妙出问题 那就尝试自己安装<br>这里首先推荐使用rbenv安装和更新ruby 而不是rvm<ol>
@@ -205,6 +208,15 @@
 <li>填好软件id</li>
 <li>如果有firebase sdk还需要下相应的<code>GoogleService-Info.plist</code>文件</li>
 </ol>
+<h3 id="构建的项目没有生成-xcworkspace文件"><a href="#构建的项目没有生成-xcworkspace文件" class="headerlink" title="构建的项目没有生成.xcworkspace文件"></a>构建的项目没有生成.xcworkspace文件</h3><p>在项目的根目录下 使用 <code>pod update</code><br>或者尝试运行 <code>pod cache clean --all</code> 清理本地缓存，然后再次运行 <code>pod install</code>。</p>
+<p>如果提示什么仓库clone失败 运行一下 <code>pod repo update</code></p>
+<p>如果出现安装错误 这个错误通常是由于网络连接问题或资源链接不可用造成的。以下是一些可能的解决方案：</p>
+<ol>
+<li><strong>检查网络连接</strong>：确保您的网络连接稳定且能够访问 <code>developers.facebook.com</code>。</li>
+<li><strong>更新 CocoaPods</strong>：确保您的 CocoaPods 版本是最新的，因为旧版本可能不支持某些资源。</li>
+<li><strong>清理和安装</strong>：尝试运行 <code>pod cache clean --all</code> 清理本地缓存，然后再次运行 <code>pod install</code>。</li>
+<li><strong>使用命令行 VPN</strong>：如果在中国大陆，可能需要使用 VPN 来解决网络连接问题<a href="https://github.com/felix-cao/Blog/issues/81" target="_blank" rel="noopener">参考链接</a>。</li>
+</ol>
 <h2 id="排查全过程"><a href="#排查全过程" class="headerlink" title="排查全过程"></a>排查全过程</h2><ol>
 <li><p>如果你的ios resolver 能够正常安装就万事大吉(不是)<br> 但是如果报错什么说drb版本不够 ruby要升到2.7.0以上 那就需要升级ruby</p>
 <p> <a href="https://blog.csdn.net/iningwei/article/details/123557898" target="_blank" rel="noopener">安装环境工具流程</a><br> <a href="https://idlevbook.com/posts/003/" target="_blank" rel="noopener">终端代理参考</a> 用clash 没有问题的话直接复制终端代理命令 (打开一次终端记得调用一次 不是永久保存的!!!)<br> 如果上面没有出现问题就万事大吉</p>
@@ -222,6 +234,10 @@
 </li>
 <li><p>但是呢就是卡在了<code>sudo gem install -n /usr/local/bin cocoapods</code>一动也不动啊 气急败坏 又是查代理又是查源的 发现源我用浏览器都能打开 你不是开玩笑嘛 这下不了?<br> 继续谷歌-&gt;查到了 可能还是ruby版本太低了<br> 好! 继续更新!!!<br> <code>rbenv install --list</code><br> 直接撞上3.3.0<br> <code>rbenv install 3.3.0</code><br> 切版本<br> <code>rbenv global 3.3.0</code><br> 看一下是不是成功了<br> <code>rbenv versions</code><br> 他们说切完一定要调 我又不懂<br> <code>rbenv rehash</code></p>
 <p> 继续执行<code>sudo gem install -n /usr/local/bin cocoapods</code> 秒成功 真狗啊</p>
+<p> 如果rbenv已经设置了 但是ruby -v还是不一样 <a href="https://blog.csdn.net/qq_39463598/article/details/124100188" target="_blank" rel="noopener">尝试修改环境变量</a><br> .zshrc文件中输入</p>
+ <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export <span class="built_in">PATH</span>="/Users/自己文件夹名称/.rbenv/shims:$<span class="built_in">PATH</span>"</span><br><span class="line">export <span class="built_in">PATH</span>="/Users/自己文件夹名称/.rbenv/bin:$<span class="built_in">PATH</span>"</span><br></pre></td></tr></table></figure>
+
+<p> 执行环境变量<br> <code>echo $PATH</code><br> 再次输出<code>ruby -v</code><br> 成功</p>
 </li>
 <li><p><strong>家人们谁懂啊 问题还有 环境还是有问题(不是这玩意问题怎么这么多啊)</strong><br> <a href="https://blog.csdn.net/iningwei/article/details/106769312" target="_blank" rel="noopener">还是卡在to c++ 并且报错iOS framework addition failed due to a CocoaPods installation failure.</a><br> 继续整吧<br> md 还行不是 整不明白了已经</p>
 </li>
@@ -241,6 +257,31 @@
 </ul>
 </li>
 </ol>
+<h2 id="其他报错"><a href="#其他报错" class="headerlink" title="其他报错"></a>其他报错</h2><h3 id="pod-update"><a href="#pod-update" class="headerlink" title="pod update"></a>pod update</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[!] Error installing FBSDKCoreKit</span><br><span class="line">[!] &#x2F;usr&#x2F;bin&#x2F;git clone https:&#x2F;&#x2F;github.com&#x2F;facebook&#x2F;facebook-ios-sdk.git &#x2F;var&#x2F;folders&#x2F;hk&#x2F;7dk7748535dd076kf0283brm0000gn&#x2F;T&#x2F;d20240411-22845-djieja --template&#x3D; --single-branch --depth 1 --branch v11.2.1</span><br><span class="line"></span><br><span class="line">Cloning into &#39;&#x2F;var&#x2F;folders&#x2F;hk&#x2F;7dk7748535dd076kf0283brm0000gn&#x2F;T&#x2F;d20240411-22845-djieja&#39;...</span><br><span class="line">fatal: unable to access &#39;https:&#x2F;&#x2F;github.com&#x2F;facebook&#x2F;facebook-ios-sdk.git&#x2F;&#39;: Recv failure: Connection reset by peer</span><br></pre></td></tr></table></figure>
+
+<p>这个错误可能是由于网络问题导致的。不过，关于更新 Facebook SDK for iOS 的问题，我可以提供一些解决方案。</p>
+<p>首先，你可以尝试以下步骤：</p>
+<ol>
+<li><p><strong>更新 CocoaPods 仓库</strong>：运行以下命令来更新 CocoaPods 本地仓库：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>清除 Podfile.lock 文件</strong>：在项目的 iOS 文件夹中，删除 <code>Podfile.lock</code> 文件，然后再次运行 <code>pod install</code>。</p>
+</li>
+<li><p><strong>检查网络连接</strong>：确保你的网络连接正常，以便能够从 GitHub 克隆代码库。</p>
+</li>
+</ol>
+<p>如果上述步骤没有解决问题，你还可以尝试以下方法：</p>
+<ul>
+<li><p><strong>降级 FBSDKCoreKit 版本</strong>：在你的 <code>Podfile</code> 中，将 <code>FBSDKCoreKit</code> 的版本降级到一个较低的版本，例如：</p>
+  <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="string">'FBSDKCoreKit'</span>, <span class="string">'4.35.0'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>检查 GitHub 仓库是否存在</strong>：确保 <code>https://github.com/facebook/facebook-ios-sdk.git</code> 存在并且可访问。</p>
+</li>
+</ul>
+<p>如果你使用的是其他 Facebook SDK 组件（如 <code>FacebookLogin</code> 或 <code>FacebookShare</code>），请相应地更新它们的版本。</p>
+<p>如果问题仍然存在，请检查你的网络连接，确保你可以访问 GitHub，并且尝试使用其他网络环境。</p>
+<h3 id="xcode-构建成功-但是打开应用闪退"><a href="#xcode-构建成功-但是打开应用闪退" class="headerlink" title="xcode 构建成功 但是打开应用闪退"></a>xcode 构建成功 但是打开应用闪退</h3><p>保存类似如<br>UnityFramework 无法加载名为 MolocoCustomAdapter.framework 的库。</p>
+<p>解决:<br>手动添加需要的依赖<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/pack/0.png" alt="0"></p>
 
       
 
@@ -383,7 +424,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置大致流程"><span class="toc-number">1.</span> <span class="toc-text">配置大致流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试环境"><span class="toc-number">1.1.</span> <span class="toc-text">测试环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity-打包环境准备-就一个目的装cocoapods"><span class="toc-number">1.2.</span> <span class="toc-text">Unity 打包环境准备 就一个目的装cocoapods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xcode-build"><span class="toc-number">1.3.</span> <span class="toc-text">Xcode build</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安卓项目转ios-同样卡在converting-managed-assemblies-to-C"><span class="toc-number">1.4.</span> <span class="toc-text">安卓项目转ios 同样卡在converting managed assemblies to C++</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排查全过程"><span class="toc-number">2.</span> <span class="toc-text">排查全过程</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置大致流程"><span class="toc-number">1.</span> <span class="toc-text">配置大致流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试环境"><span class="toc-number">1.1.</span> <span class="toc-text">测试环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题参考"><span class="toc-number">1.2.</span> <span class="toc-text">问题参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unity-打包环境准备-就一个目的装cocoapods"><span class="toc-number">1.3.</span> <span class="toc-text">Unity 打包环境准备 就一个目的装cocoapods</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xcode-build"><span class="toc-number">1.4.</span> <span class="toc-text">Xcode build</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安卓项目转ios-同样卡在converting-managed-assemblies-to-C"><span class="toc-number">1.5.</span> <span class="toc-text">安卓项目转ios 同样卡在converting managed assemblies to C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建的项目没有生成-xcworkspace文件"><span class="toc-number">1.6.</span> <span class="toc-text">构建的项目没有生成.xcworkspace文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排查全过程"><span class="toc-number">2.</span> <span class="toc-text">排查全过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他报错"><span class="toc-number">3.</span> <span class="toc-text">其他报错</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pod-update"><span class="toc-number">3.1.</span> <span class="toc-text">pod update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xcode-构建成功-但是打开应用闪退"><span class="toc-number">3.2.</span> <span class="toc-text">xcode 构建成功 但是打开应用闪退</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -515,15 +556,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,6 +584,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
@@ -551,11 +596,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,10 +617,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,6 +652,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
               </li>
              
@@ -615,7 +664,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,11 +672,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,15 +692,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,7 +700,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">

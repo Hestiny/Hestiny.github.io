@@ -16,7 +16,7 @@
 <meta property="og:description" content="AsyncReactivePropertyUniTask 是一个为 Unity 提供高性能、无GC的 async&#x2F;await 异步解决方案的库。AsyncReactiveProperty 是 UniTask 中的一个功能，它允许你创建一个异步的响应式属性。这意味着你可以订阅这个属性，并在它的值发生变化时收到通知。 以下是一个简单的使用 AsyncReactiveProperty 的例子： 1234">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-20T08:29:43.000Z">
-<meta property="article:modified_time" content="2024-04-24T13:25:18.941Z">
+<meta property="article:modified_time" content="2024-04-25T15:06:52.972Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="UniTask">
@@ -64,10 +64,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 198
+            总文章数 205
         </nav>
 		<nav>
-            总字数 <span class="post-count">119.5k</span>
+            总字数 <span class="post-count">123.2k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -180,7 +180,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：1k字 | 预计阅读时长：4分钟
+          字数：1.7k字 | 预计阅读时长：6分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -190,6 +190,7 @@
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Cysharp.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 定义一个 AsyncReactiveProperty 类型的属性</span></span><br><span class="line">    <span class="keyword">private</span> AsyncReactiveProperty&lt;<span class="keyword">int</span>&gt; reactiveProperty = <span class="keyword">new</span> AsyncReactiveProperty&lt;<span class="keyword">int</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 订阅属性的变化</span></span><br><span class="line">        reactiveProperty.Subscribe(<span class="keyword">value</span> =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">$"Value changed: <span class="subst">&#123;<span class="keyword">value</span>&#125;</span>"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更改属性的值</span></span><br><span class="line">        ChangePropertyValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">async</span> UniTaskVoid <span class="title">ChangePropertyValue</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 等待2秒</span></span><br><span class="line">        <span class="keyword">await</span> UniTask.Delay(TimeSpan.FromSeconds(<span class="number">2</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 更改属性的值，订阅者会收到通知</span></span><br><span class="line">        reactiveProperty.Value = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在这个例子中，我们首先定义了一个类型为 <code>AsyncReactiveProperty&lt;int&gt;</code> 的属性 <code>reactiveProperty</code>。然后我们订阅了这个属性的变化，当属性的值发生变化时，我们会在控制台中打印出新的值。最后，我们在 <code>ChangePropertyValue</code> 方法中更改了属性的值，并使用 <code>UniTask.Delay</code> 来模拟异步操作。</p>
+<a id="more"></a>
 <h2 id="IUniTaskAsyncEnumerable"><a href="#IUniTaskAsyncEnumerable" class="headerlink" title="IUniTaskAsyncEnumerable"></a>IUniTaskAsyncEnumerable</h2><p><code>IUniTaskAsyncEnumerable</code> 是 <code>UniTask</code> 库中的一个接口，它提供了类似于 <code>.NET</code> 中 <code>IAsyncEnumerable</code> 的功能，允许你创建和处理异步的数据流。这在 Unity 中非常有用，尤其是当你需要处理一系列异步事件或数据时。</p>
 <p>以下是一个使用 <code>IUniTaskAsyncEnumerable</code> 的基本示例：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Cysharp.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> Cysharp.Threading.Tasks.Linq;</span><br><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">async</span> UniTaskVoid <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 创建一个异步的数据流</span></span><br><span class="line">        <span class="keyword">var</span> asyncEnumerable = UniTaskAsyncEnumerable.Range(<span class="number">1</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 使用 await foreach 异步迭代数据流</span></span><br><span class="line">        <span class="keyword">await</span> <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> asyncEnumerable)</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -216,6 +217,33 @@
 </li>
 </ol>
 <p>总之，<code>OnClickAsAsyncEnumerable</code> 方法的实现原理是将 Unity UI 元素的点击事件转换为异步枚举器，使得我们可以以异步的方式处理这些事件。</p>
+<h2 id="IUniTaskAsyncEnumerator和IUniTaskAsyncEnumerable的区别"><a href="#IUniTaskAsyncEnumerator和IUniTaskAsyncEnumerable的区别" class="headerlink" title="IUniTaskAsyncEnumerator和IUniTaskAsyncEnumerable的区别"></a>IUniTaskAsyncEnumerator和IUniTaskAsyncEnumerable的区别</h2><h3 id="可以参考c-迭代器思路"><a href="#可以参考c-迭代器思路" class="headerlink" title="可以参考c#迭代器思路"></a>可以参考c#迭代器思路</h3><p><code>IUniTaskAsyncEnumerator</code> 和 <code>IUniTaskAsyncEnumerable</code> 是 <code>UniTask</code> 库中的两个相关接口，用于处理异步枚举和数据流。让我来解释一下它们之间的区别：</p>
+<ol>
+<li><p><strong><code>IUniTaskAsyncEnumerator&lt;T&gt;</code></strong>:</p>
+<ul>
+<li><code>IUniTaskAsyncEnumerator&lt;T&gt;</code> 是一个接口，用于表示异步枚举器（enumerator）。</li>
+<li>异步枚举器用于遍历异步数据流中的元素。</li>
+<li>它类似于 C# 8.0 中的 <code>IAsyncEnumerator&lt;T&gt;</code> 接口，但是专门为 Unity 优化。</li>
+<li>通过 <code>await foreach</code> 语法，你可以使用异步枚举器来逐个获取数据流中的元素。</li>
+<li>例如，你可以使用 <code>IUniTaskAsyncEnumerator&lt;T&gt;</code> 来遍历一个异步数据流，例如从网络下载的数据或其他异步操作的结果。</li>
+</ul>
+</li>
+<li><p><strong><code>IUniTaskAsyncEnumerable&lt;T&gt;</code></strong>:</p>
+<ul>
+<li><code>IUniTaskAsyncEnumerable&lt;T&gt;</code> 是一个接口，用于表示异步数据流（enumerable）。</li>
+<li>异步数据流是一系列异步产生的元素，可以通过异步枚举器逐个获取。</li>
+<li>它类似于 C# 8.0 中的 <code>IAsyncEnumerable&lt;T&gt;</code> 接口，但是专门为 Unity 优化。</li>
+<li>你可以使用 <code>IUniTaskAsyncEnumerable&lt;T&gt;</code> 来定义异步数据流，例如从数据库查询、从文件读取、从传感器获取数据等。</li>
+<li>通过 <code>await foreach</code> 语法，你可以逐个获取异步数据流中的元素。</li>
+</ul>
+</li>
+</ol>
+<p>总之，<code>IUniTaskAsyncEnumerator&lt;T&gt;</code> 是用于遍历异步数据流的枚举器接口，而 <code>IUniTaskAsyncEnumerable&lt;T&gt;</code> 是用于定义异步数据流的可枚举接口。它们一起提供了一种高效的方式来处理异步和基于枚举的数据流</p>
+<h3 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h3><p>在 Unity 中使用 <code>IUniTaskAsyncEnumerator</code> 是 <code>UniTask</code> 库的一部分，它提供了一个高效的异步/等待集成，特别适用于 Unity 环境。<code>IUniTaskAsyncEnumerator</code> 是一个接口，用于表示异步枚举器，它允许你逐个遍历异步数据流中的元素。</p>
+<p>以下是一个使用 <code>IUniTaskAsyncEnumerator</code> 的基本示例：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Cysharp.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ExampleClass</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 假设我们有一个异步方法返回 IUniTaskAsyncEnumerable&lt;int&gt;</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">async</span> UniTaskVoid <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        IUniTaskAsyncEnumerable&lt;<span class="keyword">int</span>&gt; asyncEnumerable = GetAsyncEnumerable();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 获取异步枚举器</span></span><br><span class="line">        IUniTaskAsyncEnumerator&lt;<span class="keyword">int</span>&gt; enumerator = asyncEnumerable.GetAsyncEnumerator();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 使用 while 循环和 MoveNextAsync 来遍历元素</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">await</span> enumerator.MoveNextAsync())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> current = enumerator.Current;</span><br><span class="line">            <span class="comment">// 处理当前元素</span></span><br><span class="line">            Debug.Log(current);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">async</span> UniTaskAsyncEnumerable&lt;<span class="keyword">int</span>&gt; <span class="title">GetAsyncEnumerable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 这里是一个示例的异步数据流</span></span><br><span class="line">        List&lt;<span class="keyword">int</span>&gt; numbers = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>&gt; &#123; <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> &#125;;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> number <span class="keyword">in</span> numbers)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 模拟异步操作</span></span><br><span class="line">            <span class="keyword">await</span> UniTask.DelayFrame(<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span> number;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中，我们首先定义了一个返回 <code>IUniTaskAsyncEnumerable&lt;int&gt;</code> 的异步方法 <code>GetAsyncEnumerable</code>。然后，在 <code>Start</code> 方法中，我们获取了这个异步数据流的 <code>IUniTaskAsyncEnumerator&lt;int&gt;</code>，并使用 <code>while</code> 循环和 <code>MoveNextAsync</code> 方法来逐个处理数据流中的元素。</p>
 
       
 
@@ -324,6 +352,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2024/04/27/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E7%BC%96%E8%BE%91%E5%99%A8%E9%80%9A%E7%94%A8%E5%8A%9F%E8%83%BD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          编辑器常用功能
+        
+      </div>
+    </a>
+  
   
     <a href="/2024/04/20/%E6%9D%82%E9%A1%B9/%E5%B7%A5%E5%85%B7/vscode/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">vscode</div>
@@ -353,7 +390,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AsyncReactiveProperty"><span class="toc-number">1.</span> <span class="toc-text">AsyncReactiveProperty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IUniTaskAsyncEnumerable"><span class="toc-number">2.</span> <span class="toc-text">IUniTaskAsyncEnumerable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OnClickAsAsyncEnumerable"><span class="toc-number">3.</span> <span class="toc-text">OnClickAsAsyncEnumerable</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#AsyncReactiveProperty"><span class="toc-number">1.</span> <span class="toc-text">AsyncReactiveProperty</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IUniTaskAsyncEnumerable"><span class="toc-number">2.</span> <span class="toc-text">IUniTaskAsyncEnumerable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OnClickAsAsyncEnumerable"><span class="toc-number">3.</span> <span class="toc-text">OnClickAsAsyncEnumerable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IUniTaskAsyncEnumerator和IUniTaskAsyncEnumerable的区别"><span class="toc-number">4.</span> <span class="toc-text">IUniTaskAsyncEnumerator和IUniTaskAsyncEnumerable的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#可以参考c-迭代器思路"><span class="toc-number">4.1.</span> <span class="toc-text">可以参考c#迭代器思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体使用"><span class="toc-number">4.2.</span> <span class="toc-text">具体使用</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -477,19 +514,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">vs</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,19 +546,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,19 +566,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,15 +610,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,23 +630,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,11 +650,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,15 +666,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

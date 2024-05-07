@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 205
+            总文章数 206
         </nav>
 		<nav>
-            总字数 <span class="post-count">123.2k</span>
+            总字数 <span class="post-count">126.8k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,108 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/编辑器/unityEditorWindow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/15/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityEditorWindow/">Unity EidtorWindow常用方法</a>
+    </h1>
+  
+
+        
+        <a href="/2024/01/15/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityEditorWindow/" class="archive-article-date">
+  	<time datetime="2024-01-15T03:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-15</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：992字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://blog.csdn.net/yhx956058885/article/details/107720758" target="_blank" rel="noopener">接口参考</a><br><a href="https://docs.unity3d.com/ScriptReference/EditorWindow.html" target="_blank" rel="noopener">官方文档</a><br><a href="https://docs.unity.cn/cn/current/ScriptReference/EditorGUILayout.TextField.html" target="_blank" rel="noopener">textfield</a></p>
+<h3 id="自定义TextField"><a href="#自定义TextField" class="headerlink" title="自定义TextField"></a>自定义TextField</h3><p>textField是一个用于输入文本的控件，你可以在EditorWindow中使用EditorGUILayout.TextField或EditorGUI.TextField来创建一个textField。可以通过传递一个GUILayoutOption类型的参数来设置textField的宽度，例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用EditorGUILayout.TextField，自动布局</span></span><br><span class="line"><span class="keyword">string</span> text = EditorGUILayout.TextField(<span class="string">"Label"</span>, text, GUILayout.Width(<span class="number">100</span>)); <span class="comment">// 设置宽度为100</span></span><br><span class="line"><span class="comment">// 使用EditorGUI.TextField，手动布局</span></span><br><span class="line"><span class="keyword">string</span> text = EditorGUI.TextField(<span class="keyword">new</span> Rect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">20</span>), <span class="string">"Label"</span>, text); <span class="comment">// 设置宽度为100</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以使用GUILayout.ExpandWidth来让textField自动适应窗口的宽度，例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用EditorGUILayout.TextField，自动布局</span></span><br><span class="line"><span class="keyword">string</span> text = EditorGUILayout.TextField(<span class="string">"Label"</span>, text, GUILayout.ExpandWidth(<span class="literal">true</span>)); <span class="comment">// 自动适应宽度</span></span><br><span class="line"><span class="comment">// 使用EditorGUI.TextField，手动布局</span></span><br><span class="line"><span class="keyword">string</span> text = EditorGUI.TextField(<span class="keyword">new</span> Rect(<span class="number">10</span>, <span class="number">10</span>, position.width - <span class="number">20</span>, <span class="number">20</span>), <span class="string">"Label"</span>, text); <span class="comment">// 自动适应宽度</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="不同类下的控件区别"><a href="#不同类下的控件区别" class="headerlink" title="不同类下的控件区别"></a>不同类下的控件区别</h3><p>Unity中EditorGUILayout、EditorGUI、GUILayout三个类的区别。<br>这三个类都是用来创建和绘制编辑器窗口中的控件，比如按钮、标签、文本框等。</p>
+<ul>
+<li>EditorGUILayout和GUILayout是自动布局的，它们会根据窗口的大小和控件的选项自动调整控件的位置和大小。EditorGUI是固定布局的，它需要手动指定控件的矩形区域。</li>
+<li>EditorGUILayout和EditorGUI属于UnityEditor命名空间，它们只能在编辑器模式下使用，不能在运行时使用。GUILayout属于UnityEngine命名空间，它可以在运行时使用，也可以在编辑器模式下使用。</li>
+<li>EditorGUILayout和EditorGUI提供了一些特定于编辑器的控件，比如颜色选择器、曲线编辑器、属性字段等。GUILayout没有这些控件，它只提供了一些通用的控件，比如按钮、标签、文本框等 。</li>
+</ul>
+<h3 id="控件居中"><a href="#控件居中" class="headerlink" title="控件居中"></a>控件居中</h3><p>让EditorWindow中的控件居中显示，使用GUILayout.FlexibleSpace方法来实现。这个方法会在水平或垂直布局中创建一个可伸缩的空间，使得两边的控件能够靠近边缘，而中间的控件能够居中。</p>
+<p>例如，如果想让一个按钮在EditorWindow中水平居中</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在OnGUI方法中</span></span><br><span class="line">GUILayout.BeginHorizontal(); <span class="comment">// 开始水平布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建左边的空间</span></span><br><span class="line"><span class="keyword">if</span> (GUILayout.Button(<span class="string">"居中的按钮"</span>)) <span class="comment">// 创建按钮</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 按钮的逻辑</span></span><br><span class="line">&#125;</span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建右边的空间</span></span><br><span class="line">GUILayout.EndHorizontal(); <span class="comment">// 结束水平布局</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想让一个标签在EditorWindow中垂直居中</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在OnGUI方法中</span></span><br><span class="line">GUILayout.BeginVertical(); <span class="comment">// 开始垂直布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建上面的空间</span></span><br><span class="line">GUILayout.Label(<span class="string">"居中的标签"</span>); <span class="comment">// 创建标签</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建下面的空间</span></span><br><span class="line">GUILayout.EndVertical(); <span class="comment">// 结束垂直布局</span></span><br></pre></td></tr></table></figure>
+
+<p>如果想让一个控件在EditorWindow中水平和垂直都居中，可以嵌套使用水平和垂直布局，例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在OnGUI方法中</span></span><br><span class="line">GUILayout.BeginVertical(); <span class="comment">// 开始垂直布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建上面的空间</span></span><br><span class="line">GUILayout.BeginHorizontal(); <span class="comment">// 开始水平布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建左边的空间</span></span><br><span class="line">GUILayout.Label(<span class="string">"水平和垂直都居中的标签"</span>); <span class="comment">// 创建标签</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建右边的空间</span></span><br><span class="line">GUILayout.EndHorizontal(); <span class="comment">// 结束水平布局</span></span><br><span class="line">GUILayout.FlexibleSpace(); <span class="comment">// 创建下面的空间</span></span><br><span class="line">GUILayout.EndVertical(); <span class="comment">// 结束垂直布局</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="EndLayoutGroup-BeginLayoutGroup-must-be-called-first-报错"><a href="#EndLayoutGroup-BeginLayoutGroup-must-be-called-first-报错" class="headerlink" title="EndLayoutGroup: BeginLayoutGroup must be called first.报错"></a>EndLayoutGroup: BeginLayoutGroup must be called first.报错</h3><p>这个错误通常是因为在EditorWindow或者自定义编辑器中，使用了GUILayout.EndLayoutGroup方法，但是没有对应的GUILayout.BeginLayoutGroup方法。这两个方法需要成对出现，用来创建一个布局组，可以在其中放置控件。</p>
+<p>要解决这个错误 确保每个GUILayout.EndLayoutGroup方法之前都有一个GUILayout.BeginLayoutGroup方法，而且不要嵌套使用。如果不确定哪里出错了，可以注释掉一些代码，逐步排查。</p>
+<p>另外，如果EditorWindow或者自定义编辑器中，调用了一些会弹出窗口或者进度条的方法，比如EditorUtility.DisplayDialog或者BuildPipeline.BuildPlayer，你也可能会遇到这个错误。这是因为这些方法会中断GUI的绘制流程，导致布局组不匹配。要避免这个问题，你可以在调用这些方法后，加上一句GUIUtility.ExitGUI()，这样就可以退出GUI的绘制，不会产生错误</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/01/15/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unityEditorWindow/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/性能优化/canvas排序优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1002,86 +1104,6 @@
 
 
   
-    <article id="post-Unity/动画/dotween/setlookat使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/01/02/Unity/%E5%8A%A8%E7%94%BB/dotween/setlookat%E4%BD%BF%E7%94%A8/">SetLookAt使用</a>
-    </h1>
-  
-
-        
-        <a href="/2024/01/02/Unity/%E5%8A%A8%E7%94%BB/dotween/setlookat%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2024-01-02T09:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-02</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：316字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CatmullRom 和 CubicBezier 都是 DOTween 插件中的 PathType 枚举值，它们可以用来设置路径动画的形状和曲率。¹</p>
-<p>CatmullRom 是一种三次样条曲线，它可以通过一系列的点来生成一条平滑的曲线，不需要指定控制点。² CatmullRom 路径的优点是它可以自动适应任意数量的点，而不会产生尖角或突变。³ CatmullRom 路径的缺点是它不能保证曲线的凸度，也不能精确地控制曲线的形状。⁴</p>
-<p>CubicBezier 是一种三次贝塞尔曲线，它需要四个点来定义，分别是起点、终点和两个控制点。 CubicBezier 路径的优点是它可以通过调整控制点的位置，来精确地控制曲线的形状和弯曲程度。 CubicBezier 路径的缺点是它需要手动指定控制点，而且每四个点只能生成一段曲线，如果要生成多段曲线，就需要更多的点。</p>
-<p>总的来说，CatmullRom 和 CubicBezier 两种路径类型的区别在于，前者是一种自动化的曲线生成方式，后者是一种手动化的曲线控制方式。您可以根据您的需求和喜好，选择适合您的路径类型。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dotween</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/01/02/Unity/%E5%8A%A8%E7%94%BB/dotween/setlookat%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
@@ -1203,11 +1225,95 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1227,95 +1333,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1327,15 +1349,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1343,11 +1357,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,11 +1373,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

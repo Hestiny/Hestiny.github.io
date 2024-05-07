@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 205
+            总文章数 206
         </nav>
 		<nav>
-            总字数 <span class="post-count">123.2k</span>
+            总字数 <span class="post-count">126.8k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,93 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/UI/获取元素的高度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/06/Unity/UI/%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E9%AB%98%E5%BA%A6/">Unity 获取高度</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/06/Unity/UI/%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E9%AB%98%E5%BA%A6/" class="archive-article-date">
+  	<time datetime="2023-11-06T06:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：608字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>unity preferredHeight的作用是指定一个布局元素在有足够空间时应该分配的首选高度。它是ILayoutElement接口的一个属性，可以通过添加Layout Element组件来覆盖²。preferredHeight的值会影响布局控制器（如VerticalLayoutGroup）如何分配额外的可用高度³。preferredHeight和flexibleHeight一起决定了布局元素在父容器中的高度比例⁴。如果你想了解更多关于unity的自动布局系统，请参考<a href="https://www.jianshu.com/p/66ec57f99ff8" target="_blank" rel="noopener">这篇文章</a>。</p>
+<p>Unity GetPreferredHeight方法是一个用于获取布局元素的首选高度的函数。它是TextGenerator类的一个成员，可以根据字符串和设置，返回将容纳此文本的容器的首选高度²。它也是UI.LayoutUtility类的一个静态方法，可以查询GameObject中实现ILayoutElement接口的所有组件，并返回具有最高优先级或最大值的组件的首选高度¹³⁴。这个方法可以用于自动布局系统中，调整布局元素的大小和位置。</p>
+<p>¹: <a href="https://docs.unity.cn/cn/2019.2/ScriptReference/TextGenerator.GetPreferredHeight.html" target="_blank" rel="noopener">UI.LayoutUtility-GetPreferredHeight - Unity 脚本 API</a><br>²: <a href="https://docs.unity3d.com/cn/2019.1/ScriptReference/UI.LayoutUtility.GetPreferredHeight.html" target="_blank" rel="noopener">TextGenerator-GetPreferredHeight - Unity 脚本 API</a></p>
+<p>TextGenerator.GetPreferredWidth是一个Unity脚本API，它可以根据字符串和设置，返回将容纳此文本的容器的首选宽度。</p>
+<p>要使用这个方法，您需要先创建一个TextGenerator对象，然后传入一个字符串和一个TextGenerationSettings结构体，其中包含了文本的字体、大小、颜色、对齐方式等属性。</p>
+<p>例如，如果您想获取一个Text组件的文字宽度，您可以这样写：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Text text = GetComponent&lt;Text&gt;(); <span class="comment">//获取Text组件</span></span><br><span class="line">TextGenerator textGenerator = <span class="keyword">new</span> TextGenerator(); <span class="comment">//创建TextGenerator对象</span></span><br><span class="line">TextGenerationSettings settings = text.GetGenerationSettings(Vector2.zero); <span class="comment">//获取Text组件的设置</span></span><br><span class="line"><span class="keyword">float</span> width = textGenerator.GetPreferredWidth(text.text, settings); <span class="comment">//获取文字宽度</span></span><br></pre></td></tr></table></figure>
+
+<p>text generationExtents是一个Vector2类型的参数，它表示生成器将尝试使文本适合的范围。<br>这个参数通常用于限制文本的最大宽度和高度，以避免文本超出屏幕或其他UI元素的边界。</p>
+<p>例如，如果您想让一个Text组件的文本自动换行，您可以设置text generationExtents的x值为Text组件的宽度，y值为无穷大，然后调用TextGenerator类的Populate方法，如下所示：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Text text = GetComponent&lt;Text&gt;(); <span class="comment">//获取Text组件</span></span><br><span class="line">TextGenerator textGenerator = <span class="keyword">new</span> TextGenerator(); <span class="comment">//创建TextGenerator对象</span></span><br><span class="line">TextGenerationSettings settings = text.GetGenerationSettings(Vector2.zero); <span class="comment">//获取Text组件的设置</span></span><br><span class="line">settings.generationExtents = <span class="keyword">new</span> Vector2(text.rectTransform.rect.width, Mathf.Infinity); <span class="comment">//设置文本的最大宽度和高度</span></span><br><span class="line">textGenerator.Populate(text.text, settings); <span class="comment">//生成文本</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/06/Unity/UI/%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E7%9A%84%E9%AB%98%E5%BA%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/打包/unity打包流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -970,91 +1057,6 @@
 
 
   
-    <article id="post-Unity/编辑器/UnityReset方法使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/21/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/UnityReset%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8/">打包相关接口</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/21/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/UnityReset%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2023-10-21T07:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-21</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：354字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/Unity/editor/0.png" alt="0"></p>
-<p>比如在做这种大量重复的预制时 想让它自动脚本处理文字和关键字 就可以新写一个mono脚本 重写Reset方法来改写属性<br><strong>记住不要直接在自己的脚本中重写Reset方法改自己的序列化属性 会出现神奇的现象(原来的属性值会丢失) 而是新建一个脚本来处理</strong></p>
-<p>在Unity中，可以通过重写Reset()方法来实现对组件的重置操作。Reset()方法会在Inspector面板中，点击组件的”Reset”按钮或者通过右键菜单选择”Reset”时调用。</p>
-<p>下面是一个示例，演示如何重写Reset()方法：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyComponent</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> myInt;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> originalValue;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        originalValue = myInt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重写Reset()方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Reset</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 将myInt重置为原始值</span></span><br><span class="line">        myInt = originalValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的示例中，MyComponent组件有一个public的int类型的属性myInt。在Awake()方法中，将myInt的初始值保存到originalValue变量中。然后，重写Reset()方法，在方法中将myInt重置为originalValue的值。</p>
-<p>当我们在Inspector面板中点击MyComponent组件的”Reset”按钮时，myInt的值将会被重置为初始值。</p>
-<p>请注意，Reset()方法必须在MonoBehaviour类的派生类中才会生效。如果你希望重置的是ScriptableObject或其他类型的自定义类，可以重写Reset()方法并将其放置在Editor目录中。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/21/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/UnityReset%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
@@ -1176,11 +1178,95 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,95 +1286,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1300,15 +1302,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1316,11 +1310,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1328,11 +1326,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

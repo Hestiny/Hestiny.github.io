@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 205
+            总文章数 206
         </nav>
 		<nav>
-            总字数 <span class="post-count">123.2k</span>
+            总字数 <span class="post-count">126.8k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,84 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/框架/QFramework/Qframework应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/05/06/Unity/%E6%A1%86%E6%9E%B6/QFramework/Qframework%E5%BA%94%E7%94%A8/">Qf的自定义</a>
+    </h1>
+  
+
+        
+        <a href="/2024/05/06/Unity/%E6%A1%86%E6%9E%B6/QFramework/Qframework%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2024-05-06T06:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：3.5k字 | 预计阅读时长：21分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="qf"><a href="#qf" class="headerlink" title="qf"></a>qf</h2><p>qf主要使用mvc模式 由Architecture负责全部模块 相当于目前项目的单例应用 但是qf中视图c被单独分开 与模块完全解耦 不受控制 层级类似于Architecture</p>
+<h2 id="新增UI控制器-非必要不建议"><a href="#新增UI控制器-非必要不建议" class="headerlink" title="新增UI控制器(非必要不建议)"></a>新增UI控制器(非必要不建议)</h2><p>因为文字类游戏 对ui特效和动画的流程更多 为了方便测试 后期考虑增加自动化跑某个流程 比如类似抽卡的功能 可以一键运行并检查边界情况 虽然可以直接在command中直接通过ui框架寻找节目然后再使用 但是就增加了耦合 不适合单独迁移<br>对IController新增了两个接口 对于需要调用ui接口的可以直接实现 需要考虑清楚取舍</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/05/06/Unity/%E6%A1%86%E6%9E%B6/QFramework/Qframework%E5%BA%94%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-csharp/泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -906,12 +984,12 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：358字 | 预计阅读时长：1分钟
+          字数：443字 | 预计阅读时长：2分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="设置备份"><a href="#设置备份" class="headerlink" title="设置备份"></a>设置备份</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"editor.suggestSelection"</span>: <span class="string">"first"</span>,</span><br><span class="line">    <span class="attr">"vsintellicode.modify.editor.suggestSelection"</span>: <span class="string">"automaticallyOverrodeDefaultValue"</span>,</span><br><span class="line">    <span class="attr">"C_Cpp.updateChannel"</span>: <span class="string">"Insiders"</span>,</span><br><span class="line">    <span class="attr">"workbench.editorAssociations"</span>: &#123;</span><br><span class="line">        <span class="attr">"*.ipynb"</span>: <span class="string">"jupyter.notebook.ipynb"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"editor.codeActionsOnSave"</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">"C_Cpp.errorSquiggles"</span>: <span class="string">"Enabled"</span>,</span><br><span class="line">    <span class="attr">"security.workspace.trust.untrustedFiles"</span>: <span class="string">"open"</span>,</span><br><span class="line">    <span class="attr">"bracket-pair-colorizer-2.depreciation-notice"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"cmake.configureOnOpen"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"markdown-preview-enhanced.previewTheme"</span>: <span class="string">"one-dark.css"</span>,</span><br><span class="line">    <span class="attr">"settingsSync.ignoredExtensions"</span>: [</span><br><span class="line">        <span class="string">"jeff-hykin.better-cpp-syntax"</span>,</span><br><span class="line">        <span class="string">"twxs.cmake"</span>,</span><br><span class="line">        <span class="string">"ms-vscode.cmake-tools"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"editor.guides.bracketPairs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"workbench.colorCustomizations"</span>: &#123;</span><br><span class="line">        <span class="comment">// "editor.findMatchBackground": "#ff0000",</span></span><br><span class="line">        <span class="attr">"editor.findMatchHighlightBackground"</span>: <span class="string">"#653206fc"</span>,</span><br><span class="line">        <span class="comment">// "editor.selectionHighlightBackground": "#4d037ef3",</span></span><br><span class="line">        <span class="attr">"editor.selectionHighlightBackground"</span>: <span class="string">"#03437ef3"</span>,</span><br><span class="line">        <span class="comment">// "editor.selectionBackground": "#92c55769",</span></span><br><span class="line">        <span class="attr">"editor.wordHighlightBackground"</span>: <span class="string">"#ce3fce87"</span>,</span><br><span class="line"></span><br><span class="line">        <span class="attr">"editor.lineHighlightBorder"</span>: <span class="string">"#e844cd88"</span>,</span><br><span class="line">        <span class="attr">"editor.lineHighlightBackground"</span>: <span class="string">"#abb5c613"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"editor.wordWrap"</span>: <span class="string">"on"</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.showSlider"</span>: <span class="string">"always"</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.size"</span>: <span class="string">"fit"</span>,</span><br><span class="line">    <span class="attr">"dotnetAcquisitionExtension.existingDotnetPath"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"ms-dotnettools.csharp"</span>,</span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"ms-dotnettools.csdevkit"</span>,</span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"visualstudiotoolsforunity.vstuc"</span>,</span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"workbench.editor.wrapTabs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"[markdown]"</span>: &#123;</span><br><span class="line">        <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"DavidAnson.vscode-markdownlint"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"omnisharp.monoPath"</span>: <span class="string">"/usr/local/share/dotnet/sdk/8.0.203"</span>,</span><br><span class="line">    <span class="attr">"dotnet.dotnetPath"</span>: <span class="string">"/usr/local/share/dotnet"</span>,</span><br><span class="line">    <span class="attr">"github.copilot.enable"</span>: &#123;</span><br><span class="line">        <span class="attr">"*"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"plaintext"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"markdown"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"scminput"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"gitlens.codeLens.scopes"</span>: [</span><br><span class="line">        <span class="string">"document"</span>,</span><br><span class="line">        <span class="string">"containers"</span>,</span><br><span class="line">        <span class="string">"blocks"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"todo-tree.highlights.backgroundColourScheme"</span>: [</span><br><span class="line">        <span class="string">"red"</span>,</span><br><span class="line">        <span class="string">"orange"</span>,</span><br><span class="line">        <span class="string">"yellow"</span>,</span><br><span class="line">        <span class="string">"violet"</span>,</span><br><span class="line">        <span class="string">"blue"</span>,</span><br><span class="line">        <span class="string">"indigo"</span>,</span><br><span class="line">        <span class="string">"violet"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"todo-tree.highlights.useColourScheme"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"todo-tree.general.tags"</span>: [</span><br><span class="line">        <span class="string">"BUG"</span>,</span><br><span class="line">        <span class="string">"HACK"</span>,</span><br><span class="line">        <span class="string">"FIXME"</span>,</span><br><span class="line">        <span class="string">"TODO"</span>,</span><br><span class="line">        <span class="string">"[ ]"</span>,</span><br><span class="line">        <span class="string">"[x]"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"editor.bracketPairColorization.independentColorPoolPerBracketType"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.defaultFoldingRangeProvider"</span>: <span class="string">"ms-dotnettools.csharp"</span>,</span><br><span class="line">    <span class="attr">"files.eol"</span>: <span class="string">"\n"</span>,</span><br><span class="line">    <span class="attr">"editor.renderLineHighlight"</span>: <span class="string">"all"</span>,</span><br><span class="line">    <span class="attr">"editor.indentSize"</span>: <span class="string">"tabSize"</span>,</span><br><span class="line">    <span class="attr">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span>,<span class="comment">//资源管理器图标颜色 不能为空 为空就全是白色</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="设置备份"><a href="#设置备份" class="headerlink" title="设置备份"></a>设置备份</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//系统</span></span><br><span class="line">    <span class="attr">"editor.codeActionsOnSave"</span>: &#123;</span><br><span class="line">        <span class="attr">"source.organizeImports"</span>: <span class="string">"explicit"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"security.workspace.trust.untrustedFiles"</span>: <span class="string">"open"</span>,</span><br><span class="line">    <span class="attr">"settingsSync.ignoredExtensions"</span>: [</span><br><span class="line">        <span class="string">"jeff-hykin.better-cpp-syntax"</span>,</span><br><span class="line">        <span class="string">"twxs.cmake"</span>,</span><br><span class="line">        <span class="string">"ms-vscode.cmake-tools"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"editor.guides.bracketPairs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnPaste"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.wordWrap"</span>: <span class="string">"on"</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.showSlider"</span>: <span class="string">"always"</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.size"</span>: <span class="string">"fit"</span>,</span><br><span class="line">    <span class="attr">"workbench.editor.wrapTabs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.suggestSelection"</span>: <span class="string">"first"</span>,</span><br><span class="line">    <span class="attr">"editor.bracketPairColorization.independentColorPoolPerBracketType"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"files.eol"</span>: <span class="string">"\n"</span>,</span><br><span class="line">    <span class="attr">"editor.renderLineHighlight"</span>: <span class="string">"all"</span>,</span><br><span class="line">    <span class="attr">"editor.indentSize"</span>: <span class="string">"tabSize"</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//代码样式</span></span><br><span class="line">    <span class="comment">// https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide 官方文档 </span></span><br><span class="line">    <span class="attr">"editor.semanticTokenColorCustomizations"</span>: &#123;</span><br><span class="line">        <span class="attr">"enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"rules"</span>: &#123;</span><br><span class="line">            <span class="attr">"variable"</span>: <span class="string">"#a4e7fdfc"</span>,<span class="comment">//本地变量</span></span><br><span class="line">            <span class="attr">"namespace"</span>: <span class="string">"#e7ce60"</span>,</span><br><span class="line">            <span class="comment">// "async": "#00ff00",</span></span><br><span class="line">            <span class="comment">// "enum": "#ce97e9",</span></span><br><span class="line">            <span class="attr">"enumMember"</span>: <span class="string">"#e1729d"</span>,</span><br><span class="line">            <span class="attr">"property"</span>: <span class="string">"#61abd9"</span>,</span><br><span class="line">            <span class="attr">"controlKeyword"</span>: <span class="string">"#c55cd6"</span>,</span><br><span class="line">            <span class="attr">"comment"</span>: <span class="string">"#7e828c"</span>,</span><br><span class="line">            <span class="attr">"string"</span>: <span class="string">"#bd74d4"</span>,</span><br><span class="line">            <span class="comment">// "comment": "#696d77",</span></span><br><span class="line">            <span class="comment">// "macro":"#3a6cc1",</span></span><br><span class="line">            </span><br><span class="line">            <span class="attr">"keyword"</span>: <span class="string">"#a782f7"</span>,</span><br><span class="line">            <span class="comment">// "method": "#ff00ff",</span></span><br><span class="line">            <span class="comment">// "decorator": "#00f2ff",</span></span><br><span class="line">            <span class="comment">// "typeParameter": "#ff00ff",</span></span><br><span class="line">            <span class="attr">"parameter"</span>: <span class="string">"#feed9f"</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"workbench.colorCustomizations"</span>: &#123;</span><br><span class="line">        <span class="comment">// "editor.findMatchBackground": "#ff0000",</span></span><br><span class="line">        <span class="attr">"editor.findMatchHighlightBackground"</span>: <span class="string">"#653206fc"</span>,</span><br><span class="line">        <span class="comment">// "editor.selectionHighlightBackground": "#4d037ef3",</span></span><br><span class="line">        <span class="attr">"editor.selectionHighlightBackground"</span>: <span class="string">"#03437ef3"</span>,</span><br><span class="line">        <span class="attr">"editor.selectionBackground"</span>: <span class="string">"#92c55769"</span>,</span><br><span class="line">        <span class="attr">"editor.wordHighlightBackground"</span>: <span class="string">"#ce3fce87"</span>,</span><br><span class="line">        <span class="attr">"editor.lineHighlightBorder"</span>: <span class="string">"#e844cd88"</span>,</span><br><span class="line">        <span class="attr">"editor.lineHighlightBackground"</span>: <span class="string">"#abb5c613"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//环境</span></span><br><span class="line">    <span class="comment">//↓↓↓↓mac↓↓↓↓</span></span><br><span class="line">    <span class="attr">"editor.defaultFoldingRangeProvider"</span>: <span class="string">"ms-dotnettools.csharp"</span>,</span><br><span class="line">    <span class="comment">// "dotnetAcquisitionExtension.existingDotnetPath": [</span></span><br><span class="line">    <span class="comment">//     &#123;</span></span><br><span class="line">    <span class="comment">//         "extensionId": "ms-dotnettools.csharp",</span></span><br><span class="line">    <span class="comment">//         "path": "/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">    <span class="comment">//     &#125;,</span></span><br><span class="line">    <span class="comment">//     &#123;</span></span><br><span class="line">    <span class="comment">//         "extensionId": "ms-dotnettools.csdevkit",</span></span><br><span class="line">    <span class="comment">//         "path": "/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">    <span class="comment">//     &#125;,</span></span><br><span class="line">    <span class="comment">//     &#123;</span></span><br><span class="line">    <span class="comment">//         "extensionId": "visualstudiotoolsforunity.vstuc",</span></span><br><span class="line">    <span class="comment">//         "path": "/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// ],</span></span><br><span class="line">    <span class="comment">// "omnisharp.monoPath": "/usr/local/share/dotnet/sdk/8.0.203",</span></span><br><span class="line">    <span class="comment">// "dotnet.dotnetPath": "/usr/local/share/dotnet",</span></span><br><span class="line">    <span class="comment">//↑↑↑↑mac↑↑↑↑</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//插件</span></span><br><span class="line">    <span class="attr">"markdown-preview-enhanced.previewTheme"</span>: <span class="string">"one-dark.css"</span>,</span><br><span class="line">    <span class="attr">"[markdown]"</span>: &#123;</span><br><span class="line">        <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"DavidAnson.vscode-markdownlint"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"github.copilot.enable"</span>: &#123;</span><br><span class="line">        <span class="attr">"*"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"plaintext"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"markdown"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"scminput"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"gitlens.codeLens.scopes"</span>: [</span><br><span class="line">        <span class="string">"document"</span>,</span><br><span class="line">        <span class="string">"containers"</span>,</span><br><span class="line">        <span class="string">"blocks"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Monokai Pro (Filter Octagon)"</span>,</span><br><span class="line">    <span class="attr">"sonarlint.rules"</span>: &#123;</span><br><span class="line">        <span class="attr">"csharpsquid:S1104"</span>: &#123;</span><br><span class="line">            <span class="attr">"level"</span>: <span class="string">"off"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"csharpsquid:S125"</span>: &#123;</span><br><span class="line">            <span class="attr">"level"</span>: <span class="string">"off"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"csharpsquid:S1135"</span>: &#123;</span><br><span class="line">            <span class="attr">"level"</span>: <span class="string">"off"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"todo-tree.highlights.backgroundColourScheme"</span>: [</span><br><span class="line">        <span class="string">"red"</span>,</span><br><span class="line">        <span class="string">"orange"</span>,</span><br><span class="line">        <span class="string">"yellow"</span>,</span><br><span class="line">        <span class="string">"violet"</span>,</span><br><span class="line">        <span class="string">"blue"</span>,</span><br><span class="line">        <span class="string">"indigo"</span>,</span><br><span class="line">        <span class="string">"violet"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"todo-tree.highlights.useColourScheme"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"todo-tree.general.tags"</span>: [</span><br><span class="line">        <span class="string">"BUG"</span>,</span><br><span class="line">        <span class="string">"HACK"</span>,</span><br><span class="line">        <span class="string">"FIXME"</span>,</span><br><span class="line">        <span class="string">"TODO"</span>,</span><br><span class="line">        <span class="string">"[ ]"</span>,</span><br><span class="line">        <span class="string">"[x]"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"cSpell.userWords"</span>: [</span><br><span class="line">        <span class="string">"Applovin"</span>,</span><br><span class="line">        <span class="string">"Behaviour"</span>,</span><br><span class="line">        <span class="string">"Bezier"</span>,</span><br><span class="line">        <span class="string">"btns"</span>,</span><br><span class="line">        <span class="string">"cocoapods"</span>,</span><br><span class="line">        <span class="string">"Cysharp"</span>,</span><br><span class="line">        <span class="string">"dotween"</span>,</span><br><span class="line">        <span class="string">"interactable"</span>,</span><br><span class="line">        <span class="string">"iobj"</span>,</span><br><span class="line">        <span class="string">"ipynb"</span>,</span><br><span class="line">        <span class="string">"Mathf"</span>,</span><br><span class="line">        <span class="string">"Prefs"</span>,</span><br><span class="line">        <span class="string">"Raycast"</span>,</span><br><span class="line">        <span class="string">"Raycaster"</span>,</span><br><span class="line">        <span class="string">"Rigidbody"</span>,</span><br><span class="line">        <span class="string">"Tweener"</span>,</span><br><span class="line">        <span class="string">"Tweening"</span>,</span><br><span class="line">        <span class="string">"typeof"</span>,</span><br><span class="line">        <span class="string">"UIID"</span>,</span><br><span class="line">        <span class="string">"unitypackage"</span>,</span><br><span class="line">        <span class="string">"xcworkspace"</span></span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="常规颜色配置"><a href="#常规颜色配置" class="headerlink" title="常规颜色配置"></a>常规颜色配置</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"workbench.colorCustomizations": &#123;</span><br><span class="line">       <span class="comment">// "editor.findMatchBackground": "#ff0000",</span></span><br><span class="line">       "editor.findMatchHighlightBackground": "#653206fc",//查找的高亮背景色</span><br><span class="line">       "editor.selectionHighlightBackground": "#03437ef3",//双击选中的高亮背景色</span><br><span class="line">       <span class="comment">// "editor.selectionBackground": "#92c55769",//双击选中单词的背景</span></span><br><span class="line">       "editor.wordHighlightBackground": "#ce3fce87",//单击选中单词的高亮色 c#下 相同方法名或者变量一样着色</span><br><span class="line"></span><br><span class="line">       "editor.lineHighlightBorder": "#e844cd88",//当前行的边框色</span><br><span class="line">       "editor.lineHighlightBackground": "#abb5c613",//当前行的背景色</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
@@ -1022,84 +1100,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2024/04/16/csharp/CancellationToken/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/编辑器/面板拓展测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/04/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E9%9D%A2%E6%9D%BF%E6%8B%93%E5%B1%95%E6%B5%8B%E8%AF%95/">测试面板</a>
-    </h1>
-  
-
-        
-        <a href="/2024/04/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E9%9D%A2%E6%9D%BF%E6%8B%93%E5%B1%95%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2024-04-10T12:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-10</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：179字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>为了方便某些游戏上的测试 可以直接在脚本上方法上添加<strong>EditorButtonAttribute</strong>特性 可以将GameTest改成mono类</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">CanEditMultipleObjects, CustomEditor(typeof(GameTest))</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameTestEditor</span> : <span class="title">Editor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">string</span>&gt; mButtonPropertyNames = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> VisualElement <span class="title">CreateInspectorGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        InitSerializeFieldProperty();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">base</span>.CreateInspectorGUI();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInspectorGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">base</span>.OnInspectorGUI();</span><br><span class="line">        <span class="comment">//var target = (GameTest)serializedObject.targetObject;</span></span><br><span class="line">        <span class="keyword">var</span> tar = target <span class="keyword">as</span> GameTest;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> mButtonPropertyNames)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (GUILayout.Button(item.Key, GUILayout.Height(<span class="number">40</span>)))</span><br><span class="line">            &#123;</span><br><span class="line">                tar.Invoke(item.Value, <span class="number">0</span>);</span><br><span class="line">                <span class="comment">//tar.InvokeMethod(item.Value);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//var target = (GameTest)serializedObject.targetObject;</span></span><br><span class="line">        <span class="comment">//tar.Invoke("Test", 0);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">InitSerializeFieldProperty</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        mButtonPropertyNames.Clear();</span><br><span class="line">        <span class="keyword">var</span> type = target.GetType();</span><br><span class="line">        <span class="keyword">var</span> fields = type.GetMethods(BindingFlags.NonPublic | BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public);</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> fields)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.IsDefined(<span class="keyword">typeof</span>(EditorButtonAttribute), <span class="literal">false</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//var att = item.GetCustomAttributes(typeof(EditorButtonAttribute), false);</span></span><br><span class="line">                <span class="keyword">var</span> method = item.Name;</span><br><span class="line">                mButtonPropertyNames.Add(item.Name, method);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">EditorButtonAttribute</span> : <span class="title">Attribute</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/04/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E9%9D%A2%E6%9D%BF%E6%8B%93%E5%B1%95%E6%B5%8B%E8%AF%95/">展开全文 >></a>
         </p>
       
 
@@ -1250,11 +1250,95 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1274,95 +1358,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1374,15 +1374,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1390,11 +1382,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1402,11 +1398,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

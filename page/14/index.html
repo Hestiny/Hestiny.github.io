@@ -63,7 +63,7 @@
             总文章数 206
         </nav>
 		<nav>
-            总字数 <span class="post-count">126.8k</span>
+            总字数 <span class="post-count">128k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -178,7 +178,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：1.3k字 | 预计阅读时长：6分钟
+          字数：1.8k字 | 预计阅读时长：8分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -210,6 +210,38 @@
 
 <p>输出结果为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">The enum value None has the following attributes:</span><br><span class="line">The enum value None does not have the Obsolete attribute.</span><br><span class="line">The enum value Monday has the following attributes:</span><br><span class="line">The enum value Monday does not have the Obsolete attribute.</span><br><span class="line">The enum value Tuesday has the following attributes:</span><br><span class="line">The enum value Tuesday does not have the Obsolete attribute.</span><br><span class="line">The enum value Wednesday has the following attributes:</span><br><span class="line">The enum value Wednesday does not have the Obsolete attribute.</span><br><span class="line">The enum value Thursday has the following attributes:</span><br><span class="line">The enum value Thursday does not have the Obsolete attribute.</span><br><span class="line">The enum value Friday has the following attributes:</span><br><span class="line">The enum value Friday does not have the Obsolete attribute.</span><br><span class="line">The enum value Saturday has the following attributes:</span><br><span class="line">The enum value Saturday does not have the Obsolete attribute.</span><br><span class="line">The enum value Sunday has the following attributes:</span><br><span class="line">The enum value Sunday does not have the Obsolete attribute.</span><br><span class="line">The enum value Weekend has the following attributes:</span><br><span class="line">The enum value Weekend does not have the Obsolete attribute.</span><br></pre></td></tr></table></figure>
+
+<h3 id="AttributeUsage-特性"><a href="#AttributeUsage-特性" class="headerlink" title="AttributeUsage 特性"></a><code>AttributeUsage</code> 特性</h3><p><code>AttributeUsage</code> 特性有三个主要属性：</p>
+<ol>
+<li><strong><code>ValidOn</code></strong>：指定特性可以应用的程序元素。</li>
+<li><strong><code>AllowMultiple</code></strong>：指定特性是否可以多次应用于同一程序元素。</li>
+<li><strong><code>Inherited</code></strong>：指定特性是否可以被派生类继承。</li>
+</ol>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>以下是一个详细的示例，展示了如何定义和使用一个自定义属性，并通过 <code>AttributeUsage</code> 特性配置其行为。</p>
+<h4 id="定义自定义属性"><a href="#定义自定义属性" class="headerlink" title="定义自定义属性"></a>定义自定义属性</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"></span><br><span class="line">[<span class="meta">AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = false)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyCustomAttribute</span> : <span class="title">Attribute</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Description &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyCustomAttribute</span>(<span class="params"><span class="keyword">string</span> description</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Description = description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这里，<code>MyCustomAttribute</code> 被配置为：</p>
+<ul>
+<li>可以应用于类和方法（通过 <code>AttributeTargets.Class | AttributeTargets.Method</code>）。</li>
+<li>可以在同一个目标上多次应用（通过 <code>AllowMultiple = true</code>）。</li>
+<li>不会被派生类继承（通过 <code>Inherited = false</code>）。</li>
+</ul>
+<h4 id="应用自定义属性"><a href="#应用自定义属性" class="headerlink" title="应用自定义属性"></a>应用自定义属性</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">MyCustomAttribute(<span class="meta-string">"Class Level Description"</span>)</span>]</span><br><span class="line">[<span class="meta">MyCustomAttribute(<span class="meta-string">"Another Class Level Description"</span>)</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">MyCustomAttribute(<span class="meta-string">"Method Level Description"</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 方法实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyDerivedClass</span> : <span class="title">MyClass</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// MyCustomAttribute 不会继承到这个派生类中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中：</p>
+<ul>
+<li><code>MyCustomAttribute</code> 被多次应用于 <code>MyClass</code> 类。</li>
+<li><code>MyCustomAttribute</code> 被应用于 <code>MyMethod</code> 方法。</li>
+<li><code>MyCustomAttribute</code> 没有被继承到 <code>MyDerivedClass</code> 类中，因为 <code>Inherited</code> 设置为 <code>false</code>。</li>
+</ul>
+<h4 id="读取自定义属性"><a href="#读取自定义属性" class="headerlink" title="读取自定义属性"></a>读取自定义属性</h4><p>以下代码展示了如何使用反射读取这些自定义属性。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Type type = <span class="keyword">typeof</span>(MyClass);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取类上的自定义属性</span></span><br><span class="line">        <span class="keyword">object</span>[] classAttributes = type.GetCustomAttributes(<span class="keyword">typeof</span>(MyCustomAttribute), <span class="literal">false</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">"Class Attributes:"</span>);</span><br><span class="line">        <span class="keyword">foreach</span> (MyCustomAttribute attr <span class="keyword">in</span> classAttributes)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$"Description: <span class="subst">&#123;attr.Description&#125;</span>"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取方法上的自定义属性</span></span><br><span class="line">        MethodInfo method = type.GetMethod(<span class="string">"MyMethod"</span>);</span><br><span class="line">        <span class="keyword">object</span>[] methodAttributes = method.GetCustomAttributes(<span class="keyword">typeof</span>(MyCustomAttribute), <span class="literal">false</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">"\nMethod Attributes:"</span>);</span><br><span class="line">        <span class="keyword">foreach</span> (MyCustomAttribute attr <span class="keyword">in</span> methodAttributes)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$"Description: <span class="subst">&#123;attr.Description&#125;</span>"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 验证派生类是否继承了自定义属性</span></span><br><span class="line">        Type derivedType = <span class="keyword">typeof</span>(MyDerivedClass);</span><br><span class="line">        <span class="keyword">object</span>[] derivedClassAttributes = derivedType.GetCustomAttributes(<span class="keyword">typeof</span>(MyCustomAttribute), <span class="literal">false</span>);</span><br><span class="line">        Console.WriteLine(<span class="string">"\nDerived Class Attributes:"</span>);</span><br><span class="line">        <span class="keyword">foreach</span> (MyCustomAttribute attr <span class="keyword">in</span> derivedClassAttributes)</span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(<span class="string">$"Description: <span class="subst">&#123;attr.Description&#125;</span>"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><strong><code>AttributeTargets</code></strong>：用于指定特性可以应用于哪些程序元素，如类、方法、属性等。</li>
+<li><strong><code>AllowMultiple</code></strong>：允许特性多次应用于同一目标时设为 <code>true</code>。</li>
+<li><strong><code>Inherited</code></strong>：允许特性被派生类继承时设为 <code>true</code>。</li>
+</ul>
 
       
 
@@ -1157,19 +1189,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1177,87 +1201,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1273,6 +1221,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
               </li>
              
@@ -1281,19 +1233,87 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">配置</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">TextBlock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RichEditBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1305,11 +1325,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1321,6 +1345,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
@@ -1329,11 +1361,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
+                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 206
+            总文章数 209
         </nav>
 		<nav>
-            总字数 <span class="post-count">128k</span>
+            总字数 <span class="post-count">133.8k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,266 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Unity/UI/UIGUI案例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/">UIGUI案例</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/" class="archive-article-date">
+  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：4k字 | 预计阅读时长：14分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="UI与3d为物体的响应"><a href="#UI与3d为物体的响应" class="headerlink" title="UI与3d为物体的响应"></a>UI与3d为物体的响应</h2><ol>
+<li>如果UI显示在3d物体上时，两个方法是都可以调用的。而如果不想同时调用，可以将3d物体也挂上UI的点击接口，就可以避免同时调用，只会识别前面的物体。<br>3d物体可以通过onMouseDown方法触发点击事件<br>而UI需要继承IPointerClickHandler接口  </li>
+<li>如果3d物体和UI同时继承自接口，但想让它们能够同时触发<ul>
+<li>通过EventSystem.current.RaycastAll()方法，获取全部的触发物体</li>
+<li>遍历物体，并通过ExecuteEvents.Execute方法激活其相应的事件</li>
+</ul>
+</li>
+<li>通过GraphicRaycaster.Raycast方法获取碰撞的物体，包含挂在collider组件的2d和3d物体.可以通过此方法来实现一些较为复杂的UI场景与鼠标事件交互</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/26/Unity/UI/UIGUI%E6%A1%88%E4%BE%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/UI/UnityUI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/26/Unity/UI/UnityUI/">UnityUI</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/26/Unity/UI/UnityUI/" class="archive-article-date">
+  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：279字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="UnityUI入门"><a href="#UnityUI入门" class="headerlink" title="UnityUI入门"></a>UnityUI入门</h2><h2 id="UI组件的基本属性-Rect-Transform"><a href="#UI组件的基本属性-Rect-Transform" class="headerlink" title="UI组件的基本属性(Rect Transform)"></a>UI组件的基本属性(Rect Transform)</h2><ul>
+<li>anchors<br>  anchors是为了控制Ui适配在屏幕上的缩放和偏移,比如左侧返回按钮,如果考虑屏幕适配则需要将锚点顶在左侧</li>
+<li>pivot<br>  是控制ui自身的旋转和坐标的锚点</li>
+<li>blueprint mode<br>  用来控制UI旋转时Rect边框是否自适应大小</li>
+<li>Raw edit mode<br>  用来控制ui是否自动跟随新调整的pivot位置</li>
+</ul>
+<h2 id="常用的UI控件"><a href="#常用的UI控件" class="headerlink" title="常用的UI控件"></a>常用的UI控件</h2><ol>
+<li>Text<ul>
+<li>有字体,大小富文本等选项.  </li>
+<li><strong>align by geometry:</strong> 将场景渲染模式改为wireframe就可以很清楚看到文字的网格,这个选项就是根据文字的网格将文字对齐到边框,如果只是对齐需要谨慎使用,避免出现意外情况</li>
+<li><strong>best fit:</strong>  让文字自适应在一个范围内调整文字大小来适配窗口</li>
+</ul>
+</li>
+<li>image<ul>
+<li><strong>set native size:</strong> 设置为图片大小,可以不用手动调整控件大小.</li>
+<li><strong>image type:</strong> 图片展示的方式,simple直接填充,sliced会采用九宫格来填充,filled类似于滑动条来填充</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/26/Unity/UI/UnityUI/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/开发/Quaternion的简单应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Quaternion%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">Quaternion的简单应用</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Quaternion%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：158字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Quaternion是Unity里的四元数"><a href="#Quaternion是Unity里的四元数" class="headerlink" title="Quaternion是Unity里的四元数"></a>Quaternion是Unity里的四元数</h2><p>用来调整物体的方向，在Unity中transform属性面板中的值为欧拉值，但是在脚本控制调整中需要用四元数来进行转换。</p>
+<h2 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h2><p>背景：将物体移到到斜道上时，旋转物体到斜道角度  </p>
+<p>采用方法FromToRotation（from，to）：函数返回的是旋转角度的量，而不是直接将from的值转成to的值，所以需要乘上自身的旋转值，实际用法如下：<br>    <code>transform.rotation = Quaternion.FromToRotation(transform.up, normalTarget) * transform.rotation;</code></p>
+<h2 id="与SetFromToRotation的区别"><a href="#与SetFromToRotation的区别" class="headerlink" title="与SetFromToRotation的区别"></a>与SetFromToRotation的区别</h2><p>两个方法其实相同，都是返回旋转的增量值</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Quaternion%E7%9A%84%E7%AE%80%E5%8D%95%E5%BA%94%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Unity/开发/Unity中Camera学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -213,88 +473,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E4%B8%ADCamera%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/Unity音频学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">Unity音频学习</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：110字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h2><p>简单的实现赛车的引擎声，打滑声和物体碰撞声</p>
-<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><ol>
-<li>确定资源放置的物体<br> 这三个声音都可以放在赛车上，如果一些背景声音可以利用audioListen来拾取</li>
-<li>增加声音的生动性<br> 可以跟随速度来调整声音的pitch，来模拟高速和低速的一些情况</li>
-<li>创建混合器来输出声音</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
         </p>
       
 
@@ -378,6 +556,88 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/开发/Unity音频学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">Unity音频学习</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2022-05-26T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-26</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：110字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="应用背景"><a href="#应用背景" class="headerlink" title="应用背景"></a>应用背景</h2><p>简单的实现赛车的引擎声，打滑声和物体碰撞声</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><ol>
+<li>确定资源放置的物体<br> 这三个声音都可以放在赛车上，如果一些背景声音可以利用audioListen来拾取</li>
+<li>增加声音的生动性<br> 可以跟随速度来调整声音的pitch，来模拟高速和低速的一些情况</li>
+<li>创建混合器来输出声音</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/26/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9F%B3%E9%A2%91%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
         </p>
       
 
@@ -683,98 +943,6 @@
 
 
   
-    <article id="post-code/uwp/UWP绘制下划线,删除线,波浪线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/code/uwp/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">UWP绘制下划线,删除线,波浪线</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/30/code/uwp/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：700字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"><a href="#实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开" class="headerlink" title="实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开"></a>实现文本增加下划线、删除线、波浪线，并且与文字颜色区别开</h2><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>需要给文本增加下划线、删除线、波浪线。并且文字和下划线、删除线、波浪线的颜色各不相同<br>TextBlock的TextDecorations属性可以增加下划线和删除线<br>RichEditBox可以提供波浪线（当然可以全部用RichEditBox来替代Block,因为需求不需要交互所以直接用了textblock）</p>
-<h2 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h2><ol>
-<li><strong>TextBlock的前景色会修改文字以及下划线</strong>：所以必须将两者分开，即绘制下划线用另一个TextBlock实现。并且绘制下划线的textblock需要用空白来填充。  </li>
-<li><strong>绘制下划线TextBlock的text属性无法显示空白</strong>：利用<code>&lt;Run&gt;</code>可以显示空白，空白字符为<code>&amp;#160；</code>，但是如果绑定Run的Text则不能直接将<code>&amp;#160；</code>进行赋值，而是<code>(char)160</code>  </li>
-<li><strong>绘制下划线TextBlock空白个数计算</strong>：因为每个字体的宽度并不一样，所以不能单纯用字符个数来计算。TextBlock中有ActualWidth属性可以获取当前渲染的长度。于是用不换行的文字渲染长度除以当个空白的渲染长度就可以得到空白字符需要的个数</li>
-<li><strong>处理文字的TextBlock和下划线textblock换行不同步</strong>：在textblock中<code>\r\n</code>、<code>\r</code>、<code>\n</code>都可以换行，解析字符利用split将每一行字符分离处理，分别计算每一行下划线textblock空白所需要的长度并在结尾加入相应的换行</li>
-<li><strong>文字textblock和下划线的textblock换行长度不匹配</strong>：因为textblock的换行默认采用空格换行，所以遇到单词会直接整个换行从而留下空白。<strong>解决办法</strong>：处理文字，在每个文字直接加入零宽字符<code>\u200B</code>，这样就会与下划线换行大致匹配。<em>此步骤应在4步之前，注意<code>\r\n</code>之间不要插入空白字符否则会变成两次换行</em></li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">TextBlock</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RichEditBox</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E7%BB%98%E5%88%B6%E4%B8%8B%E5%88%92%E7%BA%BF,%E5%88%A0%E9%99%A4%E7%BA%BF,%E6%B3%A2%E6%B5%AA%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-code/uwp/UWP修改textbox颜色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -831,168 +999,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E4%BF%AE%E6%94%B9textbox%E9%A2%9C%E8%89%B2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-code/uwp/UWP主题切换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/code/uwp/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/">UWP主题切换</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/30/code/uwp/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：472字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="uwp切换主题"><a href="#uwp切换主题" class="headerlink" title="uwp切换主题"></a>uwp切换主题</h2><h2 id="切换接口和方法"><a href="#切换接口和方法" class="headerlink" title="切换接口和方法"></a>切换接口和方法</h2><p><code>Application</code> 应用程序的主题色.枚举为三种默认,亮,暗.但是无法在运行时修改程序的颜色.只能重启应用的时候应用.在应用程序中只能在app.xaml中调用.<br><code>ElementTheme</code> 单个页面的主题色变换.可以修改当前的控件色,修改当前页以及子项的主题.可以在最外层的页面设置RequestedTheme.就可以实现主题的转换<br><code>Window.Current.Content</code> 可以实现当前软件的控件主题更改,该属性在app.cs中需要在初始化之后才能获取.并且无法修改对话框的主题.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-code/uwp/UWP阴影" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/">UWP阴影</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/" class="archive-article-date">
-  	<time datetime="2021-11-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：241字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="在UWP中实现控件边框的投影"><a href="#在UWP中实现控件边框的投影" class="headerlink" title="在UWP中实现控件边框的投影"></a>在UWP中实现控件边框的投影</h2><h2 id="微软官方自带的投影"><a href="#微软官方自带的投影" class="headerlink" title="微软官方自带的投影"></a>微软官方自带的投影</h2><p>[官方介绍]<a href="https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/windows/uwp/design/layout/depth-shadow</a>  </p>
-<h2 id="利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel"><a href="#利用Microsoft-Toolkit-Uwp-UI-Controls中的DropShadowPanel" class="headerlink" title="利用Microsoft.Toolkit.Uwp.UI.Controls中的DropShadowPanel"></a>利用<code>Microsoft.Toolkit.Uwp.UI.Controls</code>中的<code>DropShadowPanel</code></h2><h3 id="DropShadowPanel必须有内部控件"><a href="#DropShadowPanel必须有内部控件" class="headerlink" title="DropShadowPanel必须有内部控件"></a>DropShadowPanel必须有内部控件</h3><p>DropShadowPanel跟border并不一样,border可以设置大小,但是DropShadowPanel是严格依靠内部控件的,毕竟没有实物哪来的影子,</p>
-<h3 id="DropShadowPanel的内部控件颜色不能为空"><a href="#DropShadowPanel的内部控件颜色不能为空" class="headerlink" title="DropShadowPanel的内部控件颜色不能为空"></a>DropShadowPanel的内部控件颜色不能为空</h3><p>控件不能透明,哪怕在DropShadowPanel中设置颜色也不行.</p>
-<h3 id="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"><a href="#DropShadowPanel的HorizontalContentAlignment属性设置为Stretch" class="headerlink" title="DropShadowPanel的HorizontalContentAlignment属性设置为Stretch"></a><code>DropShadowPanel</code>的<code>HorizontalContentAlignment</code>属性设置为<code>Stretch</code></h3><p>只有填充阴影才有效果</p>
-<h3 id="DropShadowPanel控件层级应低于内部控件"><a href="#DropShadowPanel控件层级应低于内部控件" class="headerlink" title="DropShadowPanel控件层级应低于内部控件"></a>DropShadowPanel控件层级应低于内部控件</h3><p>DropShadowPanel应单独组成阴影边框,内部由主要控件覆盖  </p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UWP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">DropShadowPanel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/code/uwp/UWP%E9%98%B4%E5%BD%B1/">展开全文 >></a>
         </p>
       
 
@@ -1131,7 +1137,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1143,7 +1149,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1163,11 +1169,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1179,15 +1185,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1203,11 +1209,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,11 +1229,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1235,35 +1261,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1275,19 +1277,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1299,15 +1301,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
+                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
               </li>
              
               <li class="article-tag-list-item">

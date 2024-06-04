@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 206
+            总文章数 209
         </nav>
 		<nav>
-            总字数 <span class="post-count">128k</span>
+            总字数 <span class="post-count">133.8k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,258 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/编辑器/拓展Text面板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/">unity拓展面板</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/" class="archive-article-date">
+  	<time datetime="2023-11-08T09:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-08</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：199字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在修改text自定义面板的时候冒出来一堆坑</p>
+<p>首先继承<code>UnityEditor.UI.TextEditor</code>类 继承错了继承了<code>UnityEngine.TextEditor</code> 怎么也没有重新方法 一时间给我整懵了<br>后面改了之后 整了个报错出来<code>SerializedObjectNotCreatableException: Object at index 0 is null</code><br>这个错误有个文档<a href="https://blog.csdn.net/qq_51026638/article/details/122494609" target="_blank" rel="noopener">参考</a> 在里面学了一个方法<strong>使用DrawDefaultInspector()替代base.OnInspectorGUI();</strong> <code>DrawDefaultInspector</code>方法确实不报错了 也可以修改了 但是东西太多了不方便 是debug版的面板 不好用</p>
+<p>最后怎么解决呢<br><strong>重启untiy</strong> 没错 本来在网站上人家都说是开了两个inspector的锅 然后我就重启一遍呗 还真好了 日<br>然后就是没有保存的问题<br><code>serializedObject.ApplyModifiedProperties();</code><br>这个方法没有调用</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/unity宏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/">Unity宏</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/" class="archive-article-date">
+  	<time datetime="2023-11-06T10:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：464字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Unity的宏一般可以分平台等一些操作 在日志输出的时候也可以进行控制<br>通过控制宏来开启和关闭某些日志的输出</p>
+<p>虽然可以通过面板来控制宏 不过还是用脚本调用更方便</p>
+<p>Unity SetScriptingDefineSymbolsForGroup是一个用于为给定构建目标组设置用户指定的脚本编译符号的函数。它是PlayerSettings类的一个静态方法，需要传入以下参数：</p>
+<ul>
+<li>targetGroup: 构建目标组，如BuildTargetGroup.Android</li>
+<li>defines: 预处理器值的字符串，如”UNITY_DEBUG;SOME_DEFINES”</li>
+</ul>
+<p>这个函数可以用于在不同的平台或配置下，启用或禁用一些代码段。例如，你可以使用#if和#endif指令来包裹一些只在特定条件下执行的代码。你可以在<a href="https://forum.unity.com/threads/set-scripting-define-symbols-for-group.1113982/" target="_blank" rel="noopener">这里</a>查看完整的构建目标组列表。</p>
+<p>示例代码:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 设置指定平台的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要设置脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="scriptingDefineSymbols"&gt;</span>要设置的脚本宏定义。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetScriptingDefineSymbols</span>(<span class="params">BuildTargetGroup buildTargetGroup, <span class="keyword">string</span>[] scriptingDefineSymbols</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, <span class="keyword">string</span>.Join(<span class="string">";"</span>, scriptingDefineSymbols));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 获取指定平台的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要获取脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>平台的脚本宏定义。<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span>[] <span class="title">GetScriptingDefineSymbols</span>(<span class="params">BuildTargetGroup buildTargetGroup</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup).Split(<span class="string">';'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 为指定平台移除指定的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要移除脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="scriptingDefineSymbol"&gt;</span>要移除的脚本宏定义。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">RemoveScriptingDefineSymbol</span>(<span class="params">BuildTargetGroup buildTargetGroup, <span class="keyword">string</span> scriptingDefineSymbol</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!HasScriptingDefineSymbol(buildTargetGroup, scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;<span class="keyword">string</span>&gt; scriptingDefineSymbols = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;(GetScriptingDefineSymbols(buildTargetGroup));</span><br><span class="line">    <span class="keyword">while</span> (scriptingDefineSymbols.Contains(scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        scriptingDefineSymbols.Remove(scriptingDefineSymbol);</span><br><span class="line">    &#125;</span><br><span class="line">    SetScriptingDefineSymbols(buildTargetGroup, scriptingDefineSymbols.ToArray());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/UI/图片平铺" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/06/Unity/UI/%E5%9B%BE%E7%89%87%E5%B9%B3%E9%93%BA/">平铺图片</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/06/Unity/UI/%E5%9B%BE%E7%89%87%E5%B9%B3%E9%93%BA/" class="archive-article-date">
+  	<time datetime="2023-11-06T06:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：374字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 UI 中重复平铺一个没有边框的精灵图片。</p>
+<ul>
+<li>选择一个有 Image 组件的 GameObject（如果没有，可以创建一个）</li>
+<li>将你设置为 Sprite 的图片拖拽到 Inspector 的 Source Image 属性中</li>
+<li>现在，你可以看到一些新的选项。你可以将 Image Type 属性设置为 Tiled，但是会出现一个警告信息：It looks like you want to tile a sprite with no border. It would be more efficient to modify the Sprite properties, clear the Packing tag and set the Wrap mode to Repeat.</li>
+<li>这个警告信息的意思是，如果你想要高效地平铺一个没有边框的精灵图片，你应该修改精灵的属性，清除 Packing 标签，并将 Wrap Mode 设置为 Repeat</li>
+<li>为了修改精灵的属性，你需要在 Project 视图中选择你的图片，然后在 Inspector 中找到 Sprite Mode，将其设置为 Single</li>
+<li>接下来，你需要清除 Packing 标签。Packing 标签是用于将多个精灵打包到一个纹理图集中的，这样可以提高渲染性能，但是也会影响平铺效果。你可以在 Inspector 中找到 Packing 标签，将其设置为空</li>
+<li>最后，你需要将 Wrap Mode 设置为 Repeat。Wrap Mode 是用于控制纹理在 UV 坐标超出 0 到 1 的范围时的表现方式的。你可以在 Inspector 中找到 Wrap Mode，将其设置为 Repeat</li>
+<li>完成以上步骤后，你就可以在 UI 中重复平铺一个没有边框的精灵图片了</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/06/Unity/UI/%E5%9B%BE%E7%89%87%E5%B9%B3%E9%93%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/UI/获取元素的高度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -762,301 +1014,6 @@
 
 
   
-    <article id="post-Unity/性能优化/unity内存泄漏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/27/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unity%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">unity内存泄漏</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/27/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unity%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/" class="archive-article-date">
-  	<time datetime="2023-10-27T01:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-27</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：499字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.bilibili.com/video/BV1Y34y1u7nX/?buvid=XXB3EAEBCFC84606538F21DA99FEF65886844&is_story_h5=false&mid=yFk3qFkBRMU44urofPjI5Q%3D%3D&p=1&plat_id=116&share_from=ugc&share_medium=android&share_plat=android&share_session_id=40a4fddd-6c55-4c54-a0f5-10843a12ed2b&share_source=QQ&share_tag=s_i&timestamp=1698334761&unique_k=a2ltUpx&up_id=10834298" target="_blank" rel="noopener">b站视频</a></p>
-<p><a href="https://docs.unity3d.com/Packages/com.unity.memoryprofiler@1.0/manual/index.html" target="_blank" rel="noopener">Unity memory profiler</a></p>
-<p><a href="https://blog.uwa4d.com/archives/optimzation_memory_1.html" target="_blank" rel="noopener">参考文档</a></p>
-<p>Unity的managedHeap.usedSize是Unity编辑器提供的API之一，用于获取当前Unity应用程序的托管堆使用大小（以字节为单位）。</p>
-<p>如果你发现managedHeap.usedSize一直在增加，可能有几个原因：</p>
-<ol>
-<li><p>内存泄漏：可能存在未被正确释放的对象或资源，导致内存占用不断增加。这可能是由于没有正确管理和销毁游戏对象、未注册的事件、未释放的资源等问题引起的。<br>解决方法：检查是否存在未释放的对象或资源，并确保在不再需要时正确释放它们。</p>
-</li>
-<li><p>频繁的对象实例化和销毁：如果频繁地创建和销毁大量的对象，将导致managedHeap.usedSize不断增加。这可能是由于重复实例化对象、不合理的对象池管理等问题引起的。<br>解决方法：考虑使用对象池或重用已经存在的对象，避免频繁的对象实例化和销毁。</p>
-</li>
-<li><p>资源加载和卸载问题：如果频繁地加载和卸载资源，会导致managedHeap.usedSize不断增加。这可能是由于资源加载后没有正确卸载，或者重复加载相同的资源等问题引起的。<br>解决方法：确保在不再需要时正确卸载资源，避免重复加载相同的资源。</p>
-</li>
-<li><p>不合理的代码逻辑或算法：某些代码逻辑或算法可能存在效率低下或者内存使用不当的问题，导致managedHeap.usedSize持续增加。<br>解决方法：优化代码逻辑或算法，减少对内存的占用，提高内存使用效率。</p>
-</li>
-</ol>
-<p>总之，如果你发现managedHeap.usedSize一直在增加，需要仔细检查代码，排查可能的内存泄漏、对象实例化销毁、资源加载卸载以及代码逻辑算法等问题，并采取相应的解决方法。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/27/Unity/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/unity%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/工具/Unity序列化工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7/">Unity序列化工具</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7/" class="archive-article-date">
-  	<time datetime="2023-10-25T09:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-25</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：1.6k字 | 预计阅读时长：5分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>序列化工具很多的 找两个比较常用的<br><a href="https://github.com/jacobdufault/fullserializer" target="_blank" rel="noopener">fullserializer</a><br>比unity自带的json序列化工具要强上很多 支持字典list和日期 但是需要注意枚举的存储是用的字符串而不是数字</p>
-<p><a href="https://www.newtonsoft.com/json/help/html/SerializingJSON.htm" target="_blank" rel="noopener">Newtonsoft</a>就是比较知名的.net的序列化工具了 不过并不是很适应Unity 不过也能用就是了 不支持datetime存储</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>Newtonsoft Json 和 Full Serializer 都是 C# 中用于 JSON 序列化和反序列化的库，它们都遵循 JSON 格式的标准语法，如使用双引号、逗号、方括号、花括号等。因此，它们生成的 JSON 字符串在格式上是通用的，可以相互转换。</p>
-<p>但是，它们也有一些不同的特性和设置，如对枚举、空值、私有变量、日期等数据类型的处理，以及对序列化和反序列化的选项和设置。这些特性和设置可能会影响 JSON 字符串的内容和格式，从而影响不同的 JSON 序列化文件的通用性。例如，Newtonsoft Json 默认会将枚举类型转换为数字，而 Full Serializer 默认会将枚举类型转换为字符串。如果不进行相应的转换器或设置的调整，这两个库就无法正确地反序列化对方的 JSON 字符串。</p>
-<h2 id="不同json的标准"><a href="#不同json的标准" class="headerlink" title="不同json的标准"></a>不同json的标准</h2><p>JSON 序列化是将对象转换为 JSON 格式的字符串的过程，反序列化是将 JSON 格式的字符串转换为对象的过程。不同的 JSON 序列化文件指的是使用不同的语言或库进行 JSON 序列化的文件，例如 Python 的 json 模块，C# 的 Newtonsoft Json 库，Java 的 Gson 库等。</p>
-<p>不同的 JSON 序列化文件序列化的 JSON 能否通用，取决于以下几个因素：</p>
-<ul>
-<li>JSON 格式的标准和兼容性。JSON 格式是一种通用的数据交换格式，它有一套规范的语法，如使用双引号包围键和值，使用逗号分隔键值对，使用方括号表示数组，使用花括号表示对象等。只要遵循这些规范，不同的 JSON 序列化文件就可以生成相同的 JSON 格式的字符串，从而实现通用性。但是，有些语言或库可能会对 JSON 格式进行扩展或修改，如使用单引号，添加注释，支持二进制数据等，这些非标准的 JSON 格式可能会导致不同的 JSON 序列化文件无法通用。因此，为了保证通用性，建议使用标准的 JSON 格式，并避免使用非标准的特性。</li>
-<li>对象的结构和类型。JSON 格式支持的数据类型有字符串、数字、布尔值、数组、对象和 null。但是，不同的语言或库可能会有更多的数据类型，如日期、枚举、元组、集合等。当这些数据类型被序列化为 JSON 格式时，可能会丢失一些信息，或者需要一些额外的信息来表示。例如，Python 的 datetime 对象被序列化为 JSON 格式时，可能会使用一个字符串来表示，如 “2024-01-09T02:38:49”，但是这个字符串并不能完全反映出 datetime 对象的所有属性，如时区、微秒等。另一个例子是，C# 的枚举类型被序列化为 JSON 格式时，可能会使用一个数字或一个字符串来表示，如 0 或 “Red”，但是这些数字或字符串并不能完全反映出枚举类型的所有信息，如名称、基类型等。因此，为了保证通用性，建议使用 JSON 格式支持的数据类型，并避免使用复杂的数据类型，或者提供一些自定义的转换器来处理这些数据类型。</li>
-<li>序列化和反序列化的选项和设置。不同的语言或库可能会提供一些选项和设置来控制 JSON 序列化和反序列化的过程，如缩进、排序、忽略、默认值、验证等。这些选项和设置可能会影响 JSON 格式的字符串的内容和格式，从而影响不同的 JSON 序列化文件的通用性。例如，Python 的 json 模块提供了一个 indent 参数来控制 JSON 格式的字符串的缩进，如果设置为 None，那么 JSON 格式的字符串就会被压缩为一行，如果设置为一个正整数，那么 JSON 格式的字符串就会被格式化为多行，每一层缩进的空格数为该整数。这样，不同的 indent 参数的值就会导致不同的 JSON 序列化文件的格式不同，从而影响通用性。因此，为了保证通用性，建议使用相同的选项和设置来进行 JSON 序列化和反序列化，或者在不同的选项和设置之间进行转换。</li>
-</ul>
-<h2 id="json序列化"><a href="#json序列化" class="headerlink" title="json序列化"></a>json序列化</h2><p>Newtonsoft.Json 是一个用于 JSON 序列化和反序列化的库，它可以将 C# 的对象转换为 JSON 格式的字符串，或者将 JSON 格式的字符串转换为 C# 的对象。它提供了一些灵活的设置和选项，来控制序列化和反序列化的过程。</p>
-<p>如果在类中删除一个字段，再利用 Newtonsoft.Json 解析 JSON 并序列化为类时，会发生以下情况：</p>
-<ul>
-<li>如果使用的是默认的设置，那么 Newtonsoft.Json 会忽略 JSON 中多余的字段，不会抛出异常，也不会给出警告。例如，如果有一个 Person 类，包含了 Name 和 Age 两个字段，然后将一个 Person 对象序列化为 JSON，得到如下字符串：</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"Name"</span>: <span class="string">"Alice"</span>,</span><br><span class="line">  <span class="attr">"Age"</span>: <span class="number">20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后，在 Person 类中删除了 Age 字段，再将上面的 JSON 字符串反序列化为 Person 对象，得到如下结果：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person person = <span class="keyword">new</span> Person();</span><br><span class="line">person.Name = <span class="string">"Alice"</span>;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，JSON 中的 Age 字段被忽略了，没有影响反序列化的结果。</p>
-<ul>
-<li>如果想要在反序列化时检测 JSON 中的多余字段，可以使用 MissingMemberHandling 设置，将其值设为 MissingMemberHandling.Error。这样，如果 JSON 中有类中不存在的字段，Newtonsoft.Json 会抛出 JsonSerializationException 异常，提示 JSON 中的字段与类中的字段不匹配。例如，如果在上面的例子中使用了这个设置，会得到如下的异常信息：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Newtonsoft.Json.JsonSerializationException: &#39;Could not find member &#39;Age&#39; on object of type &#39;Person&#39;. Path &#39;Age&#39;, line 3, position 9.&#39;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/工具/Unity关于NPoi的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%85%B3%E4%BA%8ENPoi%E7%9A%84%E4%BD%BF%E7%94%A8/">Unity关于NPoi的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%85%B3%E4%BA%8ENPoi%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2023-10-25T02:02:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-25</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：376字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>使用场景<br>游戏的一些配置大多都是在Excel表中,方便查看修改和理解,有种同步数据库的概念.记录一下尝试成功的版本和使用的接口<br>版本和下载<br><strong>注意nuget中导入的dll是无法在Unity中直接用的 需要将下载的dll移动到Unity的资源文件夹下才能正常使用 表现就是用编辑器打开项目是没有报错的并且程序集也正常引用了 但是Unity会报找不到引用</strong><br>直接在Nuget包管理中搜索可以 2.2.1版本是可以正常使用的 其他版本未测<br>这里基本就结束了 如果想自行管理包的位置就放在想导入的程序集文件夹下面 然后删除多余的版本dll就可以正常使用了<br>使用到的接口</p>
-<ul>
-<li>IWorkbook 所有数据都会导出到这个接口中<ul>
-<li>XSSFWorkbook xlsx文件读取接口</li>
-<li>HSSFWorkbook xls文件读取接口</li>
-<li>IWorkbook.NumberOfSheets 很简单 就是该文件下的sheet表的数量</li>
-<li>IWorkbook.GetSheetName(sheetIndex); 获取sheet名字</li>
-<li>GetSheetAt() 获取ISheet</li>
-</ul>
-</li>
-<li>ISheet<br>sheet的接口<ul>
-<li>GetRow 返回IRow</li>
-<li>ForceFormulaRecalculation 强制计算公式 如果不想表中公式丢失就设为true</li>
-<li>GetMergedRegion 获取合格单元格的范围 (该单元格的数据在其范围的左上)</li>
-</ul>
-</li>
-<li>IRow<br>行的接口<ul>
-<li>GetCell 返回ICell</li>
-</ul>
-</li>
-<li>ICell<br>每个单元格<ul>
-<li>SetCellType 设置单元格的格式 一般都是设成string 导出来就行</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%85%B3%E4%BA%8ENPoi%E7%9A%84%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
@@ -1166,7 +1123,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1178,7 +1135,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1198,11 +1155,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,15 +1171,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1238,11 +1195,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1254,11 +1215,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1270,35 +1247,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1310,19 +1263,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1334,15 +1287,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
+                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
               </li>
              
               <li class="article-tag-list-item">

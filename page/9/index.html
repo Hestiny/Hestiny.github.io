@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 206
+            总文章数 209
         </nav>
 		<nav>
-            总字数 <span class="post-count">128k</span>
+            总字数 <span class="post-count">133.8k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,261 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-code/安卓/创建通知" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/04/code/%E5%AE%89%E5%8D%93/%E5%88%9B%E5%BB%BA%E9%80%9A%E7%9F%A5/">创建通知</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/04/code/%E5%AE%89%E5%8D%93/%E5%88%9B%E5%BB%BA%E9%80%9A%E7%9F%A5/" class="archive-article-date">
+  	<time datetime="2023-12-04T10:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-04</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：406字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通知是指安卓在您应用的界面之外显示的消息，旨在向用户提供提醒、来自他人的通信信息或您应用中的其他实时信息。用户可以点按通知来打开应用，或直接从通知中执行操作²。</p>
+<p>创建通知的基本步骤如下：</p>
+<ul>
+<li>创建NotificationManager来对通知进行管理，通过调用getSystemService (NOTIFICATION_SERVICE)来获得NotificationManager实例；</li>
+<li>在Android8.0以后要对版本进行适配，创建通知渠道并设置重要性；</li>
+<li>使用NotificationCompat.Builder对象设置通知内容和渠道，如小图标、标题、文本、优先级等；</li>
+<li>调用通知管理类的notify ()方法弹出通知栏；</li>
+</ul>
+<p>您还可以添加一些高级功能，如通知操作、展开式通知、自定义通知布局等，以提高用户体验和互动性。</p>
+<p>以下是一个简单的示例代码，用于创建一个包含标题和文本的基本通知¹：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Create a notification manager object.</span></span><br><span class="line">NotificationManagerCompat notificationManager = NotificationManagerCompat.from(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a notification channel for Android 8.0 and higher.</span></span><br><span class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line">    CharSequence name = getString(R.string.channel_name);</span><br><span class="line">    String description = getString(R.string.channel_description);</span><br><span class="line">    <span class="keyword">int</span> importance = NotificationManager.IMPORTANCE_DEFAULT;</span><br><span class="line">    NotificationChannel channel = <span class="keyword">new</span> NotificationChannel(CHANNEL_ID, name, importance);</span><br><span class="line">    channel.setDescription(description);</span><br><span class="line">    <span class="comment">// Register the channel with the system</span></span><br><span class="line">    notificationManager.createNotificationChannel(channel);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a basic notification with a title and text.</span></span><br><span class="line">NotificationCompat.Builder builder = <span class="keyword">new</span> NotificationCompat.Builder(<span class="keyword">this</span>, CHANNEL_ID)</span><br><span class="line">        .setSmallIcon(R.drawable.notification_icon)</span><br><span class="line">        .setContentTitle(<span class="string">"My notification"</span>)</span><br><span class="line">        .setContentText(<span class="string">"Hello World!"</span>)</span><br><span class="line">        .setPriority(NotificationCompat.PRIORITY_DEFAULT);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Show the notification</span></span><br><span class="line">notificationManager.notify(notificationId, builder.build());</span><br></pre></td></tr></table></figure>
+
+<p>(1) <a href="https://developer.android.google.cn/guide/topics/ui/notifiers/notifications?hl=zh-cn." target="_blank" rel="noopener">通知概览 | Android 开发者 | Android Developers.</a><br>(2) <a href="https://developer.android.google.cn/training/notify-user/build-notification?hl=zh-cn." target="_blank" rel="noopener">创建通知 | Android 开发者 | Android Developers.</a><br>(3) <a href="https://zhuanlan.zhihu.com/p/172491842." target="_blank" rel="noopener">(Android)Notification使用详解 - 知乎.</a><br>(4) <a href="https://developer.android.google.cn/training/notify-user/custom-notification?hl=zh-cn." target="_blank" rel="noopener">创建自定义通知布局 | Android 开发者 | Android Developers.</a><br>(5) <a href="https://github.com/jessekwon/jessekwon.github.io/tree/c469d524582f315e4428c090ef1a40bee5adeb7c/_posts%2F2018-07-09-notification.md." target="_blank" rel="noopener">github.com.</a><br>(6) <a href="https://github.com/BabluKumar17/Social-Distancing-App/tree/1c29a8d38311019859441cdc7b4030fc9915e93a/app%2Fsrc%2Fmain%2Fjava%2Fcom%2Fsecurity10x%2Fsocialdistancing%2FMainActivity.java." target="_blank" rel="noopener">github.com.</a><br>(7) <a href="https://github.com/Dwrath299/WhatsUpp/tree/fa6d8bf1bb61bba4ebf964fc83c51cd27d7141a7/app%2Fsrc%2Fmain%2Fjava%2Fedu%2Fbyui%2Fwhatsupp%2FGroupView.java." target="_blank" rel="noopener">github.com.</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/04/code/%E5%AE%89%E5%8D%93/%E5%88%9B%E5%BB%BA%E9%80%9A%E7%9F%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-code/安卓/定时器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/04/code/%E5%AE%89%E5%8D%93/%E5%AE%9A%E6%97%B6%E5%99%A8/">定时器</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/04/code/%E5%AE%89%E5%8D%93/%E5%AE%9A%E6%97%B6%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2023-12-04T10:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-04</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：451字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>setExactAndAllowWhileIdle是一个AlarmManager类的方法，它可以设置一个精确的闹钟，即使设备处于低电耗模式或应用处于应用待机模式，也会在指定的时间触发。这个方法适用于需要在特定时间执行重要任务的应用，例如闹钟或提醒应用¹。</p>
+<p>使用setExactAndAllowWhileIdle方法的基本步骤如下：</p>
+<ul>
+<li>创建一个AlarmManager对象，通过调用getSystemService(ALARM_SERVICE)来获取AlarmManager实例；</li>
+<li>创建一个PendingIntent对象，指定要在闹钟触发时执行的操作，例如启动一个服务或发送一个广播；</li>
+<li>调用setExactAndAllowWhileIdle方法，传入闹钟类型、触发时间和PendingIntent对象，设置一个精确的闹钟；</li>
+</ul>
+<p>以下是一个简单的示例代码，用于创建一个在10秒后触发的精确闹钟，然后发送一个广播：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个AlarmManager对象</span></span><br><span class="line">AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个Intent对象，指定要发送的广播</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, MyBroadcastReceiver<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个PendingIntent对象，包装Intent对象</span></span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getBroadcast(<span class="keyword">this</span>, <span class="number">0</span>, intent, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取当前时间</span></span><br><span class="line"><span class="keyword">long</span> currentTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置一个在10秒后触发的精确闹钟</span></span><br><span class="line">alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, currentTime + <span class="number">10000</span>, pendingIntent);</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是，setExactAndAllowWhileIdle方法对每个应用触发闹钟的频率有限制，不能超过每9分钟一次²。如果您需要更频繁地触发闹钟，您可以考虑使用setAndAllowWhileIdle方法，它可以设置一个不精确的闹钟，但是触发频率没有限制³。</p>
+<p>(1) <a href="https://developer.android.google.cn/training/monitoring-device-state/doze-standby?hl=zh-cn." target="_blank" rel="noopener">针对低电耗模式和应用待机模式进行优化 | Android 开发</a><br>(2) <a href="https://cloud.tencent.com/developer/information/setexactandallowwhileidle." target="_blank" rel="noopener">setexactandallowwhileidle_SetExactAndAllowWhileIdle不唤醒设备</a><br>(3) <a href="https://blog.csdn.net/qq284565035/article/details/51705341." target="_blank" rel="noopener">[译]图解Android应用的后台任务和提醒 - CSDN博客.</a><br>(4) <a href="https://stackoverflow.com/questions/33110246/setexactandallowwhileidle-is-not-exact-as-of-developer-reference." target="_blank" rel="noopener">android - setExactAndAllowWhileIdle - is not exact as of developer</a><br>(5) <a href="https://developer.android.google.cn/training/scheduling/alarms?hl=zh-cn." target="_blank" rel="noopener">设置重复闹铃时间 | Android 开发者 | Android Developers.</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/04/code/%E5%AE%89%E5%8D%93/%E5%AE%9A%E6%97%B6%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csharp/日期处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/12/01/csharp/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/">c# 日期处理</a>
+    </h1>
+  
+
+        
+        <a href="/2023/12/01/csharp/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/" class="archive-article-date">
+  	<time datetime="2023-12-01T07:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-01</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：204字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于周的处理 因为不同的日历的每周第一天都不一样 所以c#有很多的本地化日历</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetWeekOfYear</span>(<span class="params"><span class="keyword">this</span> DateTime date, CultureInfo culture = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    culture ??= <span class="keyword">new</span> CultureInfo(<span class="string">"en-US"</span>); <span class="comment">//默认美国日历 并且以星期一为一周的第一天</span></span><br><span class="line">    DayOfWeek cultureFirstDay = DayOfWeek.Monday;</span><br><span class="line">    <span class="keyword">return</span> culture.Calendar.GetWeekOfYear(date, culture.DateTimeFormat.CalendarWeekRule, cultureFirstDay);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetDayOfWeek</span>(<span class="params"><span class="keyword">this</span> DateTime date, DayOfWeek firstDayOfWeek = DayOfWeek.Monday</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dayOfWeek = (<span class="keyword">int</span>)date.DayOfWeek;    </span><br><span class="line">    <span class="keyword">var</span> firstDay = (<span class="keyword">int</span>)firstDayOfWeek;</span><br><span class="line">    <span class="keyword">return</span> (dayOfWeek - firstDay + <span class="number">7</span>) % <span class="number">7</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">IsInSameWeek</span>(<span class="params">DateTime firstDate, DateTime secondDate</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> daySpan = (secondDate - firstDate).TotalDays;</span><br><span class="line">    <span class="keyword">var</span> firstDayOfWeek = firstDate.GetDayOfWeek();</span><br><span class="line">    <span class="keyword">var</span> secondDayOfWeek = secondDate.GetDayOfWeek();</span><br><span class="line">    <span class="keyword">return</span> (daySpan &gt;= <span class="number">0</span>) ^ (firstDayOfWeek &gt;= secondDayOfWeek);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 获取激励周末剩余的日期 一周的第一天为周一</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="time"&gt;</span><span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetLeftDayOfWeek</span>(<span class="params">DateTime time</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (time.DayOfWeek == DayOfWeek.Sunday)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> DayOfWeek.Saturday - time.DayOfWeek + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/12/01/csharp/%E6%97%A5%E6%9C%9F%E5%A4%84%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/工具/luban配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -798,258 +1053,6 @@
 
 
   
-    <article id="post-Unity/编辑器/拓展Text面板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/">unity拓展面板</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/" class="archive-article-date">
-  	<time datetime="2023-11-08T09:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-08</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：199字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天在修改text自定义面板的时候冒出来一堆坑</p>
-<p>首先继承<code>UnityEditor.UI.TextEditor</code>类 继承错了继承了<code>UnityEngine.TextEditor</code> 怎么也没有重新方法 一时间给我整懵了<br>后面改了之后 整了个报错出来<code>SerializedObjectNotCreatableException: Object at index 0 is null</code><br>这个错误有个文档<a href="https://blog.csdn.net/qq_51026638/article/details/122494609" target="_blank" rel="noopener">参考</a> 在里面学了一个方法<strong>使用DrawDefaultInspector()替代base.OnInspectorGUI();</strong> <code>DrawDefaultInspector</code>方法确实不报错了 也可以修改了 但是东西太多了不方便 是debug版的面板 不好用</p>
-<p>最后怎么解决呢<br><strong>重启untiy</strong> 没错 本来在网站上人家都说是开了两个inspector的锅 然后我就重启一遍呗 还真好了 日<br>然后就是没有保存的问题<br><code>serializedObject.ApplyModifiedProperties();</code><br>这个方法没有调用</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/08/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E6%8B%93%E5%B1%95Text%E9%9D%A2%E6%9D%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/编辑器/unity宏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/">Unity宏</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/" class="archive-article-date">
-  	<time datetime="2023-11-06T10:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-06</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：464字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Unity的宏一般可以分平台等一些操作 在日志输出的时候也可以进行控制<br>通过控制宏来开启和关闭某些日志的输出</p>
-<p>虽然可以通过面板来控制宏 不过还是用脚本调用更方便</p>
-<p>Unity SetScriptingDefineSymbolsForGroup是一个用于为给定构建目标组设置用户指定的脚本编译符号的函数。它是PlayerSettings类的一个静态方法，需要传入以下参数：</p>
-<ul>
-<li>targetGroup: 构建目标组，如BuildTargetGroup.Android</li>
-<li>defines: 预处理器值的字符串，如”UNITY_DEBUG;SOME_DEFINES”</li>
-</ul>
-<p>这个函数可以用于在不同的平台或配置下，启用或禁用一些代码段。例如，你可以使用#if和#endif指令来包裹一些只在特定条件下执行的代码。你可以在<a href="https://forum.unity.com/threads/set-scripting-define-symbols-for-group.1113982/" target="_blank" rel="noopener">这里</a>查看完整的构建目标组列表。</p>
-<p>示例代码:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 设置指定平台的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要设置脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="scriptingDefineSymbols"&gt;</span>要设置的脚本宏定义。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetScriptingDefineSymbols</span>(<span class="params">BuildTargetGroup buildTargetGroup, <span class="keyword">string</span>[] scriptingDefineSymbols</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, <span class="keyword">string</span>.Join(<span class="string">";"</span>, scriptingDefineSymbols));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 获取指定平台的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要获取脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>平台的脚本宏定义。<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span>[] <span class="title">GetScriptingDefineSymbols</span>(<span class="params">BuildTargetGroup buildTargetGroup</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup).Split(<span class="string">';'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> 为指定平台移除指定的脚本宏定义。</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="buildTargetGroup"&gt;</span>要移除脚本宏定义的平台。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="scriptingDefineSymbol"&gt;</span>要移除的脚本宏定义。<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">RemoveScriptingDefineSymbol</span>(<span class="params">BuildTargetGroup buildTargetGroup, <span class="keyword">string</span> scriptingDefineSymbol</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">string</span>.IsNullOrEmpty(scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!HasScriptingDefineSymbol(buildTargetGroup, scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    List&lt;<span class="keyword">string</span>&gt; scriptingDefineSymbols = <span class="keyword">new</span> List&lt;<span class="keyword">string</span>&gt;(GetScriptingDefineSymbols(buildTargetGroup));</span><br><span class="line">    <span class="keyword">while</span> (scriptingDefineSymbols.Contains(scriptingDefineSymbol))</span><br><span class="line">    &#123;</span><br><span class="line">        scriptingDefineSymbols.Remove(scriptingDefineSymbol);</span><br><span class="line">    &#125;</span><br><span class="line">    SetScriptingDefineSymbols(buildTargetGroup, scriptingDefineSymbols.ToArray());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/06/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/unity%E5%AE%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/UI/图片平铺" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/11/06/Unity/UI/%E5%9B%BE%E7%89%87%E5%B9%B3%E9%93%BA/">平铺图片</a>
-    </h1>
-  
-
-        
-        <a href="/2023/11/06/Unity/UI/%E5%9B%BE%E7%89%87%E5%B9%B3%E9%93%BA/" class="archive-article-date">
-  	<time datetime="2023-11-06T06:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-06</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：374字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在 UI 中重复平铺一个没有边框的精灵图片。</p>
-<ul>
-<li>选择一个有 Image 组件的 GameObject（如果没有，可以创建一个）</li>
-<li>将你设置为 Sprite 的图片拖拽到 Inspector 的 Source Image 属性中</li>
-<li>现在，你可以看到一些新的选项。你可以将 Image Type 属性设置为 Tiled，但是会出现一个警告信息：It looks like you want to tile a sprite with no border. It would be more efficient to modify the Sprite properties, clear the Packing tag and set the Wrap mode to Repeat.</li>
-<li>这个警告信息的意思是，如果你想要高效地平铺一个没有边框的精灵图片，你应该修改精灵的属性，清除 Packing 标签，并将 Wrap Mode 设置为 Repeat</li>
-<li>为了修改精灵的属性，你需要在 Project 视图中选择你的图片，然后在 Inspector 中找到 Sprite Mode，将其设置为 Single</li>
-<li>接下来，你需要清除 Packing 标签。Packing 标签是用于将多个精灵打包到一个纹理图集中的，这样可以提高渲染性能，但是也会影响平铺效果。你可以在 Inspector 中找到 Packing 标签，将其设置为空</li>
-<li>最后，你需要将 Wrap Mode 设置为 Repeat。Wrap Mode 是用于控制纹理在 UV 坐标超出 0 到 1 的范围时的表现方式的。你可以在 Inspector 中找到 Wrap Mode，将其设置为 Repeat</li>
-<li>完成以上步骤后，你就可以在 UI 中重复平铺一个没有边框的精灵图片了</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/11/06/Unity/UI/%E5%9B%BE%E7%89%87%E5%B9%B3%E9%93%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
@@ -1159,7 +1162,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1171,7 +1174,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1191,11 +1194,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1207,15 +1210,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1231,11 +1234,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1247,11 +1254,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1263,35 +1286,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1303,19 +1302,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1327,15 +1326,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
+                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
               </li>
              
               <li class="article-tag-list-item">

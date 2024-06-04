@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 206
+            总文章数 209
         </nav>
 		<nav>
-            总字数 <span class="post-count">128k</span>
+            总字数 <span class="post-count">133.8k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,267 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/动画/Spine/spine纹理工作流" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/05/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%BA%B9%E7%90%86%E5%B7%A5%E4%BD%9C%E6%B5%81/">spine Premultiplied alpha和straight alpha的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2024/01/05/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%BA%B9%E7%90%86%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="archive-article-date">
+  	<time datetime="2024-01-05T02:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-05</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：292字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://zhuanlan.zhihu.com/p/344751308" target="_blank" rel="noopener">Premultiplied文档</a><br><a href="https://segmentfault.com/a/1190000021493586" target="_blank" rel="noopener">alpha合成</a></p>
+<p>spine是一个用于制作2D动画的软件，它支持两种纹理导出的基本工作流：Premultiplied alpha（预乘alpha）和Straight alpha（直接alpha）。</p>
+<p>Premultiplied alpha是指图像中的RGB分量已经和alpha分量做了乘法，这样可以减少边缘的锯齿和过滤瑕疵，但是需要修改混合公式。Premultiplied alpha的混合公式是：</p>
+<p>$$<br>RGB_{result} = RGB_{src} + RGB_{dst} \times (1 - A_{src})<br>$$</p>
+<p>Straight alpha是指图像中的RGB分量仅表示像素的颜色，与alpha分量无关，这样可以保持颜色的纯度，但是容易出现边缘的半透明和过滤瑕疵。Straight alpha的混合公式是：</p>
+<p>$$<br>RGB_{result} = A_{src} \times RGB_{src} + RGB_{dst} \times (1 - A_{src})<br>$$</p>
+<p>两种工作流的选择取决于你的需求和喜好，一般来说，Premultiplied alpha更适合于有大量半透明效果的动画，而Straight alpha更适合于有纯色和锐利边缘的动画。你可以在spine的导出设置中选择你想要的工作流，也可以在Unity的纹理设置中选择Alpha Is Transparency选项来覆写全透明像素的RGB，使其和临近像素一致。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Spine</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/01/05/Unity/%E5%8A%A8%E7%94%BB/Spine/spine%E7%BA%B9%E7%90%86%E5%B7%A5%E4%BD%9C%E6%B5%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/动画/dotween/dopath使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/04/Unity/%E5%8A%A8%E7%94%BB/dotween/dopath%E4%BD%BF%E7%94%A8/">dopath使用</a>
+    </h1>
+  
+
+        
+        <a href="/2024/01/04/Unity/%E5%8A%A8%E7%94%BB/dotween/dopath%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2024-01-04T02:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-04</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：160字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.karvan1230.com/entry/2020/09/01/223433" target="_blank" rel="noopener">setlookat参考</a><br><a href="https://blog.csdn.net/zcaixzy5211314/article/details/84988535" target="_blank" rel="noopener">api解释</a></p>
+<p>其中需要注意的</p>
+<p>在设置2d平面 PathMode.TopDown2D参数时 setlookat的forwardDirection和up与Full3D模式是不一样的<br>在TopDown2D中up才是路径的朝向 而forwardDirection才是上方向 而且此时默认的朝向路径方向为y轴<br>示例代码 y轴为正方向 沿着路径前进<br><code>go.DOPath(path, 3f, PathType.CubicBezier,PathMode.TopDown2D,5, Color.red).SetLookAt(0.1f, Vector3.forward, Vector3.right);</code></p>
+<p>如果发现在路径移动过场中疯狂抽搐 并且到终点莫名的调整方向 需要检查起始的位置坐标是否离场景中心过大 如果过大就会出现这个问题</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dotween</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/01/04/Unity/%E5%8A%A8%E7%94%BB/dotween/dopath%E4%BD%BF%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/gizmos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/01/03/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/gizmos/">gizmos</a>
+    </h1>
+  
+
+        
+        <a href="/2024/01/03/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/gizmos/" class="archive-article-date">
+  	<time datetime="2024-01-03T08:04:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-03</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：336字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Gizmos是一种在Scene视图中绘制线条和形状的功能，可以用于辅助调试和设计。您可以使用Gizmos来显示一些不可见的数据，例如碰撞器的范围，光线的方向，路径的轨迹等。</p>
+<p>要使用Gizmos，您需要在MonoBehaviour的子类中，实现OnDrawGizmos或OnDrawGizmosSelected方法。这两个方法的区别是，OnDrawGizmos会在每帧调用，而OnDrawGizmosSelected只会在物体被选中时调用。</p>
+<p>在这些方法中，您可以使用Gizmos类的各种静态方法来绘制不同的图形，例如：</p>
+<ul>
+<li>Gizmos.DrawCube：绘制一个立方体</li>
+<li>Gizmos.DrawWireCube：绘制一个线框立方体</li>
+<li>Gizmos.DrawSphere：绘制一个球体</li>
+<li>Gizmos.DrawWireSphere：绘制一个线框球体</li>
+<li>Gizmos.DrawLine：绘制一条线段</li>
+<li>Gizmos.DrawRay：绘制一条射线</li>
+<li>Gizmos.DrawIcon：绘制一个图标</li>
+<li>Gizmos.DrawFrustum：绘制一个视锥</li>
+<li>Gizmos.DrawMesh：绘制一个网格</li>
+<li>Gizmos.DrawGUITexture：绘制一个贴图</li>
+</ul>
+<p>您还可以使用Gizmos.color来设置绘制的颜色，以及Gizmos.matrix来设置绘制的矩阵变换。</p>
+<p>以下是一个简单的示例，绘制一个红色的线框立方体：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GizmosExample</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">OnDrawGizmos</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 设置绘制颜色为红色</span></span><br><span class="line">        Gizmos.color = Color.red;</span><br><span class="line">        <span class="comment">// 绘制一个线框立方体，中心为物体的位置，大小为10x10x10</span></span><br><span class="line">        Gizmos.DrawWireCube(transform.position, <span class="keyword">new</span> Vector3(<span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/01/03/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/gizmos/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Unity/动画/dotween/setlookat使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -760,288 +1021,6 @@
 
 
   
-    <article id="post-Unity/动画/dotween/dotween对象池" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/26/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E5%AF%B9%E8%B1%A1%E6%B1%A0/">dotween对象池</a>
-    </h1>
-  
-
-        
-        <a href="/2023/12/26/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E5%AF%B9%E8%B1%A1%E6%B1%A0/" class="archive-article-date">
-  	<time datetime="2023-12-26T09:58:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：620字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://dotween.demigiant.com/getstarted.php" target="_blank" rel="noopener">If you want to reuse the same tween, just set its autoKill behaviour to FALSE (either by changing the global autoKill settings for all tweens, or by chaining SetAutoKill(false) to your tween).</a>这个为手动复用即不删除 自己手动kill 非dotween的对象池</p>
-<p>复用 tween 的好处是可以提高游戏的流畅度和效率，但是也要注意管理好 tween 的引用，避免出现混乱或错误的情况。</p>
-<p>复用 tween 的方法有以下几种：</p>
-<ul>
-<li>在初始化 DOTween 时，设置 recycleAllByDefault 参数为 true，这样所有新创建的 tween 都会默认为可复用的。例如：</li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DG.Tweening; <span class="comment">// 引入命名空间</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DOTweenTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        DOTween.Init(recycleAllByDefault: <span class="literal">true</span>); <span class="comment">// 初始化 DOTween，设置所有 tween 为可复用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在创建 tween 时，使用 SetRecyclable 方法为每个 tween 单独设置是否可复用。例如：</li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DG.Tweening; <span class="comment">// 引入命名空间</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DOTweenTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        transform.DOMoveX(<span class="number">10</span>, <span class="number">1</span>).SetRecyclable(<span class="literal">true</span>); <span class="comment">// 创建一个 tween，并设置为可复用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在创建 tween 时，使用 SetId 方法为每个 tween 设置一个唯一的标识符，然后使用 DOTween.TweensById 方法获取所有具有相同标识符的 tween 的列表。例如：</li>
-</ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> DG.Tweening; <span class="comment">// 引入命名空间</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DOTweenTest</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 创建一个 tween，并为其设置 ID</span></span><br><span class="line">        <span class="keyword">var</span> tween1 = transform.DOMoveX(<span class="number">10</span>, <span class="number">1</span>).SetId(<span class="string">"tween1"</span>);</span><br><span class="line">        <span class="comment">// 创建另一个 tween，并为其设置 ID</span></span><br><span class="line">        <span class="keyword">var</span> tween2 = transform.DOMoveY(<span class="number">5</span>, <span class="number">0.5</span>).SetId(<span class="string">"tween2"</span>);</span><br><span class="line">        <span class="comment">// 将这些 tween 添加到 Sequence 中</span></span><br><span class="line">        <span class="keyword">var</span> sequence = DOTween.Sequence();</span><br><span class="line">        sequence.Append(tween1);</span><br><span class="line">        sequence.Append(tween2);</span><br><span class="line">        <span class="comment">// 获取所有的 tween</span></span><br><span class="line">        <span class="keyword">var</span> allTweens = DOTween.TweensById(<span class="string">"tween1"</span>, <span class="string">"tween2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在使用 DOTween 的 <code>SetRecyclable</code> 方法时，如果设置为 <code>true</code>，这意味着当 tween 被“杀死”或完成时，它不会被销毁，而是会被放入一个池中以便重用。这样做可以避免因创建新的 tweens 而产生的垃圾回收（GC）分配。</p>
-<p>然而，即使设置了 <code>SetRecyclable(true)</code>，如果 tween 的 <code>GameObject</code> 被销毁，tween 仍然会被杀死。这是因为 DOTween 的 <code>LinkBehaviour.KillOnDestroy</code> 设置，它默认会在关联的 <code>GameObject</code> 被销毁时杀死 tween。</p>
-<p>所以，<code>SetRecyclable</code> 的作用是允许 tween 被重用，从而提高性能和减少内存分配，但它不会防止 <code>GameObject</code> 被销毁时的 tween 被杀死。如果你想确保你的 tween 引用在 tween 被杀死时自动设置为 <code>null</code>，你可以使用 <code>OnKill</code> 回调来实现这一点：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myTween.OnKill(() =&gt; myTween = <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-
-<p>这样，当 tween 被杀死时，你的 tween 引用就会被设置为 <code>null</code>，从而避免了潜在的引用错误。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">unity</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dotween</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/12/26/Unity/%E5%8A%A8%E7%94%BB/dotween/dotween%E5%AF%B9%E8%B1%A1%E6%B1%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-csharp/初始化时机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/26/csharp/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%9C%BA/">初始化时间</a>
-    </h1>
-  
-
-        
-        <a href="/2023/12/26/csharp/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%9C%BA/" class="archive-article-date">
-  	<time datetime="2023-12-26T09:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：392字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C# 属性是一种成员，它提供了一种访问私有字段的方式，可以在 get 和 set 访问器中添加逻辑或验证代码。属性可以有不同的类型，例如具有支持字段的属性、表达式主体定义的属性和自动实现的属性。</p>
-<p>属性的初始化时机取决于属性的类型和访问器。一般来说，有以下几种情况：</p>
-<ul>
-<li>如果属性是具有支持字段的属性，那么属性的初始化时机与支持字段的初始化时机相同。支持字段的初始化时机又取决于字段是否是静态的或实例的。<strong>静态字段的初始化时机是在类加载时或静态构造函数执行前，实例字段的初始化时机是在实例构造函数执行前</strong></li>
-<li>如果属性是表达式主体定义的属性，那么属性的初始化时机与表达式的计算时机相同。表达式的计算时机是在属性被访问时。</li>
-<li>如果属性是自动实现的属性，那么属性的初始化时机与自动实现的支持字段的初始化时机相同。自动实现的支持字段的初始化时机也取决于字段是否是静态的或实例的。静态字段的初始化时机是在类加载时或静态构造函数执行前³，实例字段的初始化时机是在实例构造函数执行前。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/12/26/csharp/%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%9C%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-csharp/依赖注入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/12/26/csharp/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">初始化时间</a>
-    </h1>
-  
-
-        
-        <a href="/2023/12/26/csharp/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/" class="archive-article-date">
-  	<time datetime="2023-12-26T09:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-12-26</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：675字 | 预计阅读时长：2分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>依赖注入（Dependency Injection，简称 DI）是一种在 C# 中广泛使用的设计模式，它有助于创建松耦合的代码结构，从而提高代码的可维护性和可测试性。在依赖注入模式中，一个类的依赖项不是由类本身创建，而是从外部传入，这样做可以减少类之间的直接依赖关系。</p>
-<p>依赖注入的核心概念是控制反转（Inversion of Control，简称 IoC），它将对象的创建和管理的责任转移给外部容器或框架。在 C# 中，依赖注入通常通过以下三种方式实现：</p>
-<ol>
-<li><strong>构造函数注入</strong>（Constructor Injection）：这是最常见的依赖注入方式，依赖项通过类的构造函数传入。</li>
-<li><strong>属性注入</strong>（Property Injection）：依赖项通过类的属性设置，适用于可选依赖项。</li>
-<li><strong>方法注入</strong>（Method Injection）：依赖项通过方法参数传入，适用于特定场景。</li>
-</ol>
-<p>使用依赖注入的好处包括：</p>
-<ul>
-<li><strong>降低耦合</strong>：类不再直接依赖于具体的依赖实现，从而降低了耦合度。</li>
-<li><strong>提高可测试性</strong>：可以通过注入模拟的依赖项来更容易地对类进行单元测试。</li>
-<li><strong>改善代码维护</strong>：依赖项的变更对使用它们的类影响较小，使得代码库更易于维护。</li>
-<li><strong>增加灵活性和可扩展性</strong>：便于替换依赖项的实现或扩展应用程序，而无需大量代码修改。</li>
-</ul>
-<p>在 C# 中，你可以手动实现依赖注入，也可以使用依赖注入框架来简化这一过程。例如，.NET Core 内置了依赖注入支持，是 ASP.NET Core 框架的一部分，适用于 Web 应用程序。此外，还有一些流行的第三方依赖注入框架，如 Autofac 和 Ninject，它们以其灵活性和易用性而受到开发者的青睐。</p>
-<p><a href="https://dotnettutorials.net/lesson/dependency-injection-design-pattern-csharp/" target="_blank" rel="noopener">构造函数注入</a></p>
-<p>为了方便理解 被依赖类称为服务类 依赖称为客户端类 他们的关系类似如 客户端引用创建好的服务类然后调用服务类的方法</p>
-<p>简单来说 就是用接口规定被依赖类的方法 然后在构造函数的时候将被依赖的类传入 而依赖的类只存接口 和使用接口<br>这样就不用关心被依赖类如何实现 在接口中定义出依赖类需要的方法即可</p>
-<p>至于方法和属性都是一个意思 和构造函数一样 毕竟构造函数一样是方法 都是通过接口来传递需要的服务类<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/id/0.png" alt="0"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/12/26/csharp/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1151,7 +1130,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ps</a>
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1163,7 +1142,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+                <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1183,11 +1162,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">UniTask</a>
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,15 +1178,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1223,11 +1202,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1239,11 +1222,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1255,35 +1254,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1295,19 +1270,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">哲学</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1319,15 +1294,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
+                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Spine</a>
+                <a href="javascript:void(0)" class="js-tag color3">dotween</a>
               </li>
              
               <li class="article-tag-list-item">

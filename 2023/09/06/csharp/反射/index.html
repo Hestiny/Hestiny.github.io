@@ -16,7 +16,7 @@
 <meta property="og:description" content="反射一些用法获取特定属性参考文档反射性能这里主要说一下unity里面会用到的地方一般都是书写框架和工具的时候会用到 十分方便和灵活 但是性能并不好所以正常的业务逻辑是不太考虑的 常用的方法 获取type 这个方法是反射中性能好点了 会小很多   1234567&#x2F;&#x2F;使用 C# typeof 运算符。Type t &#x3D; typeof(string);&#x2F;&#x2F;使用对象GetType()方法。string s">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-06T06:46:00.000Z">
-<meta property="article:modified_time" content="2024-05-15T12:49:50.993Z">
+<meta property="article:modified_time" content="2024-07-31T14:03:00.512Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="c#">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 217
+            总文章数 224
         </nav>
 		<nav>
-            总字数 <span class="post-count">139.8k</span>
+            总字数 <span class="post-count">144.1k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,7 +179,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：1.8k字 | 预计阅读时长：8分钟
+          字数：2.1k字 | 预计阅读时长：9分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -243,6 +243,21 @@
 <li><strong><code>AllowMultiple</code></strong>：允许特性多次应用于同一目标时设为 <code>true</code>。</li>
 <li><strong><code>Inherited</code></strong>：允许特性被派生类继承时设为 <code>true</code>。</li>
 </ul>
+<h2 id="查找指定特性"><a href="#查找指定特性" class="headerlink" title="查找指定特性"></a>查找指定特性</h2><ol>
+<li><p>在 C# 中查找具有特定特性的类可以使用反射。以下是一个示例代码，展示如何查找具有特定特性的类：</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;Type&gt; GetTypesWithAttribute&lt;TAttribute&gt;(<span class="keyword">bool</span> inherit) <span class="keyword">where</span> TAttribute : Attribute</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">from</span> assembly <span class="keyword">in</span> AppDomain.CurrentDomain.GetAssemblies()</span><br><span class="line">        <span class="keyword">from</span> type <span class="keyword">in</span> assembly.GetTypes()</span><br><span class="line">        <span class="keyword">where</span> type.IsDefined(<span class="keyword">typeof</span>(TAttribute), inherit)</span><br><span class="line">        <span class="keyword">select</span> type;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 这个方法会遍历当前应用程序域中的所有程序集，并查找具有指定特性的类。你可以根据需要修改这个方法以适应你的具体需求。</p>
+</li>
+<li><p>你可以在指定的程序集查找具有特定特性的类。以下是一个示例代码，展示如何在指定的程序集查找具有特定特性的类：</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> IEnumerable&lt;Type&gt; GetTypesWithAttribute&lt;TAttribute&gt;(Assembly assembly, <span class="keyword">bool</span> inherit) <span class="keyword">where</span> TAttribute : Attribute</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">from</span> type <span class="keyword">in</span> assembly.GetTypes()</span><br><span class="line">        <span class="keyword">where</span> type.IsDefined(<span class="keyword">typeof</span>(TAttribute), inherit)</span><br><span class="line">        <span class="keyword">select</span> type;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 你可以这样调用这个方法：</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Assembly myAssembly = Assembly.Load(<span class="string">"YourAssemblyName"</span>);</span><br><span class="line"><span class="keyword">var</span> typesWithMyAttribute = GetTypesWithAttribute&lt;MyAttribute&gt;(myAssembly, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> type <span class="keyword">in</span> typesWithMyAttribute)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(type.FullName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 这个方法会在指定的程序集 <code>myAssembly</code> 中查找具有 <code>MyAttribute</code> 特性的类。你可以根据需要修改这个方法以适应你的具体需求。</p>
+</li>
+</ol>
 
       
 
@@ -385,7 +400,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#反射一些用法"><span class="toc-number">1.</span> <span class="toc-text">反射一些用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的方法"><span class="toc-number">2.</span> <span class="toc-text">常用的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AttributeUsage-特性"><span class="toc-number">2.1.</span> <span class="toc-text">AttributeUsage 特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码"><span class="toc-number">2.2.</span> <span class="toc-text">示例代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义自定义属性"><span class="toc-number">2.2.1.</span> <span class="toc-text">定义自定义属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用自定义属性"><span class="toc-number">2.2.2.</span> <span class="toc-text">应用自定义属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#读取自定义属性"><span class="toc-number">2.2.3.</span> <span class="toc-text">读取自定义属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">2.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#反射一些用法"><span class="toc-number">1.</span> <span class="toc-text">反射一些用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用的方法"><span class="toc-number">2.</span> <span class="toc-text">常用的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AttributeUsage-特性"><span class="toc-number">2.1.</span> <span class="toc-text">AttributeUsage 特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例代码"><span class="toc-number">2.2.</span> <span class="toc-text">示例代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义自定义属性"><span class="toc-number">2.2.1.</span> <span class="toc-text">定义自定义属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用自定义属性"><span class="toc-number">2.2.2.</span> <span class="toc-text">应用自定义属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#读取自定义属性"><span class="toc-number">2.2.3.</span> <span class="toc-text">读取自定义属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">2.3.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查找指定特性"><span class="toc-number">3.</span> <span class="toc-text">查找指定特性</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -513,15 +528,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,11 +548,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
+                <a href="javascript:void(0)" class="js-tag color2">shader</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shader</a>
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,10 +568,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
@@ -565,11 +576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,15 +592,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -605,11 +620,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,7 +636,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,11 +644,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -649,19 +660,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,7 +676,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -677,7 +684,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>scroll居中通用思路 | 诗酒趁年华</title>
+  <title>常用ui动画 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1234567progressBtnScroll.content.DOKill();float view &#x3D; progressBtnScroll.viewport.rect.width;float canMoveX &#x3D; -(progressBtnScroll.content.rect.width - view);float canMoveY &#x3D; 0;float targetX &#x3D; -progres">
+  <meta name="description" content="scroll居中通用思路1234567scroll.content.DOKill();float view &#x3D; scroll.viewport.rect.width;float canMoveX &#x3D; -(scroll.content.rect.width - view);float canMoveY &#x3D; 0;float targetX &#x3D; -scroll.content.GetChild(当前it">
 <meta property="og:type" content="article">
-<meta property="og:title" content="scroll居中通用思路">
-<meta property="og:url" content="http://yoursite.com/2024/01/02/Unity/%E5%BC%80%E5%8F%91/Scroll%E5%B1%85%E4%B8%AD/index.html">
+<meta property="og:title" content="常用ui动画">
+<meta property="og:url" content="http://yoursite.com/2024/01/02/Unity/%E5%8A%A8%E7%94%BB/%E5%B8%B8%E7%94%A8UI%E5%8A%A8%E7%94%BB/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="1234567progressBtnScroll.content.DOKill();float view &#x3D; progressBtnScroll.viewport.rect.width;float canMoveX &#x3D; -(progressBtnScroll.content.rect.width - view);float canMoveY &#x3D; 0;float targetX &#x3D; -progres">
+<meta property="og:description" content="scroll居中通用思路1234567scroll.content.DOKill();float view &#x3D; scroll.viewport.rect.width;float canMoveX &#x3D; -(scroll.content.rect.width - view);float canMoveY &#x3D; 0;float targetX &#x3D; -scroll.content.GetChild(当前it">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-01-02T05:41:00.000Z">
-<meta property="article:modified_time" content="2024-06-21T11:44:32.323Z">
+<meta property="article:modified_time" content="2024-08-13T12:32:12.316Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 217
+            总文章数 224
         </nav>
 		<nav>
-            总字数 <span class="post-count">139.8k</span>
+            总字数 <span class="post-count">144.1k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -161,30 +161,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Unity/开发/Scroll居中" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Unity/动画/常用UI动画" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      scroll居中通用思路
+      常用ui动画
     </h1>
   
 
         
-        <a href="/2024/01/02/Unity/%E5%BC%80%E5%8F%91/Scroll%E5%B1%85%E4%B8%AD/" class="archive-article-date">
+        <a href="/2024/01/02/Unity/%E5%8A%A8%E7%94%BB/%E5%B8%B8%E7%94%A8UI%E5%8A%A8%E7%94%BB/" class="archive-article-date">
   	<time datetime="2024-01-02T05:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-01-02</time>
 </a>
         
       </header>
 	  <div align="center" class="post-count">
-          字数：43字 | 预计阅读时长：1分钟
+          字数：53字 | 预计阅读时长：1分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">progressBtnScroll.content.DOKill();</span><br><span class="line"><span class="keyword">float</span> view = progressBtnScroll.viewport.rect.width;</span><br><span class="line"><span class="keyword">float</span> canMoveX = -(progressBtnScroll.content.rect.width - view);</span><br><span class="line"><span class="keyword">float</span> canMoveY = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">float</span> targetX = -progressBtnScroll.content.GetChild(_curProgressIndex).transform.localPosition.x + view / <span class="number">2</span>;</span><br><span class="line"><span class="keyword">float</span> endX = Mathf.Clamp(targetX, canMoveX, canMoveY);</span><br><span class="line">progressBtnScroll.content.DOAnchorPosX(endX, <span class="number">0.3f</span>);</span><br></pre></td></tr></table></figure>
+        <h2 id="scroll居中通用思路"><a href="#scroll居中通用思路" class="headerlink" title="scroll居中通用思路"></a>scroll居中通用思路</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">scroll.content.DOKill();</span><br><span class="line"><span class="keyword">float</span> view = scroll.viewport.rect.width;</span><br><span class="line"><span class="keyword">float</span> canMoveX = -(scroll.content.rect.width - view);</span><br><span class="line"><span class="keyword">float</span> canMoveY = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">float</span> targetX = -scroll.content.GetChild(当前item索引).transform.localPosition.x + view / <span class="number">2</span>;</span><br><span class="line"><span class="keyword">float</span> endX = Mathf.Clamp(targetX, canMoveX, canMoveY);</span><br><span class="line">scroll.content.DOAnchorPosX(endX, <span class="number">0.3f</span>);</span><br></pre></td></tr></table></figure>
 
       
 
@@ -275,7 +275,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2024/01/02/Unity/%E5%BC%80%E5%8F%91/Scroll%E5%B1%85%E4%B8%AD/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2024/01/02/Unity/%E5%8A%A8%E7%94%BB/%E5%B8%B8%E7%94%A8UI%E5%8A%A8%E7%94%BB/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -327,7 +327,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#scroll居中通用思路"><span class="toc-number">1.</span> <span class="toc-text">scroll居中通用思路</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -455,15 +455,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ps</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">vs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -475,11 +475,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
+                <a href="javascript:void(0)" class="js-tag color2">shader</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shader</a>
+                <a href="javascript:void(0)" class="js-tag color5">UGUI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,10 +495,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
              
@@ -507,11 +503,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,15 +519,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,11 +547,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+                <a href="javascript:void(0)" class="js-tag color4">UWP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -563,7 +563,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,11 +571,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,19 +587,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+                <a href="javascript:void(0)" class="js-tag color4">More Effective C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,7 +603,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -619,7 +611,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">wps</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">win10</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">

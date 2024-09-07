@@ -60,10 +60,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 224
+            总文章数 232
         </nav>
 		<nav>
-            总字数 <span class="post-count">144.1k</span>
+            总字数 <span class="post-count">152.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -159,6 +159,694 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Unity/开发/Unity零碎功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/04/28/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9B%B6%E7%A2%8E%E5%8A%9F%E8%83%BD/">Unity音频学习</a>
+    </h1>
+  
+
+        
+        <a href="/2024/04/28/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9B%B6%E7%A2%8E%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2024-04-28T06:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-28</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：257字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="获取内置字体"><a href="#获取内置字体" class="headerlink" title="获取内置字体"></a>获取内置字体</h2><p>在 Unity 中，您可以通过脚本获取内置字体。以下是一些方法：</p>
+<ol>
+<li><p><strong>使用 <code>Resources.GetBuiltinResource</code> 获取内置字体</strong>：</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">FontManager</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 在 Inspector 中拖拽内置字体到这个数组</span></span><br><span class="line">    <span class="keyword">public</span> Font[] builtInFonts;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取指定名称的内置字体</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Font <span class="title">GetFont</span>(<span class="params"><span class="keyword">string</span> fontName</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> font <span class="keyword">in</span> builtInFonts)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (font.name == fontName)</span><br><span class="line">                <span class="keyword">return</span> font;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在其他脚本中使用：</span></span><br><span class="line"><span class="comment">// var textElement = GetComponent&lt;TextMesh&gt;();</span></span><br><span class="line"><span class="comment">// textElement.font = FontManager.get.GetFont("Arial");</span></span><br></pre></td></tr></table></figure>
+
+<p> 这段代码创建了一个 <code>FontManager</code> 脚本，您可以在 Inspector 中将内置字体拖拽到 <code>builtInFonts</code> 数组中。然后，您可以通过 <code>GetFont</code> 方法获取指定名称的内置字体¹[2]。</p>
+</li>
+<li><p><strong>使用 <code>Font</code> 类的 <code>Resources.GetBuiltinResource</code> 方法</strong>：</p>
+ <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">YourScript</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">var</span> textMesh = GetComponent&lt;TextMesh&gt;();</span><br><span class="line">        <span class="comment">// 获取内置字体（例如 Arial）</span></span><br><span class="line">        Font arialFont = (Font)Resources.GetBuiltinResource(<span class="keyword">typeof</span>(Font), <span class="string">"Arial.ttf"</span>);</span><br><span class="line">        <span class="comment">// 将字体和材质应用到 TextMesh</span></span><br><span class="line">        textMesh.font = arialFont;</span><br><span class="line">        textMesh.renderer.material = arialFont.material;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 在这个示例中，我们获取了内置字体 “Arial” 并将其应用到 <code>TextMesh</code> 组件</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/04/28/Unity/%E5%BC%80%E5%8F%91/Unity%E9%9B%B6%E7%A2%8E%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/编辑器通用功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/04/27/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E7%BC%96%E8%BE%91%E5%99%A8%E9%80%9A%E7%94%A8%E5%8A%9F%E8%83%BD/">编辑器常用功能</a>
+    </h1>
+  
+
+        
+        <a href="/2024/04/27/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E7%BC%96%E8%BE%91%E5%99%A8%E9%80%9A%E7%94%A8%E5%8A%9F%E8%83%BD/" class="archive-article-date">
+  	<time datetime="2024-04-27T10:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-27</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：252字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="脚本暂停编辑器"><a href="#脚本暂停编辑器" class="headerlink" title="脚本暂停编辑器"></a>脚本暂停编辑器</h2><p>在 <strong>Unity</strong> 中，你可以使用以下方法来控制编辑器的暂停和播放状态：</p>
+<ol>
+<li><p><strong>使用 <code>EditorApplication.isPlaying</code></strong>：</p>
+<ul>
+<li><p>要在脚本中暂停编辑器，你可以设置 <code>EditorApplication.isPlaying</code> 为 <code>false</code>。这将停止编辑器的运行模式，类似于暂停按钮的效果。</p>
+</li>
+<li><p>例如，你可以使用以下代码暂停编辑器：</p>
+  <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Pause</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    EditorApplication.isPaused = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要继续运行编辑器，将 <code>EditorApplication.isPlaying</code> 设置为 <code>true</code>。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>使用 <code>Debug.Break()</code></strong>：</p>
+<ul>
+<li><p><code>Debug.Break()</code> 是一个用于暂停游戏的内置 Unity 函数。它不仅适用于游戏运行时，还可以在编辑器中使用。</p>
+</li>
+<li><p>在你的脚本中调用 <code>Debug.Break()</code>，它将暂停编辑器的执行，类似于在调试器中设置断点。</p>
+</li>
+<li><p>例如：</p>
+  <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Debug.Break();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p>无论你选择哪种方法，都可以在脚本中控制 Unity 编辑器的暂停状态。</p>
+<p>请注意，这些方法仅影响编辑器的运行状态，不会影响实际游戏的运行。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/04/27/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E7%BC%96%E8%BE%91%E5%99%A8%E9%80%9A%E7%94%A8%E5%8A%9F%E8%83%BD/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/开发/UniTask/UniTask" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/04/20/Unity/%E5%BC%80%E5%8F%91/UniTask/UniTask/">UniTask的基本使用</a>
+    </h1>
+  
+
+        
+        <a href="/2024/04/20/Unity/%E5%BC%80%E5%8F%91/UniTask/UniTask/" class="archive-article-date">
+  	<time datetime="2024-04-20T08:29:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-20</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：2k字 | 预计阅读时长：7分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="AsyncReactiveProperty"><a href="#AsyncReactiveProperty" class="headerlink" title="AsyncReactiveProperty"></a>AsyncReactiveProperty</h2><p><code>UniTask</code> 是一个为 Unity 提供高性能、无GC的 async/await 异步解决方案的库。<code>AsyncReactiveProperty</code> 是 <code>UniTask</code> 中的一个功能，它允许你创建一个异步的响应式属性。这意味着你可以订阅这个属性，并在它的值发生变化时收到通知。</p>
+<p>以下是一个简单的使用 <code>AsyncReactiveProperty</code> 的例子：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Cysharp.Threading.Tasks;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Example</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 定义一个 AsyncReactiveProperty 类型的属性</span></span><br><span class="line">    <span class="keyword">private</span> AsyncReactiveProperty&lt;<span class="keyword">int</span>&gt; reactiveProperty = <span class="keyword">new</span> AsyncReactiveProperty&lt;<span class="keyword">int</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 订阅属性的变化</span></span><br><span class="line">        reactiveProperty.Subscribe(<span class="keyword">value</span> =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            Debug.Log(<span class="string">$"Value changed: <span class="subst">&#123;<span class="keyword">value</span>&#125;</span>"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 更改属性的值</span></span><br><span class="line">        ChangePropertyValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">async</span> UniTaskVoid <span class="title">ChangePropertyValue</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 等待2秒</span></span><br><span class="line">        <span class="keyword">await</span> UniTask.Delay(TimeSpan.FromSeconds(<span class="number">2</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 更改属性的值，订阅者会收到通知</span></span><br><span class="line">        reactiveProperty.Value = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们首先定义了一个类型为 <code>AsyncReactiveProperty&lt;int&gt;</code> 的属性 <code>reactiveProperty</code>。然后我们订阅了这个属性的变化，当属性的值发生变化时，我们会在控制台中打印出新的值。最后，我们在 <code>ChangePropertyValue</code> 方法中更改了属性的值，并使用 <code>UniTask.Delay</code> 来模拟异步操作。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">UniTask</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/04/20/Unity/%E5%BC%80%E5%8F%91/UniTask/UniTask/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-杂项/工具/vscode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/04/20/%E6%9D%82%E9%A1%B9/%E5%B7%A5%E5%85%B7/vscode/">vscode</a>
+    </h1>
+  
+
+        
+        <a href="/2024/04/20/%E6%9D%82%E9%A1%B9/%E5%B7%A5%E5%85%B7/vscode/" class="archive-article-date">
+  	<time datetime="2024-04-20T07:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-20</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：443字 | 预计阅读时长：2分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设置备份"><a href="#设置备份" class="headerlink" title="设置备份"></a>设置备份</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//系统</span></span><br><span class="line">    <span class="attr">"editor.codeActionsOnSave"</span>: &#123;</span><br><span class="line">        <span class="attr">"source.organizeImports"</span>: <span class="string">"explicit"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"security.workspace.trust.untrustedFiles"</span>: <span class="string">"open"</span>,</span><br><span class="line">    <span class="attr">"settingsSync.ignoredExtensions"</span>: [</span><br><span class="line">        <span class="string">"jeff-hykin.better-cpp-syntax"</span>,</span><br><span class="line">        <span class="string">"twxs.cmake"</span>,</span><br><span class="line">        <span class="string">"ms-vscode.cmake-tools"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"editor.guides.bracketPairs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnPaste"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.wordWrap"</span>: <span class="string">"on"</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.showSlider"</span>: <span class="string">"always"</span>,</span><br><span class="line">    <span class="attr">"editor.minimap.size"</span>: <span class="string">"fit"</span>,</span><br><span class="line">    <span class="attr">"workbench.editor.wrapTabs"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"editor.suggestSelection"</span>: <span class="string">"first"</span>,</span><br><span class="line">    <span class="attr">"editor.bracketPairColorization.independentColorPoolPerBracketType"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"files.eol"</span>: <span class="string">"\n"</span>,</span><br><span class="line">    <span class="attr">"editor.renderLineHighlight"</span>: <span class="string">"all"</span>,</span><br><span class="line">    <span class="attr">"editor.indentSize"</span>: <span class="string">"tabSize"</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//代码样式</span></span><br><span class="line">    <span class="comment">// https://code.visualstudio.com/api/language-extensions/semantic-highlight-guide 官方文档 </span></span><br><span class="line">    <span class="attr">"editor.semanticTokenColorCustomizations"</span>: &#123;</span><br><span class="line">        <span class="attr">"enabled"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"rules"</span>: &#123;</span><br><span class="line">            <span class="attr">"variable"</span>: <span class="string">"#a4e7fdfc"</span>,<span class="comment">//本地变量</span></span><br><span class="line">            <span class="attr">"namespace"</span>: <span class="string">"#e7ce60"</span>,</span><br><span class="line">            <span class="comment">// "async": "#00ff00",</span></span><br><span class="line">            <span class="comment">// "enum": "#ce97e9",</span></span><br><span class="line">            <span class="attr">"enumMember"</span>: <span class="string">"#e1729d"</span>,</span><br><span class="line">            <span class="attr">"property"</span>: <span class="string">"#61abd9"</span>,</span><br><span class="line">            <span class="attr">"controlKeyword"</span>: <span class="string">"#c55cd6"</span>,</span><br><span class="line">            <span class="attr">"comment"</span>: <span class="string">"#7e828c"</span>,</span><br><span class="line">            <span class="attr">"string"</span>: <span class="string">"#bd74d4"</span>,</span><br><span class="line">            <span class="comment">// "comment": "#696d77",</span></span><br><span class="line">            <span class="comment">// "macro":"#3a6cc1",</span></span><br><span class="line">            </span><br><span class="line">            <span class="attr">"keyword"</span>: <span class="string">"#a782f7"</span>,</span><br><span class="line">            <span class="comment">// "method": "#ff00ff",</span></span><br><span class="line">            <span class="comment">// "decorator": "#00f2ff",</span></span><br><span class="line">            <span class="comment">// "typeParameter": "#ff00ff",</span></span><br><span class="line">            <span class="attr">"parameter"</span>: <span class="string">"#feed9f"</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"workbench.colorCustomizations"</span>: &#123;</span><br><span class="line">        <span class="comment">// "editor.findMatchBackground": "#ff0000",</span></span><br><span class="line">        <span class="attr">"editor.findMatchHighlightBackground"</span>: <span class="string">"#653206fc"</span>,</span><br><span class="line">        <span class="comment">// "editor.selectionHighlightBackground": "#4d037ef3",</span></span><br><span class="line">        <span class="attr">"editor.selectionHighlightBackground"</span>: <span class="string">"#03437ef3"</span>,</span><br><span class="line">        <span class="attr">"editor.selectionBackground"</span>: <span class="string">"#92c55769"</span>,</span><br><span class="line">        <span class="attr">"editor.wordHighlightBackground"</span>: <span class="string">"#ce3fce87"</span>,</span><br><span class="line">        <span class="attr">"editor.lineHighlightBorder"</span>: <span class="string">"#e844cd88"</span>,</span><br><span class="line">        <span class="attr">"editor.lineHighlightBackground"</span>: <span class="string">"#abb5c613"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//环境</span></span><br><span class="line">    <span class="comment">//↓↓↓↓mac↓↓↓↓</span></span><br><span class="line">    <span class="attr">"editor.defaultFoldingRangeProvider"</span>: <span class="string">"ms-dotnettools.csharp"</span>,</span><br><span class="line">    <span class="comment">// "dotnetAcquisitionExtension.existingDotnetPath": [</span></span><br><span class="line">    <span class="comment">//     &#123;</span></span><br><span class="line">    <span class="comment">//         "extensionId": "ms-dotnettools.csharp",</span></span><br><span class="line">    <span class="comment">//         "path": "/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">    <span class="comment">//     &#125;,</span></span><br><span class="line">    <span class="comment">//     &#123;</span></span><br><span class="line">    <span class="comment">//         "extensionId": "ms-dotnettools.csdevkit",</span></span><br><span class="line">    <span class="comment">//         "path": "/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">    <span class="comment">//     &#125;,</span></span><br><span class="line">    <span class="comment">//     &#123;</span></span><br><span class="line">    <span class="comment">//         "extensionId": "visualstudiotoolsforunity.vstuc",</span></span><br><span class="line">    <span class="comment">//         "path": "/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// ],</span></span><br><span class="line">    <span class="comment">// "omnisharp.monoPath": "/usr/local/share/dotnet/sdk/8.0.203",</span></span><br><span class="line">    <span class="comment">// "dotnet.dotnetPath": "/usr/local/share/dotnet",</span></span><br><span class="line">    <span class="comment">//↑↑↑↑mac↑↑↑↑</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//插件</span></span><br><span class="line">    <span class="attr">"markdown-preview-enhanced.previewTheme"</span>: <span class="string">"one-dark.css"</span>,</span><br><span class="line">    <span class="attr">"[markdown]"</span>: &#123;</span><br><span class="line">        <span class="attr">"editor.defaultFormatter"</span>: <span class="string">"DavidAnson.vscode-markdownlint"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"github.copilot.enable"</span>: &#123;</span><br><span class="line">        <span class="attr">"*"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"plaintext"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"markdown"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"scminput"</span>: <span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"gitlens.codeLens.scopes"</span>: [</span><br><span class="line">        <span class="string">"document"</span>,</span><br><span class="line">        <span class="string">"containers"</span>,</span><br><span class="line">        <span class="string">"blocks"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"workbench.iconTheme"</span>: <span class="string">"vscode-icons"</span>,</span><br><span class="line">    <span class="attr">"workbench.colorTheme"</span>: <span class="string">"Monokai Pro (Filter Octagon)"</span>,</span><br><span class="line">    <span class="attr">"sonarlint.rules"</span>: &#123;</span><br><span class="line">        <span class="attr">"csharpsquid:S1104"</span>: &#123;</span><br><span class="line">            <span class="attr">"level"</span>: <span class="string">"off"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"csharpsquid:S125"</span>: &#123;</span><br><span class="line">            <span class="attr">"level"</span>: <span class="string">"off"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"csharpsquid:S1135"</span>: &#123;</span><br><span class="line">            <span class="attr">"level"</span>: <span class="string">"off"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"todo-tree.highlights.backgroundColourScheme"</span>: [</span><br><span class="line">        <span class="string">"red"</span>,</span><br><span class="line">        <span class="string">"orange"</span>,</span><br><span class="line">        <span class="string">"yellow"</span>,</span><br><span class="line">        <span class="string">"violet"</span>,</span><br><span class="line">        <span class="string">"blue"</span>,</span><br><span class="line">        <span class="string">"indigo"</span>,</span><br><span class="line">        <span class="string">"violet"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"todo-tree.highlights.useColourScheme"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"todo-tree.general.tags"</span>: [</span><br><span class="line">        <span class="string">"BUG"</span>,</span><br><span class="line">        <span class="string">"HACK"</span>,</span><br><span class="line">        <span class="string">"FIXME"</span>,</span><br><span class="line">        <span class="string">"TODO"</span>,</span><br><span class="line">        <span class="string">"[ ]"</span>,</span><br><span class="line">        <span class="string">"[x]"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"cSpell.userWords"</span>: [</span><br><span class="line">        <span class="string">"Applovin"</span>,</span><br><span class="line">        <span class="string">"Behaviour"</span>,</span><br><span class="line">        <span class="string">"Bezier"</span>,</span><br><span class="line">        <span class="string">"btns"</span>,</span><br><span class="line">        <span class="string">"cocoapods"</span>,</span><br><span class="line">        <span class="string">"Cysharp"</span>,</span><br><span class="line">        <span class="string">"dotween"</span>,</span><br><span class="line">        <span class="string">"interactable"</span>,</span><br><span class="line">        <span class="string">"iobj"</span>,</span><br><span class="line">        <span class="string">"ipynb"</span>,</span><br><span class="line">        <span class="string">"Mathf"</span>,</span><br><span class="line">        <span class="string">"Prefs"</span>,</span><br><span class="line">        <span class="string">"Raycast"</span>,</span><br><span class="line">        <span class="string">"Raycaster"</span>,</span><br><span class="line">        <span class="string">"Rigidbody"</span>,</span><br><span class="line">        <span class="string">"Tweener"</span>,</span><br><span class="line">        <span class="string">"Tweening"</span>,</span><br><span class="line">        <span class="string">"typeof"</span>,</span><br><span class="line">        <span class="string">"UIID"</span>,</span><br><span class="line">        <span class="string">"unitypackage"</span>,</span><br><span class="line">        <span class="string">"xcworkspace"</span></span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常规颜色配置"><a href="#常规颜色配置" class="headerlink" title="常规颜色配置"></a>常规颜色配置</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">"workbench.colorCustomizations": &#123;</span><br><span class="line">       <span class="comment">// "editor.findMatchBackground": "#ff0000",</span></span><br><span class="line">       "editor.findMatchHighlightBackground": "#653206fc",//查找的高亮背景色</span><br><span class="line">       "editor.selectionHighlightBackground": "#03437ef3",//双击选中的高亮背景色</span><br><span class="line">       <span class="comment">// "editor.selectionBackground": "#92c55769",//双击选中单词的背景</span></span><br><span class="line">       "editor.wordHighlightBackground": "#ce3fce87",//单击选中单词的高亮色 c#下 相同方法名或者变量一样着色</span><br><span class="line"></span><br><span class="line">       "editor.lineHighlightBorder": "#e844cd88",//当前行的边框色</span><br><span class="line">       "editor.lineHighlightBackground": "#abb5c613",//当前行的背景色</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/04/20/%E6%9D%82%E9%A1%B9/%E5%B7%A5%E5%85%B7/vscode/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csharp/CancellationToken" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/04/16/csharp/CancellationToken/">CancellAtionToken 静态属性 None</a>
+    </h1>
+  
+
+        
+        <a href="/2024/04/16/csharp/CancellationToken/" class="archive-article-date">
+  	<time datetime="2024-04-16T08:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-16</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：306字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 Unity 和 C# 中，<code>CancellationToken.None</code> 属性用于创建一个空的取消令牌，这意味着它不能被取消，其 <code>CanBeCanceled</code> 属性为 <code>false</code>。这通常用于在不需要取消操作的情况下提供一个默认的取消令牌。</p>
+<p>例如，如果您有一个异步方法，您可以为 <code>CancellationToken</code> 参数提供一个默认值，这样就不需要在每次调用时都传递一个取消令牌。您可以使用 <code>default(CancellationToken)</code> 或从 C# 7.1 开始，直接使用 <code>default</code> 作为默认参数。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 CancellationToken.None 作为默认参数</span></span><br><span class="line"><span class="function">Task <span class="title">DoStuffAsync</span>(<span class="params">CancellationToken ct = <span class="keyword">default</span>(CancellationToken</span>))</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 您的代码逻辑</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者从 C# 7.1 开始，您可以简化为</span></span><br><span class="line"><span class="function">Task <span class="title">DoStuffAsync</span>(<span class="params">CancellationToken ct = <span class="keyword">default</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 您的代码逻辑</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 Unity 的脚本中，如果您需要处理取消操作，您可以检查 <code>IsCancellationRequested</code> 属性，以确定是否有取消请求。如果有，您可以根据需要终止操作。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">YourMethod</span>(<span class="params">CancellationToken cancellationToken</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cancellationToken.IsCancellationRequested)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 处理取消逻辑</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 继续执行您的方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意，<code>CancellationToken.None</code> 是一个静态属性，您可以在不需要取消功能的情况下使用它，而不是创建一个新的 <code>CancellationTokenSource</code> 实例。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/04/16/csharp/CancellationToken/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Unity/编辑器/面板拓展测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/04/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E9%9D%A2%E6%9D%BF%E6%8B%93%E5%B1%95%E6%B5%8B%E8%AF%95/">测试面板</a>
+    </h1>
+  
+
+        
+        <a href="/2024/04/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E9%9D%A2%E6%9D%BF%E6%8B%93%E5%B1%95%E6%B5%8B%E8%AF%95/" class="archive-article-date">
+  	<time datetime="2024-04-10T12:41:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-10</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：255字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为了方便某些游戏上的测试 可以直接在脚本上方法上添加<strong>EditorButtonAttribute</strong>特性 可以将GameTest改成mono类<br>注意 如果发现自定义的Unity通用类的面板没有效果 检查一下是否安装了 奥丁插件 目前发现奥丁插件会导致自定义脚本失效</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果直接使用MonoBehaviour没有效果 需要多加一个参数</span></span><br><span class="line"><span class="comment">//[CanEditMultipleObjects, CustomEditor(typeof(MonoBehaviour), true)]</span></span><br><span class="line">[<span class="meta">CanEditMultipleObjects, CustomEditor(typeof(GameTest))</span>]</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">GameTestEditor</span> : <span class="title">Editor</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">readonly</span> Dictionary&lt;<span class="keyword">string</span>, <span class="keyword">string</span>&gt; mButtonPropertyNames = <span class="keyword">new</span>();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> VisualElement <span class="title">CreateInspectorGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        InitSerializeFieldProperty();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">base</span>.CreateInspectorGUI();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">OnInspectorGUI</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">base</span>.OnInspectorGUI();</span><br><span class="line">        <span class="comment">//var target = (GameTest)serializedObject.targetObject;</span></span><br><span class="line">        <span class="keyword">var</span> tar = target <span class="keyword">as</span> GameTest;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> mButtonPropertyNames)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (GUILayout.Button(item.Key, GUILayout.Height(<span class="number">40</span>)))</span><br><span class="line">            &#123;</span><br><span class="line">                tar.Invoke(item.Value, <span class="number">0</span>);</span><br><span class="line">                <span class="comment">//tar.InvokeMethod(item.Value);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//var target = (GameTest)serializedObject.targetObject;</span></span><br><span class="line">        <span class="comment">//tar.Invoke("Test", 0);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">InitSerializeFieldProperty</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        mButtonPropertyNames.Clear();</span><br><span class="line">        <span class="keyword">var</span> type = target.GetType();</span><br><span class="line">        <span class="keyword">var</span> fields = type.GetMethods(BindingFlags.NonPublic | BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public);</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> fields)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (item.IsDefined(<span class="keyword">typeof</span>(EditorButtonAttribute), <span class="literal">false</span>))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//var att = item.GetCustomAttributes(typeof(EditorButtonAttribute), false);</span></span><br><span class="line">                <span class="keyword">var</span> method = item.Name;</span><br><span class="line">                mButtonPropertyNames.Add(item.Name, method);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">sealed</span> <span class="keyword">class</span> <span class="title">EditorButtonAttribute</span> : <span class="title">Attribute</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/04/10/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/%E9%9D%A2%E6%9D%BF%E6%8B%93%E5%B1%95%E6%B5%8B%E8%AF%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csharp/多个接口继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/04/10/csharp/%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF/">多个接口重名方法</a>
+    </h1>
+  
+
+        
+        <a href="/2024/04/10/csharp/%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF/" class="archive-article-date">
+  	<time datetime="2024-04-10T08:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-10</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：288字 | 预计阅读时长：1分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在C#中，如果一个类继承了两个定义了相同方法名的接口，你可以通过显式接口实现来解决潜在的冲突。这意味着你可以为每个接口的方法提供单独的实现。例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IFirstInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ISecondInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span> : <span class="title">IFirstInterface</span>, <span class="title">ISecondInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">void</span> IFirstInterface.MyMethod()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 实现第一个接口的方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> ISecondInterface.MyMethod()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 实现第二个接口的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在C#中，如果你没有显式地指定接口，类将会使用隐式实现。这意味着类中的方法将作为所有接口中具有相同签名方法的默认实现。例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">IFirstInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ISecondInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span> : <span class="title">IFirstInterface</span>, <span class="title">ISecondInterface</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MyMethod</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 这个方法将作为 IFirstInterface 和 ISecondInterface 的 MyMethod 的默认实现</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>MyClass</code>提供了一个<code>MyMethod</code>的实现，它将作为<code>IFirstInterface</code>和<code>ISecondInterface</code>的默认实现。当你通过类的实例调用<code>MyMethod</code>时，将会执行这个默认实现。如果你需要区分接口的实现，你应该使用显式接口实现。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/04/10/csharp/%E5%A4%9A%E4%B8%AA%E6%8E%A5%E5%8F%A3%E7%BB%A7%E6%89%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csharp/visualStudio/vs拓展开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/04/06/csharp/visualStudio/vs%E6%8B%93%E5%B1%95%E5%BC%80%E5%8F%91/">vs拓展开发</a>
+    </h1>
+  
+
+        
+        <a href="/2024/04/06/csharp/visualStudio/vs%E6%8B%93%E5%B1%95%E5%BC%80%E5%8F%91/" class="archive-article-date">
+  	<time datetime="2024-04-06T08:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-04-06</time>
+</a>
+        
+      </header>
+	  <div align="center" class="post-count">
+          字数：778字 | 预计阅读时长：3分钟
+      </div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>官方文档里面有一个特别简单的创建流程 跟着做基本上可以了<br><a href="https://learn.microsoft.com/zh-cn/visualstudio/extensibility/extensibility-hello-world?view=vs-2022" target="_blank" rel="noopener">官方文档</a><br><a href="https://github.com/Hestiny/TabsColor" target="_blank" rel="noopener">仓库参考</a></p>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>我用的是vs2022</p>
+<ol>
+<li><p>首先需要安装拓展开发组件 这就不多说了官方教程有的就不多讲了<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/vs/extension/0.png" alt="1"><br>这里还有一个Empty的项目 选第一个就可以了 不要在这种问题上纠结</p>
+</li>
+<li><p>等创建完项目之后 <strong>你应该会看见一个报错</strong><br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/vs/extension/1.png" alt="1"><br>然后去查半天说是包还原有问题 去官方论坛 官方回复说是故意的 在开发包的时候就是不让用最新的<br>然后在包管理器其实也能发现<br><img src="https://raw.githubusercontent.com/Hestiny/ImageShack/master/Blog/csharp/vs/extension/2.png" alt="1"><br>所以 <strong>不用在意这个报错 直接写功能即可</strong></p>
+</li>
+<li><p>项目的结构很简单就几个文件 随便点点就大概只能能改什么 像什么资源图标之类的</p>
+</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">vs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/04/06/csharp/visualStudio/vs%E6%8B%93%E5%B1%95%E5%BC%80%E5%8F%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-csharp/visualStudio/vs选项卡正则表达式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -332,738 +1020,9 @@
 
 
   
-    <article id="post-Unity/开发/异步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/29/Unity/%E5%BC%80%E5%8F%91/%E5%BC%82%E6%AD%A5/">unity异步的常识</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/29/Unity/%E5%BC%80%E5%8F%91/%E5%BC%82%E6%AD%A5/" class="archive-article-date">
-  	<time datetime="2024-03-29T08:20:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-29</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：947字 | 预计阅读时长：3分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://learn.microsoft.com/en-us/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming" target="_blank" rel="noopener">微软文档</a></p>
-<ul>
-<li>优先选择 async Task 方法而不是 async void 方法</li>
-<li>不要混合阻塞和异步代码</li>
-<li>尽可能使用ConfigureAwait(false)</li>
-<li>Async void 方法具有不同的错误处理语义。当异步任务或异步任务 &lt;T&gt; 方法抛出异常时，该异常将被捕获并放置在任务对象上。对于 async void 方法，没有 Task 对象，因此 async void 方法抛出的任何异常都将直接在 async void 方法启动时处于活动状态的 SynchronizationContext 上引发。从 async void 方法引发的异常无法使用 Catch 捕获来自 Async Void 方法的异常</li>
-<li>当返回类型为 Task 时，调用者知道它正在处理未来的操作；当返回类型为 void 时，调用者可能会认为该方法在返回时已完成。这个问题可能会以多种意想不到的方式出现。在接口（或基类）上提供 void 返回方法的异步实现（或重写）通常是错误的。</li>
-</ul>
-<p>之前很容易将异步和多线程搞混交 导致一直在纠结为什么async不用多线程还能异步 搞半天是个乌龙 异步根本可以由多线程支持 但是在单线程中也能实现 在单线程中的等待就是回调<br>所以unity的异步async是可以使用的 因为async支持单线程 和协程类似</p>
-<p>而unitask则是优化了async 而不是优化了多线程</p>
-<p>在 C# 中，<strong><code>async/await</code></strong> 和 <strong><code>new Thread</code></strong> 是两种不同的并发编程模型。</p>
-<ol>
-<li><p><strong><code>async/await</code></strong>：</p>
-<ul>
-<li><strong>异步编程模型</strong>：<code>async/await</code> 是一种异步编程模型，用于处理非阻塞的操作。</li>
-<li><strong>非阻塞</strong>：当使用 <code>await</code> 关键字等待异步操作完成时，当前线程不会被阻塞，而是继续执行其他任务。</li>
-<li><strong>适用场景</strong>：适用于 I/O 密集型操作，例如网络请求、数据库查询、文件读写等。</li>
-<li><strong>单线程</strong>：<code>async/await</code> 不会创建新线程，而是在单线程上执行异步操作。</li>
-</ul>
-</li>
-<li><p><strong><code>new Thread</code></strong>：</p>
-<ul>
-<li><strong>多线程模型</strong>：<code>new Thread</code> 是创建新线程的方式，用于并发执行多个任务。</li>
-<li><strong>阻塞</strong>：每个新线程都会阻塞当前线程，直到其任务完成。</li>
-<li><strong>适用场景</strong>：适用于 CPU 密集型操作，例如计算密集型算法、图像处理等。</li>
-<li><strong>多线程</strong>：<code>new Thread</code> 创建了一个新的线程，可以并行执行多个任务。</li>
-</ul>
-</li>
-<li><p><strong>总结</strong>：</p>
-<ul>
-<li><code>async/await</code> 是一种轻量级的异步编程模型，适用于非阻塞操作。</li>
-<li><code>new Thread</code> 创建新线程，适用于需要并行执行的任务。</li>
-</ul>
-</li>
-</ol>
-<p>如果需要处理异步操作，使用 <code>async/await</code>；如果需要并行执行多个任务，使用 <code>new Thread</code>。</p>
-<p>当使用 <code>await</code> 等待一个异步操作时，如果该操作被取消，后续的语句将不会执行。</p>
-<ol>
-<li><p><strong><code>await</code> 和取消</strong>：</p>
-<ul>
-<li>使用 <code>await</code> 关键字等待一个异步操作时，如果传递给 <code>await</code> 的 <strong>取消令牌（CancellationToken）</strong> 被取消，那么 <code>await</code> 表达式会立即抛出 <strong><code>OperationCanceledException</code></strong> 异常。</li>
-<li>这意味着后续的语句不会执行，因为异常会中断当前的执行流程。</li>
-</ul>
-</li>
-<li><p><strong>示例</strong>：</p>
-<ul>
-<li><p>假设我们有一个异步方法，如下所示：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">async</span> Task <span class="title">MyAsyncMethod</span>(<span class="params">CancellationToken cancellationToken</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">await</span> SomeAsyncOperation(cancellationToken);</span><br><span class="line">    <span class="comment">// 如果 SomeAsyncOperation 被取消，以下代码不会执行</span></span><br><span class="line">    Console.WriteLine(<span class="string">"后续的语句"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果 <code>SomeAsyncOperation</code> 被取消，那么 <code>&quot;后续的语句&quot;</code> 将不会被打印出来。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>注意事项</strong>：</p>
-<ul>
-<li>如果你希望在取消后继续执行某些操作，你可以使用 <code>try-catch</code> 块来捕获 <code>OperationCanceledException</code>，然后在异常处理代码中执行后续操作。</li>
-</ul>
-</li>
-</ol>
-<p>总之，当使用 <code>await</code> 等待异步操作时，如果操作被取消，后续的代码不会执行。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/29/Unity/%E5%BC%80%E5%8F%91/%E5%BC%82%E6%AD%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/canvasGroup的点击透传" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/27/Unity/%E5%BC%80%E5%8F%91/canvasGroup%E7%9A%84%E7%82%B9%E5%87%BB%E9%80%8F%E4%BC%A0/">CanvasGroup中的blocksRaycasts</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/27/Unity/%E5%BC%80%E5%8F%91/canvasGroup%E7%9A%84%E7%82%B9%E5%87%BB%E9%80%8F%E4%BC%A0/" class="archive-article-date">
-  	<time datetime="2024-03-27T06:14:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-27</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：345字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>CanvasGroup</code>中的<code>blocksRaycasts</code>属性是Unity UI系统中的一个功能，它允许开发者控制UI元素是否应该阻止射线投射。当<code>blocksRaycasts</code>设置为<code>true</code>时，该<code>CanvasGroup</code>及其所有子元素都会阻止射线穿透，这意味着它们可以接收如点击等鼠标事件，并阻止这些事件传递到UI元素下面的其他游戏对象。</p>
-<p>实现原理方面，<code>blocksRaycasts</code>属性工作于事件系统（Event System）层面。Unity的事件系统使用射线投射来确定鼠标指针下的UI元素。当射线与UI元素相交时，如果该元素所在的<code>CanvasGroup</code>的<code>blocksRaycasts</code>属性为<code>true</code>，事件系统就会将事件（如点击）发送到该元素，并停止进一步的射线检测。这样，位于该元素下方的其他元素或游戏对象就不会接收到事件。</p>
-<p>需要注意的是，<code>CanvasGroup</code>本身并不会阻止射线投射，你还需要一个作为射线投射目标的组件，如<code>Image</code>或<code>RawImage</code>。<code>blocksRaycasts</code>标志可以用来使该对象及其子对象在通常情况下停止阻止射线投射，但如果它们通常不会阻止射线投射，该标志不会导致它们被阻止。</p>
-<p>有时间测一下 这个会不会实现点击透传的功能 即开启交互而关闭blocksraycasts</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/27/Unity/%E5%BC%80%E5%8F%91/canvasGroup%E7%9A%84%E7%82%B9%E5%87%BB%E9%80%8F%E4%BC%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/新输入系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/24/Unity/%E5%BC%80%E5%8F%91/%E6%96%B0%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F/">Input System</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/24/Unity/%E5%BC%80%E5%8F%91/%E6%96%B0%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2024-03-24T08:38:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-24</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：360字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>需要注意 value的触发和按钮的触发是一样的没有持续性 需要自己在update中调用 因为performed只会调用一次 所以没有办法持续调用 后面考虑再测试一下 看看是不是调用的姿势不对</p>
-<p>在Unity的输入系统中，<code>InputAction.CallbackContext</code>是一个结构体，它提供了关于触发一个动作的信息。当您创建一个输入动作（InputAction）并为其绑定事件时，例如<code>.performed</code>、<code>.started</code>或<code>.canceled</code>，您可以使用<code>CallbackContext</code>来获取有关该动作的详细信息。</p>
-<p>以下是一些使用<code>CallbackContext</code>的例子：</p>
-<ol>
-<li><p><strong>检测动作是否被执行</strong>:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnFire</span>(<span class="params">InputAction.CallbackContext context</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (context.performed) &#123;</span><br><span class="line">        <span class="comment">// 执行开火逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>获取触发动作的控制器</strong>:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnMove</span>(<span class="params">InputAction.CallbackContext context</span>)</span> &#123;</span><br><span class="line">       Vector2 moveDirection = context.ReadValue&lt;Vector2&gt;();</span><br><span class="line">       <span class="comment">// 使用moveDirection进行移动</span></span><br><span class="line">   &#125;</span><br><span class="line">   ```  </span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> **检测动作的相互作用类型**:</span><br><span class="line"></span><br><span class="line">   ```csharp</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">OnJump</span>(<span class="params">InputAction.CallbackContext context</span>)</span> &#123;</span><br><span class="line">       <span class="keyword">if</span> (context.interaction <span class="keyword">is</span> SlowTapInteraction) &#123;</span><br><span class="line">           <span class="comment">// 如果是慢速点击交互，则执行特定逻辑</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><code>CallbackContext</code>提供了如<code>action</code>、<code>control</code>、<code>time</code>、<code>duration</code>等属性，您可以根据需要使用这些属性来实现更复杂的输入逻辑。</p>
-<p>请注意，<code>CallbackContext</code>不应该在回调之外持有，因为它的生命周期仅限于回调函数的执行期间。如果您需要在回调之外使用相关信息，应该将其存储在其他变量中。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/24/Unity/%E5%BC%80%E5%8F%91/%E6%96%B0%E8%BE%93%E5%85%A5%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-csharp/添加隐式转换方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/22/csharp/%E6%B7%BB%E5%8A%A0%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95/">c#隐式转换</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/22/csharp/%E6%B7%BB%E5%8A%A0%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2024-03-22T07:59:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-22</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：456字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在C#中，你可以为自定义类型添加隐式转换方法，这样就可以在不需要显式转换语法的情况下将一个类型转换为另一个类型。这通常用于当转换是安全的并且不会丢失信息时。以下是如何为自定义类型添加隐式转换方法的示例：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 类的其他成员</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 隐式转换方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="title">AnotherClass</span>(<span class="params">MyClass instance</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 在这里添加转换逻辑</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AnotherClass(<span class="comment">/* 构造参数 */</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这个例子中，<code>MyClass</code>是源类型，而<code>AnotherClass</code>是目标类型。当你有一个<code>MyClass</code>的实例，并且你需要一个<code>AnotherClass</code>的实例时，你可以直接赋值，而不需要显式转换。</p>
-<p>请注意，隐式转换应该是无风险的，不会引发异常，也不会导致数据丢失。如果转换过程中可能会有这些风险，那么应该使用显式转换方法.</p>
-<p>在C#中，<code>implicit</code>和<code>operator</code>是用来定义隐式类型转换方法的关键字。隐式类型转换允许在不需要显式转换语法的情况下，将一个类型的实例转换为另一个类型的实例。</p>
-<ul>
-<li><code>implicit</code>：这个关键字用于声明一个隐式转换操作符。当你使用<code>implicit</code>定义转换方法时，你告诉编译器和运行时，这种转换是安全的，不会丢失信息，也不会引发异常。因此，当这种转换需要发生时，不需要程序员编写额外的代码（如类型转换语法）。</li>
-<li><code>operator</code>：这个关键字用于定义一个操作符方法。在定义隐式转换方法时，它后面通常跟着目标类型，表示将源类型转换为该目标类型。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">c#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/22/csharp/%E6%B7%BB%E5%8A%A0%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/肉鸽/角色的层级" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E8%A7%92%E8%89%B2%E7%9A%84%E5%B1%82%E7%BA%A7/">角色层级</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E8%A7%92%E8%89%B2%E7%9A%84%E5%B1%82%E7%BA%A7/" class="archive-article-date">
-  	<time datetime="2024-03-21T07:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-21</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：67字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个角色需要包含collider和动画 同时需要注意中心点 中心点将觉得角色的遮挡关系问题<br>这里将collider和动画放在两个节点上 中心点定在脚上这个要跟动画沟通清楚</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E8%A7%92%E8%89%B2%E7%9A%84%E5%B1%82%E7%BA%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/肉鸽/检测敌人" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E6%A3%80%E6%B5%8B%E6%95%8C%E4%BA%BA/">敌人检测</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E6%A3%80%E6%B5%8B%E6%95%8C%E4%BA%BA/" class="archive-article-date">
-  	<time datetime="2024-03-21T07:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-21</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：338字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在 Unity 2D 游戏开发中，获取玩家附近的怪物通常需要使用一些技术或方法。以下是一些常见的方式：</p>
-<ol>
-<li><p><strong>使用触发器碰撞器（<code>Collider2D</code>）</strong>：这是一种基本的方法，用于检测其他实体是否在指定的范围内。您可以在玩家角色上添加一个圆形触发器碰撞器，然后使用 <code>Physics2D.OverlapCircle</code> 来获取附近的怪物。例如：</p>
- <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Collider2D[] hitColliders = Physics2D.OverlapCircleAll(playerPosition, detectionRadius);</span><br><span class="line"><span class="keyword">foreach</span> (Collider2D collider <span class="keyword">in</span> hitColliders)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 处理附近的怪物</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 这将返回所有与玩家位置处的圆形区域相交的碰撞器⁴。</p>
-</li>
-<li><p><strong>使用距离计算</strong>：您可以遍历所有怪物，计算其与玩家之间的距离，并选择最近的怪物。例如：</p>
- <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Transform <span class="title">GetClosestEnemy</span>(<span class="params">Transform[] enemies</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Transform closestEnemy = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">float</span> closestDistance = Mathf.Infinity;</span><br><span class="line">    Vector2 playerPosition = playerTransform.position;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (Transform enemy <span class="keyword">in</span> enemies)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">float</span> distance = Vector2.Distance(enemy.position, playerPosition);</span><br><span class="line">        <span class="keyword">if</span> (distance &lt; closestDistance)</span><br><span class="line">        &#123;</span><br><span class="line">            closestEnemy = enemy;</span><br><span class="line">            closestDistance = distance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> closestEnemy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 这将返回最近的怪物的 <code>Transform</code> 组件²。</p>
-</li>
-<li><p><strong>使用射线投射（Raycasting）</strong>：您可以从玩家位置发射射线，检测是否与怪物相交。如果相交，那么怪物就在玩家附近。例如：</p>
- <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RaycastHit2D hit = Physics2D.Raycast(playerPosition, direction, detectionDistance, monsterLayer);</span><br><span class="line"><span class="keyword">if</span> (hit.collider != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 处理附近的怪物</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 这需要设置一个怪物的图层（<code>monsterLayer</code>）并指定射线的方向和最大距离。</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/21/Unity/%E8%82%89%E9%B8%BD/%E6%A3%80%E6%B5%8B%E6%95%8C%E4%BA%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/开发/随机list" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/21/Unity/%E5%BC%80%E5%8F%91/%E9%9A%8F%E6%9C%BAlist/">随机排序list</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/21/Unity/%E5%BC%80%E5%8F%91/%E9%9A%8F%E6%9C%BAlist/" class="archive-article-date">
-  	<time datetime="2024-03-21T03:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-21</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：115字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法一：使用 Guid</span></span><br><span class="line">list = list.OrderBy(i =&gt; Guid.NewGuid()).ToList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二：自定义方法进行随机排序</span></span><br><span class="line"><span class="keyword">public</span> List&lt;T&gt; RandomSortList&lt;T&gt;(List&lt;T&gt; ListT)</span><br><span class="line">&#123;</span><br><span class="line">    Random random = <span class="keyword">new</span> Random();</span><br><span class="line">    List&lt;T&gt; newList = <span class="keyword">new</span> List&lt;T&gt;();</span><br><span class="line">    <span class="keyword">foreach</span> (T item <span class="keyword">in</span> ListT)</span><br><span class="line">    &#123;</span><br><span class="line">        newList.Insert(random.Next(newList.Count + <span class="number">1</span>), item);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方法二进行随机排序</span></span><br><span class="line">List&lt;<span class="keyword">int</span>&gt; list = <span class="keyword">new</span> List&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">&#123;</span><br><span class="line">    list.Add(i);</span><br><span class="line">&#125;</span><br><span class="line">list = RandomSortList&lt;<span class="keyword">int</span>&gt;(list);</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/21/Unity/%E5%BC%80%E5%8F%91/%E9%9A%8F%E6%9C%BAlist/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity/编辑器/vscode.net环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/03/19/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vscode.net%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">Unity配vscode环境</a>
-    </h1>
-  
-
-        
-        <a href="/2024/03/19/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vscode.net%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2024-03-19T02:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-03-19</time>
-</a>
-        
-      </header>
-	  <div align="center" class="post-count">
-          字数：279字 | 预计阅读时长：1分钟
-      </div>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>该项配置具有很强的时限性 会随着官方bug的fix而消失(最好不过)</p>
-<p>问题如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An error occurred while installing .NET (7.0): .NET Acquisition Failed: Installation failed: Error: .NET install timed out. You should change the timeout if you have a slow connection. See: https:&#x2F;&#x2F;github.com&#x2F;dotnet&#x2F;vscode-dotnet-runtime&#x2F;blob&#x2F;main&#x2F;Documentation&#x2F;troubleshooting-runtime.md#install-script-timeouts. Our CDN may be blocked in China or experience significant slowdown, in which case you should install .NET manually.</span><br></pre></td></tr></table></figure>
-
-<p>本来之前是一直在下.NET8.0<br>在指定dotnet和sdk路径之后修复了这个问题 不过它又开始下7.0<br>settings文件新加项如下(mac .net默认的安装位置)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"omnisharp.monoPath": "/usr/local/share/dotnet/sdk/8.0.203",</span><br><span class="line">"dotnet.dotnetPath": "/usr/local/share/dotnet",</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://github.com/dotnet/vscode-csharp/issues/6004" target="_blank" rel="noopener">官方issues</a><br>又开始下7.0的问题 看别人说估计是因为Unity插件影响的<br>需要再增加一项设置 路径是安装的dotnet路径<br>如果不清楚 直接在环境中运行指令 where dotnet 然后复制粘贴就行了</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">"dotnetAcquisitionExtension.existingDotnetPath": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"ms-dotnettools.csharp"</span>,</span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"ms-dotnettools.csdevkit"</span>, </span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"extensionId"</span>: <span class="string">"visualstudiotoolsforunity.vstuc"</span>, </span><br><span class="line">            <span class="attr">"path"</span>: <span class="string">"/usr/local/share/dotnet/dotnet"</span></span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">vscode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2024/03/19/Unity/%E7%BC%96%E8%BE%91%E5%99%A8/vscode.net%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1170,6 +1129,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -1182,10 +1145,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
@@ -1194,7 +1153,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shader</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQLite</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1202,7 +1161,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color2">shader</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,11 +1169,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1222,7 +1185,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1238,15 +1205,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1254,11 +1213,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1266,11 +1225,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1282,19 +1253,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1306,7 +1265,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1314,19 +1273,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1334,11 +1281,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

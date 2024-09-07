@@ -16,7 +16,7 @@
 <meta property="og:description" content="对于某些项目有特别多的动画流程 特别是连续的动画 最忌讳的就是在动画的过程中用户进行其他操作 然后导致了bug出现最方便的处理方法就是禁用用户交互 对于特别频繁动画时 全局的交互禁用就十分普遍 所以可以设置一个特定功能 将交互屏蔽放在最上层 通过事件开启和关闭 代码规范其实就是简化不同人之间的协同工作 同时兼顾一些美观和便利 命名规范将 PascalCase 用于类名和方法名称。将 camelCa">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-13T08:18:00.000Z">
-<meta property="article:modified_time" content="2024-03-21T12:29:52.872Z">
+<meta property="article:modified_time" content="2024-09-07T07:38:39.159Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="c#">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 224
+            总文章数 232
         </nav>
 		<nav>
-            总字数 <span class="post-count">144.1k</span>
+            总字数 <span class="post-count">152.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,7 +179,7 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：686字 | 预计阅读时长：2分钟
+          字数：1.2k字 | 预计阅读时长：4分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
@@ -204,6 +204,45 @@
 <li><p>mvc<br>界面中的所有数据 除非特殊要全部剥离开 防止因为存档需要的修改而 导致ui的不必要的逻辑容错问题</p>
 </li>
 </ul>
+<h2 id="在C-代码中，不同的类命名结尾通常反映了类的用途或角色。虽然没有严格的规则，但有一些常见的约定"><a href="#在C-代码中，不同的类命名结尾通常反映了类的用途或角色。虽然没有严格的规则，但有一些常见的约定" class="headerlink" title="在C#代码中，不同的类命名结尾通常反映了类的用途或角色。虽然没有严格的规则，但有一些常见的约定"></a>在C#代码中，不同的类命名结尾通常反映了类的用途或角色。虽然没有严格的规则，但有一些常见的约定</h2><h3 id="1-Helper-结尾的类"><a href="#1-Helper-结尾的类" class="headerlink" title="1. Helper 结尾的类"></a>1. <strong>Helper 结尾的类</strong></h3><ul>
+<li><strong>目的</strong>: 通常用于封装一些静态的工具方法，这些方法通常与特定的领域或功能相关。</li>
+<li><strong>特点</strong>:<ul>
+<li>通常是静态类 (<code>static class</code>)，不需要实例化。</li>
+<li>方法通常是静态的 (<code>static</code>)。</li>
+<li>提供的功能往往是通用的、辅助性的，比如字符串操作、日期格式化等。</li>
+</ul>
+</li>
+</ul>
+<p><strong>例子</strong>:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">StringHelper</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">string</span> <span class="title">Reverse</span>(<span class="params"><span class="keyword">string</span> s</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 反转字符串的逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Tool-结尾的类"><a href="#2-Tool-结尾的类" class="headerlink" title="2. Tool 结尾的类"></a>2. <strong>Tool 结尾的类</strong></h3><ul>
+<li><strong>目的</strong>: 通常也用于提供特定功能，但比<code>Helper</code>更为具体，可能包含更多的逻辑，甚至是需要实例化的类。</li>
+<li><strong>特点</strong>:<ul>
+<li>可以是静态类或实例类。</li>
+<li>可能包含一些实例方法和属性，而不仅仅是静态方法。</li>
+<li>更注重于提供某一工具或功能的封装，而不只是简单的辅助方法。</li>
+</ul>
+</li>
+</ul>
+<p><strong>例子</strong>:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ImageProcessingTool</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ResizeImage</span>(<span class="params"><span class="keyword">string</span> imagePath, <span class="keyword">int</span> width, <span class="keyword">int</span> height</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">// 图片缩放的逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-其他常见的结尾名"><a href="#3-其他常见的结尾名" class="headerlink" title="3. 其他常见的结尾名"></a>3. <strong>其他常见的结尾名</strong></h3><ul>
+<li><p><strong>Manager</strong>: 用于管理某种类型的对象或资源，例如 <code>ConnectionManager</code>、<code>ResourceManager</code>。通常包含添加、移除、查找等管理操作。</p>
+</li>
+<li><p><strong>Service</strong>: 通常用于表示提供某种业务逻辑或功能的类，例如 <code>UserService</code>、<code>EmailService</code>。这些类通常会被其他类调用，提供服务。</p>
+</li>
+<li><p><strong>Controller</strong>: 在MVC架构中，控制器用于处理用户输入，更新模型，返回视图。例如 <code>HomeController</code>。</p>
+</li>
+<li><p><strong>Factory</strong>: 工厂类用于创建对象，封装对象创建的逻辑，典型的例子是<code>CarFactory</code>。</p>
+</li>
+<li><p><strong>Repository</strong>: 通常用于封装数据访问逻辑，与数据库或其他数据源进行交互，例如 <code>UserRepository</code>。</p>
+</li>
+<li><p><strong>Adapter</strong>: 适配器类用于封装一个类的接口，适配另一种接口，以实现兼容性，例如 <code>XmlAdapter</code>。</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这些类名结尾只是为了反映其用途或功能，更好地帮助开发者理解和使用它们。在编写代码时，选择合适的命名有助于提高代码的可读性和维护性。</p>
 
       
 
@@ -346,7 +385,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#在C-代码中，不同的类命名结尾通常反映了类的用途或角色。虽然没有严格的规则，但有一些常见的约定"><span class="toc-number">1.</span> <span class="toc-text">在C#代码中，不同的类命名结尾通常反映了类的用途或角色。虽然没有严格的规则，但有一些常见的约定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Helper-结尾的类"><span class="toc-number">1.1.</span> <span class="toc-text">1. Helper 结尾的类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Tool-结尾的类"><span class="toc-number">1.2.</span> <span class="toc-text">2. Tool 结尾的类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-其他常见的结尾名"><span class="toc-number">1.3.</span> <span class="toc-text">3. 其他常见的结尾名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -470,6 +509,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -482,10 +525,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
@@ -494,7 +533,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shader</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQLite</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,7 +541,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color2">shader</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,11 +549,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,7 +565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,15 +585,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,11 +593,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,11 +605,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,19 +633,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,7 +645,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,19 +653,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,11 +661,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">

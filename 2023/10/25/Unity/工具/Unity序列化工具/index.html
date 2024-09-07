@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Unity序列化工具 | 诗酒趁年华</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="序列化工具很多的 找两个比较常用的fullserializer比unity自带的json序列化工具要强上很多 支持字典list和日期 但是需要注意枚举的存储是用的字符串而不是数字 Newtonsoft就是比较知名的.net的序列化工具了 不过并不是很适应Unity 不过也能用就是了 不支持datetime存储 区别Newtonsoft Json 和 Full Serializer 都是 C# 中用">
+  <meta name="description" content="序列化工具很多的 找两个比较常用的fullserializer比unity自带的json序列化工具要强上很多 支持字典list和日期 但是需要注意枚举的存储是用的字符串而不是数字 Newtonsoft就是比较知名的.net的序列化工具了 不过并不是很适应Unity 不过也能用就是了 不支持datetime存储 Unity官方的支持的包com.unity.nuget.newtonsoft-json">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity序列化工具">
 <meta property="og:url" content="http://yoursite.com/2023/10/25/Unity/%E5%B7%A5%E5%85%B7/Unity%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7/index.html">
 <meta property="og:site_name" content="诗酒趁年华">
-<meta property="og:description" content="序列化工具很多的 找两个比较常用的fullserializer比unity自带的json序列化工具要强上很多 支持字典list和日期 但是需要注意枚举的存储是用的字符串而不是数字 Newtonsoft就是比较知名的.net的序列化工具了 不过并不是很适应Unity 不过也能用就是了 不支持datetime存储 区别Newtonsoft Json 和 Full Serializer 都是 C# 中用">
+<meta property="og:description" content="序列化工具很多的 找两个比较常用的fullserializer比unity自带的json序列化工具要强上很多 支持字典list和日期 但是需要注意枚举的存储是用的字符串而不是数字 Newtonsoft就是比较知名的.net的序列化工具了 不过并不是很适应Unity 不过也能用就是了 不支持datetime存储 Unity官方的支持的包com.unity.nuget.newtonsoft-json">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-25T09:23:00.000Z">
-<meta property="article:modified_time" content="2024-07-14T10:54:11.759Z">
+<meta property="article:modified_time" content="2024-09-07T07:38:39.137Z">
 <meta property="article:author" content="Fortune">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
@@ -63,10 +63,10 @@
 			</ul>
 		</nav>
 		<nav>
-            总文章数 224
+            总文章数 232
         </nav>
 		<nav>
-            总字数 <span class="post-count">144.1k</span>
+            总字数 <span class="post-count">152.5k</span>
         </nav>
 		<nav class="header-smart-menu">
     		
@@ -179,13 +179,14 @@
         
       </header>
 	  <div align="center" class="post-count">
-          字数：2.4k字 | 预计阅读时长：8分钟
+          字数：2.4k字 | 预计阅读时长：9分钟
       </div>
     
     <div class="article-entry" itemprop="articleBody">
       
         <p>序列化工具很多的 找两个比较常用的<br><a href="https://github.com/jacobdufault/fullserializer" target="_blank" rel="noopener">fullserializer</a><br>比unity自带的json序列化工具要强上很多 支持字典list和日期 但是需要注意枚举的存储是用的字符串而不是数字</p>
 <p><a href="https://www.newtonsoft.com/json/help/html/SerializingJSON.htm" target="_blank" rel="noopener">Newtonsoft</a>就是比较知名的.net的序列化工具了 不过并不是很适应Unity 不过也能用就是了 不支持datetime存储</p>
+<p>Unity官方的支持的包<code>com.unity.nuget.newtonsoft-json</code> 如果在包管理器找不到 用这个下载</p>
 <h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>Newtonsoft Json 和 Full Serializer 都是 C# 中用于 JSON 序列化和反序列化的库，它们都遵循 JSON 格式的标准语法，如使用双引号、逗号、方括号、花括号等。因此，它们生成的 JSON 字符串在格式上是通用的，可以相互转换。</p>
 <p>但是，它们也有一些不同的特性和设置，如对枚举、空值、私有变量、日期等数据类型的处理，以及对序列化和反序列化的选项和设置。这些特性和设置可能会影响 JSON 字符串的内容和格式，从而影响不同的 JSON 序列化文件的通用性。例如，Newtonsoft Json 默认会将枚举类型转换为数字，而 Full Serializer 默认会将枚举类型转换为字符串。如果不进行相应的转换器或设置的调整，这两个库就无法正确地反序列化对方的 JSON 字符串。</p>
 <h2 id="不同json的标准"><a href="#不同json的标准" class="headerlink" title="不同json的标准"></a>不同json的标准</h2><p>JSON 序列化是将对象转换为 JSON 格式的字符串的过程，反序列化是将 JSON 格式的字符串转换为对象的过程。不同的 JSON 序列化文件指的是使用不同的语言或库进行 JSON 序列化的文件，例如 Python 的 json 模块，C# 的 Newtonsoft Json 库，Java 的 Gson 库等。</p>
@@ -501,6 +502,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">pr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
@@ -513,10 +518,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">pr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">线性代数</a>
               </li>
              
@@ -525,7 +526,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">shader</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQLite</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,7 +534,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+                <a href="javascript:void(0)" class="js-tag color2">shader</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,11 +542,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,7 +558,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenGL</a>
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,15 +578,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pdfium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">排序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -585,11 +586,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color1">godot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,11 +598,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">UWP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,19 +626,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TextBox</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">WPF</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">DropShadowPanel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -637,7 +638,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">室内设计</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,19 +646,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,11 +654,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">win10</a>
+                <a href="javascript:void(0)" class="js-tag color4">经济学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Chrome</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">win10</a>
               </li>
              
               <li class="article-tag-list-item">
